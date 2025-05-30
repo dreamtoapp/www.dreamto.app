@@ -1,0 +1,248 @@
+[
+    {
+        "name": "Ultimate Enterprise",
+        "description": "A powerhouse solution tailored for enterprises demanding top-tier web and mobile functionality with AI-driven innovation.",
+        "features": {
+            "websiteDevelopment": {
+                "pages": "Unlimited pages",
+                "responsiveDesign": true,
+                "AI-powered SEO optimization": true,
+                "custom UI/UX with A/B testing": true,
+                "multi-language & localization support": true,
+                "real-time chatbot integration": true,
+                "enterprise-grade security & encryption": true,
+                "integrated analytics dashboard": true,
+                "voice search optimization": true
+            },
+            "mobileAppDevelopment": {
+                "platform": "Both Android & iOS",
+                "screens": "Unlimited screens",
+                "AI-powered virtual assistant": true,
+                "biometric authentication (Face & Fingerprint)": true,
+                "real-time push notifications & geofencing": true,
+                "in-app voice & video calls": true,
+                "live-streaming functionality": true,
+                "e-wallet & crypto payment integration": true,
+                "offline mode with auto-sync": true
+            },
+            "support": {
+                "maintenance": "3 years free maintenance",
+                "supportType": "Dedicated Account Manager + 24/7 VIP Priority Support",
+                "monthly business growth consultation": true
+            }
+        },
+        "rankingScore": 18,
+        "keySellingPoints": [
+            "AI-Powered SEO & Virtual Assistant",
+            "Biometric Authentication & Enterprise Security",
+            "Integrated Analytics Dashboard & Voice Search",
+            "3-Year VIP Support with Growth Consultation"
+        ]
+    },
+    {
+        "name": "Business Accelerator",
+        "description": "Designed for scaling businesses looking for advanced automation and AI-powered tools to drive growth and efficiency.",
+        "features": {
+            "websiteDevelopment": {
+                "pages": "Up to 50 pages",
+                "responsiveDesign": true,
+                "automated SEO & content suggestions": true,
+                "custom branding & marketing automation": true,
+                "A/B testing for conversion optimization": true,
+                "eCommerce with AR product preview": true
+            },
+            "mobileAppDevelopment": {
+                "platform": "Both Android & iOS",
+                "screens": "Up to 25 screens",
+                "chatbot-powered customer service": true,
+                "subscription & membership features": true,
+                "one-tap checkout & secure payment gateway": true,
+                "automated appointment booking system": true,
+                "AI-powered product recommendations": true
+            },
+            "support": {
+                "maintenance": "2 years free maintenance",
+                "supportType": "24/7 Phone, Chat, & Email Support",
+                "quarterly strategy call with experts": true
+            }
+        },
+        "rankingScore": 15,
+        "keySellingPoints": [
+            "AR Product Preview & AI Recommendations",
+            "Automated SEO & A/B Testing",
+            "Subscription & Membership System",
+            "2-Year Premium Support with Strategy Calls"
+        ]
+    },
+    {
+        "name": "Startup Pro",
+        "description": "An affordable yet powerful solution for startups looking to make a strong digital presence with cutting-edge technology.",
+        "features": {
+            "websiteDevelopment": {
+                "pages": "Up to 15 pages",
+                "responsiveDesign": true,
+                "AI-driven SEO optimization": true,
+                "drag-and-drop website builder": true,
+                "eCommerce-ready with payment options": true
+            },
+            "mobileAppDevelopment": {
+                "platform": "Android or iOS (one platform only)",
+                "screens": "Up to 8 screens",
+                "push notifications & basic chatbot": true,
+                "in-app purchases & monetization options": true,
+                "social media integration": true
+            },
+            "support": {
+                "maintenance": "1-year free maintenance",
+                "supportType": "Email & Chat Support",
+                "monthly performance report": true
+            }
+        },
+        "rankingScore": 12,
+        "keySellingPoints": [
+            "AI-Driven SEO & Drag-and-Drop Builder",
+            "eCommerce Ready with Payment Integration",
+            "Social Media & Monetization Features",
+            "1-Year Support with Performance Reports"
+        ]
+    }
+]
+----------------------------
+{
+  "pricing_plans": [
+    {
+      "name": "Startup Launchpad",
+      "description": "An affordable yet powerful solution for startups looking to establish a strong digital presence with essential tools and scalability.",
+      "features": {
+        "websiteDevelopment": {
+          "pages": "Up to 15 pages",
+          "responsiveDesign": true,
+          "AI-powered SEO optimization": true,
+          "drag-and-drop website builder": true,
+          "eCommerce-ready with basic payment options": true,
+          "multi-language & localization support": false,
+          "real-time chatbot integration": false,
+          "enterprise-grade security & encryption": false,
+          "integrated analytics dashboard": false,
+          "voice search optimization": false
+        },
+        "mobileAppDevelopment": {
+          "platform": "Android or iOS (one platform only)",
+          "screens": "Up to 8 screens",
+          "push notifications": true,
+          "basic chatbot integration": true,
+          "in-app purchases & monetization options": true,
+          "social media integration": true,
+          "biometric authentication": false,
+          "live-streaming functionality": false,
+          "e-wallet & crypto payment integration": false,
+          "offline mode with auto-sync": false
+        },
+        "support": {
+          "maintenance": "1-year free maintenance",
+          "supportType": "Email & Chat Support",
+          "monthly performance report": true,
+          "quarterly strategy call": false,
+          "monthly business growth consultation": false
+        }
+      },
+      "price_range": "SAR 7,000 - SAR 15,000",
+      "keySellingPoints": [
+        "AI-Powered SEO Optimization",
+        "Drag-and-Drop Website Builder",
+        "eCommerce Ready with Payment Integration",
+        "Social Media & Monetization Features"
+      ]
+    },
+    {
+      "name": "Business Growth Suite",
+      "description": "A comprehensive solution for growing businesses seeking advanced automation, AI-driven tools, and scalability to drive efficiency and growth.",
+      "features": {
+        "websiteDevelopment": {
+          "pages": "Up to 50 pages",
+          "responsiveDesign": true,
+          "AI-powered SEO optimization": true,
+          "custom UI/UX with A/B testing": true,
+          "eCommerce-ready with AR product preview": true,
+          "multi-language & localization support": true,
+          "real-time chatbot integration": true,
+          "enterprise-grade security & encryption": false,
+          "integrated analytics dashboard": true,
+          "voice search optimization": false
+        },
+        "mobileAppDevelopment": {
+          "platform": "Both Android & iOS",
+          "screens": "Up to 25 screens",
+          "AI-powered virtual assistant": true,
+          "biometric authentication": false,
+          "real-time push notifications & geofencing": true,
+          "in-app voice & video calls": false,
+          "live-streaming functionality": false,
+          "e-wallet & crypto payment integration": false,
+          "offline mode with auto-sync": true,
+          "subscription & membership features": true,
+          "one-tap checkout & secure payment gateway": true
+        },
+        "support": {
+          "maintenance": "2 years free maintenance",
+          "supportType": "24/7 Phone, Chat, & Email Support",
+          "monthly performance report": true,
+          "quarterly strategy call with experts": true,
+          "monthly business growth consultation": false
+        }
+      },
+      "price_range": "SAR 20,000 - SAR 60,000",
+      "keySellingPoints": [
+        "AI-Powered SEO & Virtual Assistant",
+        "AR Product Preview & Subscription Features",
+        "Integrated Analytics Dashboard & Push Notifications",
+        "2 Years of Premium Support with Strategy Calls"
+      ]
+    },
+    {
+      "name": "Enterprise Powerhouse",
+      "description": "A top-tier solution designed for enterprises demanding cutting-edge technology, scalability, and unparalleled support for large-scale operations.",
+      "features": {
+        "websiteDevelopment": {
+          "pages": "Unlimited pages",
+          "responsiveDesign": true,
+          "AI-powered SEO optimization": true,
+          "custom UI/UX with A/B testing": true,
+          "eCommerce-ready with AR product preview": true,
+          "multi-language & localization support": true,
+          "real-time chatbot integration": true,
+          "enterprise-grade security & encryption": true,
+          "integrated analytics dashboard": true,
+          "voice search optimization": true
+        },
+        "mobileAppDevelopment": {
+          "platform": "Both Android & iOS",
+          "screens": "Unlimited screens",
+          "AI-powered virtual assistant": true,
+          "biometric authentication (Face & Fingerprint)": true,
+          "real-time push notifications & geofencing": true,
+          "in-app voice & video calls": true,
+          "live-streaming functionality": true,
+          "e-wallet & crypto payment integration": true,
+          "offline mode with auto-sync": true,
+          "subscription & membership features": true,
+          "one-tap checkout & secure payment gateway": true
+        },
+        "support": {
+          "maintenance": "3 years free maintenance",
+          "supportType": "Dedicated Account Manager + 24/7 VIP Priority Support",
+          "monthly performance report": true,
+          "quarterly strategy call with experts": true,
+          "monthly business growth consultation": true
+        }
+      },
+      "price_range": "SAR 80,000 - SAR 250,000+",
+      "keySellingPoints": [
+        "AI-Powered SEO, Virtual Assistant, & Product Recommendations",
+        "Biometric Authentication & Enterprise-Grade Security",
+        "Integrated Analytics Dashboard & Voice Search Optimization",
+        "3 Years of VIP Support with Monthly Growth Consultations"
+      ]
+    }
+  ]
+}

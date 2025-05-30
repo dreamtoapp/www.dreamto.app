@@ -1,0 +1,604 @@
+{
+  "pricingPlans": [
+    {
+      "name": "Starter",
+      "description": "Ideal for small businesses and startups looking to establish an online presence.",
+      "features": {
+        "websiteDevelopment": {
+          "pages": "Up to 5 pages",
+          "responsiveDesign": true,
+          "basicSEO": true,
+          "contactForms": true
+        },
+        "mobileAppDevelopment": {
+          "platform": "Android or iOS (one platform only)",
+          "screens": "Up to 3 screens",
+          "basicFunctionality": true
+        },
+        "support": {
+          "maintenance": "1-month free maintenance",
+          "supportType": "Email support"
+        },
+        "additionalFeatures": {
+          "freeConsultation": true,
+          "basicAnalytics": true,
+          "socialMediaIntegration": true
+        }
+      },
+      "priceRange": {
+        "min": 10000,
+        "max": 15000,
+        "currency": "SAR"
+      }
+    },
+    {
+      "name": "Growth",
+      "description": "Perfect for medium-sized businesses aiming to expand their digital presence.",
+      "features": {
+        "websiteDevelopment": {
+          "pages": "Up to 10 pages",
+          "customDesign": true,
+          "advancedSEO": true,
+          "blogIntegration": true,
+          "socialMediaIntegration": true,
+          "ecommerce": {
+            "enabled": true,
+            "products": "Up to 20 products"
+          }
+        },
+        "mobileAppDevelopment": {
+          "platform": "Cross-platform (Android and iOS)",
+          "screens": "Up to 6 screens",
+          "features": ["Push notifications", "User authentication", "Basic analytics"]
+        },
+        "support": {
+          "maintenance": "3-month free maintenance",
+          "supportType": "Email and chat support"
+        },
+        "additionalFeatures": {
+          "freeConsultation": true,
+          "performanceOptimization": true,
+          "contentManagementTraining": true,
+          "customerReviewIntegration": true
+        }
+      },
+      "priceRange": {
+        "min": 25000,
+        "max": 40000,
+        "currency": "SAR"
+      }
+    },
+    {
+      "name": "Enterprise",
+      "description": "Tailored for large enterprises requiring advanced, scalable, and custom solutions.",
+      "features": {
+        "websiteDevelopment": {
+          "pages": "Unlimited pages",
+          "customCMS": true,
+          "advancedSEO": true,
+          "multilingualSupport": ["Arabic", "English"],
+          "ecommerce": {
+            "enabled": true,
+            "products": "Unlimited products",
+            "paymentGatewayIntegration": true
+          },
+          "thirdPartyIntegration": true
+        },
+        "mobileAppDevelopment": {
+          "platform": "Cross-platform (Android and iOS)",
+          "features": [
+            "Real-time chat",
+            "Geolocation",
+            "Payment integration",
+            "Scalable architecture"
+          ],
+          "backendIntegration": true
+        },
+        "support": {
+          "maintenance": "1-year free maintenance",
+          "supportType": "Priority support (email, chat, and phone)",
+          "performanceMonitoring": true
+        },
+        "additionalFeatures": {
+          "dedicatedAccountManager": true,
+          "customAnalyticsDashboard": true,
+          "prioritySupport": true,
+          "marketingConsultation": true,
+          "advancedSecurityFeatures": true
+        }
+      },
+      "priceRange": {
+        "min": 60000,
+        "max": 100000,
+        "currency": "SAR"
+      }
+    }
+  ],
+  "additionalIncentives": {
+    "discounts": {
+      "longTermContracts": {
+        "description": "10% discount for contracts longer than 1 year",
+        "eligibility": "Applicable to all plans"
+      },
+      "bundledServices": {
+        "description": "15% discount for bundling website and mobile app development",
+        "eligibility": "Applicable to Growth and Enterprise plans"
+      }
+    },
+    "referralProgram": {
+      "description": "Earn SAR 1,000 credit for every successful referral",
+      "eligibility": "Available to all existing clients"
+    },
+    "welcomePackage": {
+      "description": "New clients receive a welcome package including a gift card and branded merchandise.",
+      "eligibility": "Applicable to all new clients signing up for any plan"
+    },
+    "loyaltyProgram": {
+      "description": "Loyal clients receive exclusive access to new features and services before public release.",
+      "eligibility": "Available to clients who have been with us for over 1 year"
+    },
+    "freeTrial": {
+      "description": "Free 2-week trial for maintenance and support services",
+      "applicablePlans": ["Growth", "Enterprise"]
+    }
+  }
+}
+
+{
+  "pricing_plans": [
+    {
+      "name": "Basic Starter Package",
+      "target_audience": "SMEs, startups, and individuals with limited budgets",
+      "features": [
+        "Static website or simple landing page",
+        "Up to 5 pages (Home, About, Services, Contact, Blog)",
+        "Responsive design (mobile-friendly)",
+        "Basic SEO optimization",
+        "Free hosting for 6 months on shared servers",
+        "Email integration (up to 3 email accounts)"
+      ],
+      "customization_options": [
+        "Add e-commerce functionality (+ SAR 5,000)",
+        "Include multilingual support (+ SAR 3,000)",
+        "Priority support (+ SAR 2,000)"
+      ],
+      "price_range": "SAR 7,000 - SAR 10,000",
+      "payment_terms": "One-time payment or 3-month installment plan",
+      "additional_services": [
+        "Digital marketing setup (+ SAR 4,000)",
+        "Monthly maintenance plan (+ SAR 1,500/month)"
+      ]
+    },
+    {
+      "name": "Professional Business Package",
+      "target_audience": "Established SMEs, growing businesses, and startups needing more functionality",
+      "features": [
+        "Dynamic website with CMS (e.g., WordPress, Joomla)",
+        "E-commerce capabilities (optional add-on for SAR 5,000 extra)",
+        "Custom UI/UX design",
+        "Advanced SEO setup and Google Analytics integration",
+        "Social media integration",
+        "Dedicated project manager",
+        "1-year free SSL certificate",
+        "Priority customer support"
+      ],
+      "customization_options": [
+        "AI-powered chatbot integration (+ SAR 8,000)",
+        "Cross-platform mobile app development (+ SAR 20,000)",
+        "Advanced security features (+ SAR 10,000)"
+      ],
+      "price_range": "SAR 20,000 - SAR 40,000",
+      "payment_terms": "Flexible milestone-based payments or 6-month installment plan",
+      "additional_services": [
+        "Digital marketing campaigns (+ SAR 10,000)",
+        "Training sessions for CMS management (+ SAR 3,000)"
+      ]
+    },
+    {
+      "name": "Enterprise Elite Package",
+      "target_audience": "Large corporations, government entities, and enterprises requiring bespoke solutions",
+      "features": [
+        "Fully customized web and mobile app development",
+        "Cross-platform mobile app (iOS, Android) using frameworks like Flutter or React Native",
+        "API integrations with third-party systems (CRM, ERP, etc.)",
+        "Advanced security protocols (GDPR compliance, data encryption)",
+        "AI-powered features (chatbots, recommendation engines)",
+        "Multilingual support (Arabic/English + additional languages as needed)",
+        "Performance monitoring and maintenance for 1 year",
+        "Dedicated team of developers and designers"
+      ],
+      "customization_options": [
+        "Blockchain integration (+ SAR 50,000)",
+        "IoT-enabled solutions (+ SAR 30,000)",
+        "Custom analytics dashboard (+ SAR 15,000)"
+      ],
+      "price_range": "SAR 80,000 - SAR 250,000+",
+      "payment_terms": "Milestone-based payments or 12-month installment plan",
+      "additional_services": [
+        "Ongoing maintenance and support (+ SAR 5,000/month)",
+        "Comprehensive digital transformation strategy (+ SAR 20,000)"
+      ]
+    }
+  ],
+  "general_offers": [
+    "Free consultation and project analysis",
+    "Prototype or wireframe creation for free",
+    "Referral program: Discounts on future projects for referrals",
+    "Flexible payment terms tailored to client needs"
+  ],
+  "local_expertise": [
+    "Familiarity with Saudi Vision 2030 goals",
+    "Integration with regional payment gateways (Mada, STC Pay)",
+    "RTL (right-to-left) layout support for Arabic content"
+  ],
+  "post_launch_support": [
+    "Maintenance packages starting at SAR 2,000/month",
+    "Training sessions for clients to manage their platforms",
+    "Performance monitoring and regular updates"
+  ]
+}
+
+{
+  "pricing_plans": [
+    {
+      "name": "Basic Plan",
+      "description": "Ideal for startups and small businesses seeking an online presence with essential features.",
+      "features": [
+        "Up to 10 static web pages",
+        "Standard design template",
+        "Basic contact form",
+        "Mobile-responsive design",
+        "Basic SEO optimization"
+      ],
+      "additional_features": [
+        "CDN Integration",
+        "Lazy Loading",
+        "Basic Security Compliance",
+        "Basic Analytics Integration",
+        "Pre-Made Templates for Faster Deployment",
+        "Starter Plan Option (One-Page Website)",
+        "Subscription-Based Payment Model"
+      ],
+      "estimated_cost": "SAR 8,000 – SAR 10,000"
+    },
+    {
+      "name": "Standard Plan",
+      "description": "Suitable for medium-sized businesses requiring dynamic features and enhanced design.",
+      "features": [
+        "Up to 20 web pages",
+        "Custom design with premium themes",
+        "Content Management System (CMS) integration",
+        "Blog setup",
+        "Social media integration",
+        "Advanced contact forms",
+        "Mobile-responsive design",
+        "Standard SEO optimization"
+      ],
+      "additional_features": [
+        "Push Notifications",
+        "AI-Powered Search Engine",
+        "Advanced Analytics Dashboard",
+        "Multi-Language & RTL Support",
+        "CRM Integration",
+        "Hosting & Domain Registration",
+        "Limited-Time Offers & Seasonal Discounts",
+        "E-commerce Module as Add-On"
+      ],
+      "estimated_cost": "SAR 15,000 – SAR 25,000"
+    },
+    {
+      "name": "Premium Plan",
+      "description": "Designed for large enterprises seeking comprehensive solutions with advanced functionalities.",
+      "features": [
+        "Unlimited web pages",
+        "Fully customized design",
+        "E-commerce capabilities",
+        "Advanced CMS features",
+        "Multiple custom forms (e.g., subscription, career)",
+        "Interactive elements and animations",
+        "Mobile-responsive design",
+        "Comprehensive SEO optimization",
+        "Third-party integrations (e.g., CRM, ERP)"
+      ],
+      "additional_features": [
+        "AI-Powered Chatbots",
+        "End-to-End Encryption",
+        "Two-Factor Authentication (2FA)",
+        "Cloud Hosting (AWS, Azure, Google Cloud)",
+        "Serverless Architecture",
+        "Premium Membership & Subscription Models",
+        "Affiliate & Referral System",
+        "White-Label Solutions for Reseller Partnerships",
+        "AI-Powered Content Generation & Optimization"
+      ],
+      "estimated_cost": "SAR 25,000 and above"
+    }
+  ],
+  "mobile_app_development": {
+    "basic": {
+      "description": "Simple applications with minimal features.",
+      "estimated_cost": "SAR 8,000 – SAR 80,000"
+    },
+    "medium_complexity": {
+      "description": "Applications with features like user authentication, payment gateways, and GPS integration.",
+      "estimated_cost": "SAR 10,000 – SAR 100,000"
+    },
+    "high_complexity": {
+      "description": "Advanced applications with features such as data encryption, integration with other software, augmented reality, or artificial intelligence.",
+      "estimated_cost": "SAR 100,000 – SAR 450,000"
+    }
+  }
+}
+{
+  "company_name": "TechSolutions KSA",
+  "services": ["Mobile Development", "Web Development"],
+  "pricing_plans": [
+    {
+      "plan_name": "Basic Plan",
+      "target_audience": "Startups, Small Businesses, Individuals",
+      "features": [
+        "Basic website (up to 5 pages) or simple mobile app (1 platform: iOS or Android)",
+        "Responsive design",
+        "Basic SEO optimization",
+        "1-month post-launch support",
+        "Standard hosting setup"
+      ],
+      "delivery_time": "2–4 weeks",
+      "price_range": "SAR 8,000–SAR 15,000",
+      "add_ons": [
+        "Additional page: SAR 500/page",
+        "Basic SEO package: SAR 2,000",
+        "Extra month of support: SAR 1,000"
+      ]
+    },
+    {
+      "plan_name": "Professional Plan",
+      "target_audience": "Mid-Sized Businesses",
+      "features": [
+        "Custom website or mobile app (both iOS and Android)",
+        "Advanced features (e.g., user authentication, payment gateway integration)",
+        "CMS integration (e.g., WordPress, custom CMS)",
+        "3–6 months of post-launch support",
+        "Basic analytics and reporting",
+        "Hosting and domain setup"
+      ],
+      "delivery_time": "4–8 weeks",
+      "price_range": "SAR 25,000–SAR 60,000",
+      "add_ons": [
+        "Advanced SEO package: SAR 5,000",
+        "Custom API integration: SAR 10,000",
+        "Extra 3 months of support: SAR 3,000"
+      ]
+    },
+    {
+      "plan_name": "Enterprise Plan",
+      "target_audience": "Large Enterprises, Government Organizations",
+      "features": [
+        "Custom web and mobile app development with advanced functionalities",
+        "Multi-language support (Arabic + English)",
+        "API integrations, cloud hosting, and scalability",
+        "Advanced security features (SSL, encryption, etc.)",
+        "Dedicated project manager and 24/7 support",
+        "1-year post-launch support and maintenance",
+        "Custom analytics and reporting dashboards"
+      ],
+      "delivery_time": "8–16 weeks",
+      "price_range": "SAR 80,000–SAR 200,000+",
+      "add_ons": [
+        "Enterprise-grade security audit: SAR 15,000",
+        "Custom ERP/CRM integration: SAR 20,000",
+        "Extended support (2 years): SAR 25,000"
+      ]
+    }
+  ],
+  "additional_suggestions": {
+    "localization": "Ensure all plans include Arabic language support to cater to the Saudi market.",
+    "payment_options": [
+      "Offer installment plans for startups and SMEs.",
+      "Provide discounts for long-term contracts or bulk projects."
+    ],
+    "transparency": "Clearly outline what is included in each plan to avoid misunderstandings. Provide a detailed breakdown of costs.",
+    "marketing_strategy": [
+      "Highlight expertise in Saudi-specific projects (e.g., government compliance, Arabic UI/UX).",
+      "Showcase case studies and client testimonials to build trust."
+    ],
+    "post_launch_services": [
+      "Ongoing maintenance and support contracts.",
+      "Monthly performance reports and analytics.",
+      "Regular updates and feature enhancements."
+    ],
+    "technology_stack": [
+      "Mention the technologies you specialize in (e.g., React, Angular, Flutter, Node.js).",
+      "Highlight experience with cloud platforms (e.g., AWS, Azure, Google Cloud)."
+    ],
+    "client_onboarding": [
+      "Provide a detailed project roadmap and timeline.",
+      "Assign a dedicated account manager for each client."
+    ]
+  }
+}
+{
+  "pricing_plans": [
+    {
+      "name": "Basic Plan",
+      "description": "Ideal for startups and small businesses seeking an online presence with essential features.",
+      "features": [
+        "Up to 10 static web pages",
+        "Standard design template",
+        "Basic contact form",
+        "Mobile-responsive design",
+        "Basic SEO optimization"
+      ],
+      "additional_features": [
+        "CDN Integration",
+        "Lazy Loading",
+        "Basic Security Compliance",
+        "Basic Analytics Integration",
+        "Pre-Made Templates for Faster Deployment",
+        "Starter Plan Option (One-Page Website)",
+        "Subscription-Based Payment Model"
+      ],
+      "estimated_cost": "SAR 8,000 – SAR 10,000"
+    },
+    {
+      "name": "Standard Plan",
+      "description": "Suitable for medium-sized businesses requiring dynamic features and enhanced design.",
+      "features": [
+        "Up to 20 web pages",
+        "Custom design with premium themes",
+        "Content Management System (CMS) integration",
+        "Blog setup",
+        "Social media integration",
+        "Advanced contact forms",
+        "Mobile-responsive design",
+        "Standard SEO optimization"
+      ],
+      "additional_features": [
+        "Push Notifications",
+        "AI-Powered Search Engine",
+        "Advanced Analytics Dashboard",
+        "Multi-Language & RTL Support",
+        "CRM Integration",
+        "Hosting & Domain Registration",
+        "Limited-Time Offers & Seasonal Discounts",
+        "E-commerce Module as Add-On"
+      ],
+      "estimated_cost": "SAR 15,000 – SAR 25,000"
+    },
+    {
+      "name": "Premium Plan",
+      "description": "Designed for large enterprises seeking comprehensive solutions with advanced functionalities.",
+      "features": [
+        "Unlimited web pages",
+        "Fully customized design",
+        "E-commerce capabilities",
+        "Advanced CMS features",
+        "Multiple custom forms (e.g., subscription, career)",
+        "Interactive elements and animations",
+        "Mobile-responsive design",
+        "Comprehensive SEO optimization",
+        "Third-party integrations (e.g., CRM, ERP)"
+      ],
+      "additional_features": [
+        "AI-Powered Chatbots",
+        "End-to-End Encryption",
+        "Two-Factor Authentication (2FA)",
+        "Cloud Hosting (AWS, Azure, Google Cloud)",
+        "Serverless Architecture",
+        "Premium Membership & Subscription Models",
+        "Affiliate & Referral System",
+        "White-Label Solutions for Reseller Partnerships",
+        "AI-Powered Content Generation & Optimization"
+      ],
+      "estimated_cost": "SAR 25,000 and above"
+    }
+  ],
+  "mobile_app_development": {
+    "basic": {
+      "description": "Simple applications with minimal features.",
+      "estimated_cost": "SAR 8,000 – SAR 80,000"
+    },
+    "medium_complexity": {
+      "description": "Applications with features like user authentication, payment gateways, and GPS integration.",
+      "estimated_cost": "SAR 10,000 – SAR 100,000"
+    },
+    "high_complexity": {
+      "description": "Advanced applications with features such as data encryption, integration with other software, augmented reality, or artificial intelligence.",
+      "estimated_cost": "SAR 100,000 – SAR 450,000"
+    }
+  }
+}
+
+{
+  "pricing_plans": [
+    {
+      "name": "Basic Starter Package",
+      "target_audience": "SMEs, startups, and individuals with limited budgets",
+      "features": [
+        "Static website or simple landing page",
+        "Up to 5 pages (Home, About, Services, Contact, Blog)",
+        "Responsive design (mobile-friendly)",
+        "Basic SEO optimization",
+        "Free hosting for 6 months on shared servers",
+        "Email integration (up to 3 email accounts)"
+      ],
+      "customization_options": [
+        "Add e-commerce functionality (+ SAR 5,000)",
+        "Include multilingual support (+ SAR 3,000)",
+        "Priority support (+ SAR 2,000)"
+      ],
+      "price_range": "SAR 7,000 - SAR 10,000",
+      "payment_terms": "One-time payment or 3-month installment plan",
+      "additional_services": [
+        "Digital marketing setup (+ SAR 4,000)",
+        "Monthly maintenance plan (+ SAR 1,500/month)"
+      ]
+    },
+    {
+      "name": "Professional Business Package",
+      "target_audience": "Established SMEs, growing businesses, and startups needing more functionality",
+      "features": [
+        "Dynamic website with CMS (e.g., WordPress, Joomla)",
+        "E-commerce capabilities (optional add-on for SAR 5,000 extra)",
+        "Custom UI/UX design",
+        "Advanced SEO setup and Google Analytics integration",
+        "Social media integration",
+        "Dedicated project manager",
+        "1-year free SSL certificate",
+        "Priority customer support"
+      ],
+      "customization_options": [
+        "AI-powered chatbot integration (+ SAR 8,000)",
+        "Cross-platform mobile app development (+ SAR 20,000)",
+        "Advanced security features (+ SAR 10,000)"
+      ],
+      "price_range": "SAR 20,000 - SAR 40,000",
+      "payment_terms": "Flexible milestone-based payments or 6-month installment plan",
+      "additional_services": [
+        "Digital marketing campaigns (+ SAR 10,000)",
+        "Training sessions for CMS management (+ SAR 3,000)"
+      ]
+    },
+    {
+      "name": "Enterprise Elite Package",
+      "target_audience": "Large corporations, government entities, and enterprises requiring bespoke solutions",
+      "features": [
+        "Fully customized web and mobile app development",
+        "Cross-platform mobile app (iOS, Android) using frameworks like Flutter or React Native",
+        "API integrations with third-party systems (CRM, ERP, etc.)",
+        "Advanced security protocols (GDPR compliance, data encryption)",
+        "AI-powered features (chatbots, recommendation engines)",
+        "Multilingual support (Arabic/English + additional languages as needed)",
+        "Performance monitoring and maintenance for 1 year",
+        "Dedicated team of developers and designers"
+      ],
+      "customization_options": [
+        "Blockchain integration (+ SAR 50,000)",
+        "IoT-enabled solutions (+ SAR 30,000)",
+        "Custom analytics dashboard (+ SAR 15,000)"
+      ],
+      "price_range": "SAR 80,000 - SAR 250,000+",
+      "payment_terms": "Milestone-based payments or 12-month installment plan",
+      "additional_services": [
+        "Ongoing maintenance and support (+ SAR 5,000/month)",
+        "Comprehensive digital transformation strategy (+ SAR 20,000)"
+      ]
+    }
+  ],
+  "general_offers": [
+    "Free consultation and project analysis",
+    "Prototype or wireframe creation for free",
+    "Referral program: Discounts on future projects for referrals",
+    "Flexible payment terms tailored to client needs"
+  ],
+  "local_expertise": [
+    "Familiarity with Saudi Vision 2030 goals",
+    "Integration with regional payment gateways (Mada, STC Pay)",
+    "RTL (right-to-left) layout support for Arabic content"
+  ],
+  "post_launch_support": [
+    "Maintenance packages starting at SAR 2,000/month",
+    "Training sessions for clients to manage their platforms",
+    "Performance monitoring and regular updates"
+  ]
+}

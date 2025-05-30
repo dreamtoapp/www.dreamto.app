@@ -1,0 +1,350 @@
+{
+  "app": {
+    "name": "Dream to App",
+    "slogan": "Turning your ideas into tangible reality"
+  },
+  "navigation": {
+    "services": {
+      "title": "Our Services",
+      "subMenu": {
+        "webApp": "Web Development",
+        "mobileApp": "Mobile Applications",
+        "ecommerce": "E-commerce Solutions",
+        "uiUx": "Attractive UI Design",
+        "visualIdentity": "Building a Unique Visual Identity",
+        "digitalMarketing": "Effective Marketing Strategies"
+      }
+    },
+    "technologies": {
+      "title": "Technologies",
+      "subMenu": {
+        "nextjs": {
+          "title": "Next.js",
+          "description": "An advanced framework for quickly creating high-performance React websites."
+        },
+        "nodejs": {
+          "title": "Node.js",
+          "description": "A powerful platform for developing scalable backend services."
+        },
+        "react": {
+          "title": "React",
+          "description": "The best library for building interactive and easy user interfaces."
+        },
+        "reactNative": {
+          "title": "React Native",
+          "description": "Create native mobile applications for iOS and Android using a single technology."
+        },
+        "mongoDB": {
+          "title": "MongoDB",
+          "description": "A flexible database for storing your data efficiently and securely."
+        },
+        "firebase": {
+          "title": "Firebase",
+          "description": "Integrated tools for app development including real-time databases and authentication."
+        },
+        "aws": {
+          "title": "AWS",
+          "description": "Reliable cloud services for easily and securely hosting your applications."
+        },
+        "prisma": {
+          "title": "Prisma",
+          "description": "A modern tool for managing databases in an easy and efficient way."
+        },
+        "sanity": {
+          "title": "Sanity",
+          "description": "Make your website's content a unique competitive advantage."
+        }
+      }
+    },
+    "workSamples": {
+      "title": "Our Work",
+      "subMenu": {
+        "webApp": "Web Applications",
+        "mobileApp": "Mobile Applications",
+        "uiUx": "User Interface Designs",
+        "visualIdentity": "Visual Identity Designs",
+        "digitalMarketing": "Digital Marketing Campaigns",
+        "more": "Other Projects"
+      }
+    },
+    "prices": {
+      "title": "Pricing Plans",
+      "basic": "Basic Plan",
+      "pro": "Professional Plan",
+      "enterprise": "Enterprise Plan",
+      "custom": "Custom Offer"
+    },
+    "contactus": {
+      "title": "Contact Us",
+      "whatsapp": "Message us on WhatsApp",
+      "email": "Send an Email",
+      "phone": "Call Us Directly",
+      "form": "Fill out the Contact Form"
+    },
+    "otherMenu": {
+      "title": "Useful Links",
+      "usedTecno": "Technologies Used",
+      "workSample": "Samples of Our Work",
+      "price": "Competitive Prices",
+      "team": "Our Team"
+    },
+    "plugin": {
+      "title": "Plugins",
+      "crombo": "Crombo",
+      "latestnews": "Conan"
+    }
+  },
+  "buttons": {
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "showGallery": "Browse Gallery",
+    "details": "View Details",
+    "sending": "Sending now...",
+    "more": "Read More"
+  },
+  "login": {
+    "login": "Login",
+    "register": "Create Account",
+    "loginHint": "Please log in to benefit from our services",
+    "mustLogin": "Please log in to ask your question"
+  },
+  "contactUsPage": {
+    "pageTitle": "Contact Us",
+    "hint": "Please provide accurate information to enable us to serve you quickly and efficiently.",
+    "mobile": "Mobile Number",
+    "mobilePlaceholder": "Enter a 10-digit number",
+    "mobileValidationError": "The number must be at least 10 digits",
+    "email": "Email",
+    "emailPlaceholder": "example@example.com",
+    "emailValidationError": "Please enter a valid email address",
+    "message": "Message",
+    "messagePlaceholder": "How can we assist you?",
+    "messageValidationError": "The message must contain at least 10 characters",
+    "sendButton": "Send Your Message Now",
+    "name": "Name"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Sorry, the page does not exist",
+    "description": "The page you are looking for is currently unavailable.",
+    "button": "Return to Home Page"
+  },
+  "homepage": {
+    "fromIdeaTitle": "From Idea to Successful Digital Product",
+    "fromIdeaContent": "We transform your bold ideas into unique digital solutions that attract customers and drive your business to success. By combining creativity and technology, we deliver innovative products that achieve tangible results.",
+    "fromIdeaButton": "Start Your Journey with Us Now!",
+    "discoverTitle": "Start with a Small Step",
+    "discoverTitle1": "Don't wait for perfection. Taking action is the most important step",
+    "discoverTitle2": "Even if your start is modest, experience will teach you a lot",
+    "discoverTitle3": "Don't let fear stop you! Start your journey today and get a free guide to the first steps.",
+    "discoverContent": "Example: If you want to write a book, start by writing one page a day.",
+    "discoverButton": "Start Your Success for Free",
+    "slogon": "Where Dreams Take Off",
+    "discoverDilog": "You may face challenges, but resilience is the key to overcoming them.",
+    "discoverDilog1": "Keep trying and learn from every failure.",
+    "discoverDilogTitle": "Success Journey",
+    "webDilogTitle": "Success Journey",
+    "mobileDilogTitle": "Success Journey",
+    "crmDilogTitle": "Success Journey",
+    "ecommDilogTitle": "Success Journey",
+    "uiDilogTitle": "Success Journey"
+  },
+  "mobileAppPhases": {
+    "discoveryPlanningTitle": "Planning and Discovery",
+    "discoveryPlanningDescription": "We understand your needs and create a clear plan for your project.",
+    "uiUxDesignTitle": "Attractive and Easy Design",
+    "uiUxDesignDescription": "We design beautiful and user-friendly interfaces.",
+    "developmentTitle": "Development",
+    "developmentDescription": "We build an advanced application with the latest technologies to ensure high performance.",
+    "testingQATitle": "Testing and Quality Assurance",
+    "testingQADescription": "We ensure the application is error-free and meets all standards.",
+    "deploymentTitle": "Deployment",
+    "deploymentDescription": "A smooth launch of your application on app stores.",
+    "maintenanceUpdatesTitle": "Support and Updates",
+    "maintenanceUpdatesDescription": "Ongoing support to enhance your application and keep it outstanding.",
+    "userFeedbackIterationTitle": "Improvement Based on User Feedback",
+    "userFeedbackIterationDescription": "We listen to user feedback to continuously improve your application."
+  },
+  "footer": {
+    "readyToTransform": "Are you ready to turn your idea into reality?",
+    "buildSomethingGreat": "Let's build something amazing together",
+    "getInTouch": "Contact us today",
+    "callUsNow": "Call us now for a free consultation",
+    "footerIllustrationAlt": "Illustration reflecting our collaboration",
+    "chatWithUs": "Chat with us now for support",
+    "phoneNumber": "+1 (123) 456-7890",
+    "emailAddress": "info@yourcompany.com"
+  },
+  "services": {
+    "tecnoUsed": "Innovative technologies that meet your needs",
+    "buildingTomorrow": "We innovate future solutions",
+    "solutions": "Innovative Solutions",
+    "today": "For Today's Achievements",
+    "blendingCreativity": "We combine creativity and technology to provide customized solutions for your business.",
+    "websiteDevelopmentTitle": "Website Development",
+    "websiteDevelopmentDescription": "We turn your ideas into exceptional websites that impress visitors and engage them with your brand. Our websites are not only visually appealing but also designed to be fast and responsive, ensuring a pleasant and comfortable user experience that converts visitors into loyal customers.",
+    "mobileAppDevelopmentTitle": "Mobile Applications",
+    "mobileAppDevelopmentDescription": "We create innovative and user-friendly applications that allow your clients to access your services easily anytime and anywhere. Whether you need business or entertainment applications, we ensure a distinctive design filled with features that increase customer engagement with your brand.",
+    "crmDevelopmentTitle": "CRM Systems",
+    "crmDevelopmentDescription": "We provide advanced systems for managing customer relationships, helping you organize their data, track their needs, and deliver personalized services that enhance their loyalty. With our smart tools, you can provide an ideal customer experience and increase their loyalty in the long run.",
+    "ecommerceDevelopmentTitle": "E-commerce Stores",
+    "ecommerceDevelopmentDescription": "We build a complete online store that reflects your brand identity and facilitates the buying and selling process. We offer modern designs, secure payment gateways, and a unique shopping experience that helps you increase your sales and reach a wider audience.",
+    "uiUxDesignTitle": "User Interface Designs",
+    "uiUxDesignDescription": "We provide innovative modern designs that focus on user experience, making every interaction with your website or application enjoyable and seamless. We study customer behavior to deliver designs that meet their needs and enhance their connection with your services.",
+    "digitalMarketingTitle": "Digital Marketing",
+    "digitalMarketingDescription": "We position your brand at the forefront of competition through integrated marketing strategies. We use the latest methods such as paid advertising and search engine optimization to ensure your brand reaches the right audience and achieves tangible results.",
+    "visualIdentityTitle": "Visual Identity",
+    "visualIdentityDescription": "We create a unique visual identity that reflects your brand's personality and makes it memorable to your audience. From choosing colors and logos to designing promotional materials, we ensure that your identity is unique and strong, enhancing your distinctiveness.",
+    "getQuote": "High discounts, don't hesitate..."
+  },
+  "whyChooseUs": {
+    "whyChooseUs": "Why Are We the Best?",
+    "whatMakesUsDifferent": "What Sets Us Apart?",
+    "costEfficiencyTitle": "Competitive Prices",
+    "costEfficiencyDescription": "Invest in our smart solutions and reduce your operational costs by up to 30% without compromising on quality. With our services, you can direct your budget towards achieving your goals and confidently expanding your business.",
+    "onDemandTitle": "Customized Services",
+    "onDemandDescription": "Choose the ideal team that matches your project's needs and goals. We offer services specifically designed to meet your unique requirements, ensuring you achieve superior results that meet and exceed your expectations.",
+    "itExpertsTitle": "Technical Experts",
+    "itExpertsDescription": "Rely on our team of elite experts in the technical field. We provide you with specialized expertise in the latest technologies to ensure innovative solutions that contribute to the development of your business and achieve the desired success.",
+    "timeFlexibilityTitle": "Time Flexibility",
+    "timeFlexibilityDescription": "We understand the importance of time for you. Therefore, we offer flexible work schedules that fit your needs and project timelines, ensuring efficient delivery of work on time.",
+    "securePrivacyTitle": "Security and Privacy",
+    "securePrivacyDescription": "Your privacy and data security are our top priorities. We provide advanced security technologies to ensure the protection of your sensitive information and maintain the confidentiality of your project at all times."
+  },
+  "technologyShowcase": {
+    "title": "The Technologies We Use",
+    "learnMore": "Learn More",
+    "description": {
+      "JavaScript": "A powerful and flexible programming language used to develop dynamic and interactive web applications. It is the backbone of many platforms like YouTube and Google Docs.",
+      "HTML": "The foundation upon which web pages are built, providing the basic structure for content on the internet. It is used in all sites like Wikipedia and LinkedIn.",
+      "CSS": "Adds beauty and styling to web pages, making designs more attractive and smooth. It is used to enhance the interfaces of sites like Instagram and Airbnb.",
+      "React": "A JavaScript library for building fast and efficient user interfaces. It is used by sites like Facebook and Netflix to deliver a unique user experience.",
+      "Next_js": "A framework based on React that allows the creation of high-performance sites with server-side rendering and static page generation. It is used in sites like Vercel and TikTok.",
+      "Node_js": "A runtime environment that enables the use of JavaScript on the server, ideal for scalable applications like PayPal and LinkedIn.",
+      "MongoDB": "A NoSQL database used to store unstructured data efficiently. It is relied upon in applications like Uber and eBay.",
+      "Firebase": "A comprehensive platform for app development that includes databases, authentication, and hosting. It is used by applications like Duolingo and Alibaba.",
+      "ReactNative": "A framework for building native mobile applications using React, used to create applications like Instagram and Uber Eats.",
+      "MySQL": "A reliable and powerful relational database management system, used in large sites like Twitter and WordPress.",
+      "Photoshop": "The leading global image editing tool, used to create creative designs and famous brands like Nike and Coca-Cola.",
+      "Illustrator": "A graphic design tool dedicated to creating logos and vector graphics. It is used by professionals in all creative fields.",
+      "SQLite": "A lightweight embedded database engine, ideal for small applications like mobile systems.",
+      "TypeScript": "A programming language based on JavaScript that adds type safety for large projects. It is used in developing enterprise applications like Microsoft Teams.",
+      "Prisma": "An ORM tool that simplifies database access, providing clear and easy-to-use APIs. It is used in modern and advanced projects.",
+      "Adobe_Xd": "An advanced design tool for creating prototypes and user experiences. It is relied upon in designing large applications and websites.",
+      "Figma": "A cloud-based collaborative design platform used to create designs and prototypes. It is relied upon by design teams at Slack and Zoom.",
+      "Sentry": "A platform for monitoring and fixing errors in real time, used by large applications like GitHub and Airbnb to improve performance.",
+      "Twilio": "A cloud communication service that facilitates the integration of text messaging and voice calls. It is used in platforms like WhatsApp and Lyft.",
+      "Shopify": "An integrated platform for creating and managing e-commerce stores easily and professionally. It is used by global stores like Gymshark and Allbirds."
+    },
+    "power": {
+      "JavaScript": "An indispensable language for web development, supporting the creation of innovative and responsive applications.",
+      "HTML": "The backbone of every website, making content organized and easy to navigate.",
+      "CSS": "Adds beauty and appeal to web pages, significantly enhancing the user experience.",
+      "React": "Provides dynamic solutions for user interfaces, enhancing the speed and performance of applications.",
+      "Next_js": "Makes sites ultra-fast and high-performing using the latest web technologies.",
+      "Node_js": "Provides a reliable infrastructure for developing large and diverse server applications.",
+      "MongoDB": "Allows flexible and scalable data storage.",
+      "Firebase": "Helps speed up application development time with multiple integrated tools.",
+      "ReactNative": "Combines the power of native applications with the ease of web development.",
+      "MySQL": "Efficiently manages large amounts of data with stability.",
+      "Photoshop": "Offers unlimited possibilities for high-quality creative designs.",
+      "Illustrator": "Features precision and flexibility for creating innovative and unique designs.",
+      "SQLite": "Provides fast and reliable data storage for small applications.",
+      "TypeScript": "Enhances code safety and helps catch errors before execution.",
+      "Prisma": "Simplifies working with databases in a modern and easy way.",
+      "Adobe_Xd": "Provides comprehensive design tools for a unique user experience.",
+      "Figma": "Supports real-time online collaboration for creating professional designs.",
+      "Sentry": "Detects errors and improves application performance in real time.",
+      "Twilio": "Provides innovative and advanced communication solutions for mobile and web applications.",
+      "Shopify": "Helps store owners reach global markets with flexibility and speed."
+    }
+  },
+  "contactus": {
+    "pagetitle": "Contact Us",
+    "hint": "Correct information is required to help us respond as quickly as possible, providing the best possible service.",
+
+    "mobile": "Mobile Number",
+    "mobilePlaceHolder": "10-digit mobile number",
+    "mobileValidationError": "Must be at least 10 digits",
+
+    "email": "Email",
+    "emailPlaceHolder": "example@example.com",
+    "emailValidationError": "Invalid email",
+
+    "msg": "Message",
+    "msgplaceHolder": "How can we help you?",
+    "msgValidationError": "The minimum is 10 characters",
+    "sendBtn": "Send .. We are waiting for you",
+    "name": "Name",
+    "Done": "Done",
+    "doneMsg": "Thank you for your message. We will get back to you soon."
+  },
+  "LaunchPage": {
+    "offerEndsIn": "Offer ends in",
+    "title": "🚀 Elevate Customer Service with Crombo!",
+    "description": "An intelligent platform that makes communicating with your customers easier and more professional.",
+    "companyLabel": "Company Name",
+    "companyPlaceholder": "Enter your company name",
+    "companyError": "Company name must be more than two characters",
+    "nameLabel": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "nameError": "Name must be more than two characters",
+    "mobileLabel": "Phone Number",
+    "mobilePlaceholder": "Enter your phone number",
+    "mobileError": "Phone number must be at least 10 digits",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "emailError": "Please enter a valid email address",
+    "noteLabel": "Notes (optional)",
+    "notePlaceholder": "Any additional notes?",
+    "submitButton": "🚀 Get Your Free Version Now",
+    "submitting": "Submitting...",
+    "successMessage": "✅ Your data has been successfully submitted!",
+    "errorMessage": "❌ An error occurred, please try again!",
+    "submitErrorMessage": "❌ An error occurred during submission!",
+    "privacyNotice": "By registering, you agree to our Terms of Service and Privacy Policy.",
+    "days": "Days",
+    "hours": "Hours",
+    "minutes": "Minutes",
+    "seconds": "Seconds",
+    "loading": "Loading..."
+  },
+  "crombo": {
+    "name": "Crombo",
+    "title": "Effortless and Comprehensive Customer Service",
+    "description": "Transform your customer experience with Crombo! Seamlessly manage inquiries, resolve complaints, and embrace feedback with a smart platform designed to bring your business closer to your customers.",
+    "action": "Get started",
+    "free": "🚀 Try for Free Now!"
+  },
+  "page": {
+    "welcomeTitle": "🚀 Elevate Your Business!",
+    "welcomeMessage": "We’re here to deliver exceptional value at unbeatable prices. Share your last quote, and we’ll beat it by 20%! Let’s build something amazing together.",
+    "contactInfoTitle": "Provide Your Contact Information",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "phonePlaceholder": "Your Phone Number",
+    "selectServiceTitle": "Select a Service",
+    "selectServicePlaceholder": "Choose a service",
+    "servicesLabel": "Services",
+    "webDesign": "Web Design",
+    "seo": "SEO",
+    "graphicDesign": "Graphic Design",
+    "contentWriting": "Content Writing",
+    "digitalMarketing": "Digital Marketing",
+    "projectDetailsTitle": "Tell Us About Your Project",
+    "projectDetailsPlaceholder": "Briefly describe your project requirements...",
+    "projectPricingTitle": "Get Your Custom Project Pricing",
+    "lastPriceLabel": "Enter Last Price",
+    "lastPricePlaceholder": "Enter Previous Price",
+    "newPriceLabel": "New Price",
+    "discountedPricePlaceholder": "Your discounted price will appear here.",
+    "agreementOptionsTitle": "What Would You Like to Do?",
+    "agreedOption": "I confirm and agree to the final price with your discount.",
+    "negotiationOption": "I’d like to negotiate further. Please book a call with me.",
+    "noPriceOption": "I don’t have a previous price. Please book a call with me.",
+    "submitButton": "Submit",
+    "submittingButton": "Sendingd...",
+    "thankYouTitle": "Thank You ",
+    "thankYouMessage": "thank you will contact you with in 48 hour"
+  }
+}
