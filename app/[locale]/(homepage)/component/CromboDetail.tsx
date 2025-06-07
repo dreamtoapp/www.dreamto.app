@@ -1,7 +1,13 @@
-import Image from "next/image";
-import React from "react";
-import { buttonVariants } from "@/components/ui/button";
-import { getLocale, getTranslations } from "next-intl/server";
+import React from 'react';
+
+import {
+  getLocale,
+  getTranslations,
+} from 'next-intl/server';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -9,10 +15,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import Link from "next/link";
-import ShowTimer from "../../crombo/component/ShowTimer";
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 async function CromboDetail() {
   const locale = await getLocale();
@@ -22,7 +26,7 @@ async function CromboDetail() {
     <Card className="flex flex-col items-center justify-between bg-gradient-to-b from-blue-900 to-gray-800 dark:bg-gradient-custom border border-white/30 max-w-4xl mx-auto rounded-2xl shadow-lg p-8">
       {/* Header Section */}
       <CardHeader className="text-center space-y-4">
-        <ShowTimer />
+        {/* <ShowTimer /> */}
         <CardTitle className="flex flex-col items-center gap-3">
           <h1 className="text-2xl font-bold text-white">{t("name")}</h1>
         </CardTitle>
