@@ -1,15 +1,16 @@
 "use client";
 
+import { useTranslations } from 'next-intl';
+
+import Link from '@/components/link';
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
-import { useTranslations } from "next-intl";
-import Link from "next/link";
-import Crombo from "../Crombo";
-import Text from "../Text";
+} from '@/components/ui/sidebar';
+
+import Crombo from '../Crombo';
+import Text from '../Text';
 
 export function Plugin({ locale }: { locale: string }) {
   const t = useTranslations("navigation");

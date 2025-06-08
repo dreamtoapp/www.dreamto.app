@@ -1,6 +1,8 @@
-import Link from "next/link";
-import TeamMember from "./component/TeamMember";
-import { getLocale } from "next-intl/server";
+import { getLocale } from 'next-intl/server';
+
+import Link from '@/components/link';
+
+import TeamMember from './component/TeamMember';
 
 const teamMembers = [
   {

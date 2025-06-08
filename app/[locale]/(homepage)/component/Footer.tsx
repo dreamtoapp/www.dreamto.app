@@ -1,16 +1,32 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import Image from "next/image";
-import dreamtoapp from "@/public/assets/dta.svg";
-import { useLocale, useTranslations } from "next-intl";
-import Link from "next/link";
-import { cn } from "../../../../lib/utils";
-import Text from "../../../../components/Text";
-import { buttonVariants } from "../../../../components/ui/button";
-import { Icon, IconifyIcon } from "@iconify/react";
-import backgroundImg from "@/public/assets/homepage/footer.webp";
-import { contactUs, technology } from "../../../../constant/icons";
+import { useRef } from 'react';
+
+import {
+  motion,
+  useScroll,
+  useTransform,
+} from 'framer-motion';
+import {
+  useLocale,
+  useTranslations,
+} from 'next-intl';
+import Image from 'next/image';
+
+import Link from '@/components/link';
+import dreamtoapp from '@/public/assets/dta.svg';
+import backgroundImg from '@/public/assets/homepage/footer.webp';
+import {
+  Icon,
+  IconifyIcon,
+} from '@iconify/react';
+
+import Text from '../../../../components/Text';
+import { buttonVariants } from '../../../../components/ui/button';
+import {
+  contactUs,
+  technology,
+} from '../../../../constant/icons';
+import { cn } from '../../../../lib/utils';
 
 // Define types for contact items
 type ContactItem = {

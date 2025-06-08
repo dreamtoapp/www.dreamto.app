@@ -1,16 +1,22 @@
-import React from "react";
-import { Icon } from "@iconify/react";
+import React from 'react';
+
+import { useTranslations } from 'next-intl';
+
+import Link from '@/components/link';
 import {
   SidebarGroup,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { useTranslations } from "next-intl";
-import Text from "../Text";
-import { normalIcons, technology } from "../../constant/icons";
-import Link from "next/link";
+} from '@/components/ui/sidebar';
+import { Icon } from '@iconify/react';
+
+import {
+  normalIcons,
+  technology,
+} from '../../constant/icons';
+import Text from '../Text';
 
 export function NavOther({ locale }: { locale: string }) {
   const t = useTranslations("navigation");

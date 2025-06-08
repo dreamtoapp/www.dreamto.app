@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { Icon } from "@iconify/react";
-import { normalIcons } from "../../constant/icons";
+import Link from '@/components/link';
+import { Icon } from '@iconify/react';
+
+import { normalIcons } from '../../constant/icons';
 
 const Home = () => {
   return (

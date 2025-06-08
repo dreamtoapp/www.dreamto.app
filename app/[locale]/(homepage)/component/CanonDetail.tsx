@@ -1,7 +1,11 @@
-import Image from "next/image";
-import React from "react";
-import { buttonVariants } from "@/components/ui/button";
-import { getLocale } from "next-intl/server";
+import React from 'react';
+
+import { getLocale } from 'next-intl/server';
+import Image from 'next/image';
+
+import Link from '@/components/link';
+import Text from '@/components/Text';
+import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
@@ -9,11 +13,8 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import Text from "@/components/Text";
-import { cn } from "@/lib/utils";
-import News from "../../../../components/animation/animatNews";
-import Link from "next/link";
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 const arDetail = {
   name: "كانون",

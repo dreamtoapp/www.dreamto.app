@@ -1,18 +1,22 @@
-import React from "react";
+import React from 'react';
+
+import {
+  getLocale,
+  getTranslations,
+} from 'next-intl/server';
+import Image from 'next/image';
+
+import Link from '@/components/link';
+import Text from '@/components/Text';
+import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import Image from "next/image";
-import Text from "@/components/Text";
-import { getLocale, getTranslations } from "next-intl/server";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+} from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 export const FromIdea = async () => {
   const t = await getTranslations("homepage");

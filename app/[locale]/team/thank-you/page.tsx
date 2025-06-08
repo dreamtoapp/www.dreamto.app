@@ -1,5 +1,6 @@
-import { getLocale } from "next-intl/server";
-import Link from "next/link";
+import { getLocale } from 'next-intl/server';
+
+import Link from '@/components/link';
 
 export default async function ThankYouPage() {
   const locale = await getLocale();

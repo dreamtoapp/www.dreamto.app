@@ -1,12 +1,12 @@
 "use client";
-import { Icon } from "@iconify/react";
-import chevrons from "@iconify/icons-tabler/chevron-down";
+import { useTranslations } from 'next-intl';
 
+import Link from '@/components/link';
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
-} from "@/components/ui/collapsible";
+} from '@/components/ui/collapsible';
 import {
   SidebarGroup,
   SidebarMenu,
@@ -16,11 +16,15 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
   useSidebar,
-} from "@/components/ui/sidebar";
-import { useTranslations } from "next-intl";
-import Text from "../Text";
-import Link from "next/link";
-import { serviceIcon, whyChooseUs } from "../../constant/icons";
+} from '@/components/ui/sidebar';
+import chevrons from '@iconify/icons-tabler/chevron-down';
+import { Icon } from '@iconify/react';
+
+import {
+  serviceIcon,
+  whyChooseUs,
+} from '../../constant/icons';
+import Text from '../Text';
 
 interface Item {
   title: string;

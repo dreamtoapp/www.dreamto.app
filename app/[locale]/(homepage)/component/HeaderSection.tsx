@@ -11,8 +11,8 @@ import {
   useTranslations,
 } from 'next-intl';
 import Image from 'next/image';
-import Link from 'next/link';
 
+import Link from '@/components/link';
 import dreamtoapp from '@/public/assets/dta.svg';
 
 import Text from '../../../../components/Text';

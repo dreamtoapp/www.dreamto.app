@@ -1,9 +1,13 @@
 "use client";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { useLocale } from "next-intl";
+import {
+  useEffect,
+  useRef,
+} from 'react';
+
+import gsap from 'gsap';
+import { useLocale } from 'next-intl';
+
+import Link from '@/components/link';
 
 export default function Home() {
   // Refs for the logo paths
@@ -110,7 +114,7 @@ export default function Home() {
           <Link
             href={"/"}
             className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition duration-300"
-            type="button"
+
           >
             Go Home
           </Link>

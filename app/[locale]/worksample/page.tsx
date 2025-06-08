@@ -1,16 +1,19 @@
-import React from "react";
-import { getFoldersWithCoverImages } from "@/lib/cloudinary";
-import Image from "next/image";
-import Link from "next/link";
+import React from 'react';
+
+import { getLocale } from 'next-intl/server';
+import Image from 'next/image';
+
+import Link from '@/components/link';
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
-} from "@/components/ui/card";
-import { getLocale } from "next-intl/server";
-import Text from "../../../components/Text";
-import Websites from "./component/Websites";
+} from '@/components/ui/card';
+import { getFoldersWithCoverImages } from '@/lib/cloudinary';
+
+import Text from '../../../components/Text';
+import Websites from './component/Websites';
 
 function getLastNode(folderName: string) {
   const parts = folderName.split("/");

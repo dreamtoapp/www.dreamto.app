@@ -1,6 +1,7 @@
-import Image from "next/image";
-import dreamtoapp from "@/public/assets/logo.webp";
-import Link from "next/link";
+import Image from 'next/image';
+
+import Link from '@/components/link';
+import dreamtoapp from '@/public/assets/logo.webp';
 
 const Logo = () => {
   return (

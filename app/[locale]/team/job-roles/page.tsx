@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { getLocale } from "next-intl/server";
+import { getLocale } from 'next-intl/server';
+
+import Link from '@/components/link';
 
 export default async function JobRolesPage() {
   const locale = await getLocale();
