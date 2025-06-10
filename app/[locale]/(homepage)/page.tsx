@@ -9,7 +9,6 @@ export default async function Page() {
   return (
     <div className="flex flex-col gap-4 p-4 sm:p-6 md:p-8" id="mainpage">
       <Hero />
-      {/* <CareerBlock /> */}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-1">
         <CromboDetail />
       </div>

@@ -58,7 +58,7 @@ export const FromIdea = async () => {
       </CardContent>
 
       {/* Call-to-Action Button */}
-      <CardFooter className="w-full p-4 flex justify-center">
+      {/* <CardFooter className="w-full p-4 flex justify-center">
         <Link
           href="/"
           className={cn(
@@ -72,7 +72,7 @@ export const FromIdea = async () => {
             {t("fromIdeaButton")}
           </h2>
         </Link>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 };

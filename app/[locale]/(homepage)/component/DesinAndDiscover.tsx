@@ -46,12 +46,12 @@ export const DesinAndDiscover = async () => {
       {/* Content Section */}
       <CardContent className="flex flex-col items-center gap-4 px-6 py-4 text-gray-700 dark:text-gray-300">
         <p
-          className="text-lg md:text-xl text-center font-semibold"
+          className="text-lg md:text-xl text-center font-semibold border-primary border-dashed  border-b-2"
         >
           {t("discoverTitle1")}
         </p>
         <p
-          className="text-lg md:text-xl text-center font-semibold"
+          className="text-lg md:text-xl text-center font-semibold "
         >
           {t("discoverTitle2")}
         </p>
@@ -74,7 +74,7 @@ export const DesinAndDiscover = async () => {
 
         {/* Supporting Text */}
         <p
-          className="text-lg text-gray-600 dark:text-gray-300 text-center"
+          className="text-sm text-muted-foreground "
         >
           {t("discoverContent")}
         </p>

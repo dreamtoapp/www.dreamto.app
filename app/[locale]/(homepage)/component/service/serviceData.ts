@@ -19,6 +19,13 @@ export const cardData: CardData[] = [
       { text: technology.react.name, icon: technology.react.icon },
       { text: technology.nextjs.name, icon: technology.nextjs.icon },
       { text: technology.xd.name, icon: technology.xd.icon },
+      { text: technology.figma.name, icon: technology.figma.icon },
+      { text: technology.mongodb.name, icon: technology.mongodb.icon },
+      { text: technology.prisma.name, icon: technology.prisma.icon },
+      { text: technology.mysql.name, icon: technology.mysql.icon },
+      { text: technology.firebase.name, icon: technology.firebase.icon },
+      { text: technology.nodeJs.name, icon: technology.nodeJs.icon },
+
     ],
   },
   {
@@ -34,21 +41,22 @@ export const cardData: CardData[] = [
       { text: technology.mysql.name, icon: technology.mysql.icon },
       { text: technology.figma.name, icon: technology.figma.icon },
       { text: technology.prisma.name, icon: technology.prisma.icon },
+      
     ],
   },
-  {
-    title: "crmDevelopmentTitle",
-    description: "crmDevelopmentDescription",
-    icon: serviceIcon.crm.icon,
-    tags: [
-      { text: technology.react.name, icon: technology.react.icon },
-      { text: technology.nextjs.name, icon: technology.nextjs.icon },
-      { text: technology.sentry.name, icon: technology.sentry.icon },
-      { text: technology.figma.name, icon: technology.figma.icon },
-      { text: technology.mongodb.name, icon: technology.mongodb.icon },
-      { text: technology.prisma.name, icon: technology.prisma.icon },
-    ],
-  },
+  // {
+  //   title: "crmDevelopmentTitle",
+  //   description: "crmDevelopmentDescription",
+  //   icon: serviceIcon.crm.icon,
+  //   tags: [
+  //     { text: technology.react.name, icon: technology.react.icon },
+  //     { text: technology.nextjs.name, icon: technology.nextjs.icon },
+  //     { text: technology.sentry.name, icon: technology.sentry.icon },
+  //     { text: technology.figma.name, icon: technology.figma.icon },
+  //     { text: technology.mongodb.name, icon: technology.mongodb.icon },
+  //     { text: technology.prisma.name, icon: technology.prisma.icon },
+  //   ],
+  // },
   {
     title: "ecommerceDevelopmentTitle",
     description: "ecommerceDevelopmentDescription",
