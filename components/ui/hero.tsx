@@ -7,7 +7,8 @@ import Image from "next/image"
 import { useLocale, useTranslations } from "next-intl"
 
 // Stable particle configuration
-const PARTICLE_CONFIG = Array.from({ length: 20 }, (_, i) => {
+// Reduce to 8 particles for less main-thread work
+const PARTICLE_CONFIG = Array.from({ length: 8 }, (_, i) => {
   // Use a deterministic seed for consistent positioning
   const seed1 = i * 123.456
   const seed2 = i * 789.012
@@ -95,39 +96,50 @@ const AnimatedBackground = () => {
 }
 
 // Optimized video component with performance enhancements
-const OptimizedVideoBackground = React.memo(() => {
-  const videoRef = useRef<HTMLVideoElement>(null)
+// Progressive background: static image first, then video enhancement
+const ProgressiveBackground = React.memo(() => {
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
-  const handleVideoLoad = useCallback(() => {
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.8
-    }
-  }, [])
+  useEffect(() => {
+    // Defer video until after first paint for Speed Index
+    const timeout = setTimeout(() => setShowVideo(true), 1200);
+    return () => clearTimeout(timeout);
+  }, []);
 
   return (
     <>
-      <video
-        ref={videoRef}
-        src="https://framerusercontent.com/assets/1g8IkhtJmlWcC4zEYWKUmeGWzI.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="metadata"
-        onLoadedData={handleVideoLoad}
+      {/* Static fallback image for instant paint */}
+      <Image
+        src="/assets/dta.svg"
+        alt="DreamToApp background"
+        fill
+        priority
         className="absolute inset-0 w-full h-full object-cover"
-        style={{
-          filter: "brightness(0.7) contrast(1.1)",
-          transform: "scale(1.05)",
-        }}
+        style={{ zIndex: 0, opacity: 0.12 }}
         aria-hidden="true"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 pointer-events-none" />
+      {/* Video loads after initial paint for progressive enhancement */}
+      {showVideo && (
+        <video
+          ref={videoRef}
+          src="https://framerusercontent.com/assets/1g8IkhtJmlWcC4zEYWKUmeGWzI.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ filter: "brightness(0.7) contrast(1.1)", transform: "scale(1.05)", zIndex: 1 }}
+          aria-hidden="true"
+        />
+      )}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 pointer-events-none z-10" />
     </>
-  )
-})
+  );
+});
 
-OptimizedVideoBackground.displayName = "OptimizedVideoBackground"
+ProgressiveBackground.displayName = "ProgressiveBackground";
 
 const Hero: React.FC = () => {
   const t = useTranslations("homepage")
@@ -262,7 +274,7 @@ const Hero: React.FC = () => {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen py-20 overflow-hidden text-center">
       {/* Optimized Video Background */}
-      <OptimizedVideoBackground />
+      <ProgressiveBackground />
 
       {/* Animated Background Elements */}
       <AnimatedBackground />
