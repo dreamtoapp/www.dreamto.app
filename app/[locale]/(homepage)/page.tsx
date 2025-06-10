@@ -1,6 +1,6 @@
 import { getIpInfo } from '../../../lib/actions/getIp';
+import Hero from '../../../components/ui/hero';
 import CromboDetail from './component/CromboDetail';
-import CareerBlock from './component/HeaderSection';
 import HomePageBody from './component/HomePageBody';
 
 export default async function Page() {
@@ -8,7 +8,8 @@ export default async function Page() {
   console.log(ipInfo);
   return (
     <div className="flex flex-col gap-4 p-4 sm:p-6 md:p-8" id="mainpage">
-      <CareerBlock />
+      <Hero />
+      {/* <CareerBlock /> */}
       <div className="grid gap-4 grid-cols-1 md:grid-cols-1">
         <CromboDetail />
       </div>

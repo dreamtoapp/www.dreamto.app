@@ -31,14 +31,13 @@ export default async function RootLayout({
       dir={locale === "en" ? Directions.LTR : Directions.RTL}
       suppressHydrationWarning
     >
-      <head>
-        {/* Add Clicky script */}
+      {/* <head>
         <Script
           strategy="afterInteractive"
           data-id="101486249"
           src="//static.getclicky.com/js"
         />
-      </head>
+      </head> */}
       <body
         className={`min-h-screen bg-background ${roboto.variable} ${tajawal.variable}  ${cairo.variable} antialiased`}
       >
