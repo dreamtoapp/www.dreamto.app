@@ -16,7 +16,6 @@ import {
   normalIcons,
   technology,
 } from '../../constant/icons';
-import Text from '../Text';
 
 export function NavOther({ locale }: { locale: string }) {
   const t = useTranslations("navigation");
@@ -56,9 +55,9 @@ export function NavOther({ locale }: { locale: string }) {
         {state === "expanded" && (
           <>
             <Icon icon={title.icon} width="24" height="24" />
-            <Text variant="span" locale={locale} cairoFont>
+            <span className="text-sm"  >
               {title.title}
-            </Text>
+            </span>
           </>
         )}
       </div>
@@ -73,9 +72,9 @@ export function NavOther({ locale }: { locale: string }) {
                 <div className="flex items-center gap-2">
                   <Icon icon={item.icon} width="24" height="24" />
                   {state === "expanded" && (
-                    <Text variant="span" locale={locale} cairoFont>
+                    <span className="text-sm" >
                       {item.name}
-                    </Text>
+                    </span>
                   )}
                 </div>
               </Link>

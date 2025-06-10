@@ -28,7 +28,7 @@ export function AppSidebar({
     projectsLink: [
       {
         name: "Crombo",
-        logo: "/assets/crombo.png",
+        // logo: "/assets/crombo.png", // Removed due to missing file
         plan: "Enterprise",
         link: "https://www.google.com",
       },
@@ -51,16 +51,16 @@ export function AppSidebar({
       </SidebarHeader>
 
       <SidebarContent>
-        <NavMain locale={locale} />
+        {/* <NavMain locale={locale} /> */}
         <NavOther locale={locale} />
 
-        <Plugin locale={locale} />
+        {/* <Plugin locale={locale} /> */}
         <NavContactUs locale={locale} />
       </SidebarContent>
 
-      <SidebarFooter>
+      {/* <SidebarFooter>
         <ProjectSwitcher projectsLink={data.projectsLink} />
-      </SidebarFooter>
+      </SidebarFooter> */}
       <SidebarRail />
     </Sidebar>
   );

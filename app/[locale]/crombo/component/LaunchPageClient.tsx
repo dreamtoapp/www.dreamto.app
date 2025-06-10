@@ -19,7 +19,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useCountdown } from "../hook/use-countdown";
 import { saveCromboData } from "../action/action";
-import Text from "../../../../components/Text";
 import ShowTimer from "./ShowTimer";
 
 interface FormData {
@@ -114,14 +113,14 @@ export default function LaunchPageClient() {
           <CardHeader className="space-y-4 p-0">
             <ShowTimer />
             <CardTitle className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 leading-tight ">
-              <Text variant="h2" locale={locale} cairoFont>
+              <h2 className="text-balance font-cairo">
                 {t("title")}
-              </Text>
+              </h2>
             </CardTitle>
             <CardDescription className="text-xl font-medium text-gray-600">
-              <Text variant="h3" locale={locale} cairoFont>
+              <p className="text-balance font-cairo">
                 {t("description")}
-              </Text>
+              </p>
             </CardDescription>
           </CardHeader>
 

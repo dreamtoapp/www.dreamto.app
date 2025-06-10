@@ -3,7 +3,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { technology } from "@/constant/icons";
 import { Icon } from "@iconify/react";
 import { getLocale, getTranslations } from "next-intl/server";
-import Text from "@/components/Text";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -164,9 +163,7 @@ const TechnologyShowcase: React.FC = async () => {
 
   return (
     <div className="p-6">
-      <Text variant="h1" locale={locale} className="font-bold text-center mb-8">
-        {t("title")}
-      </Text>
+      <h1 className="font-bold text-center mb-8">{t("title")}</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {technologies.map((tech, index) => (
           <Card
@@ -181,20 +178,12 @@ const TechnologyShowcase: React.FC = async () => {
                 <CardTitle className="text-center text-lg font-semibold mb-2">
                   {tech.name}
                 </CardTitle>
-                <Text
-                  variant="p"
-                  locale={locale}
-                  className="text-sm text-muted-foreground text-pretty"
-                >
+                <p className="text-sm text-muted-foreground text-pretty">
                   {tech.description}
-                </Text>
-                <Text
-                  variant="p"
-                  locale={locale}
-                  className="text-sm text-primary text-pretty"
-                >
+                </p>
+                <p className="text-sm text-primary text-pretty">
                   {tech.power}
-                </Text>
+                </p>
               </CardContent>
             </div>
             <div className="text-center mt-auto mb-4">

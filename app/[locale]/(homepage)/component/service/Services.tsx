@@ -1,6 +1,5 @@
 import React from "react";
 
-import Text from "@/components/Text";
 import { getLocale, getTranslations } from "next-intl/server";
 import { cardData } from "./serviceData";
 import CardComponent from "./ServiceCard";
@@ -15,22 +14,18 @@ const Services = async () => {
       <div className="max-w-7xl w-full">
         {/* Header Section */}
         <header className="text-center mb-12">
-          <Text
-            variant="h2"
-            locale={locale}
+          <h2
             className="text-4xl font-bold text-primary"
           >
             <span className="text-primary">{t("buildingTomorrow")}</span>
             <span className="text-orange-500"> {t("solutions")} </span>
             <span className="text-primary">{t("today")}</span>
-          </Text>
-          <Text
-            variant="h2"
-            locale={locale}
+          </h2>
+          <h2
             className="mt-4 text-lg text-gray-600"
           >
             {t("blendingCreativity")}
-          </Text>
+          </h2>
         </header>
 
         {/* Cards Grid */}

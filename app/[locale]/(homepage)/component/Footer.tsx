@@ -20,7 +20,6 @@ import {
   IconifyIcon,
 } from '@iconify/react';
 
-import Text from '../../../../components/Text';
 import { buttonVariants } from '../../../../components/ui/button';
 import {
   contactUs,
@@ -136,23 +135,17 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-center gap-6">
             {/* Main Heading */}
             <div className="text-center space-y-4">
-              <Text
-                variant="h3"
-                locale={locale}
+              <p
                 className="text-3xl font-extrabold text-white drop-shadow-md"
-                cairoFont
                 id="footer-heading" // Accessibility: Add ID for screen readers
               >
                 {footer("readyToTransform")}
-              </Text>
-              <Text
-                variant="p"
-                locale={locale}
+              </p>
+              <p
                 className="text-lg text-gray-200"
-                cairoFont
               >
                 {footer("buildSomethingGreat")}
-              </Text>
+              </p>
             </div>
 
             {/* Dream To App Logo */}
@@ -168,14 +161,11 @@ const Footer: React.FC = () => {
             </div>
 
             {/* Slogan */}
-            <Text
-              variant="h2"
-              locale={locale}
+            <p
               className="text-3xl font-bold text-purple-500 drop-shadow-md"
-              cairoFont
             >
               {t("slogon")}
-            </Text>
+            </p>
 
             {/* Call-to-Action Button */}
             <Link
@@ -186,13 +176,11 @@ const Footer: React.FC = () => {
               )}
               aria-label={t("fromIdeaButton")} // Accessibility: Add ARIA label
             >
-              <Text
-                variant="h2"
-                locale={locale}
+              <p
                 className="text-lg font-semibold"
               >
                 {t("fromIdeaButton")}
-              </Text>
+              </p>
             </Link>
           </div>
         </div>

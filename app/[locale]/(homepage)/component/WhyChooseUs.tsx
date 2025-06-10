@@ -6,7 +6,6 @@ import { whyChooseUs } from "@/constant/icons";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; // ShadCN Card
 import { Badge } from "@/components/ui/badge"; // ShadCN Badge
 import MotionDiv from "@/components/MotionDiv";
-import Text from "@/components/Text";
 
 // Define the type for the feature items
 type Feature = {
@@ -57,22 +56,17 @@ const WhyChooseUs: React.FC = async () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <Text
-            variant="h2"
-            locale={locale}
+          <h2
             className="text-4xl font-bold mb-4 text-gray-900 dark:text-white"
-            cairoFont
             id="why-choose-us-heading" // Added ID for accessibility
           >
             {t("whyChooseUs")}
-          </Text>
-          <Text
-            variant="h4"
-            locale={locale}
+          </h2>
+          <h4
             className="text-lg text-muted-foreground"
           >
             {t("whatMakesUsDifferent")}
-          </Text>
+          </h4>
         </div>
 
         {/* Features Grid */}
@@ -98,25 +92,20 @@ const WhyChooseUs: React.FC = async () => {
                   </div>
                   {/* Title */}
                   <CardTitle>
-                    <Text
-                      variant="p"
-                      locale={locale}
+                    <h2
                       className="text-lg font-semibold text-gray-900 dark:text-white"
-                      cairoFont
                     >
                       {t(feature.title)}
-                    </Text>
+                    </h2>
                   </CardTitle>
                 </CardHeader>
                 {/* Description */}
                 <CardContent>
-                  <Text
-                    variant="p"
-                    locale={locale}
+                  <p
                     className="text-sm text-muted-foreground"
                   >
                     {t(feature.description)}
-                  </Text>
+                  </p>
                 </CardContent>
               </Card>
             </MotionDiv>

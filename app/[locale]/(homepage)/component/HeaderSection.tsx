@@ -29,7 +29,6 @@ import {
 import Image from 'next/image';
 
 import Link from '@/components/link';
-import Text from '@/components/Text';
 import { buttonVariants } from '@/components/ui/button';
 import { useSmoothScroll } from '@/hooks/use-smooth-scroll';
 import { cn } from '@/lib/utils';
@@ -494,7 +493,7 @@ const EnhancedCareerBlock = () => {
                       quality={100}
                       sizes="(max-width: 640px) 96px, (max-width: 768px) 128px, (max-width: 1024px) 160px, (max-width: 1280px) 192px, (max-width: 1536px) 224px, 256px"
                       className={cn(
-                        "object-contain transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] drop-shadow-lg",
+                        "object-contain transition-all duration-700 ease-&lsqb;cubic-bezier(0.16,1,0.3,1)&rsqb; drop-shadow-lg",
                         logoLoaded
                           ? "opacity-100 scale-100"
                           : "opacity-0 scale-95"
@@ -542,14 +541,11 @@ const EnhancedCareerBlock = () => {
                     y: transforms.backgroundParallaxY,
                   }}
                 >
-                  <Text
-                    variant="h1"
-                    locale={locale}
+                  <h1
                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-tight drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]"
-                    cairoFont
                   >
                     {t("slogon")}
-                  </Text>
+                  </h1>
                 </motion.div>
                 <motion.div
                   className="mt-4 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full mx-auto"
@@ -573,14 +569,11 @@ const EnhancedCareerBlock = () => {
 
               {/* Subtitle with enhanced typography */}
               <motion.div className="mb-8 sm:mb-10" variants={staggerItem}>
-                <Text
-                  variant="p"
-                  locale={locale}
+                <p
                   className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto drop-shadow-[0_2px_4px_rgba(0,0,0,0.2)]"
-                  cairoFont
                 >
                   Transform your ideas into reality with cutting-edge technology
-                </Text>
+                </p>
               </motion.div>
 
               {/* Enhanced floating action icons */}
@@ -647,9 +640,9 @@ const EnhancedCareerBlock = () => {
                     />
                   </div>
 
-                  <Text variant="h2" locale={locale} className="text-lg sm:text-xl md:text-2xl font-semibold relative z-10" cairoFont>
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-semibold relative z-10">
                     Get Started Now
-                  </Text>
+                  </h2>
                   <motion.div
                     className="ml-3 relative z-10"
                     animate={{ x: [0, 4, 0] }}
@@ -714,26 +707,20 @@ const EnhancedCareerBlock = () => {
                   Transform Your Vision
                 </motion.div>
 
-                <Text
-                  variant="h2"
-                  locale={locale}
+                <h2
                   className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight"
-                  cairoFont
                 >
                   {t("fromIdeaTitle")}
-                </Text>
+                </h2>
               </motion.div>
 
               {/* Enhanced description */}
               <motion.div className="mb-8 sm:mb-10 md:mb-12" variants={staggerItem}>
-                <Text
-                  variant="p"
-                  locale={locale}
+                <p
                   className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto"
-                  cairoFont
                 >
                   {t("fromIdeaContent")}
-                </Text>
+                </p>
               </motion.div>
 
               {/* Enhanced CTA button with shine effect */}
@@ -771,14 +758,11 @@ const EnhancedCareerBlock = () => {
                     />
                   </div>
 
-                  <Text
-                    variant="h2"
-                    locale={locale}
+                  <h2
                     className="text-base sm:text-lg md:text-xl font-semibold relative z-10"
-                    cairoFont
                   >
                     {t("fromIdeaButton")}
-                  </Text>
+                  </h2>
                   <motion.div
                     className="ml-2 relative z-10"
                     animate={{ x: [0, 3, 0] }}

@@ -140,6 +140,8 @@
     "discoverContent": "Example: If you want to write a book, start by writing one page a day.",
     "discoverButton": "Start Your Success for Free",
     "slogon": "Where Dreams Take Off",
+    "subHeader": "Transform your ideas into reality with cutting-edge technology",
+    "subHeader2": "Launch your dream now into the digital world. We build a website and app that clearly reflect your ambition. Attract your audience and achieve your goals—that’s our mission.",
     "discoverDilog": "You may face challenges, but resilience is the key to overcoming them.",
     "discoverDilog1": "Keep trying and learn from every failure.",
     "discoverDilogTitle": "Success Journey",
@@ -147,7 +149,8 @@
     "mobileDilogTitle": "Success Journey",
     "crmDilogTitle": "Success Journey",
     "ecommDilogTitle": "Success Journey",
-    "uiDilogTitle": "Success Journey"
+    "uiDilogTitle": "Success Journey",
+     "ctaButton": "Start Your Success Journey Now"
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "Planning and Discovery",

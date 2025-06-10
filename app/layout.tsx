@@ -10,11 +10,8 @@ import NextTopLoader from 'nextjs-toploader';
 
 import { Toaster } from '@/components/ui/sonner';
 import { Directions } from '@/constant/enums';
-import {
-  cairo,
-  roboto,
-  tajawal,
-} from '@/lib/importFonts'; // Import the new fonts
+
+import { cairo } from './font';
 import { ThemeProvider } from '@/provider/theme-provider';
 
 export default async function RootLayout({
@@ -31,16 +28,14 @@ export default async function RootLayout({
       dir={locale === "en" ? Directions.LTR : Directions.RTL}
       suppressHydrationWarning
     >
-      {/* <head>
+      <head>
         <Script
           strategy="afterInteractive"
           data-id="101486249"
           src="//static.getclicky.com/js"
         />
-      </head> */}
-      <body
-        className={`min-h-screen bg-background ${roboto.variable} ${tajawal.variable}  ${cairo.variable} antialiased`}
-      >
+      </head>
+      <body className={`${cairo.className} min-h-screen bg-background antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NextTopLoader />
           <ThemeProvider>{children}</ThemeProvider>

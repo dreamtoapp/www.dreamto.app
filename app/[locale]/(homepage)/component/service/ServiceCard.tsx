@@ -9,7 +9,6 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import MotionDiv from "@/components/MotionDiv";
-import Text from "@/components/Text";
 import InlineQueryWrapper from "@/components/InlineQuery/InlineQueryWrapper";
 import { memo } from "react";
 
@@ -59,39 +58,32 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
           />
           {/* Title */}
           <CardTitle className="text-xl font-bold">
-            <Text
-              variant="h3"
-              locale={locale}
+            <h3
               className="text-balance font-cairo"
-              cairoFont
             >
               {t(card.title)}
-            </Text>
+            </h3>
           </CardTitle>
           {/* Description */}
           <CardDescription className="text-muted-foreground">
-            <Text
-              variant="p"
-              locale={locale}
+            <p
               className="text-balance"
               aria-hidden="false" // Ensure screen readers can access this content
             >
               {t(card.description)}
-            </Text>
+            </p>
           </CardDescription>
         </CardHeader>
 
         {/* Content Section */}
         <CardContent className="flex-1 flex flex-col justify-end">
           {/* Technology Used Label */}
-          <Text
-            variant="span"
-            locale={locale}
+          <span
             className="text-center mb-2 text-primary/80 font-semibold"
             aria-hidden="false"
           >
             {t("tecnoUsed")}
-          </Text>
+          </span>
           {/* Tags List */}
           <div className="flex flex-wrap gap-2" role="list">
             {card.tags.map((tag, index) => (

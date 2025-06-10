@@ -70,8 +70,8 @@ const AnimatedBackground = () => {
           key={particle.id}
           className="absolute w-1 h-1 bg-white/20 rounded-full"
           style={{
-            left: `${particle.left}%`,
-            top: `${particle.top}%`,
+            left: `${particle.left.toFixed(4)}%`,
+            top: `${particle.top.toFixed(4)}%`,
           }}
           initial={{ opacity: 0 }}
           animate={
@@ -326,7 +326,8 @@ const Hero: React.FC = () => {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ delay: 0.8, duration: 1 }}
           >
-            Transform your ideas into reality with cutting-edge technology
+             {t("subHeader")}
+            {/* Transform your ideas into reality with cutting-edge technology */}
           </motion.span>
         </motion.p>
 
@@ -338,8 +339,7 @@ const Hero: React.FC = () => {
           <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-pink-500 to-purple-500 rounded-full" />
           <div className="pl-8 relative">
             <span className="text-pink-400 text-3xl absolute -top-2 -left-2">"</span>
-            We gather your site data. We know your target audience & how your brand can standout from crowd. Best part
-            is we also help you with Solutions
+            {t("subHeader2")}
             <span className="text-pink-400 text-3xl absolute -bottom-4 -right-2">"</span>
           </div>
         </motion.blockquote>
@@ -351,7 +351,7 @@ const Hero: React.FC = () => {
             className="rounded-full px-8 py-3 text-lg font-semibold border-2 border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-black transition-all duration-300 shadow-2xl hover:shadow-white/25"
           >
             <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
-              Get Started
+              {t("ctaButton")}
             </motion.span>
           </Button>
         </motion.div>

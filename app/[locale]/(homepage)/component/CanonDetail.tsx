@@ -4,7 +4,6 @@ import { getLocale } from 'next-intl/server';
 import Image from 'next/image';
 
 import Link from '@/components/link';
-import Text from '@/components/Text';
 import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
@@ -41,14 +40,14 @@ async function CanonDetail() {
     <Card className="flex items-center justify-between flex-col bg-gradient-blue-light dark:bg-gradient-custom border border-white/70 ">
       <CardHeader>
         <CardTitle className="flex flex-col items-center gap-4 ">
-          <Text variant="p" locale={locale} className="text-xl font-bold">
+          <p className="text-xl font-bold">
             {locale === "ar" ? arDetail.name : enDetail.name}
-          </Text>
+          </p>
         </CardTitle>
         <CardDescription>
-          <Text variant="p" locale={locale} className="text-lg ">
+          <p className="text-lg ">
             {locale === "ar" ? arDetail.title : enDetail.title}
-          </Text>
+          </p>
         </CardDescription>
       </CardHeader>
 
@@ -64,12 +63,12 @@ async function CanonDetail() {
               sizes="(max-width: 400px) 100vw, 400px"
             />
           </div>
-          <Text variant="span" locale={locale} className="text-lg">
+          <p className="text-lg">
             {locale === "ar" ? arDetail.description : enDetail.description}
             <span className="text-destructive font-bold animate-pulse bg-slate-300 px-2 rounded ">
               {arDetail.free}
             </span>
-          </Text>
+          </p>
         </div>
       </CardContent>
       <CardFooter className="flex  items-center justify-center flex-col  w-full ">
@@ -80,9 +79,9 @@ async function CanonDetail() {
             "bg-white text-black hover:bg-white/90 flex-1 "
           )}
         >
-          <Text variant="h2" locale={locale} className="text-lg" cairoFont>
+          <p className="text-lg" >
             {locale === "ar" ? arDetail.action : enDetail.action}
-          </Text>
+          </p>
         </Link>
 
         {/* <News /> */}

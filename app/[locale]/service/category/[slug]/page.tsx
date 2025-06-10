@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { getBlogBySlug } from "../../actions";
 import { urlFor } from "@/lib/imageUrl";
-import Text from "@/components/Text";
 import { ReactNode } from "react";
 import BlogContent from "@/components/BolgContent";
 import { getLocale } from "next-intl/server";
@@ -35,14 +34,11 @@ export default async function BlogsHome({
         </div>
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Text
-            variant="h1"
-            locale={locale}
-            itemProp="headline"
+          <h1
             className="text-4xl font-bold tracking-tight text-primary mb-6 animate-in slide-in-from-bottom duration-500"
           >
             {blog?.title}
-          </Text>
+          </h1>
 
           <div className="flex items-center text-sm text-muted-foreground mb-4">
             <time

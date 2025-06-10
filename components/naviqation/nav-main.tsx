@@ -24,7 +24,6 @@ import {
   serviceIcon,
   whyChooseUs,
 } from '../../constant/icons';
-import Text from '../Text';
 
 interface Item {
   title: string;
@@ -97,22 +96,8 @@ export function NavMain({ locale }: NavMainProps) {
     <SidebarGroup>
       {state !== "collapsed" && (
         <div className="bg-gradient-blue-corporate p-2 rounded-lg">
-          <Text
-            variant="h1"
-            className="text-lg text-white"
-            locale={locale}
-            cairoFont
-          >
-            {t("name")}
-          </Text>
-          <Text
-            variant="h2"
-            locale={locale}
-            className="text-[.9rem] text-white/70  mt-2"
-            cairoFont
-          >
-            {t("slogan")}
-          </Text>
+          <h1 className="text-lg text-white">{t("name")}</h1>
+          <h2 className="text-[.9rem] text-white/70 mt-2">{t("slogan")}</h2>
         </div>
       )}
       <SidebarMenu className="mt-4">
@@ -129,14 +114,9 @@ export function NavMain({ locale }: NavMainProps) {
                   {item.icon && (
                     <Icon icon={item.icon} width="24" height="24" />
                   )}
-                  <Text
-                    variant="span"
-                    className="text-sm"
-                    locale={locale}
-                    cairoFont
-                  >
+                  <span className="text-sm"  >
                     {item.title}
-                  </Text>
+                  </span>
                   <Icon icon={chevrons} width="24" height="24" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
@@ -154,14 +134,7 @@ export function NavMain({ locale }: NavMainProps) {
                                 height="24"
                               />
                             )}
-                            <Text
-                              variant="span"
-                              className="text-sm"
-                              locale={locale}
-                              cairoFont
-                            >
-                              {subItem.title}
-                            </Text>
+                            <span className="text-sm">{subItem.title}</span>
                           </Link>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>

@@ -4,7 +4,7 @@ import React from "react";
 function Crombo() {
   return (
     <Image
-      src={"/assets/crombo.png"}
+      src={"/assets/crombo.png"} // Removed due to missing file
       alt="crombo"
       width={32} // Specify the width
       height={32} // Specify the height

@@ -7,7 +7,6 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useTranslations } from "next-intl";
-import Text from "../Text";
 import { contactUs } from "../../constant/icons";
 
 export function NavContactUs({ locale }: { locale: string }) {
@@ -41,9 +40,7 @@ export function NavContactUs({ locale }: { locale: string }) {
     <SidebarGroup>
       <div className="flex items-center mb-2">
         {state === "expanded" && (
-          <Text variant="span" locale={locale} cairoFont>
-            {t("contactus.title")}
-          </Text>
+          <span className="text-lg font-bold">{t("contactus.title")}</span>
         )}
       </div>
       <SidebarMenu>
@@ -53,9 +50,7 @@ export function NavContactUs({ locale }: { locale: string }) {
               <a href={item.url} className="flex items-center">
                 <Icon icon={item.icon} width="24" height="24" />
                 {state === "expanded" && (
-                  <Text variant="span" locale={locale} cairoFont>
-                    {item.name}
-                  </Text>
+                  <span className="text-lg font-bold">{item.name}</span>
                 )}
               </a>
             </SidebarMenuButton>

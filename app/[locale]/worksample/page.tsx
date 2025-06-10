@@ -12,7 +12,6 @@ import {
 } from '@/components/ui/card';
 import { getFoldersWithCoverImages } from '@/lib/cloudinary';
 
-import Text from '../../../components/Text';
 import Websites from './component/Websites';
 
 function getLastNode(folderName: string) {
@@ -78,7 +77,7 @@ export default async function Page() {
                   )}`}
                   className="block w-full text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors py-2 rounded-lg"
                 >
-                  <Text variant="p">View Gallery</Text>
+                  <p>View Gallery</p>
                 </Link>
               </CardFooter>
             </Card>

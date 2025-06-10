@@ -10,15 +10,14 @@ import {
 } from '@/components/ui/sidebar';
 
 import Crombo from '../Crombo';
-import Text from '../Text';
 
 export function Plugin({ locale }: { locale: string }) {
   const t = useTranslations("navigation");
   return (
     <SidebarGroup className="group-data-[collapsible=icon]:hidden">
-      <Text variant="span" locale={locale}>
+      <span className="text-sm"  >
         {t("plugin.title")}
-      </Text>
+      </span>
       <SidebarMenu className="flex items-center gap-2 flex-row flex-wrap justify-center">
         <SidebarMenuItem className="bg-sidebar-accent rounded-md p-2 flex items-center justify-center">
           <Link
@@ -26,9 +25,9 @@ export function Plugin({ locale }: { locale: string }) {
             className="flex items-center justify-center flex-col"
           >
             <Crombo />
-            <Text variant="span" locale={locale} cairoFont>
+            <span className="text-sm" >
               {t("plugin.crombo")}
-            </Text>
+            </span>
           </Link>
         </SidebarMenuItem>
         <SidebarMenuItem className="bg-sidebar-accent rounded-md p-2 flex items-center justify-center">
@@ -37,9 +36,9 @@ export function Plugin({ locale }: { locale: string }) {
             className="flex items-center justify-center flex-col"
           >
             <Crombo />
-            <Text variant="span" locale={locale} cairoFont>
+            <span className="text-sm" >
               {t("plugin.latestnews")}
-            </Text>
+            </span>
           </Link>
         </SidebarMenuItem>
       </SidebarMenu>

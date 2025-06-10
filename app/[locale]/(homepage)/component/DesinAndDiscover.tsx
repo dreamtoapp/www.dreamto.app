@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
-import Text from "@/components/Text";
+
 import { getLocale, getTranslations } from "next-intl/server";
 import InlineQueryWrapper from "@/components/InlineQuery/InlineQueryWrapper";
 
@@ -36,39 +36,30 @@ export const DesinAndDiscover = async () => {
 
       {/* Title */}
       <CardDescription className="text-center mt-6 px-6">
-        <Text
-          variant="h2"
-          locale={locale}
+        <p
           className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white"
-          cairoFont
         >
           {t("discoverTitle")}
-        </Text>
+        </p>
       </CardDescription>
 
       {/* Content Section */}
       <CardContent className="flex flex-col items-center gap-4 px-6 py-4 text-gray-700 dark:text-gray-300">
-        <Text
-          variant="p"
-          locale={locale}
+        <p
           className="text-lg md:text-xl text-center font-semibold"
         >
           {t("discoverTitle1")}
-        </Text>
-        <Text
-          variant="p"
-          locale={locale}
+        </p>
+        <p
           className="text-lg md:text-xl text-center font-semibold"
         >
           {t("discoverTitle2")}
-        </Text>
-        <Text
-          variant="p"
-          locale={locale}
+        </p>
+        <p
           className="text-lg md:text-2xl text-center font-bold"
         >
           {t("discoverTitle3")}
-        </Text>
+        </p>
       </CardContent>
 
       {/* Footer Section */}
@@ -82,13 +73,11 @@ export const DesinAndDiscover = async () => {
         />
 
         {/* Supporting Text */}
-        <Text
-          variant="p"
-          locale={locale}
+        <p
           className="text-lg text-gray-600 dark:text-gray-300 text-center"
         >
           {t("discoverContent")}
-        </Text>
+        </p>
       </CardFooter>
     </Card>
   );

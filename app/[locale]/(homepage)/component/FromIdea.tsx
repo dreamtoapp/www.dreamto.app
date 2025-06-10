@@ -7,7 +7,6 @@ import {
 import Image from 'next/image';
 
 import Link from '@/components/link';
-import Text from '@/components/Text';
 import { buttonVariants } from '@/components/ui/button';
 import {
   Card,
@@ -42,21 +41,20 @@ export const FromIdea = async () => {
 
       {/* Card Title & Description */}
       <CardDescription className="text-center mt-6 px-6">
-        <Text
-          variant="h2"
-          locale={locale}
+        <h1
           className="text-2xl md:text-4xl font-extrabold text-gray-900 dark:text-white"
-          cairoFont
         >
           {t("fromIdeaTitle")}
-        </Text>
+        </h1>
       </CardDescription>
 
       {/* Card Content */}
       <CardContent className="px-6 py-4 text-gray-700 dark:text-gray-300 leading-relaxed">
-        <Text variant="p" locale={locale} className="text-pretty">
+        <p
+          className="text-pretty"
+        >
           {t("fromIdeaContent")}
-        </Text>
+        </p>
       </CardContent>
 
       {/* Call-to-Action Button */}
@@ -68,14 +66,11 @@ export const FromIdea = async () => {
             "bg-primary text-white hover:bg-primary/80 transition-all duration-300 ease-in-out px-6 py-3 rounded-lg text-lg"
           )}
         >
-          <Text
-            variant="h2"
-            locale={locale}
+          <h2
             className="text-sm sm:text-lg"
-            cairoFont
-          >
+         >
             {t("fromIdeaButton")}
-          </Text>
+          </h2>
         </Link>
       </CardFooter>
     </Card>
