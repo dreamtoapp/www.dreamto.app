@@ -19,8 +19,9 @@ import {
 
 export function NavOther({ locale }: { locale: string }) {
   const t = useTranslations("navigation");
-  const { state } = useSidebar(); // Access sidebar state
 
+  const { state } = useSidebar();
+  const iconSize = state === "collapsed" ? 28 : 22;
   const data = [
     {
       name: t("otherMenu.usedTecno"),
@@ -32,11 +33,11 @@ export function NavOther({ locale }: { locale: string }) {
       url: `/${locale}/worksample`,
       icon: technology.workSample.icon,
     },
-    {
-      name: t("otherMenu.price"),
-      url: `/${locale}/packages`,
-      icon: technology.priceDown.icon,
-    },
+    // {
+    //   name: t("otherMenu.price"),
+    //   url: `/${locale}/packages`,
+    //   icon: technology.priceDown.icon,
+    // },
     {
       name: t("otherMenu.team"),
       url: `/${locale}/team`,
@@ -44,24 +45,10 @@ export function NavOther({ locale }: { locale: string }) {
     },
   ];
 
-  const title = {
-    title: t("otherMenu.title"),
-    icon: technology.linkYouLike.icon,
-  };
-
   return (
     <SidebarGroup>
-      <div className="flex items-center mb-2">
-        {state === "expanded" && (
-          <>
-            <Icon icon={title.icon} width="24" height="24" />
-            <span className="text-sm"  >
-              {title.title}
-            </span>
-          </>
-        )}
-      </div>
-      <SidebarMenu>
+       
+      <SidebarMenu className="flex flex-col gap-3 mt-4">
         {data.map((item, index) => (
           <SidebarMenuItem
             key={item.name + index}
@@ -70,12 +57,11 @@ export function NavOther({ locale }: { locale: string }) {
             <SidebarMenuButton asChild tooltip={item.name}>
               <Link href={item.url}>
                 <div className="flex items-center gap-2">
-                  <Icon icon={item.icon} width="24" height="24" />
-                  {state === "expanded" && (
-                    <span className="text-sm" >
-                      {item.name}
+                  <Icon icon={item.icon} width={iconSize} height={iconSize} />
+                  <span className="text-sm text-foreground" >
+                      {item.name} 
                     </span>
-                  )}
+                  
                 </div>
               </Link>
             </SidebarMenuButton>

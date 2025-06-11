@@ -164,7 +164,7 @@ const TechnologyShowcase: React.FC = async () => {
   return (
     <div className="p-6">
       <h1 className="font-bold text-center mb-8">{t("title")}</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-6">
         {technologies.map((tech, index) => (
           <Card
             key={index}

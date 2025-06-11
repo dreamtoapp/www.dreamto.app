@@ -39,6 +39,7 @@ export default function ImageWithFallback({ image }: { image: ImageType }) {
             src={`${image.optimized_url}?reload=${reloadCount}`} // Append a query parameter to force re-fetch
             alt={image.public_id}
             fill
+            sizes="(max-width: 600px) 100vw, 600px"
             className="absolute inset-0 w-full h-full object-contain rounded-2xl transition-transform duration-300 ease-in-out group-hover:scale-105"
             loading="lazy"
             onError={handleError}

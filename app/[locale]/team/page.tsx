@@ -5,21 +5,22 @@ import Link from '@/components/link';
 import TeamMember from './component/TeamMember';
 
 const teamMembers = [
+ 
   {
-    name: "John Doe",
-    image: "/placeholder.svg?height=200&width=200",
-    expertise: "Frontend Development",
-    yearsOfExperience: 5,
+    name: "Eng. Murad - Chairman",
+    image: "/assets/dta.svg",
+    expertise: "Mangement",
+    yearsOfExperience: 17,
   },
   {
-    name: "Jane Smith",
-    image: "/placeholder.svg?height=200&width=200",
-    expertise: "Mobile Development",
-    yearsOfExperience: 7,
+    name: "Eng. Khalid Ali -- CEO",
+    image: "/assets/team/kh4.png",
+    expertise: "Full Stack Developer",
+    yearsOfExperience: 15,
   },
   {
     name: "Mike Johnson",
-    image: "/placeholder.svg?height=200&width=200",
+    image: "/assets/dta.svg",
     expertise: "Backend Development",
     yearsOfExperience: 6,
   },

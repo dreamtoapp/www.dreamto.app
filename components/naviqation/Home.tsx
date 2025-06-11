@@ -1,17 +1,19 @@
 import Link from '@/components/link';
-import { Icon } from '@iconify/react';
-
-import { normalIcons } from '../../constant/icons';
+import Image from 'next/image';
 
 const Home = () => {
   return (
     <Link
       href="/"
-      className="bg-primary/20 p-1 rounded-full border-primary/40 border"
+      className="bg-primary p-1 rounded-full border-primary/40 border "
     >
-      <Icon
-        icon={normalIcons.home.icon}
-        className="w-6 h-6 text-primary hover:scale-110"
+      <Image
+        src="/assets/dta.svg"
+        alt="DreamToApp Logo"
+        width={24}
+        height={24}
+        className="w-6 h-6 hover:scale-110 transition-transform"
+        priority
       />
     </Link>
   );

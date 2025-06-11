@@ -16,15 +16,16 @@ export default function TeamMember({
 }: TeamMemberProps) {
   return (
     <Card className="overflow-hidden">
-      <CardHeader className="p-0">
+      <CardHeader className="p-0  bg-gray-100">
+        <div className="relative w-full h-full aspect-square bg-gray-100">
         <Image
           src={image || "/placeholder.svg"}
           alt={name}
-          width={400}
-          height={300}
-          className="w-full object-cover h-48"
+          fill
+          className="absolute top-0 left-0 w-full object-cover h-48"
           sizes="(max-width: 400px) 100vw, 400px"
         />
+        </div>
       </CardHeader>
       <CardContent className="p-4">
         <CardTitle className="text-xl mb-2">{name}</CardTitle>

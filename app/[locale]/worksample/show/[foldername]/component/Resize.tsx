@@ -7,6 +7,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Expand } from "lucide-react";
@@ -21,9 +22,10 @@ function Resize({ image }: { image: string }) {
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[800px]">
-        <VisuallyHidden>
-          <DialogTitle>Your Dialog Title</DialogTitle>
-        </VisuallyHidden>
+        <DialogTitle>Enlarged View</DialogTitle>
+        <DialogDescription>
+          This is an enlarged preview of the selected image. Press ESC or click outside to close.
+        </DialogDescription>
         <Image
           src={image}
           alt="Enlarged view"

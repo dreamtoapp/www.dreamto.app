@@ -30,8 +30,8 @@ export default async function Page() {
 
   return (
     <div className="flex items-center justify-center flex-col p-4">
-      <Websites />
-      <div className="container mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {/* <Websites /> */}
+      <div className="container mx-auto p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {folders.map((folder) => {
           const lastSegment = getLastNode(folder.folderName);
 
