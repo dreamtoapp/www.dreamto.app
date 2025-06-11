@@ -43,14 +43,14 @@ export function AppSidebar({
       collapsible="icon"
       {...props}
       side={locale === "ar" ? "right" : "left"}
-      className="bg-sidebar text-foreground"
+      className="bg-background text-foreground"
       aria-label="Main Sidebar"
     >
       {/* <SidebarHeader> */}
         {/* <Dm user={data.user} /> */}
         {/* <p>DreamToApp</p> */}
       {/* </SidebarHeader> */}
-      <SidebarContent className="flex flex-col h-full justify-evenly ">
+      <SidebarContent className="flex flex-col h-full justify-evenly bg-background text-foreground">
         <SidebarGroup aria-label="Navigation" className="flex flex-col items-center justify-center p-0">
           <NavOther locale={locale} />
         </SidebarGroup>

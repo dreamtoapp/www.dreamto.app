@@ -102,22 +102,22 @@ export default function LaunchPageClient() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray to-blue-900 text-white p-6 w-full">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-muted via-background to-muted text-foreground p-4 sm:p-6 w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Card className="relative w-full max-w-4xl p-10 text-center bg-white text-gray-900 rounded-3xl shadow-2xl overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gray-400 to-gray-200" />
+        <Card className="relative w-full max-w-4xl p-4 sm:p-10 text-center bg-card text-foreground rounded-3xl shadow-2xl overflow-hidden border border-border">
+          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary/70 to-secondary/70" />
           <CardHeader className="space-y-4 p-0">
-            <ShowTimer />
-            <CardTitle className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 leading-tight ">
+            {/* <ShowTimer /> */}
+            <CardTitle className="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary leading-tight ">
               <h2 className="text-balance font-cairo">
                 {t("title")}
               </h2>
             </CardTitle>
-            <CardDescription className="text-xl font-medium text-gray-600">
+            <CardDescription className="text-lg sm:text-xl font-medium text-muted-foreground">
               <p className="text-balance font-cairo">
                 {t("description")}
               </p>
@@ -131,56 +131,56 @@ export default function LaunchPageClient() {
                 alt="Try Karambo"
                 width={150}
                 height={150}
-                className="rounded-2xl shadow-lg transition-transform transform hover:scale-105"
+                className="rounded-2xl shadow-lg transition-transform hover:scale-105 bg-muted"
               />
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div className="space-y-2 flex items-start   flex-col">
-                  <Label htmlFor="company">{t("companyLabel")}</Label>
+                  <Label className="text-primary" htmlFor="company">{t("companyLabel")}</Label>
                   <Input
                     id="company"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
                     placeholder={t("companyPlaceholder")}
-                    className={errors.company ? "border-red-500" : ""}
+                    className={errors.company ? "border-destructive focus:border-destructive ring-destructive" : ""}
                   />
                   {errors.company && (
-                    <p className="text-red-500 text-sm">{errors.company}</p>
+                    <p className="text-destructive text-sm">{errors.company}</p>
                   )}
                 </div>
                 <div className="space-y-2 flex items-start   flex-col">
-                  <Label htmlFor="name">{t("nameLabel")}</Label>
+                  <Label className="text-primary" htmlFor="name">{t("nameLabel")}</Label>
                   <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder={t("namePlaceholder")}
-                    className={errors.name ? "border-red-500" : ""}
+                    className={errors.name ? "border-destructive focus:border-destructive ring-destructive" : ""}
                   />
                   {errors.name && (
-                    <p className="text-red-500 text-sm">{errors.name}</p>
+                    <p className="text-destructive text-sm">{errors.name}</p>
                   )}
                 </div>
                 <div className="space-y-2 flex items-start   flex-col">
-                  <Label htmlFor="mobile">{t("mobileLabel")}</Label>
+                  <Label className="text-primary" htmlFor="mobile">{t("mobileLabel")}</Label>
                   <Input
                     id="mobile"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleChange}
                     placeholder={t("mobilePlaceholder")}
-                    className={errors.mobile ? "border-red-500" : ""}
+                    className={errors.mobile ? "border-destructive focus:border-destructive ring-destructive" : ""}
                   />
                   {errors.mobile && (
-                    <p className="text-red-500 text-sm">{errors.mobile}</p>
+                    <p className="text-destructive text-sm">{errors.mobile}</p>
                   )}
                 </div>
                 <div className="space-y-2 flex items-start   flex-col">
-                  <Label htmlFor="email">{t("emailLabel")}</Label>
+                  <Label className="text-primary" htmlFor="email">{t("emailLabel")}</Label>
                   <Input
                     id="email"
                     name="email"
@@ -188,15 +188,15 @@ export default function LaunchPageClient() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={t("emailPlaceholder")}
-                    className={errors.email ? "border-red-500" : ""}
+                    className={errors.email ? "border-destructive focus:border-destructive ring-destructive" : ""}
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm">{errors.email}</p>
+                    <p className="text-destructive text-sm">{errors.email}</p>
                   )}
                 </div>
               </div>
               <div className="space-y-2 flex items-start   flex-col">
-                <Label htmlFor="note">{t("noteLabel")}</Label>
+                <Label className="text-primary" htmlFor="note">{t("noteLabel")}</Label>
                 <Textarea
                   id="note"
                   name="note"
@@ -211,7 +211,7 @@ export default function LaunchPageClient() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-4 px-10 text-lg font-bold rounded-xl shadow-lg transform transition duration-200 ease-in-out hover:scale-105"
+                className="w-full bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-primary-foreground py-4 px-6 sm:px-10 text-base sm:text-lg font-bold rounded-xl shadow-lg transform transition duration-200 ease-in-out hover:scale-105"
               >
                 {loading ? (
                   <>
@@ -224,7 +224,7 @@ export default function LaunchPageClient() {
               </Button>
             </form>
           </CardContent>
-          <CardFooter className="mt-8 text-sm text-gray-500">
+          <CardFooter className="mt-8 text-sm text-muted-foreground">
             {t("privacyNotice")}
           </CardFooter>
         </Card>
