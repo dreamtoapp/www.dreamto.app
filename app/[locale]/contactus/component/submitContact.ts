@@ -12,8 +12,7 @@ const contactFormSchema = z.object({
   email: z.string().email("Invalid email address"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
-
-// WhatsApp Notification Function
+ 
 // async function sendWhatsAppMessage(message: string): Promise<void> {
 //   const apiKey = process.env.CALLMEBOT_API_KEY;
 //   const phone = process.env.CALLMEBOT_PHONE;

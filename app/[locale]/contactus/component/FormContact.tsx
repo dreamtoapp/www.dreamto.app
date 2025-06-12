@@ -24,6 +24,8 @@ const initialState: FormState = {
   errors: {},
 };
 
+import { useTranslations } from "next-intl";
+
 export default function FormContact({ locale }: { locale: string }) {
   const router = useRouter();
   const [state, formAction, isPending] = useActionState(
@@ -41,108 +43,142 @@ export default function FormContact({ locale }: { locale: string }) {
 
   useEffect(() => {
     if (state.success) {
-      toast.success(state.message || "Form submitted successfully!");
+      toast.success(state.message || t("successMessage"));
       setTimeout(() => router.push(`/${locale}/thank-you`), 2000);
     }
   }, [state.success, state.message, router]);
 
+  const t = useTranslations("contactus");
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="max-w-lg mx-auto p-6"
-    >
-      <Card className="shadow-xl p-8 rounded-2xl border bg-white">
-        <CardContent>
-          <form action={formAction} className="grid gap-6">
-            {[
-              {
-                name: "name",
-                label: locale === "ar" ? "الاسم" : "Name",
-                icon: "solar:user-bold",
-                type: "text",
-              },
-              {
-                name: "mobile",
-                label: locale === "ar" ? "رقم الجوال" : "Mobile",
-                icon: "solar:phone-bold",
-                type: "tel",
-              },
-              {
-                name: "email",
-                label: locale === "ar" ? "البريد الإلكتروني" : "Email",
-                icon: "solar:mail-bold",
-                type: "email",
-              },
-            ].map(({ name, label, icon, type }) => (
-              <div key={name} className="grid gap-2">
+    // <div className="relative min-h-screen flex items-center justify-center  py-12">
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
+        className="w-full max-w-lg mx-auto drop-shadow-2xl"
+      >
+        <Card className="rounded-3xl border-0 shadow-2xl bg-card/90 backdrop-blur-md">
+          <CardContent className="p-10">
+            <div className="flex flex-col items-center mb-8">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
+                className="mb-2"
+              >
+                <Icon icon="solar:chat-square-dots-bold" className="w-12 h-12 text-primary drop-shadow-md" />
+              </motion.div>
+              
+            </div>
+            {/* Success State Animation */}
+            {state.success && (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                className="flex flex-col items-center justify-center mb-6"
+              >
+                <Icon icon="solar:check-circle-bold" className="w-16 h-16 text-success mb-2 animate-bounce" />
+                <span className="text-success font-bold text-lg">{t("successMessage")}</span>
+              </motion.div>
+            )}
+            <form action={formAction} className="grid gap-7">
+              {[
+                {
+                  name: "name",
+                  label: t("name"),
+                  icon: "solar:user-bold",
+                  type: "text",
+                },
+                {
+                  name: "mobile",
+                  label: t("mobile"),
+                  icon: "solar:phone-bold",
+                  type: "tel",
+                },
+                {
+                  name: "email",
+                  label: t("email"),
+                  icon: "solar:mail-bold",
+                  type: "email",
+                },
+              ].map(({ name, label, icon, type }) => (
+                <div key={name} className="grid gap-1.5">
+                  <Label
+                    htmlFor={name}
+                    className="flex items-center gap-2 text-base font-semibold text-foreground"
+                  >
+                    <Icon icon={icon} className="w-5 h-5 text-primary" />
+                    {label}
+                  </Label>
+                  <Input
+                    id={name}
+                    name={name}
+                    type={type}
+                    autoComplete={name}
+                    aria-invalid={!!state.errors?.[name]}
+                    aria-describedby={state.errors?.[name]?.[0] ? `${name}-error` : undefined}
+                    className={`border-2 rounded-xl p-3 focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 ${
+                      state.errors?.[name] ? "border-destructive" : "border-border focus:border-primary"
+                    }`}
+                  />
+                  {state.errors?.[name]?.[0] && (
+                    <p id={`${name}-error`} className="text-destructive text-xs mt-1">
+                      {state.errors[name]?.[0]}
+                    </p>
+                  )}
+                </div>
+              ))}
+              <div className="grid gap-1.5">
                 <Label
-                  htmlFor={name}
-                  className="flex items-center gap-2 text-lg font-medium text-gray-700"
+                  htmlFor="message"
+                  className="flex items-center gap-2 text-base font-semibold text-foreground"
                 >
-                  <Icon icon={icon} className="w-5 h-5 text-orange-500" />
-                  {label}
+                  <Icon
+                    icon="solar:chat-square-dots-bold"
+                    className="w-5 h-5 text-primary"
+                  />
+                  {t("message")}
                 </Label>
-                <Input
-                  id={name}
-                  name={name}
-                  type={type}
-                  className={`border rounded-lg p-3 focus:ring-2 focus:ring-orange-500 ${
-                    state.errors?.[name] ? "border-red-500" : "border-gray-300"
+                <Textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  aria-invalid={!!state.errors?.message}
+                  aria-describedby={state.errors?.message?.[0] ? "message-error" : undefined}
+                  className={`border-2 rounded-xl p-3 focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 ${
+                    state.errors?.message ? "border-destructive" : "border-border focus:border-primary"
                   }`}
                 />
-                {state.errors?.[name]?.[0] && (
-                  <p className="text-red-500 text-sm">
-                    {state.errors[name]?.[0]}
+                {state.errors?.message?.[0] && (
+                  <p id="message-error" className="text-destructive text-xs mt-1">
+                    {state.errors.message?.[0]}
                   </p>
                 )}
               </div>
-            ))}
-
-            <div className="grid gap-2">
-              <Label
-                htmlFor="message"
-                className="flex items-center gap-2 text-lg font-medium text-gray-700"
-              >
-                <Icon
-                  icon="solar:chat-square-dots-bold"
-                  className="w-5 h-5 text-orange-500"
-                />
-                {locale === "ar" ? "الرسالة" : "Message"}
-              </Label>
-              <Textarea
-                id="message"
-                name="message"
-                className={`border rounded-lg p-3 focus:ring-2 focus:ring-orange-500 ${
-                  state.errors?.message ? "border-red-500" : "border-gray-300"
-                }`}
-              />
-              {state.errors?.message?.[0] && (
-                <p className="text-red-500 text-sm">
-                  {state.errors.message?.[0]}
-                </p>
-              )}
-            </div>
-
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 rounded-lg transition shadow-lg"
-              >
-                {isPending
-                  ? locale === "ar"
-                    ? "جارٍ الإرسال..."
-                    : "Sending..."
-                  : locale === "ar"
-                  ? "إرسال"
-                  : "Send"}
-              </Button>
-            </motion.div>
-          </form>
-        </CardContent>
-      </Card>
-    </motion.div>
+              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                <Button
+                  type="submit"
+                  disabled={isPending || state.success}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-extrabold py-3 rounded-xl transition-all duration-200 shadow-lg text-lg tracking-wide flex items-center justify-center gap-2"
+                >
+                  {isPending ? (
+                    <span className="flex items-center gap-2">
+                      <Icon icon="svg-spinners:180-ring-with-bg" className="w-5 h-5 animate-spin" />
+                      {t("sending")}
+                    </span>
+                  ) : (
+                    <span className="flex items-center gap-2">
+                      <Icon icon="solar:send-bold" className="w-5 h-5" />
+                      {t("submit")}
+                    </span>
+                  )}
+                </Button>
+              </motion.div>
+            </form>
+          </CardContent>
+        </Card>
+      </motion.div>
+    // </div>
   );
 }

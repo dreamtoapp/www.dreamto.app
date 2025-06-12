@@ -1,13 +1,8 @@
 "use client";
-import { NavMain } from "@/components/naviqation/nav-main";
 import { NavContactUs } from "@/components/naviqation/nav-contactus";
-import { Dm } from "@/components/naviqation/nav-Dm";
-import { ProjectSwitcher } from "@/components/naviqation/ProjectSwitcher";
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
   SidebarGroup,
 } from "@/components/ui/sidebar";
 import { useTranslations } from "next-intl";
@@ -43,20 +38,13 @@ export function AppSidebar({
       collapsible="icon"
       {...props}
       side={locale === "ar" ? "right" : "left"}
-      className="bg-background text-foreground"
       aria-label="Main Sidebar"
+      
     >
-      {/* <SidebarHeader> */}
-        {/* <Dm user={data.user} /> */}
-        {/* <p>DreamToApp</p> */}
-      {/* </SidebarHeader> */}
-      <SidebarContent className="flex flex-col h-full justify-evenly bg-background text-foreground">
-        <SidebarGroup aria-label="Navigation" className="flex flex-col items-center justify-center p-0">
+      
+      <SidebarContent className="flex flex-col h-full items-center  justify-between py-4   bg-background text-foreground">
           <NavOther locale={locale} />
-        </SidebarGroup>
-        <SidebarGroup aria-label="Contact" className="flex flex-col items-center justify-center p-0">
           <NavContactUs locale={locale} />
-        </SidebarGroup>
       </SidebarContent>
       
     </Sidebar>

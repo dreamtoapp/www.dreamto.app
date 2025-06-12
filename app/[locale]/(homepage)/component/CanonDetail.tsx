@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
 import Link from '@/components/link';
@@ -14,39 +14,22 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-
-const arDetail = {
-  name: "كانون",
-  title: "منصتك الذكية للمستجدات الموثوقة لتطوير أعمالك.",
-  description:
-    "تخيل منصة تمنحك تحديثات موثوقة ومحتوى مصمم خصيصًا لجذب جمهورك المستهدف. مع كانون، ستتمكن من إبقاء عملائك على اطلاع دائم بأحدث الأخبار والعروض، سواء كنت تدير عيادة، معرضًا، أو أي نشاط تجاري.  سنحول فكرتك إلى تجربة رقمية استثنائية تلفت الأنظار وتحقق التفاعل الذي تطمح إليه.",
-  action: "ابدأ الآن واكتشف الفرق بنفسك!",
-  free: "جرّب مجانًا الآن!",
-};
-
-const enDetail = {
-  name: "Canon",
-  title: "Your Smart Platform for Reliable Updates to Drive Business Growth.",
-  description:
-    "Imagine a platform that delivers tailored updates and engaging content to captivate your target audience. With Canon, you’ll keep your customers informed about the latest news, offers, and trends—whether you run a clinic, an exhibition, or any business. Through the detective spirit of Canon, we transform your vision into a dynamic digital experience that grabs attention and drives results.",
-  action: "Start now and see the difference!",
-  free: "Try for Free Now!",
-};
+import { useTranslations } from 'next-intl';
 
 async function CanonDetail() {
-  const locale = await getLocale();
+  const t = useTranslations("canonDetail");
 
   return (
     <Card className="flex items-center justify-between flex-col bg-gradient-blue-light dark:bg-gradient-custom border border-white/70 ">
       <CardHeader>
         <CardTitle className="flex flex-col items-center gap-4 ">
           <p className="text-xl font-bold">
-            {locale === "ar" ? arDetail.name : enDetail.name}
+            {t("name")}
           </p>
         </CardTitle>
         <CardDescription>
           <p className="text-lg ">
-            {locale === "ar" ? arDetail.title : enDetail.title}
+            {t("title")}
           </p>
         </CardDescription>
       </CardHeader>
@@ -64,9 +47,9 @@ async function CanonDetail() {
             />
           </div>
           <p className="text-lg">
-            {locale === "ar" ? arDetail.description : enDetail.description}
+            {t("description")}
             <span className="text-destructive font-bold animate-pulse bg-slate-300 px-2 rounded ">
-              {arDetail.free}
+              {t("free")}
             </span>
           </p>
         </div>
@@ -80,7 +63,7 @@ async function CanonDetail() {
           )}
         >
           <p className="text-lg" >
-            {locale === "ar" ? arDetail.action : enDetail.action}
+            {t("action")}
           </p>
         </Link>
 

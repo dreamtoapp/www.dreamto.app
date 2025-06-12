@@ -11,6 +11,7 @@ import { toast } from "sonner"; // Importing Sonner's toast function
 import { DialogClose } from "../ui/dialog";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "../../lib/utils";
+import { useTranslations } from "next-intl";
 
 // Define the initial state for the form
 const initialState = {
@@ -23,13 +24,14 @@ const initialState = {
   },
 };
 
-export default function FormData({
+export default function FormQuery({
   locale,
   type,
 }: {
   locale: string;
   type: string;
 }) {
+  const t = useTranslations("formQuery");
   const [state, action, isPending] = useActionState(submitForm, initialState);
 
   // Show errors in the toaster using Sonner Toast
@@ -47,7 +49,7 @@ export default function FormData({
   // Show success message after form submission
   useEffect(() => {
     if (state.success) {
-      toast.success(state.message || "Form submitted successfully!"); // Show success toast
+      toast.success(state.message || t("successMessage")); // Show success toast
     }
   }, [state.success, state.message]); // Trigger when form submission is successful
 
@@ -60,7 +62,7 @@ export default function FormData({
           {/* Name Field */}
           <div className="grid gap-2">
             <Label htmlFor="name" className="font-semibold text-primary">
-              {locale === "ar" ? "الاسم" : "Name"}
+              {t("name")}
             </Label>
             <Input
               id="name"
@@ -72,7 +74,7 @@ export default function FormData({
           {/* Mobile Field */}
           <div className="grid gap-2">
             <Label htmlFor="mobile" className="font-semibold  text-primary">
-              {locale === "ar" ? "رقم الجوال" : "Mobile"}
+              {t("mobile")}
             </Label>
             <Input
               id="mobile"
@@ -85,7 +87,7 @@ export default function FormData({
           {/* Brief Description Field */}
           <div className="grid gap-2 text-primary font-semibold">
             <Label htmlFor="brief" className="font-semibold  text-primary">
-              {locale === "ar" ? "وصف مختصر" : "Brief"}
+              {t("brief")}
             </Label>
             <Textarea
               id="brief"
@@ -101,13 +103,7 @@ export default function FormData({
               disabled={isPending}
               className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
             >
-              {isPending
-                ? locale === "ar"
-                  ? "جارٍ الإرسال..."
-                  : "Sending..."
-                : locale === "ar"
-                ? "ارسال"
-                : "Send"}
+              {isPending ? t("sending") : t("submit")}
             </Button>
             <DialogClose
               className={cn(

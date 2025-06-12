@@ -86,7 +86,9 @@
       "usedTecno": "Technologies Used",
       "workSample": "Samples of Our Work",
       "price": "Competitive Prices",
-      "team": "Our Team"
+      "team": "Our Team",
+      "quickAccess": "Quick Access",
+      "contactUsCTA": "Contact Us Now"
     },
     "plugin": {
       "title": "Plugins",

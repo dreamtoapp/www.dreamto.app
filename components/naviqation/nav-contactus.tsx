@@ -8,6 +8,8 @@ import {
 } from "@/components/ui/sidebar";
 import { useTranslations } from "next-intl";
 import { contactUs } from "../../constant/icons";
+import Link from "../link";
+import { cn } from "@/lib/utils";
 
 export function NavContactUs({ locale }: { locale: string }) {
   const t = useTranslations("navigation");
@@ -16,45 +18,43 @@ export function NavContactUs({ locale }: { locale: string }) {
   const data = [
     {
       name: t("contactus.whatsapp"),
-      url: `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ""}`,
+      url: "https://wa.me/+966554113107",
       icon: contactUs.whatsapp.icon,
     },
     {
       name: t("contactus.email"),
-      url: `mailto:${process.env.NEXT_PUBLIC_EMAIL || ""}`,
+      url: "mailto:dreamtoapp@gmail.com",
       icon: contactUs.email.icon,
     },
-    {
-      name: t("contactus.phone"),
-      url: `tel:${process.env.NEXT_PUBLIC_PHONE_NUMBER || ""}`,
-      icon: contactUs.phone.icon,
-    },
-    {
-      name: t("contactus.form"),
-      url: `/${locale}/contactus`, // Replace with your actual contact form URL
-      icon: contactUs.form.icon,
-    },
+     
+   
   ];
 
   return (
-    <SidebarGroup>
-      {/* <div className="flex items-center mb-2">
-        <span className="text-lg font-bold">{t("contactus.title")}</span>
-      </div> */}
-      <SidebarMenu className="flex flex-col gap-2 mb-4">
-        {data.map((item) => (
-          <SidebarMenuItem key={item.name}>
-            <SidebarMenuButton asChild>
-              <a href={item.url} className="flex items-center">
-                <Icon icon={item.icon} width={iconSize} height={iconSize} />
-                
-                  <span className="text-sm text-foreground">{item.name}</span>
-          
-              </a>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+    <SidebarGroup
+      className={cn(
+        "items-center justify-center gap-4 py-2",
+        state === "collapsed" ? "flex flex-col" : "flex flex-row"
+      )}
+    >
+      {data.map((item, index) => (
+        <Link
+          key={item.name + index}
+          href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={item.name}
+            className="flex items-center justify-center w-12 h-12 rounded-full bg-card/80 border border-primary/20 shadow-lg hover:bg-primary/10 hover:border-primary/60 hover:shadow-primary/40 transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 backdrop-blur-md"
+          >
+            <Icon
+              icon={item.icon}
+              width={iconSize}
+              height={iconSize}
+              className="text-primary group-hover:text-accent group-hover:scale-110 transition-all duration-200"
+            />
+          </Link>
         ))}
-      </SidebarMenu>
     </SidebarGroup>
+   
   );
 }
