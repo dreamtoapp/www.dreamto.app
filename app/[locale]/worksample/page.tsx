@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getLocale } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 
 import Link from '@/components/link';
@@ -23,9 +23,11 @@ export default async function Page() {
   const baseFolder = "dreamToApp/worksample";
   const folders = await getFoldersWithCoverImages(baseFolder);
   const locale = await getLocale();
+  const t = await getTranslations("worksample");
+  const t2 = await getTranslations("buttons");
 
   if (!folders.length) {
-    return <p className="text-center text-gray-500">No folders found.</p>;
+    return <p className="text-center text-gray-500">{t("noFolders")}</p>;
   }
 
   return (
@@ -54,7 +56,7 @@ export default async function Page() {
                     />
                   ) : (
                     <div className="flex items-center justify-center w-full h-full text-gray-500 text-lg font-semibold">
-                      No Image Available
+                      {t("noImage")}
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent group-hover:from-black/60 group-hover:to-black/30 flex items-end justify-start p-4"></div>
@@ -63,7 +65,8 @@ export default async function Page() {
               <CardContent className="p-4">
                 <div className="flex items-center gap-3">
                   <span className="text-xs bg-primary py-1 px-3 rounded-xl">
-                    {folder.itemCount} task
+                    {/* {t.rich("taskCount", { count: folder.itemCount })} */}
+                    {folder.itemCount}
                   </span>
                   <span className="text-foreground text-lg font-bold uppercase">
                     {lastSegment}
@@ -77,7 +80,7 @@ export default async function Page() {
                   )}`}
                   className="block w-full text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors py-2 rounded-lg"
                 >
-                  <p>View Gallery</p>
+                  <p>{t2("showMore")}</p>
                 </Link>
               </CardFooter>
             </Card>

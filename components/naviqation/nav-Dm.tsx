@@ -1,11 +1,6 @@
 "use client";
-import { Icon } from "@iconify/react";
-import snapchat from "@iconify/icons-tabler/brand-snapchat";
-import youtube from "@iconify/icons-tabler/brand-youtube";
-import instgram from "@iconify/icons-tabler/brand-instagram";
-import tiktok from "@iconify/icons-tabler/brand-tiktok";
-import twitter from "@iconify/icons-tabler/brand-twitter";
-import chevrons from "@iconify/icons-tabler/square-chevrons-down";
+import { FiChevronDown } from "react-icons/fi";
+import { FaTwitter, FaTiktok, FaInstagram, FaYoutube, FaSnapchat } from "react-icons/fa";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -52,7 +47,7 @@ export function Dm({
                 <span className="truncate font-semibold">{user.name}</span>
                 <span className="truncate text-xs">{user.email}</span>
               </div>
-              <Icon icon={chevrons} width="24" height="24" />
+              <FiChevronDown size={24} />
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
@@ -76,29 +71,29 @@ export function Dm({
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Icon icon={twitter} width="24" height="24" />
-                Twiter
+                <FaTwitter className="w-6 h-6" />
+                Twitter
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
               <DropdownMenuItem>
-                <Icon icon={tiktok} width="24" height="24" />
+                <FaTiktok className="w-6 h-6" />
                 Tiktok
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Icon icon={instgram} width="24" height="24" />
-                Instgram
+                <FaInstagram className="w-6 h-6" />
+                Instagram
               </DropdownMenuItem>
               <DropdownMenuItem>
-                <Icon icon={youtube} width="24" height="24" />
-                YouTube
+                <FaYoutube className="w-6 h-6" />
+                Youtube
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
-              <Icon icon={snapchat} width="24" height="24" />
-              Snapshot
+              <FaSnapchat className="w-6 h-6" />
+              Snapchat
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -5,16 +5,14 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from "@/components/ui/card";
 import Image from "next/image";
 
-import { getLocale, getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server";
 import InlineQueryWrapper from "@/components/InlineQuery/InlineQueryWrapper";
 
 export const DesinAndDiscover = async () => {
   const t = await getTranslations("homepage");
-  const locale = await getLocale();
 
   return (
     <Card className="flex flex-col justify-between border border-primary/80 rounded-xl shadow-lg overflow-hidden">

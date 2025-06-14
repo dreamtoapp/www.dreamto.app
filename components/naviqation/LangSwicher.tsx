@@ -1,21 +1,23 @@
 "use client";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import arabic from "@/public/assets/arabic.png";
 import english from "@/public/assets/english.png";
+import { locales } from "@/i18n/routing";
 
 const languageData = {
   ar: { image: arabic, label: "Arabic" },
   en: { image: english, label: "English" },
-};
+} as const;
 
 export default function LangSwitcher() {
-  const locale = useLocale();
+  const locale = useLocale() as keyof typeof languageData;
   const router = useRouter();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
+  const t = useTranslations('navigation');
 
   useEffect(() => {
     setMounted(true);
@@ -23,8 +25,9 @@ export default function LangSwitcher() {
 
   const switchLanguage = () => {
     const newLocale = locale === "ar" ? "en" : "ar";
-    const path = pathname.split("/").slice(2).join("/");
-    router.push(`/${newLocale}/${path}`);
+    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
+    const newPath = `/${newLocale}${pathWithoutLocale}`.replace(/\/+/g, "/");
+    router.push(newPath);
     router.refresh();
   };
 
@@ -56,14 +59,14 @@ export default function LangSwitcher() {
     );
   }
 
-  const currentLanguage = languageData[locale as keyof typeof languageData];
+  const currentLanguage = languageData[locale];
 
   return (
     <div className="flex items-center gap-2 sm:gap-3  px-1 rounded-lg  ">
       <button
         onClick={switchLanguage}
         className="flex items-center justify-center w-6 h-6   rounded-full overflow-hidden border border-transparent hover:border-gray-400 hover:shadow-sm transition-all duration-300"
-        aria-label={`Switch to ${locale === "ar" ? "English" : "Arabic"}`}
+        aria-label={t('switchLanguage', { language: currentLanguage.label })}
       >
         <Image
           src={currentLanguage.image}
@@ -73,13 +76,13 @@ export default function LangSwitcher() {
           className="rounded-full"
         />
       </button>
-      <ThemeToggle />
     </div>
   );
 }
 
 function ThemeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const t = useTranslations('navigation');
 
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("dark");
@@ -95,7 +98,7 @@ function ThemeToggle() {
     <button
       className="flex items-center justify-center w-6 h-6   rounded-full bg-gray-100 hover:bg-gray-300 transition-all duration-300"
       onClick={toggleTheme}
-      aria-label="Toggle theme"
+      aria-label={t('toggleTheme')}
     >
       {isDarkMode ? (
         <svg

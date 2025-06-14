@@ -3,23 +3,14 @@ import React from "react";
 // import { Timeline, Panel } from "rsuite"; // Removed, using native components
 // import "rsuite/dist/rsuite.min.css"; // Removed RSuite styles
 import { motion, useInView } from "framer-motion"; // Import Framer Motion
-import { Icon, IconifyIcon } from "@iconify/react"; // Import Iconify
+import { FaChartBar, FaCode, FaMobileAlt, FaRocket, FaCog, FaVial, FaUsers } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
-// Import icons one by one
-import IconChartBar from "@iconify/icons-tabler/chart-bar";
-import IconCode from "@iconify/icons-tabler/code";
-import IconDeviceMobile from "@iconify/icons-tabler/device-mobile";
-import IconRocket from "@iconify/icons-tabler/rocket";
-import IconSettings from "@iconify/icons-tabler/settings";
-import IconTestPipe from "@iconify/icons-tabler/test-pipe";
-import IconUsers from "@iconify/icons-tabler/users";
 
-// Define TypeScript types
 type MobileAppPhase = {
   title: string;
   description: string;
-  icon: IconifyIcon; // Iconify icon object
+  icon: React.ElementType; // React icon component
   date: string;
 };
 
@@ -33,43 +24,43 @@ const mobileAppPhases: MobileAppPhase[] = [
   {
     title: "discoveryPlanningTitle",
     description: "discoveryPlanningDescription",
-    icon: IconChartBar,
+    icon: FaChartBar,
     date: "Phase 1",
   },
   {
     title: "uiUxDesignTitle",
     description: "uiUxDesignDescription",
-    icon: IconDeviceMobile,
+    icon: FaMobileAlt,
     date: "Phase 2",
   },
   {
     title: "developmentTitle",
     description: "developmentDescription",
-    icon: IconCode,
+    icon: FaCode,
     date: "Phase 3",
   },
   {
     title: "testingQATitle",
     description: "testingQADescription",
-    icon: IconTestPipe,
+    icon: FaVial,
     date: "Phase 4",
   },
   {
     title: "deploymentTitle",
     description: "deploymentDescription",
-    icon: IconRocket,
+    icon: FaRocket,
     date: "Phase 5",
   },
   {
     title: "maintenanceUpdatesTitle",
     description: "maintenanceUpdatesDescription",
-    icon: IconSettings,
+    icon: FaCog,
     date: "Phase 6",
   },
   {
     title: "userFeedbackIterationTitle",
     description: "userFeedbackIterationDescription",
-    icon: IconUsers,
+    icon: FaUsers,
     date: "Phase 7",
   },
 ];
@@ -91,7 +82,7 @@ const EnMobileTimeLine: React.FC = () => {
   );
 };
 
-const TimelineCard: React.FC<TimelineCardProps & { t: any }> = ({
+const TimelineCard: React.FC<TimelineCardProps & { t: (key: string) => string }> = ({
   phase,
   index,
   t,
@@ -109,7 +100,7 @@ const TimelineCard: React.FC<TimelineCardProps & { t: any }> = ({
       <div className="w-full bg-mute/50 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
   <div className="p-4 flex items-center space-x-4">
     <div className="p-3 bg-blue-50 rounded-full">
-      <Icon icon={phase.icon} className="w-6 h-6 text-blue-600" />
+      <phase.icon className="w-6 h-6 text-blue-600" />
     </div>
     <div>
       <h3 className="text-lg font-semibold text-gray-800">
@@ -122,7 +113,7 @@ const TimelineCard: React.FC<TimelineCardProps & { t: any }> = ({
     <p className="text-gray-600">{t(phase.description)}</p>
   </div>
 </div>
-    </motion.div>
+      </motion.div>
   );
 };
 

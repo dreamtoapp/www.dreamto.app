@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useRef, useCallback, useMemo, useState, useEffect } from "react"
-import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion"
+import React, { useRef, useMemo, useState, useEffect } from "react"
+import { motion, useInView, useScroll, useTransform, useSpring, easeInOut } from "framer-motion"
 import { Button } from "./button"
 import Image from "next/image"
 import { useLocale, useTranslations } from "next-intl"
+import { Link } from "@/i18n/routing"
 
 // Stable particle configuration
 // Reduce to 8 particles for less main-thread work
@@ -48,7 +49,7 @@ const AnimatedBackground = () => {
         transition={{
           duration: 20,
           repeat: Number.POSITIVE_INFINITY,
-          ease: "linear",
+          ease: easeInOut,
         }}
       />
       <motion.div
@@ -61,7 +62,7 @@ const AnimatedBackground = () => {
         transition={{
           duration: 25,
           repeat: Number.POSITIVE_INFINITY,
-          ease: "linear",
+          ease: easeInOut,
         }}
       />
 
@@ -87,7 +88,7 @@ const AnimatedBackground = () => {
             duration: particle.duration,
             repeat: mounted ? Number.POSITIVE_INFINITY : 0,
             delay: particle.delay,
-            ease: "easeInOut",
+            ease: easeInOut,
           }}
         />
       ))}
@@ -182,7 +183,7 @@ const Hero: React.FC = () => {
         filter: "blur(0px)",
         transition: {
           duration: 0.8,
-          ease: [0.25, 0.46, 0.45, 0.94],
+          ease: easeInOut,
         },
       },
     }),
@@ -203,68 +204,8 @@ const Hero: React.FC = () => {
         rotate: 0,
         filter: "blur(0px)",
         transition: {
-          duration: 1.2,
-          ease: [0.25, 0.46, 0.45, 0.94],
-          type: "spring",
-          stiffness: 100,
-          damping: 15,
-        },
-      },
-    }),
-    [],
-  )
-
-  const textVariants = useMemo(
-    () => ({
-      hidden: {
-        opacity: 0,
-        y: 40,
-        filter: "blur(8px)",
-      },
-      show: {
-        opacity: 1,
-        y: 0,
-        filter: "blur(0px)",
-        transition: {
-          duration: 0.9,
-          ease: [0.25, 0.46, 0.45, 0.94],
-        },
-      },
-    }),
-    [],
-  )
-
-  const buttonVariants = useMemo(
-    () => ({
-      hidden: {
-        opacity: 0,
-        scale: 0.8,
-        y: 20,
-      },
-      show: {
-        opacity: 1,
-        scale: 1,
-        y: 0,
-        transition: {
-          duration: 0.6,
-          ease: [0.25, 0.46, 0.45, 0.94],
-          type: "spring",
-          stiffness: 200,
-          damping: 20,
-        },
-      },
-      hover: {
-        scale: 1.05,
-        y: -2,
-        transition: {
-          duration: 0.2,
-          ease: "easeOut",
-        },
-      },
-      tap: {
-        scale: 0.98,
-        transition: {
-          duration: 0.1,
+          duration: 1,
+          ease: easeInOut,
         },
       },
     }),
@@ -272,125 +213,76 @@ const Hero: React.FC = () => {
   )
 
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen py-20 overflow-hidden text-center">
-      {/* Optimized Video Background */}
+    <motion.div
+      ref={ref}
+      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden"
+      style={{ y: springY, scale }}
+    >
       <ProgressiveBackground />
-
-      {/* Animated Background Elements */}
       <AnimatedBackground />
 
       <motion.div
-        ref={ref}
+        className="relative z-20 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
         variants={containerVariants}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        style={{ y: springY, scale }}
-        className="relative z-10 flex flex-col items-center justify-center w-full px-4"
       >
-        {/* Enhanced Logo Animation */}
         <motion.div
-          variants={logoVariants}
-          whileHover={{
-            scale: 1.1,
-            rotate: 5,
-            transition: { duration: 0.3 },
-          }}
-        >
-          <Image
-            src="/assets/dta.svg"
-            alt="DTA Logo"
-            width={160}
-            height={120}
-            className="mx-auto mb-8 max-w-[160px] w-full h-auto drop-shadow-2xl"
-            style={{ filter: "invert(1) drop-shadow(0 0 20px rgba(255,255,255,0.3))" }}
-            priority
-          />
-        </motion.div>
-
-        {/* Enhanced Headline */}
-        <motion.h1
-          className="text-4xl md:text-7xl font-black tracking-tight mb-6 leading-tight text-white"
-          variants={textVariants}
-          style={{
-            textShadow: "0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.1)",
-          }}
-        >
-          <motion.span
-            className="block"
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-          >
-            {t("slogon")}
-          </motion.span>
-        </motion.h1>
-
-        {/* Enhanced Subheading */}
-        <motion.p
-          className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto text-white/90 font-medium"
-          variants={textVariants}
-          style={{
-            textShadow: "0 2px 10px rgba(0,0,0,0.7)",
-          }}
-        >
-          <motion.span
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ delay: 0.8, duration: 1 }}
-          >
-             {t("subHeader")}
-            {/* Transform your ideas into reality with cutting-edge technology */}
-          </motion.span>
-        </motion.p>
-
-        {/* Enhanced Quote */}
-        <motion.blockquote
-          className="mb-10 max-w-3xl mx-auto text-base md:text-xl italic font-medium text-white/95 relative"
+          className="flex flex-col items-center text-center space-y-8"
           variants={fadeUpVariants}
         >
-          <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-pink-500 to-purple-500 rounded-full" />
-          <div className="pl-8 relative">
-            <span className="text-pink-400 text-3xl absolute -top-2 -left-2">"</span>
-            {t("subHeader2")}
-            <span className="text-pink-400 text-3xl absolute -bottom-4 -right-2">"</span>
-          </div>
-        </motion.blockquote>
-
-        {/* Enhanced CTA Button */}
-        <motion.div variants={buttonVariants} whileHover="hover" whileTap="tap">
-          <Button
-            variant="outline"
-            className="rounded-full px-8 py-3 text-lg font-semibold border-2 border-white/30 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-black transition-all duration-300 shadow-2xl hover:shadow-white/25"
-          >
-            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}>
-              {t("ctaButton")}
-            </motion.span>
-          </Button>
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ delay: 1.5, duration: 0.8 }}
-      >
-        <motion.div
-          className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center"
-          animate={{
-            borderColor: ["rgba(255,255,255,0.5)", "rgba(255,255,255,0.8)", "rgba(255,255,255,0.5)"],
-          }}
-          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-        >
           <motion.div
-            className="w-1 h-3 bg-white rounded-full mt-2"
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-          />
+            className="relative w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-full"
+            variants={logoVariants}
+          >
+            <Image
+              src="/assets/dta.svg"
+              alt={t('logo.alt')}
+              fill
+              className="object-contain"
+              priority
+            />
+          </motion.div>
+
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl font-bold text-white"
+            variants={fadeUpVariants}
+          >
+            {t('title')}
+          </motion.h1>
+
+          <motion.p
+            className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl"
+            variants={fadeUpVariants}
+          >
+            {t('description')}
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4"
+            variants={fadeUpVariants}
+          >
+            <Link href="/contactus">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                {t('cta.primary')}
+              </Button>
+            </Link>
+            <Link href="/services">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white/20 hover:border-white/40 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
+              >
+                {t('cta.secondary')}
+              </Button>
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.div>
-    </section>
+    </motion.div>
   )
 }
 

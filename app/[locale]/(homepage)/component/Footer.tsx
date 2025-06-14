@@ -1,5 +1,5 @@
 "use client";
-import { useRef } from 'react';
+import { ReactNode, useRef, useState } from 'react';
 
 import {
   motion,
@@ -13,12 +13,7 @@ import {
 import Image from 'next/image';
 
 import Link from '@/components/link';
-import dreamtoapp from '@/public/assets/dta.svg';
-import backgroundImg from '@/public/assets/homepage/footer.webp';
-import {
-  Icon,
-  IconifyIcon,
-} from '@iconify/react';
+
 
 import { buttonVariants } from '../../../../components/ui/button';
 import {
@@ -30,7 +25,7 @@ import { cn } from '../../../../lib/utils';
 // Define types for contact items
 type ContactItem = {
   title: string;
-  icon: IconifyIcon; // Change type to IconifyIcon
+  icon: React.ElementType;
   link: string;
 };
 
@@ -72,7 +67,7 @@ const ContactAndSocialMedia: React.FC = () => {
   return (
     <div className="mt-6 flex justify-center gap-4 z-50 p-2 rounded-lg">
       {contact.map((item, index) => (
-        <a
+        <Link
           key={index}
           href={item.link}
           target="_blank"
@@ -80,8 +75,8 @@ const ContactAndSocialMedia: React.FC = () => {
           aria-label={item.title} // Accessibility: Add ARIA label for screen readers
           className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-primary shadow-md transition-transform hover:scale-110"
         >
-          <Icon icon={item.icon} className="w-6 h-6" />
-        </a>
+          <item.icon className="w-6 h-6" />
+        </Link>
       ))}
     </div>
   );
@@ -91,43 +86,50 @@ const ContactAndSocialMedia: React.FC = () => {
 const Footer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("homepage");
-  const locale = useLocale();
   const footer = useTranslations("footer");
+  const [imageError, setImageError] = useState(false);
 
   // Scroll-based animations
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"], // Trigger animations as the footer enters and exits the viewport
+    offset: ["start end", "end start"],
   });
 
   // Transformations for zoom and opacity
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]); // Smooth zoom effect
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]); // Fade-in effect
+  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
     <div>
       {/* Motion Footer */}
       <motion.footer
         ref={containerRef}
-        className="relative text-white py-12 overflow-hidden rounded-xl shadow-lg"
+        className="relative text-white py-12 overflow-hidden rounded-xl shadow-lg bg-card"
         style={{
-          scale, // Apply zoom effect
-          opacity, // Apply fade effect
+          scale,
+          opacity,
         }}
       >
-        {/* Background Image */}
+        {/* Background Image with Fallback */}
         <div className="absolute inset-0 w-full h-full">
-          <Image
-            src={backgroundImg}
-            alt="Background Image"
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            priority
-            quality={100}
-            className="object-cover"
+          {!imageError && (
+            <Image
+              src="/assets/homepage/footer.webp"
+              alt="Footer Background"
+              fill
+              sizes="100vw"
+              priority
+              quality={90}
+              className="object-cover"
+              onError={() => setImageError(true)}
+            />
+          )}
+          <div 
+            className={cn(
+              "absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-primary/80",
+              imageError ? "bg-gradient-to-br from-purple-900 to-blue-900" : ""
+            )}
           />
-          <div className="absolute inset-0 bg-black bg-opacity-30"></div>{" "}
-          {/* Overlay for contrast */}
         </div>
 
         {/* Content */}
@@ -136,51 +138,53 @@ const Footer: React.FC = () => {
             {/* Main Heading */}
             <div className="text-center space-y-4">
               <p
-                className="text-3xl font-extrabold text-white drop-shadow-md"
-                id="footer-heading" // Accessibility: Add ID for screen readers
+                className="text-3xl font-extrabold text-foreground drop-shadow-md"
+                id="footer-heading"
               >
                 {footer("readyToTransform")}
               </p>
-              <p
-                className="text-lg text-gray-200"
-              >
+              <p className="text-lg text-muted-foreground">
                 {footer("buildSomethingGreat")}
               </p>
             </div>
 
             {/* Dream To App Logo */}
-            <div className="bg-white rounded-full w-[150px] h-[150px] flex items-center justify-center shadow-md">
+            <div className="bg-white rounded-full w-[120px] h-[120px] flex items-center justify-center shadow-md border-4 border-primary/30">
               <Image
-                src={dreamtoapp}
+                src="/assets/dta.svg"
                 alt="Dream To App Logo"
-                width={140}
-                height={120}
+                width={100}
+                height={100}
                 priority
                 className="object-contain"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
               />
             </div>
 
             {/* Slogan */}
-            <p
-              className="text-3xl font-bold text-purple-500 drop-shadow-md"
-            >
+            <p className="text-2xl font-bold text-primary drop-shadow-md">
               {t("slogon")}
             </p>
 
             {/* Call-to-Action Button */}
             <Link
-              href="/"
+              href="https://wa.me/966554113107"
+              target="_blank"
+              rel="noopener noreferrer"
               className={cn(
                 buttonVariants({ variant: "default" }),
-                "bg-gradient-to-r from-pink-500 to-blue-500 text-white transform transition shadow-2xl hover:shadow-lg rounded-2xl px-8 py-3"
+                "bg-primary text-primary-foreground hover:bg-primary/90 transform transition shadow-2xl hover:shadow-lg rounded-2xl px-8 py-3 text-lg font-semibold flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary/70"
               )}
-              aria-label={t("fromIdeaButton")} // Accessibility: Add ARIA label
+              aria-label={t("fromIdeaButton")}
             >
-              <p
-                className="text-lg font-semibold"
-              >
-                {t("fromIdeaButton")}
-              </p>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 14.487c-.263-.131-1.558-.77-1.799-.858-.241-.088-.417-.131-.593.132-.175.263-.676.858-.83 1.033-.153.175-.307.197-.57.066-.263-.132-1.11-.408-2.114-1.302-.782-.698-1.31-1.561-1.464-1.824-.153-.263-.016-.405.115-.537.118-.117.263-.307.395-.461.132-.153.175-.263.263-.439.088-.175.044-.329-.022-.461-.066-.132-.593-1.433-.813-1.963-.214-.514-.433-.444-.593-.453-.153-.009-.329-.011-.505-.011-.175 0-.46.066-.701.329-.241.263-.92.899-.92 2.191 0 1.292.942 2.541 1.073 2.715.132.175 1.853 2.832 4.5 3.858.63.217 1.12.346 1.503.442.631.161 1.206.138 1.66.084.507-.06 1.558-.637 1.779-1.253.219-.616.219-1.144.153-1.253-.066-.109-.241-.175-.504-.307z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 12c0 5.385-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12 6.615 2.25 12 2.25 21.75 6.615 21.75 12z" />
+              </svg>
+              <span>{t("fromIdeaButton")}</span>
             </Link>
           </div>
         </div>

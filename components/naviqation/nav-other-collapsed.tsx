@@ -1,6 +1,6 @@
 import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import Link from "../link";
-import { Icon } from "@iconify/react";
+
 
 export function NavOtherCollapsed({ data, iconSize }: { data: any[]; iconSize: number }) {
   return (
@@ -13,12 +13,12 @@ export function NavOtherCollapsed({ data, iconSize }: { data: any[]; iconSize: n
             className="flex items-center justify-center w-12 h-12 rounded-full bg-background/80 "
           >
             <Link href={item.url}>
-              <Icon
-                icon={item.icon}
-                width={40}
-                height={40}
-                className="text-primary group-hover:text-accent group-hover:scale-110 group-hover:drop-shadow-lg transition-all duration-200"
-              />
+              {item.icon && (
+  <item.icon
+    size={40}
+    className="text-primary group-hover:text-accent group-hover:scale-110 group-hover:drop-shadow-lg transition-all duration-200"
+  />
+)}
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>

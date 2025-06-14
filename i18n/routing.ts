@@ -1,15 +1,19 @@
 import {defineRouting} from 'next-intl/routing';
 import {createNavigation} from 'next-intl/navigation';
- 
+
+// Simple locale configuration
+export const locales = ['en', 'ar'] as const;
+export const defaultLocale = 'en';
+
 export const routing = defineRouting({
-  // A list of all locales that are supported
-  locales: ['en', 'ar'],
- 
-  // Used when no locale matches
-  defaultLocale: 'ar'
+  locales,
+  defaultLocale,
+  localePrefix: 'as-needed',
 });
- 
-// Lightweight wrappers around Next.js' navigation APIs
-// that will consider the routing configuration
+
+// Navigation utilities
 export const {Link, redirect, usePathname, useRouter, getPathname} =
   createNavigation(routing);
+
+// Simple helper for RTL support
+export const isRTL = (locale: string) => locale === 'ar';

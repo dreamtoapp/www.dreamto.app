@@ -1,4 +1,4 @@
-import { Icon as Iconify, IconifyIcon } from "@iconify/react";
+import { FaRocket, FaCode, FaMobileAlt, FaCog, FaVial, FaUsers, FaStar } from "react-icons/fa";
 import {
   Card,
   CardHeader,
@@ -15,13 +15,13 @@ import { memo } from "react";
 // Define interfaces for better type safety and modularity
 interface CardTag {
   text: string;
-  icon: IconifyIcon;
+  icon: React.ElementType;
 }
 
 interface CardData {
   title: string;
   description: string;
-  icon: IconifyIcon;
+  icon: React.ElementType;
   tags: CardTag[];
 }
 
@@ -32,89 +32,80 @@ interface CardComponentProps {
 }
 
 /**
- * Refactored Card Component
- * - Modularized structure for better readability and reusability.
- * - Optimized for performance using lazy loading and dynamic imports.
- * - Enhanced accessibility with proper ARIA roles and WCAG compliance.
- * - Styled with Tailwind CSS for consistent and responsive design.
+ * Enhanced Card Component
+ * - Modern, accessible, and responsive UI/UX
+ * - Semantic color classes and improved visual hierarchy
  */
 const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
   return (
     <MotionDiv
-      className="h-full flex flex-col min-w-[300px] shadow-lg transition-transform hover:shadow-xl"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      className="h-full flex flex-col min-w-[300px] bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group focus-within:ring-2 focus-within:ring-primary/60"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
     >
-      <Card className="h-full flex flex-col">
+      <article className="h-full flex flex-col" aria-labelledby={`service-card-title-${t(card.title)}`}> 
         {/* Header Section */}
-        <CardHeader className="flex flex-col items-center text-center space-y-2">
-          {/* Icon */}
-          <Iconify
-            icon={card.icon}
-            className="w-12 h-12 text-primary"
-            aria-hidden="true"
-            role="img"
-            aria-label={t(card.title)} // Accessibility: Provide a label for the icon
-          />
+        <CardHeader className="flex flex-col items-center text-center space-y-3 pt-6 pb-2">
+          {/* Icon with animated ring on hover */}
+          <div className="relative flex items-center justify-center mb-2">
+            <span className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+            {card.icon && (
+              <card.icon
+                className="w-14 h-14 text-primary drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                aria-label={t(card.title)}
+                role="img"
+              />
+            )}
+          </div>
           {/* Title */}
-          <CardTitle className="text-xl font-bold">
-            <h3
-              className="text-balance font-cairo"
-            >
-              {t(card.title)}
-            </h3>
+          <CardTitle className="text-2xl font-bold text-foreground" id={`service-card-title-${t(card.title)}`}> 
+            <h3 className="text-balance font-cairo">{t(card.title)}</h3>
           </CardTitle>
           {/* Description */}
-          <CardDescription className="text-muted-foreground">
-            <p
-              className="text-balance"
-              aria-hidden="false" // Ensure screen readers can access this content
-            >
+          <CardDescription className="text-muted-foreground text-base">
+            <p className="text-balance" aria-hidden="false">
               {t(card.description)}
             </p>
           </CardDescription>
         </CardHeader>
 
         {/* Content Section */}
-        <CardContent className="flex-1 flex flex-col justify-end">
+        <CardContent className="flex-1 flex flex-col justify-end gap-3 pb-4">
           {/* Technology Used Label */}
-          <span
-            className="text-center mb-2 text-primary/80 font-semibold"
-            aria-hidden="false"
-          >
+          <span className="text-center mb-1 text-primary/80 font-semibold tracking-wide text-sm uppercase">
             {t("tecnoUsed")}
           </span>
           {/* Tags List */}
-          <div className="flex flex-wrap gap-2" role="list">
+          <div className="flex flex-wrap gap-2 justify-center" role="list">
             {card.tags.map((tag, index) => (
               <Badge
                 key={index}
                 variant="secondary"
-                className="flex items-center gap-2 bg-gray-100 dark:bg-gray-800 text-sm"
+                className="flex items-center gap-2 bg-secondary text-secondary-foreground border border-border shadow-sm px-3 py-1 rounded-full text-xs font-medium"
                 role="listitem"
               >
                 {/* Tag Icon */}
-                <Iconify
-                  icon={tag.icon}
-                  className="w-4 h-4"
-                  aria-hidden="true"
-                  role="img"
-                  aria-label={tag.text} // Accessibility: Provide a label for the icon
-                />
+                {tag.icon && (
+                  <tag.icon
+                    className="w-4 h-4"
+                    aria-hidden="true"
+                    role="img"
+                    aria-label={tag.text}
+                  />
+                )}
                 {/* Tag Text */}
                 <span className="capitalize">{tag.text}</span>
               </Badge>
             ))}
           </div>
         </CardContent>
-      </Card>
+      </article>
 
       {/* Footer Section */}
-      <CardFooter className="flex items-center justify-center w-full mt-4">
+      <CardFooter className="flex items-center justify-center w-full mt-2 pb-4">
         <InlineQueryWrapper
           btnTitle={t("getQuote")}
           title={t(card.title)}
-          aria-label={`Get quote for ${t(card.title)}`} // Accessibility: Add an accessible label
         />
       </CardFooter>
     </MotionDiv>

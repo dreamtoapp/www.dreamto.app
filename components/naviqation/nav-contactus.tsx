@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+
 import {
   SidebarGroup,
   SidebarMenu,
@@ -46,12 +46,12 @@ export function NavContactUs({ locale }: { locale: string }) {
             aria-label={item.name}
             className="flex items-center justify-center w-12 h-12 rounded-full bg-card/80 border border-primary/20 shadow-lg hover:bg-primary/10 hover:border-primary/60 hover:shadow-primary/40 transition-all duration-200 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 backdrop-blur-md"
           >
-            <Icon
-              icon={item.icon}
-              width={iconSize}
-              height={iconSize}
-              className="text-primary group-hover:text-accent group-hover:scale-110 transition-all duration-200"
-            />
+            {item.icon && (
+  <item.icon
+    size={iconSize}
+    className="text-primary group-hover:text-accent group-hover:scale-110 transition-all duration-200"
+  />
+)}
           </Link>
         ))}
     </SidebarGroup>

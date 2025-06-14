@@ -48,7 +48,6 @@ export default function ApplyPage() {
       return;
     }
     // Handle form submission here
-    console.log("Form submitted");
     // Redirect to a thank you page or back to the team page
     router.push("/thank-you");
   };

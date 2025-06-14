@@ -9,8 +9,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { submitContact } from "./submitContact";
-import { Icon } from "@iconify/react";
+
 import { motion } from "framer-motion";
+import { FaRegComments,  } from "react-icons/fa";
 
 interface FormState {
   success: boolean;
@@ -58,31 +59,36 @@ export default function FormContact({ locale }: { locale: string }) {
         transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
         className="w-full max-w-lg mx-auto drop-shadow-2xl"
       >
-        <Card className="rounded-3xl border-0 shadow-2xl bg-card/90 backdrop-blur-md">
-          <CardContent className="p-10">
-            <div className="flex flex-col items-center mb-8">
+        <section className="rounded-3xl border-0 shadow-2xl bg-card/90 backdrop-blur-md" aria-labelledby="contact-form-title">
+          <div className="p-10">
+            <header className="flex flex-col items-center mb-8">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{ delay: 0.2, type: 'spring', stiffness: 300 }}
                 className="mb-2"
+                aria-hidden="true"
               >
-                <Icon icon="solar:chat-square-dots-bold" className="w-12 h-12 text-primary drop-shadow-md" />
+                <FaRegComments className="w-12 h-12 text-primary drop-shadow-md" />
               </motion.div>
-              
-            </div>
+              <h2 id="contact-form-title" className="sr-only">
+                {t("contactFormTitle") || "Contact Us"}
+              </h2>
+            </header>
             {/* Success State Animation */}
             {state.success && (
               <motion.div
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 className="flex flex-col items-center justify-center mb-6"
+                role="status"
+                aria-live="polite"
               >
-                <Icon icon="solar:check-circle-bold" className="w-16 h-16 text-success mb-2 animate-bounce" />
+                <FaRegComments className="w-16 h-16 text-success mb-2 animate-bounce" aria-hidden="true" />
                 <span className="text-success font-bold text-lg">{t("successMessage")}</span>
               </motion.div>
             )}
-            <form action={formAction} className="grid gap-7">
+            <form action={formAction} className="grid gap-7" role="form" aria-labelledby="contact-form-title">
               {[
                 {
                   name: "name",
@@ -108,7 +114,7 @@ export default function FormContact({ locale }: { locale: string }) {
                     htmlFor={name}
                     className="flex items-center gap-2 text-base font-semibold text-foreground"
                   >
-                    <Icon icon={icon} className="w-5 h-5 text-primary" />
+                    <FaRegComments className="w-5 h-5 text-primary" />
                     {label}
                   </Label>
                   <Input
@@ -118,12 +124,14 @@ export default function FormContact({ locale }: { locale: string }) {
                     autoComplete={name}
                     aria-invalid={!!state.errors?.[name]}
                     aria-describedby={state.errors?.[name]?.[0] ? `${name}-error` : undefined}
+
+                    
                     className={`border-2 rounded-xl p-3 focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 ${
                       state.errors?.[name] ? "border-destructive" : "border-border focus:border-primary"
                     }`}
                   />
                   {state.errors?.[name]?.[0] && (
-                    <p id={`${name}-error`} className="text-destructive text-xs mt-1">
+                    <p id={`${name}-error`} className="text-destructive text-xs mt-1" role="alert">
                       {state.errors[name]?.[0]}
                     </p>
                   )}
@@ -134,10 +142,7 @@ export default function FormContact({ locale }: { locale: string }) {
                   htmlFor="message"
                   className="flex items-center gap-2 text-base font-semibold text-foreground"
                 >
-                  <Icon
-                    icon="solar:chat-square-dots-bold"
-                    className="w-5 h-5 text-primary"
-                  />
+                  <FaRegComments className="w-5 h-5 text-primary" />
                   {t("message")}
                 </Label>
                 <Textarea
@@ -151,7 +156,7 @@ export default function FormContact({ locale }: { locale: string }) {
                   }`}
                 />
                 {state.errors?.message?.[0] && (
-                  <p id="message-error" className="text-destructive text-xs mt-1">
+                  <p id="message-error" className="text-destructive text-xs mt-1" role="alert">
                     {state.errors.message?.[0]}
                   </p>
                 )}
@@ -164,20 +169,20 @@ export default function FormContact({ locale }: { locale: string }) {
                 >
                   {isPending ? (
                     <span className="flex items-center gap-2">
-                      <Icon icon="svg-spinners:180-ring-with-bg" className="w-5 h-5 animate-spin" />
+                      <FaRegComments className="w-5 h-5 animate-spin" />
                       {t("sending")}
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">
-                      <Icon icon="solar:send-bold" className="w-5 h-5" />
+                      <FaRegComments className="w-5 h-5" />
                       {t("submit")}
                     </span>
                   )}
                 </Button>
               </motion.div>
             </form>
-          </CardContent>
-        </Card>
+          </div>
+        </section>
       </motion.div>
     // </div>
   );

@@ -1,6 +1,6 @@
 import { SidebarMenu, SidebarMenuItem, SidebarMenuButton } from "@/components/ui/sidebar";
 import Link from "../link";
-import { Icon } from "@iconify/react";
+
 
 export function NavOtherExpanded({ data, iconSize }: { data: any[]; iconSize: number }) {
   return (
@@ -14,12 +14,12 @@ export function NavOtherExpanded({ data, iconSize }: { data: any[]; iconSize: nu
           >
             <Link href={item.url}>
               <span className="flex items-center justify-center bg-primary/10 rounded-full p-2 shadow group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-200">
-                <Icon
-                  icon={item.icon}
-                  width={iconSize}
-                  height={iconSize}
-                  className="text-primary drop-shadow group-hover:text-accent group-hover:rotate-6 transition-all duration-200"
-                />
+                {item.icon && (
+  <item.icon
+    size={iconSize}
+    className="text-primary drop-shadow group-hover:text-accent group-hover:rotate-6 transition-all duration-200"
+  />
+)}
               </span>
               <span className="text-sm font-extrabold text-foreground group-hover:text-primary tracking-tight transition-colors duration-200">
                 {item.name}

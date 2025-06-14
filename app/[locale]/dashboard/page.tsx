@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"; // ShadCN Button component
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // ShadCN Tabs components
 import { Badge } from "@/components/ui/badge"; // ShadCN Badge component
 import { getContactUsData } from "./action/action"; // Import the refactored server action
+import { useTranslations, useFormatter } from 'next-intl';
 
 // Define types for each model (corrected for visitor data)
 type ContactUs = {
@@ -36,44 +37,46 @@ type Visitor = {
 export default async function Dashboard() {
   // Fetch data using the server action
   const { contacts, expressQuery, visitors } = await getContactUsData();
+  const t = useTranslations('dashboard');
+  const format = useFormatter();
 
   return (
     <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-semibold mb-6">Admin Dashboard</h1>
+      <h1 className="text-3xl font-semibold mb-6">{t('adminDashboard')}</h1>
 
       {/* Tabs Section */}
       <Tabs defaultValue="contact-us">
         <TabsList>
           <TabsTrigger value="contact-us">
-            Crombo
+            {t('cromboTab')}
             <Badge className="ml-2" variant="secondary">
-              {contacts.length}
+              {t('contactsTab', { count: contacts.length })}
             </Badge>
           </TabsTrigger>
 
           <TabsTrigger value="contact-us">
-            Prices Req
+            {t('pricesReqTab')}
             <Badge className="ml-2" variant="secondary">
-              {contacts.length}
+              {t('contactsTab', { count: contacts.length })}
             </Badge>
           </TabsTrigger>
 
           <TabsTrigger value="contact-us">
-            Contact Us
+            {t('contactUsTab')}
             <Badge className="ml-2" variant="secondary">
-              {contacts.length}
+              {t('contactsTab', { count: contacts.length })}
             </Badge>
           </TabsTrigger>
           <TabsTrigger value="express-queries">
-            Express Queries
+            {t('expressQueriesTab')}
             <Badge className="ml-2" variant="secondary">
-              {expressQuery.length}
+              {t('expressQueriesTabCount', { count: expressQuery.length })}
             </Badge>
           </TabsTrigger>
           <TabsTrigger value="visitors">
-            Visitors
+            {t('visitorsTab')}
             <Badge className="ml-2" variant="secondary">
-              {visitors.length}
+              {t('visitorsTabCount', { count: visitors.length })}
             </Badge>
           </TabsTrigger>
         </TabsList>
@@ -82,7 +85,7 @@ export default async function Dashboard() {
         <TabsContent value="contact-us">
           <section className="mb-8">
             <h2 className="text-2xl font-medium mb-4">
-              Contact Us Submissions
+              {t('contactUsSubmissions')}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {contacts.map((item: ContactUs) => (
@@ -98,21 +101,21 @@ export default async function Dashboard() {
                   <CardContent>
                     <div className="text-sm">
                       <p>
-                        <strong>Email:</strong> {item.email}
+                        <strong>{t('email')}:</strong> {item.email}
                       </p>
                       <p>
-                        <strong>Mobile:</strong> {item.mobile}
+                        <strong>{t('mobile')}:</strong> {item.mobile}
                       </p>
                       <p>
-                        <strong>Message:</strong> {item.message}
+                        <strong>{t('message')}:</strong> {item.message}
                       </p>
                       <p className="mt-2 text-xs text-gray-500">
-                        <strong>Date:</strong>{" "}
-                        {new Date(item.createdAt).toLocaleString()}
+                        <strong>{t('date')}:</strong>{' '}
+                        {format.dateTime(item.createdAt, 'medium')}
                       </p>
                     </div>
                     <Button className="mt-4" variant="outline" size="sm">
-                      View More
+                      {t('viewMore')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -124,7 +127,7 @@ export default async function Dashboard() {
         {/* Express Queries Tab */}
         <TabsContent value="express-queries">
           <section>
-            <h2 className="text-2xl font-medium mb-4">Express Queries</h2>
+            <h2 className="text-2xl font-medium mb-4">{t('expressQueries')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {expressQuery.map((item: ExpressQuery) => (
                 <Card
@@ -139,18 +142,18 @@ export default async function Dashboard() {
                   <CardContent>
                     <div className="text-sm">
                       <p>
-                        <strong>Mobile:</strong> {item.mobile}
+                        <strong>{t('mobile')}:</strong> {item.mobile}
                       </p>
                       <p>
-                        <strong>Brief:</strong> {item.brief}
+                        <strong>{t('brief')}:</strong> {item.brief}
                       </p>
                       <p className="mt-2 text-xs text-gray-500">
-                        <strong>Date:</strong>{" "}
-                        {new Date(item.createdAt).toLocaleString()}
+                        <strong>{t('date')}:</strong>{' '}
+                        {format.dateTime(item.createdAt, 'medium')}
                       </p>
                     </div>
                     <Button className="mt-4" variant="outline" size="sm">
-                      View More
+                      {t('viewMore')}
                     </Button>
                   </CardContent>
                 </Card>
@@ -162,7 +165,7 @@ export default async function Dashboard() {
         {/* Visitors Tab */}
         <TabsContent value="visitors">
           <section>
-            <h2 className="text-2xl font-medium mb-4">Visitors</h2>
+            <h2 className="text-2xl font-medium mb-4">{t('visitors')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {visitors.map((item: Visitor) => (
                 <Card
@@ -171,30 +174,30 @@ export default async function Dashboard() {
                 >
                   <CardHeader>
                     <CardTitle className="text-lg font-semibold">
-                      {item.ip || "Unknown IP"}{" "}
+                      {item.ip || t('unknownIP')}{' '}
                       <span className="bg-green-500 text-white rounded-full p-1 text-xs size-6 ">
-                        {item.visitCount}
+                        {t('visitCount', { count: item.visitCount })}
                       </span>
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="text-sm">
                       <p>
-                        <strong>IP:</strong> {item.ip || "N/A"}
+                        <strong>{t('ip')}:</strong> {item.ip || t('na')}
                       </p>
                       <p>
-                        <strong>Country:</strong> {item.country || "N/A"}
+                        <strong>{t('country')}:</strong> {item.country || t('na')}
                       </p>
                       <p>
-                        <strong>City:</strong> {item.city || "N/A"}
+                        <strong>{t('city')}:</strong> {item.city || t('na')}
                       </p>
                       <p className="mt-2 text-xs text-gray-500">
-                        <strong>Visit Time:</strong>{" "}
-                        {new Date(item.createdAt).toLocaleString()}
+                        <strong>{t('visitTime')}:</strong>{' '}
+                        {format.dateTime(item.createdAt, 'medium')}
                       </p>
                     </div>
                     <Button className="mt-4" variant="outline" size="sm">
-                      View More
+                      {t('viewMore')}
                     </Button>
                   </CardContent>
                 </Card>

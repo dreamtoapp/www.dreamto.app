@@ -10,7 +10,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from '@/components/ui/sidebar';
-import { Icon } from '@iconify/react';
+
 
 import {
   normalIcons,
@@ -25,7 +25,6 @@ export function NavOther({ locale }: { locale: string }) {
   const t = useTranslations("navigation");
 
   const { state } = useSidebar();
-  console.log(state);
   const iconSize = state === "collapsed" ? 28 : 22;
   const data = [
     {

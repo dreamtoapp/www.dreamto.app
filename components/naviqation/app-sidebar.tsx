@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/sidebar";
 import { useTranslations } from "next-intl";
 import { NavOther } from "./nav-other";
+import Image from "next/image";
 
 export function AppSidebar({
   locale,
@@ -39,14 +40,11 @@ export function AppSidebar({
       {...props}
       side={locale === "ar" ? "right" : "left"}
       aria-label="Main Sidebar"
-      
     >
-      
-      <SidebarContent className="flex flex-col h-full items-center  justify-between py-4   bg-background text-foreground">
-          <NavOther locale={locale} />
-          <NavContactUs locale={locale} />
+      <SidebarContent className="flex flex-col h-full items-center justify-between py-4 bg-background text-foreground">
+        <NavOther locale={locale} />
+        <NavContactUs locale={locale} />
       </SidebarContent>
-      
     </Sidebar>
   );
 }

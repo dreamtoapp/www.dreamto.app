@@ -1,6 +1,5 @@
 import React from "react";
-import { IconifyIcon } from "@iconify/react/dist/iconify.js";
-import { Icon as Iconify } from "@iconify/react";
+
 import { getLocale, getTranslations } from "next-intl/server";
 import { whyChooseUs } from "@/constant/icons";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; // ShadCN Card
@@ -9,7 +8,7 @@ import MotionDiv from "@/components/MotionDiv";
 
 // Define the type for the feature items
 type Feature = {
-  icon: IconifyIcon;
+  icon: React.ElementType;
   title: string;
   description: string;
 };
@@ -50,24 +49,23 @@ const WhyChooseUs: React.FC = async () => {
   return (
     <section
       id="whyChooseUs"
-      className="py-16 bg-gray-50 dark:bg-gray-900" // Added background color for contrast
+      className="py-16 bg-gray-50 dark:bg-gray-900"
       aria-labelledby="why-choose-us-heading"
+      role="region"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-12">
+        <header className="text-center mb-12">
           <h2
+            id="why-choose-us-heading"
             className="text-4xl font-bold mb-4 text-gray-900 dark:text-white"
-            id="why-choose-us-heading" // Added ID for accessibility
           >
-            {t("whyChooseUs")}
+            {t("sectionTitle")}
           </h2>
-          <h4
-            className="text-lg text-muted-foreground"
-          >
+          <p className="text-lg text-muted-foreground">
             {t("whatMakesUsDifferent")}
-          </h4>
-        </div>
+          </p>
+        </header>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -76,27 +74,26 @@ const WhyChooseUs: React.FC = async () => {
               whileHoverEffect={{ scale: 1.05 }}
               whileTapEffect={{ scale: 0.98 }}
               key={index}
-              className="group" // Added group for hover effects
+              className="group"
             >
               <Card
                 className="h-full rounded-2xl shadow-md transition-transform hover:shadow-lg drop-shadow-lg bg-white dark:bg-gray-800"
-                aria-label={t(feature.title)} // Added ARIA label for accessibility
+                aria-label={t(feature.title)}
               >
                 <CardHeader className="flex flex-col items-center space-y-2">
                   {/* Icon Container */}
                   <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <Iconify
-                      icon={feature.icon}
-                      className="w-8 h-8 text-primary group-hover:text-white transition-colors"
-                    />
+                    {feature.icon && (
+                      <feature.icon
+                        className="w-8 h-8 text-primary group-hover:text-white transition-colors"
+                        aria-label={t(feature.title)}
+                        role="img"
+                      />
+                    )}
                   </div>
                   {/* Title */}
-                  <CardTitle>
-                    <h2
-                      className="text-lg font-semibold text-gray-900 dark:text-white"
-                    >
-                      {t(feature.title)}
-                    </h2>
+                  <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+                    {t(feature.title)}
                   </CardTitle>
                 </CardHeader>
                 {/* Description */}

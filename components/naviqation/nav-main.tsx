@@ -17,8 +17,8 @@ import {
   SidebarMenuSubItem,
   useSidebar,
 } from '@/components/ui/sidebar';
-import chevrons from '@iconify/icons-tabler/chevron-down';
-import { Icon } from '@iconify/react';
+import { FiChevronDown } from 'react-icons/fi';
+import Logo from './logo';
 
 import {
   serviceIcon,
@@ -95,9 +95,12 @@ export function NavMain({ locale }: NavMainProps) {
   return (
     <SidebarGroup>
       {state !== "collapsed" && (
-        <div className="bg-gradient-blue-corporate p-2 rounded-lg">
-          <h1 className="text-lg text-white">{t("name")}</h1>
-          <h2 className="text-[.9rem] text-white/70 mt-2">{t("slogan")}</h2>
+        <div className="flex items-center gap-3 p-1">
+          <Logo />
+          <div>
+            <p className="text-base font-bold text-foreground">DreamToApp</p>
+            <p className="text-xs text-muted-foreground -mt-1">{t("slogan")}</p>
+          </div>
         </div>
       )}
       <SidebarMenu className="mt-4">
@@ -112,12 +115,12 @@ export function NavMain({ locale }: NavMainProps) {
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton tooltip={item.title}>
                   {item.icon && (
-                    <Icon icon={item.icon} width="24" height="24" />
+                    <item.icon className="w-6 h-6" />
                   )}
                   <span className="text-sm"  >
                     {item.title}
                   </span>
-                  <Icon icon={chevrons} width="24" height="24" />
+                  <FiChevronDown className="w-6 h-6" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
               <CollapsibleContent>
@@ -128,11 +131,7 @@ export function NavMain({ locale }: NavMainProps) {
                         <SidebarMenuSubButton asChild>
                           <Link href={subItem.url}>
                             {subItem.icon && (
-                              <Icon
-                                icon={subItem.icon}
-                                width="24"
-                                height="24"
-                              />
+                              <subItem.icon className="w-6 h-6" />
                             )}
                             <span className="text-sm">{subItem.title}</span>
                           </Link>

@@ -94,7 +94,9 @@
       "title": "Plugins",
       "crombo": "Crombo",
       "latestnews": "Conan"
-    }
+    },
+    "switchLanguage": "Switch to {language}",
+    "toggleTheme": "Toggle theme"
   },
   "buttons": {
     "showMore": "Show More",
@@ -132,6 +134,26 @@
     "button": "Return to Home Page"
   },
   "homepage": {
+    "title": "DreamTo IT Solutions – Digital Innovation Agency",
+    "description": "DreamTo is a leading IT agency offering web, mobile, and cloud solutions. Explore our portfolio, services, and contact us for digital excellence.",
+    "organization": {
+      "name": "DreamTo IT Solutions"
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "sections": {
+      "hero": "Hero Section",
+      "cromboDetails": "Crombo Details",
+      "homepageBody": "Homepage Content"
+    },
+    "logo": {
+      "alt": "DreamToApp Logo"
+    },
+    "cta": {
+      "primary": "Start Your Project",
+      "secondary": "Explore Services"
+    },
     "fromIdeaTitle": "From Idea to Successful Digital Product",
     "fromIdeaContent": "We transform your bold ideas into unique digital solutions that attract customers and drive your business to success. By combining creativity and technology, we deliver innovative products that achieve tangible results.",
     "fromIdeaButton": "Start Your Journey with Us Now!",
@@ -143,7 +165,7 @@
     "discoverButton": "Start Your Success for Free",
     "slogon": "Where Dreams Take Off",
     "subHeader": "Transform your ideas into reality with cutting-edge technology",
-    "subHeader2": "Launch your dream now into the digital world. We build a website and app that clearly reflect your ambition. Attract your audience and achieve your goals—that’s our mission.",
+    "subHeader2": "Launch your dream now into the digital world. We build a website and app that clearly reflect your ambition. Attract your audience and achieve your goals—that's our mission.",
     "discoverDilog": "You may face challenges, but resilience is the key to overcoming them.",
     "discoverDilog1": "Keep trying and learn from every failure.",
     "discoverDilogTitle": "Success Journey",
@@ -152,7 +174,7 @@
     "crmDilogTitle": "Success Journey",
     "ecommDilogTitle": "Success Journey",
     "uiDilogTitle": "Success Journey",
-     "ctaButton": "Start Your Success Journey Now"
+    "ctaButton": "Start Your Success Journey Now"
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "Planning and Discovery",
@@ -203,18 +225,18 @@
     "getQuote": "High discounts, don't hesitate..."
   },
   "whyChooseUs": {
-    "whyChooseUs": "Why Are We the Best?",
-    "whatMakesUsDifferent": "What Sets Us Apart?",
-    "costEfficiencyTitle": "Competitive Prices",
-    "costEfficiencyDescription": "Invest in our smart solutions and reduce your operational costs by up to 30% without compromising on quality. With our services, you can direct your budget towards achieving your goals and confidently expanding your business.",
-    "onDemandTitle": "Customized Services",
-    "onDemandDescription": "Choose the ideal team that matches your project's needs and goals. We offer services specifically designed to meet your unique requirements, ensuring you achieve superior results that meet and exceed your expectations.",
-    "itExpertsTitle": "Technical Experts",
-    "itExpertsDescription": "Rely on our team of elite experts in the technical field. We provide you with specialized expertise in the latest technologies to ensure innovative solutions that contribute to the development of your business and achieve the desired success.",
+    "sectionTitle": "Why Choose Us?",
+    "whatMakesUsDifferent": "What makes us different:",
+    "costEfficiencyTitle": "Cost Efficiency",
+    "costEfficiencyDescription": "We deliver high-quality solutions at competitive prices, maximizing your ROI.",
+    "onDemandTitle": "On-Demand Customization",
+    "onDemandDescription": "Our services are tailored to your unique business needs, ensuring flexibility and scalability.",
+    "itExpertsTitle": "IT Experts",
+    "itExpertsDescription": "Our team consists of experienced professionals with deep technical expertise.",
     "timeFlexibilityTitle": "Time Flexibility",
-    "timeFlexibilityDescription": "We understand the importance of time for you. Therefore, we offer flexible work schedules that fit your needs and project timelines, ensuring efficient delivery of work on time.",
-    "securePrivacyTitle": "Security and Privacy",
-    "securePrivacyDescription": "Your privacy and data security are our top priorities. We provide advanced security technologies to ensure the protection of your sensitive information and maintain the confidentiality of your project at all times."
+    "timeFlexibilityDescription": "We adapt to your schedule and deliver projects on time, every time.",
+    "securePrivacyTitle": "Security & Privacy",
+    "securePrivacyDescription": "We prioritize your data security and privacy in every solution we build."
   },
   "technologyShowcase": {
     "title": "The Technologies We Use",
@@ -323,7 +345,7 @@
   },
   "page": {
     "welcomeTitle": "🚀 Elevate Your Business!",
-    "welcomeMessage": "We’re here to deliver exceptional value at unbeatable prices. Share your last quote, and we’ll beat it by 20%! Let’s build something amazing together.",
+    "welcomeMessage": "We're here to deliver exceptional value at unbeatable prices. Share your last quote, and we'll beat it by 20%! Let's build something amazing together.",
     "contactInfoTitle": "Provide Your Contact Information",
     "namePlaceholder": "Your Name",
     "emailPlaceholder": "Your Email",
@@ -345,11 +367,55 @@
     "discountedPricePlaceholder": "Your discounted price will appear here.",
     "agreementOptionsTitle": "What Would You Like to Do?",
     "agreedOption": "I confirm and agree to the final price with your discount.",
-    "negotiationOption": "I’d like to negotiate further. Please book a call with me.",
-    "noPriceOption": "I don’t have a previous price. Please book a call with me.",
+    "negotiationOption": "I'd like to negotiate further. Please book a call with me.",
+    "noPriceOption": "I don't have a previous price. Please book a call with me.",
     "submitButton": "Submit",
     "submittingButton": "Sendingd...",
     "thankYouTitle": "Thank You ",
     "thankYouMessage": "thank you will contact you with in 48 hour"
+  },
+  "team": {
+    "ourTeam": "Our Team",
+    "meetProfessionals": "Meet the professionals behind our success. We are passionate, experienced, and always looking for new talent to join us!",
+    "joinOurTeam": "Join Our Team",
+    "viewProfile": "View profile of {name}",
+    "viewProfileBtn": "View Profile",
+    "yearsOfExperience": "{years} years of experience",
+    "Mangement": "Management",
+    "Full Stack Developer": "Full Stack Developer",
+    "Backend Development": "Backend Development"
+  },
+  "dashboard": {
+    "adminDashboard": "Admin Dashboard",
+    "cromboTab": "Crombo",
+    "pricesReqTab": "Prices Req",
+    "contactUsTab": "Contact Us",
+    "expressQueriesTab": "Express Queries",
+    "visitorsTab": "Visitors",
+    "contactsTab": "{count, plural, =0 {No contacts} =1 {One contact} other {# contacts}}",
+    "expressQueriesTabCount": "{count, plural, =0 {No queries} =1 {One query} other {# queries}}",
+    "visitorsTabCount": "{count, plural, =0 {No visitors} =1 {One visitor} other {# visitors}}",
+    "contactUsSubmissions": "Contact Us Submissions",
+    "email": "Email",
+    "mobile": "Mobile",
+    "message": "Message",
+    "date": "Date",
+    "viewMore": "View More",
+    "expressQueries": "Express Queries",
+    "brief": "Brief",
+    "visitors": "Visitors",
+    "unknownIP": "Unknown IP",
+    "visitCount": "{count, plural, =0 {No visits} =1 {One visit} other {# visits}}",
+    "ip": "IP",
+    "country": "Country",
+    "city": "City",
+    "na": "N/A",
+    "visitTime": "Visit Time"
+  },
+  "worksample": {
+    "noFolders": "No folders found.",
+    "noImage": "No Image Available",
+    "taskCount": "{count, plural, =0 {No tasks} =1 {One task} other {# tasks}}",
+    "viewGallery": "View Gallery"
   }
 }

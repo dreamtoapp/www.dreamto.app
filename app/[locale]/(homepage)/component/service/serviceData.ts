@@ -1,10 +1,9 @@
 import { serviceIcon, technology } from "@/constant/icons";
-import { IconifyIcon } from "@iconify/react";
 type CardData = {
   title: string;
   description: string;
-  icon: IconifyIcon; // Lucide icon component
-  tags: { text: string; icon: IconifyIcon }[]; // Tags with Lucide icons
+  icon: React.ElementType;
+  tags: { text: string; icon: React.ElementType }[];
 };
 
 export const cardData: CardData[] = [

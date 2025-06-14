@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Icon } from "@iconify/react";
+import { FaCheckCircle } from "react-icons/fa";
 import { useLocale } from "next-intl";
 
 export default function ThankYouPage() {
@@ -25,10 +25,7 @@ export default function ThankYouPage() {
       <Card className="max-w-lg w-full shadow-xl p-8 rounded-2xl border bg-white text-center">
         <CardContent>
           <div className="flex flex-col items-center gap-4">
-            <Icon
-              icon="solar:check-circle-bold"
-              className="w-16 h-16 text-green-500"
-            />
+            <FaCheckCircle className="w-16 h-16 text-green-500" />
             <h1 className="text-2xl font-bold text-gray-900">Thank You!</h1>
             <p className="text-gray-600 text-lg">
               Your message has been successfully submitted. We appreciate you

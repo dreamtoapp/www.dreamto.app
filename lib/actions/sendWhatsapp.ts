@@ -22,7 +22,6 @@ export async function sendWhatsAppMessage(message: string): Promise<boolean> {
       return false;
     }
 
-    console.log("WhatsApp message sent successfully!");
     return true; // Indicate success
   } catch (error) {
     console.error("Error sending WhatsApp message:", error);

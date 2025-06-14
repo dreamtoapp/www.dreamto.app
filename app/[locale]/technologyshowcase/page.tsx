@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { technology } from "@/constant/icons";
-import { Icon } from "@iconify/react";
+
 import { getLocale, getTranslations } from "next-intl/server";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -172,7 +172,7 @@ const TechnologyShowcase: React.FC = async () => {
           >
             <div>
               <CardHeader className="flex items-center justify-center">
-                <Icon icon={tech.icon} className="h-12 w-12" />
+                <tech.icon className="h-12 w-12" />
               </CardHeader>
               <CardContent>
                 <CardTitle className="text-center text-lg font-semibold mb-2">

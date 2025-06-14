@@ -6,7 +6,7 @@ import FromIdea from "./FromIdea";
 import DesinAndDiscover from "./DesinAndDiscover";
 async function HomePageBody() {
   return (
-    <main className="grid  gap-4 grid-cols-1 md:grid-cols-1">
+    <main className="grid gap-4 grid-cols-1 md:grid-cols-1" id="main-content" role="main">
       <FromIdea />
       <DesinAndDiscover />
       <Services />

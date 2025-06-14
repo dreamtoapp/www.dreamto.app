@@ -1,6 +1,6 @@
 "use client";
 import { useTheme } from "next-themes";
-import { Icon } from "@iconify/react";
+import { FaSun, FaMoon } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -21,8 +21,7 @@ export default function ThemeSwitch() {
     >
       <div>
         {theme === "light" ? (
-          <Icon
-            icon="solar:sun-bold"
+          <FaSun
             className={cn(
               "w-5 h-5",
               "text-yellow-500",
@@ -31,8 +30,7 @@ export default function ThemeSwitch() {
             )}
           />
         ) : (
-          <Icon
-            icon="solar:moon-bold"
+          <FaMoon
             className={cn(
               "w-5 h-5",
               "text-blue-500",
