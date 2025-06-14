@@ -75,6 +75,7 @@
       "custom": "Custom Offer"
     },
     "contactus": {
+      
       "title": "Contact Us",
       "whatsapp": "Message us on WhatsApp",
       "email": "Send an Email",
@@ -287,6 +288,14 @@
     }
   },
   "contactus": {
+    "projectType": "Project Type",
+      "mobileApp": "Mobile App",
+      "webApp": "Web App",
+      "both": "Both",
+      "projectDetails": "Project Details",
+      "budget": "Budget",
+      "timeline": "Timeline",
+      "attachment": "Attachment",
     "pagetitle": "Contact Us",
     "hint": "Correct information is required to help us respond as quickly as possible, providing the best possible service.",
 
@@ -304,7 +313,9 @@
     "sendBtn": "Send .. We are waiting for you",
     "name": "Name",
     "Done": "Done",
-    "doneMsg": "Thank you for your message. We will get back to you soon."
+    "doneMsg": "Thank you for your message. We will get back to you soon.",
+    "whatsappHint": "Or contact us directly on WhatsApp for a faster response!",
+    "whatsappButton": "Chat on WhatsApp"
   },
   "LaunchPage": {
     "offerEndsIn": "Offer ends in",
@@ -417,5 +428,13 @@
     "noImage": "No Image Available",
     "taskCount": "{count, plural, =0 {No tasks} =1 {One task} other {# tasks}}",
     "viewGallery": "View Gallery"
+  }
+,
+  "thankyou": {
+    "title": "Thank You!",
+    "subtitle": "We appreciate your interest.",
+    "messageMain": "Your message has been successfully submitted. We appreciate you reaching out and will get back to you as soon as possible.",
+    "messageSecondary": "Feel free to browse our site or contact us for more information.",
+    "returnHome": "Return to Home"
   }
 }

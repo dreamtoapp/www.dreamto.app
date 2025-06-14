@@ -1,15 +1,15 @@
 // lib/contactUs.ts
 import db from "@/lib/prisma"; // Ensure your Prisma client is correctly imported
-import { Prisma } from "@prisma/client"; // Import Prisma types
 
 export const getContactUsData = async () => {
   try {
     // Fetch data from all the tables and sort by the latest 'createdAt' (descending order)
-    const contacts = await db.contactus.findMany({
+    const contacts = await db.projectRequest.findMany({
       orderBy: {
         createdAt: "desc", // Sort by 'createdAt' in descending order (latest first)
       },
     });
+    
 
     const expressQuery = await db.expressQuery.findMany({
       orderBy: {

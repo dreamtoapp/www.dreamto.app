@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"; // ShadCN Button component
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // ShadCN Tabs components
 import { Badge } from "@/components/ui/badge"; // ShadCN Badge component
 import { getContactUsData } from "./action/action"; // Import the refactored server action
-import { useTranslations, useFormatter } from 'next-intl';
+
 
 // Define types for each model (corrected for visitor data)
 type ContactUs = {
@@ -12,8 +12,11 @@ type ContactUs = {
   name: string;
   email: string;
   mobile: string;
+  projectType: string;
+  projectDetails: string;
+  budget: string;
   message: string;
-  createdAt: Date; // updated to Date
+  createdAt: Date;
 };
 
 type ExpressQuery = {
@@ -34,174 +37,155 @@ type Visitor = {
   visitCount: number | 0;
 };
 
+import { FaEnvelope, FaQuestionCircle, FaUsers } from 'react-icons/fa';
+import ViewMoreModal from './ViewMoreModal';
+
 export default async function Dashboard() {
   // Fetch data using the server action
   const { contacts, expressQuery, visitors } = await getContactUsData();
-  const t = useTranslations('dashboard');
-  const format = useFormatter();
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-3xl font-semibold mb-6">{t('adminDashboard')}</h1>
+    <div className="container mx-auto p-4 md:p-8">
+      <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+
+      {/* Summary Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
+          <FaEnvelope className="text-primary w-8 h-8" />
+          <div>
+            <div className="text-2xl font-bold">{contacts.length}</div>
+            <div className="text-sm text-muted-foreground">Project Requests</div>
+          </div>
+        </div>
+        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
+          <FaQuestionCircle className="text-primary w-8 h-8" />
+          <div>
+            <div className="text-2xl font-bold">{expressQuery.length}</div>
+            <div className="text-sm text-muted-foreground">Express Queries</div>
+          </div>
+        </div>
+        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
+          <FaUsers className="text-primary w-8 h-8" />
+          <div>
+            <div className="text-2xl font-bold">{visitors.length}</div>
+            <div className="text-sm text-muted-foreground">Visitors</div>
+          </div>
+        </div>
+      </div>
 
       {/* Tabs Section */}
       <Tabs defaultValue="contact-us">
-        <TabsList>
-          <TabsTrigger value="contact-us">
-            {t('cromboTab')}
-            <Badge className="ml-2" variant="secondary">
-              {t('contactsTab', { count: contacts.length })}
-            </Badge>
+        <TabsList className="mb-6">
+          <TabsTrigger value="contact-us" className="flex items-center gap-2">
+  <FaEnvelope /> Project Requests
+</TabsTrigger>
+          <TabsTrigger value="express-queries" className="flex items-center gap-2">
+            <FaQuestionCircle /> Express Queries
           </TabsTrigger>
-
-          <TabsTrigger value="contact-us">
-            {t('pricesReqTab')}
-            <Badge className="ml-2" variant="secondary">
-              {t('contactsTab', { count: contacts.length })}
-            </Badge>
-          </TabsTrigger>
-
-          <TabsTrigger value="contact-us">
-            {t('contactUsTab')}
-            <Badge className="ml-2" variant="secondary">
-              {t('contactsTab', { count: contacts.length })}
-            </Badge>
-          </TabsTrigger>
-          <TabsTrigger value="express-queries">
-            {t('expressQueriesTab')}
-            <Badge className="ml-2" variant="secondary">
-              {t('expressQueriesTabCount', { count: expressQuery.length })}
-            </Badge>
-          </TabsTrigger>
-          <TabsTrigger value="visitors">
-            {t('visitorsTab')}
-            <Badge className="ml-2" variant="secondary">
-              {t('visitorsTabCount', { count: visitors.length })}
-            </Badge>
+          <TabsTrigger value="visitors" className="flex items-center gap-2">
+            <FaUsers /> Visitors
           </TabsTrigger>
         </TabsList>
 
-        {/* Contact Us Tab */}
+        {/* Project Requests Table */}
         <TabsContent value="contact-us">
-          <section className="mb-8">
-            <h2 className="text-2xl font-medium mb-4">
-              {t('contactUsSubmissions')}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {contacts.map((item: ContactUs) => (
-                <Card
-                  key={item.id}
-                  className="shadow-lg border border-gray-200 rounded-lg"
-                >
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold">
-                      {item.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-sm">
-                      <p>
-                        <strong>{t('email')}:</strong> {item.email}
-                      </p>
-                      <p>
-                        <strong>{t('mobile')}:</strong> {item.mobile}
-                      </p>
-                      <p>
-                        <strong>{t('message')}:</strong> {item.message}
-                      </p>
-                      <p className="mt-2 text-xs text-gray-500">
-                        <strong>{t('date')}:</strong>{' '}
-                        {format.dateTime(item.createdAt, 'medium')}
-                      </p>
-                    </div>
-                    <Button className="mt-4" variant="outline" size="sm">
-                      {t('viewMore')}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+  <section className="mb-8">
+    <h2 className="text-xl font-semibold mb-4">Project Requests Submissions</h2>
+            <div className="overflow-x-auto rounded-xl shadow">
+              <table className="min-w-full divide-y divide-gray-200 bg-card">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Name</th>
+<th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Email</th>
+<th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Mobile</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {contacts.map((item: ContactUs) => (
+                    <tr key={item.id} className="hover:bg-muted/40 transition">
+                      <td className="px-4 py-2 font-medium">{item.name}</td>
+                      <td className="px-4 py-2">{item.email}</td>
+                      <td className="px-4 py-2">{item.mobile}</td>
+                      <td className="px-4 py-2">{item.projectType}</td>
+                      <td className="px-4 py-2">{item.projectDetails}</td>
+                      <td className="px-4 py-2">{item.budget}</td>
+                      <td className="px-4 py-2">{item.message}</td>
+                      <td className="px-4 py-2 text-xs text-gray-500">{new Date(item.createdAt).toLocaleString()}</td>
+                      <td className="px-4 py-2">
+                        <Button size="sm" variant="outline">View More</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         </TabsContent>
 
-        {/* Express Queries Tab */}
+        {/* Express Queries Table */}
         <TabsContent value="express-queries">
-          <section>
-            <h2 className="text-2xl font-medium mb-4">{t('expressQueries')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {expressQuery.map((item: ExpressQuery) => (
-                <Card
-                  key={item.id}
-                  className="shadow-lg border border-gray-200 rounded-lg"
-                >
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold">
-                      {item.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-sm">
-                      <p>
-                        <strong>{t('mobile')}:</strong> {item.mobile}
-                      </p>
-                      <p>
-                        <strong>{t('brief')}:</strong> {item.brief}
-                      </p>
-                      <p className="mt-2 text-xs text-gray-500">
-                        <strong>{t('date')}:</strong>{' '}
-                        {format.dateTime(item.createdAt, 'medium')}
-                      </p>
-                    </div>
-                    <Button className="mt-4" variant="outline" size="sm">
-                      {t('viewMore')}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">Express Queries</h2>
+            <div className="overflow-x-auto rounded-xl shadow">
+              <table className="min-w-full divide-y divide-gray-200 bg-card">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Name</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Mobile</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Brief</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Date</th>
+                    <th className="px-4 py-2"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {expressQuery.map((item: ExpressQuery) => (
+                    <tr key={item.id} className="hover:bg-muted/40 transition">
+                      <td className="px-4 py-2 font-medium">{item.name}</td>
+                      <td className="px-4 py-2">{item.mobile}</td>
+                      <td className="px-4 py-2 max-w-xs truncate">{item.brief}</td>
+                      <td className="px-4 py-2 text-xs text-gray-500">{new Date(item.createdAt).toLocaleString()}</td>
+                      <td className="px-4 py-2">
+                        <Button size="sm" variant="outline">View More</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         </TabsContent>
 
-        {/* Visitors Tab */}
+        {/* Visitors Table */}
         <TabsContent value="visitors">
-          <section>
-            <h2 className="text-2xl font-medium mb-4">{t('visitors')}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {visitors.map((item: Visitor) => (
-                <Card
-                  key={item.id}
-                  className="shadow-lg border border-gray-200 rounded-lg"
-                >
-                  <CardHeader>
-                    <CardTitle className="text-lg font-semibold">
-                      {item.ip || t('unknownIP')}{' '}
-                      <span className="bg-green-500 text-white rounded-full p-1 text-xs size-6 ">
-                        {t('visitCount', { count: item.visitCount })}
-                      </span>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-sm">
-                      <p>
-                        <strong>{t('ip')}:</strong> {item.ip || t('na')}
-                      </p>
-                      <p>
-                        <strong>{t('country')}:</strong> {item.country || t('na')}
-                      </p>
-                      <p>
-                        <strong>{t('city')}:</strong> {item.city || t('na')}
-                      </p>
-                      <p className="mt-2 text-xs text-gray-500">
-                        <strong>{t('visitTime')}:</strong>{' '}
-                        {format.dateTime(item.createdAt, 'medium')}
-                      </p>
-                    </div>
-                    <Button className="mt-4" variant="outline" size="sm">
-                      {t('viewMore')}
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
+          <section className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">Visitors</h2>
+            <div className="overflow-x-auto rounded-xl shadow">
+              <table className="min-w-full divide-y divide-gray-200 bg-card">
+                <thead>
+                  <tr>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">IP</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Country</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">City</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Visit Count</th>
+                    <th className="px-4 py-2 text-left text-xs font-bold text-muted-foreground uppercase">Visit Time</th>
+                    <th className="px-4 py-2"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visitors.map((item: Visitor) => (
+                    <tr key={item.id} className="hover:bg-muted/40 transition">
+                      <td className="px-4 py-2 font-medium">{item.ip || 'N/A'}</td>
+                      <td className="px-4 py-2">{item.country || 'N/A'}</td>
+                      <td className="px-4 py-2">{item.city || 'N/A'}</td>
+                      <td className="px-4 py-2">{item.visitCount}</td>
+                      <td className="px-4 py-2 text-xs text-gray-500">{new Date(item.createdAt).toLocaleString()}</td>
+                      <td className="px-4 py-2">
+                        <Button size="sm" variant="outline">View More</Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </section>
         </TabsContent>

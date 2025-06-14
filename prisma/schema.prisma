@@ -13,6 +13,9 @@ model contactus {
   name      String
   email     String
   mobile    String
+  projectType String
+  projectDetails String
+  budget    String
   message   String
   createdAt DateTime @default(now())
 }
@@ -61,6 +64,18 @@ model Price {
  
 
  
+
+model ProjectRequest {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  name          String
+  email         String
+  mobile        String
+  projectType   String
+  projectDetails String
+  budget        String
+  message       String
+  createdAt     DateTime @default(now())
+}
 
 // Unified model to hold all form data
 model FormData {

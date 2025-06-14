@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaCheckCircle } from "react-icons/fa";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export default function ThankYouPage() {
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations("thankyou");
   const gohome = () => {
     router.push(`/${locale}`);
     router.refresh();
@@ -20,23 +21,26 @@ export default function ThankYouPage() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex items-center justify-center min-h-screen bg-gray-100 p-6"
+      className="flex items-center justify-center min-h-screen bg-background p-6"
     >
-      <Card className="max-w-lg w-full shadow-xl p-8 rounded-2xl border bg-white text-center">
+      <Card className="max-w-xl w-full shadow-2xl p-10 rounded-3xl border bg-card text-center">
         <CardContent>
-          <div className="flex flex-col items-center gap-4">
-            <FaCheckCircle className="w-16 h-16 text-green-500" />
-            <h1 className="text-2xl font-bold text-gray-900">Thank You!</h1>
-            <p className="text-gray-600 text-lg">
-              Your message has been successfully submitted. We appreciate you
-              reaching out and will get back to you as soon as possible.
+          <div className="flex flex-col items-center gap-6">
+            <FaCheckCircle className="w-20 h-20 text-success mb-2" />
+            <h1 className="text-3xl font-extrabold text-foreground mb-2">{t("title")}</h1>
+            <h2 className="text-lg font-medium text-primary mb-2">{t("subtitle")}</h2>
+            <p className="text-muted-foreground text-base mb-4">
+              {t("messageMain")}
+            </p>
+            <p className="text-muted-foreground text-sm mb-6">
+              {t("messageSecondary")}
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 onClick={gohome}
-                className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-8 rounded-lg transition shadow-lg text-lg"
               >
-                Return to Home
+                {t("returnHome")}
               </Button>
             </motion.div>
           </div>

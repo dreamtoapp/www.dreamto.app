@@ -10,6 +10,10 @@ const contactFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   mobile: z.string().regex(/^[0-9]{10,15}$/, "Invalid mobile number"),
   email: z.string().email("Invalid email address"),
+  projectType: z.enum(["mobile", "web", "both"], { required_error: "Project type is required" }),
+  projectDetails: z.string().min(10, "Project details must be at least 10 characters"),
+  budget: z.string().min(1, "Budget is required"),
+
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
  
@@ -48,6 +52,10 @@ export async function submitContact(
       name: formData.get("name")?.toString().trim() || "",
       email: formData.get("email")?.toString().trim() || "",
       mobile: formData.get("mobile")?.toString().trim() || "",
+      projectType: formData.get("projectType")?.toString() || "",
+      projectDetails: formData.get("projectDetails")?.toString().trim() || "",
+      budget: formData.get("budget")?.toString().trim() || "",
+
       message: formData.get("message")?.toString().trim() || "",
     };
 
@@ -58,10 +66,10 @@ export async function submitContact(
     }
 
     // Save to database
-    await db.contactus.create({ data: rawData });
+    await db.projectRequest.create({ data: rawData });
 
     // Send WhatsApp Notification
-    const messageContent = `New Contact Submission:\nName: ${rawData.name}\nEmail: ${rawData.email}\nMobile: ${rawData.mobile}\nMessage: ${rawData.message}`;
+    const messageContent = `New Contact Submission:\nName: ${rawData.name}\nEmail: ${rawData.email}\nMobile: ${rawData.mobile}\nProject Type: ${rawData.projectType}\nProject Details: ${rawData.projectDetails}\nBudget: ${rawData.budget}\nMessage: ${rawData.message}`;
     await sendWhatsAppMessage(messageContent);
 
     // Revalidate page cache
