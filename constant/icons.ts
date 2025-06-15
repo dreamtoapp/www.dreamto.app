@@ -1,5 +1,6 @@
-import { FaJs, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaShopify, FaBuffer, FaWhatsapp, FaTiktok, FaSnapchatGhost, FaYoutube, FaInstagram, FaTwitter, FaRocket, FaUsers, FaPaintBrush, FaGlobe, FaMobileAlt, FaAward, FaStackOverflow, FaSmile, FaUserSecret, FaCode, FaCalendarAlt, FaShieldAlt, FaEnvelope, FaPhone, FaWpforms, FaHome } from 'react-icons/fa';
+import { FaJs, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaShopify, FaBuffer, FaWhatsapp, FaTiktok, FaSnapchatGhost, FaYoutube, FaInstagram, FaTwitter, FaLinkedin, FaStackOverflow, FaUserSecret, FaCode } from 'react-icons/fa';
 import { SiNextdotjs, SiMongodb, SiFirebase, SiMysql, SiSqlite, SiTypescript, SiAdobe, SiFigma, SiSentry, SiTwilio, SiAdobephotoshop, SiAdobeillustrator, SiPrisma, SiVuedotjs } from 'react-icons/si';
+import { Rocket, Users, Paintbrush, Globe, Smartphone, Award, Shield, Smile, Mail, Phone, FileText, Home as LucideHome, CalendarClock, Youtube as LucideYoutube, Instagram as LucideInstagram, Twitter as LucideTwitter, ShoppingCart, Megaphone, Palette, Briefcase, Tag, Link, Terminal } from 'lucide-react';
 
 // If a logo is missing in react-icons, fallback to a similar or generic icon.
 
@@ -27,43 +28,44 @@ export const technology = {
   buffer: { name: "Buffer", icon: FaBuffer },
   whatsapp: { name: "WhatsApp", icon: FaWhatsapp },
   tiktok: { name: "TikTok", icon: FaTiktok },
-  ts: { name: "TypeScript", icon: FaRocket },
-  snapchat: { name: "snapchat", icon: FaRocket },
-  youtube: { name: "youtube", icon: FaRocket },
-  instgram: { name: "instgram", icon: FaRocket },
-  twitter: { name: "tiktok", icon: FaRocket },
-  vscode: { name: "Technology", icon: FaRocket },
-  workSample: { name: "workSample", icon: FaRocket },
-  priceDown: { name: "price Down", icon: FaRocket },
-  linkYouLike: { name: "link YouL ike", icon: FaRocket },
+  ts: { name: "TypeScript", icon: Rocket },
+  snapchat: { name: "snapchat", icon: FaSnapchatGhost },
+  youtube: { name: "youtube", icon: LucideYoutube },
+  instgram: { name: "instgram", icon: LucideInstagram },
+  twitter: { name: "twitter", icon: LucideTwitter },
+  vscode: { name: "VSCode", icon: Terminal },
+  linkedin: { name: "LinkedIn", icon: FaLinkedin },
+  workSample: { name: "workSample", icon: Briefcase },
+  priceDown: { name: "price Down", icon: Tag },
+  linkYouLike: { name: "link You Like", icon: Link },
 };
 
 export const social = {
   snapchat: FaSnapchatGhost,
-  youtube: FaYoutube,
-  instagram: FaInstagram,
-  twitter: FaTwitter,
+  youtube: LucideYoutube,
+  instagram: LucideInstagram,
+  twitter: LucideTwitter,
   tiktok: FaTiktok,
   whatsapp: FaWhatsapp,
 };
 
 export const misc = {
-  rocket: FaRocket,
-  users: FaUsers,
-  paint: FaPaintBrush,
-  web: FaGlobe,
-  mobile: FaMobileAlt,
-  award: FaAward,
+  rocket: Rocket,
+  users: Users,
+  paint: Paintbrush,
+  web: Globe,
+  mobile: Smartphone,
+  award: Award,
   stackoverflow: FaStackOverflow,
-  smilyDollar: FaSmile,
+  smilyDollar: Smile,
   custom: FaUserSecret,
   code: FaCode,
-  calendartime: FaCalendarAlt,
-  shield: FaShieldAlt,
-  emailIcon: FaEnvelope,
-  phoneIcon: FaPhone,
-  formIcon: FaWpforms,
-  home: FaHome,
+  calendartime: CalendarClock,
+  shield: Shield,
+  emailIcon: Mail,
+  phoneIcon: Phone,
+  formIcon: FileText,
+  home: LucideHome,
 };
 
 // export const whyChooseUs = {
@@ -77,36 +79,38 @@ export const misc = {
  
 
 export const serviceIcon = {
-  website: { name: "JavaScript", icon: FaRocket },
-  mobileApp: { name: "JavaScript", icon: FaRocket },
-  crm: { name: "JavaScript", icon: FaRocket },
-  ecomm: { name: "Ecomm", icon: FaRocket },
-  uiux: { name: "JavaScript", icon: FaRocket },
-  dm: { name: "JavaScript", icon: FaRocket },
-  vd: { name: "JavaScript", icon: FaRocket },
+  website: { name: "Website", icon: Globe },
+  mobileApp: { name: "Mobile App", icon: Smartphone },
+  crm: { name: "CRM", icon: Users },
+  ecomm: { name: "Ecomm", icon: ShoppingCart }, // ShoppingCart is available in lucide-react
+  uiux: { name: "UI/UX", icon: Paintbrush },
+  dm: { name: "Digital Marketing", icon: Megaphone },
+  branding: { name: "Visual Identity", icon: Palette }, // الهوية البصرية
+  "الهوية البصرية": { name: "الهوية البصرية", icon: Palette },
+  vd: { name: "Video", icon: Rocket },
 };
 
 export const whyChooseUs = {
-  dollar: FaSmile,
+  dollar: Smile,
   ecustom: FaUserSecret,
   expert: FaCode,
-  timeFlex: FaCalendarAlt,
-  shield: FaShieldAlt,
+  timeFlex: CalendarClock,
+  shield: Shield,
 };
 
 export const contactUs = {
   whatsapp: { name: "whatsapp", icon: FaWhatsapp },
-  email: { name: "email", icon: FaRocket },
-  phone: { name: "email", icon: FaRocket },
-  form: { name: "email", icon: FaRocket },
-  tiktok: { name: "tiktok", icon: FaRocket },
-  snapchat: { name: "snapchat", icon: FaRocket },
-  youtube: { name: "youtube", icon: FaRocket },
-  instgram: { name: "instgram", icon: FaRocket },
-  twitter: { name: "tiktok", icon: FaRocket },
+  email: { name: "email", icon: Mail },
+  phone: { name: "phone", icon: Phone },
+  form: { name: "form", icon: FileText },
+  tiktok: { name: "tiktok", icon: FaTiktok },
+  snapchat: { name: "snapchat", icon: FaSnapchatGhost },
+  youtube: { name: "youtube", icon: LucideYoutube },
+  instgram: { name: "instgram", icon: LucideInstagram },
+  twitter: { name: "twitter", icon: LucideTwitter },
 };
 
 export const normalIcons = {
-  team: { name: "Team", icon: FaRocket },
-  home: { name: "Team", icon: FaRocket },
+  team: { name: "Team", icon: Users },
+  home: { name: "Home", icon: LucideHome },
 };

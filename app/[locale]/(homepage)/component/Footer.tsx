@@ -33,34 +33,14 @@ type ContactItem = {
 const ContactAndSocialMedia: React.FC = () => {
   const contact: ContactItem[] = [
     {
-      title: "WhatsApp",
-      icon: contactUs.whatsapp.icon,
-      link: "https://wa.me/",
+      title: "LinkedIn",
+      icon: technology.linkedin.icon,
+      link: "https://linkedin.com/company/dreamtoapp",
     },
     {
-      title: "Contact Form",
-      icon: contactUs.form.icon,
-      link: "#contact-form",
-    },
-    {
-      title: "Instagram",
-      icon: technology.instgram.icon,
-      link: "https://instagram.com",
-    },
-    {
-      title: "TikTok",
-      icon: contactUs.tiktok.icon,
-      link: "https://tiktok.com",
-    },
-    {
-      title: "YouTube",
-      icon: technology.youtube.icon,
-      link: "https://youtube.com",
-    },
-    {
-      title: "Snapchat",
-      icon: technology.snapchat.icon,
-      link: "https://snapchat.com",
+      title: "Twitter",
+      icon: technology.twitter.icon,
+      link: "https://twitter.com/dreamtoapp",
     },
   ];
 
@@ -72,8 +52,8 @@ const ContactAndSocialMedia: React.FC = () => {
           href={item.link}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={item.title} // Accessibility: Add ARIA label for screen readers
-          className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-primary shadow-md transition-transform hover:scale-110"
+          aria-label={item.title}
+          className="w-12 h-12 bg-muted rounded-full flex items-center justify-center text-primary shadow transition-transform hover:scale-110"
         >
           <item.icon className="w-6 h-6" />
         </Link>
@@ -84,115 +64,91 @@ const ContactAndSocialMedia: React.FC = () => {
 
 // Footer Component
 const Footer: React.FC = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const t = useTranslations("homepage");
   const footer = useTranslations("footer");
-  const [imageError, setImageError] = useState(false);
+  const year = new Date().getFullYear();
 
-  // Scroll-based animations
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
+  // Social/contact icons
+  const contact = [
+    { title: "WhatsApp", icon: contactUs.whatsapp.icon, link: "https://wa.me/" },
+    { title: "Contact Form", icon: contactUs.form.icon, link: "#contact-form" },
+    { title: "Instagram", icon: technology.instgram.icon, link: "https://instagram.com" },
+    { title: "TikTok", icon: contactUs.tiktok.icon, link: "https://tiktok.com" },
+    { title: "YouTube", icon: technology.youtube.icon, link: "https://youtube.com" },
+    { title: "Snapchat", icon: technology.snapchat.icon, link: "https://snapchat.com" },
+  ];
 
-  // Transformations for zoom and opacity
-  const scale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const quickLinks = [
+    { label: t("home"), href: "/" },
+    { label: t("services"), href: "/services" },
+    { label: t("portfolio"), href: "/portfolio" },
+    { label: t("chatWithUs"), href: "/contact" },
+  ];
 
   return (
-    <div>
-      {/* Motion Footer */}
-      <motion.footer
-        ref={containerRef}
-        className="relative text-white py-12 overflow-hidden rounded-xl shadow-lg bg-card"
-        style={{
-          scale,
-          opacity,
-        }}
-      >
-        {/* Background Image with Fallback */}
-        <div className="absolute inset-0 w-full h-full">
-          {!imageError && (
-            <Image
-              src="/assets/homepage/footer.webp"
-              alt="Footer Background"
-              fill
-              sizes="100vw"
-              priority
-              quality={90}
-              className="object-cover"
-              onError={() => setImageError(true)}
-            />
-          )}
-          <div 
-            className={cn(
-              "absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-primary/80",
-              imageError ? "bg-gradient-to-br from-purple-900 to-blue-900" : ""
-            )}
-          />
+    <footer className="w-full bg-background text-foreground pt-10 pb-4 px-4 mt-12 border-t border-border shadow-2xl">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 items-start">
+        {/* About / Logo */}
+        <div className="flex flex-col items-start gap-3">
+          <div className="relative bg-foreground w-20 h-20">
+
+          <Image src="/assets/dta.svg" alt="DreamTo IT Agency" fill className="mb-2 rounded-lg shadow-lg " />
+          </div> 
+            
+          
+          <span className="font-bold text-xl tracking-wide">DreamTo IT Agency</span>
+          <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+            {footer("agencyDescription") }
+          </p>
         </div>
 
-        {/* Content */}
-        <div className="container mx-auto text-center relative z-10 px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center gap-6">
-            {/* Main Heading */}
-            <div className="text-center space-y-4">
-              <p
-                className="text-3xl font-extrabold text-foreground drop-shadow-md"
-                id="footer-heading"
-              >
-                {footer("readyToTransform")}
-              </p>
-              <p className="text-lg text-muted-foreground">
-                {footer("buildSomethingGreat")}
-              </p>
-            </div>
-
-            {/* Dream To App Logo */}
-            <div className="bg-white rounded-full w-[120px] h-[120px] flex items-center justify-center shadow-md border-4 border-primary/30">
-              <Image
-                src="/assets/dta.svg"
-                alt="Dream To App Logo"
-                width={100}
-                height={100}
-                priority
-                className="object-contain"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                }}
-              />
-            </div>
-
-            {/* Slogan */}
-            <p className="text-2xl font-bold text-primary drop-shadow-md">
-              {t("slogon")}
-            </p>
-
-            {/* Call-to-Action Button */}
+        {/* Quick Links */}
+        <nav aria-label="Quick Links" className="flex flex-col gap-2">
+          <span className="font-semibold text-lg mb-2 text-foreground">{footer("quickLinks") || "Quick Links"}</span>
+          {quickLinks.map(link => (
             <Link
-              href="https://wa.me/966554113107"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ variant: "default" }),
-                "bg-primary text-primary-foreground hover:bg-primary/90 transform transition shadow-2xl hover:shadow-lg rounded-2xl px-8 py-3 text-lg font-semibold flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-primary/70"
-              )}
-              aria-label={t("fromIdeaButton")}
+              key={link.href}
+              href={link.href}
+              className="hover:text-primary transition-colors text-white/90 text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 14.487c-.263-.131-1.558-.77-1.799-.858-.241-.088-.417-.131-.593.132-.175.263-.676.858-.83 1.033-.153.175-.307.197-.57.066-.263-.132-1.11-.408-2.114-1.302-.782-.698-1.31-1.561-1.464-1.824-.153-.263-.016-.405.115-.537.118-.117.263-.307.395-.461.132-.153.175-.263.263-.439.088-.175.044-.329-.022-.461-.066-.132-.593-1.433-.813-1.963-.214-.514-.433-.444-.593-.453-.153-.009-.329-.011-.505-.011-.175 0-.46.066-.701.329-.241.263-.92.899-.92 2.191 0 1.292.942 2.541 1.073 2.715.132.175 1.853 2.832 4.5 3.858.63.217 1.12.346 1.503.442.631.161 1.206.138 1.66.084.507-.06 1.558-.637 1.779-1.253.219-.616.219-1.144.153-1.253-.066-.109-.241-.175-.504-.307z" />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 12c0 5.385-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12 6.615 2.25 12 2.25 21.75 6.615 21.75 12z" />
-              </svg>
-              <span>{t("fromIdeaButton")}</span>
+              {link.label}
             </Link>
-          </div>
-        </div>
-      </motion.footer>
+          ))}
+        </nav>
 
-      {/* Contact and Social Media Section */}
-      <ContactAndSocialMedia />
-    </div>
+        {/* Contact Info */}
+        <address className="not-italic flex flex-col gap-2 text-base">
+          <span className="font-semibold text-lg mb-2">{footer("chatWithUs")  }</span>
+          <div className="flex items-center gap-2">
+            <contactUs.email.icon className="w-5 h-5 text-primary" />
+            <Link href="mailto:info@dreamto.app" className="hover:text-primary transition-colors">info@dreamto.app</Link>
+          </div>
+          <div className="flex items-center gap-2">
+            <contactUs.phone.icon className="w-5 h-5 text-primary" />
+            <Link href="tel:+966554113107" className="hover:text-primary transition-colors">966554113107</Link>
+          </div>
+          <div className="flex items-center gap-2">
+            <contactUs.form.icon className="w-5 h-5 text-primary" />
+            <Link href="#contact-form" className="hover:text-primary transition-colors">{footer("getInTouch")}</Link>
+          </div>
+        </address>
+
+        {/* Social Media */}
+        <div className="flex flex-col items-start">
+          <span className="font-semibold text-lg mb-2">{footer("socialMedia")}</span>
+          <ContactAndSocialMedia />
+        </div>
+      </div>
+
+      {/* Copyright & Legal */}
+      <div className="mt-10 flex flex-col md:flex-row justify-between items-center gap-2 border-t border-white/10 pt-4 text-xs text-white/50">
+        <span>&copy; {year} DreamToApp IT Agency. All rights reserved.</span>
+        <div className="flex gap-4">
+          <Link href="/privacy" className="hover:text-primary transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-primary transition-colors">Terms of Service</Link>
+        </div>
+      </div>
+    </footer>
   );
 };
 
