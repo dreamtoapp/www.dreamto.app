@@ -1,5 +1,5 @@
 import { AppSidebar } from "@/components/naviqation/app-sidebar";
-import AnimatedLogo from "@/components/ui/AnimatedLogo";
+import Image from "next/image";
 import Navbar from "@/components/naviqation/navbar";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { isRTL } from "@/i18n/routing";
@@ -44,7 +44,7 @@ export default async function LocaleLayout({
   children: React.ReactNode;
   params: Promise<{ locale: Locale }>;
 }) {
-  const locale = (await params).locale;
+  const { locale } = await params;
 
   // Validate locale
   if (!locales.includes(locale)) {
@@ -56,22 +56,22 @@ export default async function LocaleLayout({
       <header className="bg-background border-b border-border p-4">
         <div className="flex justify-between items-center">
           <Link href={`/${locale}`}>
-          <div className="flex items-center gap-2">
-            <AnimatedLogo />
-            <h1 className="text-xl font-bold">DreamToApp</h1>
-          </div>
+            <div className="flex items-center gap-2">
+              <Image src="/assets/dta.svg" alt="DTA Logo" width={40} height={40} priority />
+              <h1 className="text-xl font-bold">DreamToApp</h1>
+            </div>
           </Link>
           <div className="flex items-center gap-2">
-  {/* Mobile: Setting first, then MobileMenu; Desktop: DesktopMenu last */}
-  <div className="flex md:hidden items-center gap-2">
-    <Setting />
-    <MobileMenu locale={locale} />
-  </div>
-  <div className="hidden md:flex items-center gap-2">
-    <DesktopMenu locale={locale} />
-    <Setting />
-  </div>
-</div>
+            {/* Mobile: Setting first, then MobileMenu; Desktop: DesktopMenu last */}
+            <div className="flex md:hidden items-center gap-2">
+              <Setting />
+              <MobileMenu locale={locale} />
+            </div>
+            <div className="hidden md:flex items-center gap-2">
+              <DesktopMenu locale={locale} />
+              <Setting />
+            </div>
+          </div>
         </div>
       </header>
       <main className="flex-1">

@@ -99,21 +99,23 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${cairo.className} min-h-screen bg-background antialiased`}>
-
         <NextIntlClientProvider locale={locale} messages={messages}>
           <NextTopLoader 
-           
+          
           />
-          <Suspense fallback={<LoadingFallback />}>
-            <main id="main-content" tabIndex={-1} role="main" >
+           
+           
+            <main id="main-content" tabIndex={-1} role="main"  >
               <ThemeProvider>
-                {children}
+                 
+                  {children}
+               
               </ThemeProvider>
             </main>
             <footer role="contentinfo" className="border-t">
               {/* Insert global footer here if needed */}
             </footer>
-          </Suspense>
+        
         </NextIntlClientProvider>
         <Toaster position="top-right" />
       </body>
