@@ -90,6 +90,6 @@ model FormData {
   discount        Float?   // Discount percentage used (e.g., 20 for 20%)
   agreed          Boolean? // Whether the user agreed to the price
   negotiation     Boolean? // Whether the user requested negotiation
-  noPrice         Boolean? // Whether the user doesn’t have a previous price
+  noPrice         Boolean? // Whether the user doesn't have a previous price
   createdAt       DateTime @default(now()) // Timestamp of submission
 }

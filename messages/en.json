@@ -80,7 +80,10 @@
       "whatsapp": "Message us on WhatsApp",
       "email": "Send an Email",
       "phone": "Call Us Directly",
-      "form": "Fill out the Contact Form"
+      "form": "Fill out the Contact Form",
+      "contactFormTitle": "Contact Form Title",
+      "sendButton": "Send Your Message Now",
+      "phoneHint": "Saudi Arabia (Jeddah) | International: include country code"
     },
     "otherMenu": {
       "title": "Useful Links",
@@ -276,7 +279,6 @@
     "heroTitle2": "For Today's Achievements",
     "heroDescription": "We combine creativity and technology to provide customized solutions for your business. Building tomorrow's solutions with innovative technologies that meet your needs.",
     "ctaGetQuoteNow": "Get Your Quote Now",
-    "ctaViewPortfolio": "View Our Portfolio",
     "happyClients": "500+ Happy Clients",
     "rating": "4.9/5 Rating",
     "whyChooseUs": "Why Choose Us",
@@ -370,7 +372,7 @@
       "attachment": "Attachment",
     "pagetitle": "Contact Us",
     "hint": "Correct information is required to help us respond as quickly as possible, providing the best possible service.",
-
+"phoneHint": "Saudi Arabia (Jeddah) | For international calls: Please add the country code",
     "mobile": "Mobile Number",
     "mobilePlaceHolder": "10-digit mobile number",
     "mobileValidationError": "Must be at least 10 digits",
