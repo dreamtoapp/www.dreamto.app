@@ -25,6 +25,7 @@ import {
 import Image from "next/image"
 import React from "react"
 import { getTranslations, getLocale } from "next-intl/server"
+import Link from "next/link"
 
 // Structured data for SEO
 const structuredData = {
@@ -110,10 +111,10 @@ const structuredData = {
   },
 }
 
-function HeroSection({ t }: { t: any }) {
+function HeroSection({ t, locale }: { t: any, locale: string }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
-      <div className="relative container mx-auto px-4 py-24 lg:py-32">
+      <div className="relative container mx-auto px-4 py-4 ">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8">
             <div className="space-y-6">
@@ -131,14 +132,18 @@ function HeroSection({ t }: { t: any }) {
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                <Target className="w-5 h-5 mr-2" />
-                {t("ctaGetQuoteNow")}
-              </Button>
-              <Button size="lg" variant="outline">
-                {t("ctaViewPortfolio")}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
+              <Link href={`/${locale}/contactus`} passHref>
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  <Target className="w-5 h-5 mr-2" />
+                  {t("ctaGetQuoteNow")}
+                </Button>
+              </Link>
+              <Link href={`/${locale}/worksample`} passHref>
+                <Button size="lg" variant="outline">
+                  {t("ctaViewPortfolio")}
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Button>
+              </Link>
             </div>
             <div className="flex items-center gap-6 pt-4">
               <div className="flex items-center gap-2">
@@ -365,7 +370,7 @@ function TestimonialsSection({ t, testimonials }: { t: any; testimonials: any[] 
   );
 }
 
-function CTASection({ t }: { t: any }) {
+function CTASection({ t, locale }: { t: any, locale: string }) {
   return (
     <section className="py-24 bg-gradient-to-r from-primary via-primary/90 to-secondary text-primary-foreground relative overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
@@ -380,18 +385,22 @@ function CTASection({ t }: { t: any }) {
             {t("ctaReady")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
-              <Target className="w-5 h-5 mr-2" />
-              {t("ctaFreeQuote")}
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary-foreground text-white bg-orange-500 hover:bg-primary-foreground/10"
-            >
-              {t("ctaScheduleConsultation")}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Button>
+            <Link href={`/${locale}/contactus`} passHref>
+              <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
+                <Target className="w-5 h-5 mr-2" />
+                {t("ctaFreeQuote")}
+              </Button>
+            </Link>
+            <Link href={`/${locale}/contactus`} passHref>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground text-white bg-orange-500 hover:bg-primary-foreground/10"
+              >
+                {t("ctaScheduleConsultation")}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
@@ -524,11 +533,11 @@ export default async function ServicesPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <div className="min-h-screen bg-background">
-        <HeroSection t={t} />
+        <HeroSection t={t} locale={locale} />
         <ServicesSection t={t} services={services} />
         <WhyChooseUsSection t={t} />
         <TestimonialsSection t={t} testimonials={testimonials} />
-        <CTASection t={t} />
+        <CTASection t={t} locale={locale} />
         <StatsSection t={t} />
       </div>
     </>
