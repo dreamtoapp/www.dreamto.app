@@ -135,10 +135,14 @@
     "button": "Return to Home Page"
   },
   "homepage": {
-    "title": "DreamTo IT Solutions – Digital Innovation Agency",
-    "description": "DreamTo is a leading IT agency offering web, mobile, and cloud solutions. Explore our portfolio, services, and contact us for digital excellence.",
+    "home":"Home",
+    "services":"Our Services",
+    "portfolio":"Our Portfolio",
+    "contact":"Contact Us",
+    "title": "Dreamto - Your Digital Innovation Partner",
+    "description": "Dreamto is a leading digital innovation partner offering web, mobile, and cloud solutions. Explore our services and portfolio, and get in touch for your digital success.",
     "organization": {
-      "name": "DreamTo IT Solutions"
+      "name": "Dreamto for Digital Solutions"
     },
     "breadcrumb": {
       "home": "Home"
@@ -146,36 +150,37 @@
     "sections": {
       "hero": "Hero Section",
       "cromboDetails": "Crombo Details",
-      "homepageBody": "Homepage Content"
+      "homepageBody": "Homepage Body"
     },
     "logo": {
-      "alt": "DreamToApp Logo"
+      "alt": "Dreamto Logo"
     },
     "cta": {
       "primary": "Start Your Project",
-      "secondary": "Explore Services"
+      "secondary": "Explore Our Services"
     },
-    "fromIdeaTitle": "From Idea to Successful Digital Product",
-    "fromIdeaContent": "We transform your bold ideas into unique digital solutions that attract customers and drive your business to success. By combining creativity and technology, we deliver innovative products that achieve tangible results.",
-    "fromIdeaButton": "Start Your Journey with Us Now!",
-    "discoverTitle": "Start with a Small Step",
+    "fromIdeaTitle": "From Idea to Digital Success",
+    "fromIdeaContent": "We turn your bold ideas into unique digital products that attract customers and drive your business forward. By combining creativity and technology, we deliver innovative products that achieve tangible results.",
+    "fromIdeaButton": "Start Your Journey with Us Today!",
+    "discoverTitle": "Start Small",
     "discoverTitle1": "Don't wait for perfection. Taking action is the most important step",
-    "discoverTitle2": "Even if your start is modest, experience will teach you a lot",
-    "discoverTitle3": "Don't let fear stop you! Start your journey today and get a free guide to the first steps.",
+    "discoverTitle2": "Even if your start is humble, experience will teach you a lot",
+    "discoverTitle3": "Don't let fear hold you back! Start your journey today and get a free guide for the first steps.",
     "discoverContent": "Example: If you want to write a book, start by writing one page a day.",
-    "discoverButton": "Start Your Success for Free",
-    "slogon": "Where Dreams Take Off",
-    "subHeader": "Transform your ideas into reality with cutting-edge technology",
-    "subHeader2": "Launch your dream now into the digital world. We build a website and app that clearly reflect your ambition. Attract your audience and achieve your goals—that's our mission.",
+    "discoverButton": "Start Your Success Journey for Free",
+    "slogon": "Where Dreams Begin",
+    "subHeader": "Transform Your Ideas into Reality with the Latest Technologies",
+    "subHeader2": "Bring your dream to life in the digital world. We build a website and application that reflect your ambition clearly. Attract your audience and achieve your goals - that's our mission.",
     "discoverDilog": "You may face challenges, but resilience is the key to overcoming them.",
     "discoverDilog1": "Keep trying and learn from every failure.",
-    "discoverDilogTitle": "Success Journey",
-    "webDilogTitle": "Success Journey",
-    "mobileDilogTitle": "Success Journey",
-    "crmDilogTitle": "Success Journey",
-    "ecommDilogTitle": "Success Journey",
-    "uiDilogTitle": "Success Journey",
-    "ctaButton": "Start Your Success Journey Now"
+    "discoverDilogTitle": "The Journey to Success",
+    "webDilogTitle": "The Journey to Success",
+    "mobileDilogTitle": "The Journey to Success",
+    "crmDilogTitle": "The Journey to Success",
+    "ecommDilogTitle": "The Journey to Success",
+    "uiDilogTitle": "The Journey to Success",
+    "ctaButton": "Start Your Success Journey Today",
+    "chatWithUs": "Chat with Us Now"
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "Planning and Discovery",
@@ -200,8 +205,13 @@
     "callUsNow": "Call us now for a free consultation",
     "footerIllustrationAlt": "Illustration reflecting our collaboration",
     "chatWithUs": "Chat with us now for support",
-    "phoneNumber": "+1 (123) 456-7890",
-    "emailAddress": "info@yourcompany.com"
+    "phoneNumber": "966554113107",
+    "emailAddress": "info@dreamto.app",
+     "copyright": "All rights reserved",
+    "socialMedia": "Social Media",
+    "quickLinks": "Quick Links",
+    "agencyDescription":"We build digital experiences that drive success for ambitious brands."
+    
   },
   "services": {
     "tecnoUsed": "Innovative technologies that meet your needs",
