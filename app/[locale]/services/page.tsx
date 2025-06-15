@@ -110,6 +110,322 @@ const structuredData = {
   },
 }
 
+function HeroSection({ t }: { t: any }) {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
+      <div className="relative container mx-auto px-4 py-24 lg:py-32">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <div className="space-y-6">
+              <Badge variant="secondary" className="w-fit mb-2">
+                <Sparkles className="w-4 h-4 mr-2" />
+                {t("heroBadge")}
+              </Badge>
+              <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-foreground mt-0">
+                <span className="text-primary">{t("heroTitle1")}</span>
+                <br />
+                <span className="text-secondary">{t("heroTitle2")}</span>
+              </h1>
+              <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
+                {t("heroDescription")}
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button size="lg" className="bg-primary hover:bg-primary/90">
+                <Target className="w-5 h-5 mr-2" />
+                {t("ctaGetQuoteNow")}
+              </Button>
+              <Button size="lg" variant="outline">
+                {t("ctaViewPortfolio")}
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+            </div>
+            <div className="flex items-center gap-6 pt-4">
+              <div className="flex items-center gap-2">
+                <div className="flex -space-x-2">
+                  {[1, 2, 3, 4].map((i) => (
+                    <Avatar key={i} className="border-2 border-background w-8 h-8">
+                      <AvatarImage src={`/placeholder.svg?height=32&width=32`} />
+                      <AvatarFallback>U{i}</AvatarFallback>
+                    </Avatar>
+                  ))}
+                </div>
+                <span className="text-sm text-muted-foreground">{t("happyClients")}</span>
+              </div>
+              <Separator orientation="vertical" className="h-6" />
+              <div className="flex items-center gap-1">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                ))}
+                <span className="text-sm text-muted-foreground ml-2">{t("rating")}</span>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
+            <Card className="relative border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
+              <CardContent className="p-0">
+                <Image
+                  src="/assets/dta.svg"
+                  alt="Innovative Technology Solutions - Website Development, Mobile Apps, and Digital Marketing Services"
+                  width={600}
+                  height={500}
+                  className="rounded-lg"
+                  priority
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServicesSection({ t, services }: { t: any; services: any[] }) {
+  return (
+    <section className="py-24 bg-muted/30" id="services">
+      <div className="container mx-auto px-4">
+        <header className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            <Zap className="w-4 h-4 mr-2" />
+            {t("professionalServices")}
+          </Badge>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            {t("tecnoUsed")}
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            {t("blendingCreativity")}
+          </p>
+        </header>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card
+              key={index}
+              className="group hover:shadow-xl transition-all duration-500 border hover:border-primary/20 hover:-translate-y-2 bg-card/80 backdrop-blur-sm"
+            >
+              {/* Icon at the top, centered */}
+              <div className="flex justify-center mt-6 mb-2">
+                <div className={`${service.bgColor} p-4 rounded-full border shadow-sm group-hover:scale-110 transition-transform duration-300`}>
+                  {React.createElement(service.icon, { className: `w-10 h-10 ${service.textColor}` })}
+                </div>
+              </div>
+              {/* End icon */}
+              <CardHeader className="pb-4">
+                <CardTitle className={`text-xl font-bold group-hover:${service.textColor} transition-colors`}>
+                  {service.title}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <CardDescription className="text-muted-foreground leading-relaxed text-sm">
+                  {service.description}
+                </CardDescription>
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-sm text-foreground flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-primary" />
+                    {t("keyFeatures")}
+                  </h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {service.features.map((feature: string, featureIndex: number) => (
+                      <div key={featureIndex} className="flex items-center gap-2 bg-muted/50 p-2 rounded-md">
+                        <CheckCircle className={`w-3 h-3 ${service.textColor} flex-shrink-0`} />
+                        <span className="text-xs text-muted-foreground">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-colors`}>
+                  {t("learnMoreAbout", { service: service.title })}
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function WhyChooseUsSection({ t }: { t: any }) {
+  return (
+    <section className="py-24 bg-background">
+      <div className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <Badge variant="outline">
+                <Award className="w-4 h-4 mr-2" />
+                {t("whyChooseUs")}
+              </Badge>
+              <h2 className="text-4xl font-bold text-foreground">{t("innovateFutureSolutions")}</h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                {t("whyChooseUsDesc")}
+              </p>
+            </div>
+            <div className="grid gap-6">
+              {[
+                {
+                  icon: Rocket,
+                  title: t("fastDelivery"),
+                  description: t("fastDeliveryDesc"),
+                },
+                {
+                  icon: Shield,
+                  title: t("secureSolutions"),
+                  description: t("secureSolutionsDesc"),
+                },
+                {
+                  icon: Clock,
+                  title: t("support247"),
+                  description: t("support247Desc"),
+                },
+              ].map((item, index) => (
+                <div key={index} className="flex gap-4">
+                  <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
+                    <item.icon className="w-6 h-6 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
+              <CardContent className="p-0 relative overflow-hidden">
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 opacity-70 blur-sm z-10 pointer-events-none" />
+                <Image
+                  src="/assets/dta.svg"
+                  alt="DreamToApp Logo - Professional team working on innovative technology solutions"
+                  width={500}
+                  height={400}
+                  className="rounded-lg opacity-80 relative z-20"
+                  loading="lazy"
+                />
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection({ t, testimonials }: { t: any; testimonials: any[] }) {
+  return (
+    <section className="py-24 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <header className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            <Star className="w-4 h-4 mr-2" />
+            {t("clientTestimonials")}
+          </Badge>
+          <h2 className="text-4xl font-bold text-foreground mb-4">{t("whatOurClientsSay")}</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            {t("testimonialsIntro")}
+          </p>
+        </header>
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="border-0 shadow-lg bg-card/80 backdrop-blur-sm">
+              <CardContent className="p-6 space-y-4">
+                <div className="flex gap-1">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <blockquote className="text-muted-foreground italic leading-relaxed">
+                  "{testimonial.content}"
+                </blockquote>
+                <div className="flex items-center gap-3 pt-4">
+                  <Avatar>
+                    <AvatarImage src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.name} />
+                    <AvatarFallback>
+                      {testimonial.name
+                        .split(" ")
+                        .map((n: string) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="font-semibold text-foreground">{testimonial.name}</div>
+                    <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CTASection({ t }: { t: any }) {
+  return (
+    <section className="py-24 bg-gradient-to-r from-primary via-primary/90 to-secondary text-primary-foreground relative overflow-hidden">
+      <div className="absolute inset-0 bg-black/10"></div>
+      <div className="relative container mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto space-y-8">
+          <Badge className="bg-background/20 text-primary-foreground border-primary-foreground/30">
+            <Sparkles className="w-4 h-4 mr-2" />
+            {t("limitedTimeOffer")}
+          </Badge>
+          <h2 className="text-4xl lg:text-5xl font-bold">{t("highDiscounts")}</h2>
+          <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
+            {t("ctaReady")}
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
+              <Target className="w-5 h-5 mr-2" />
+              {t("ctaFreeQuote")}
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground text-white bg-orange-500 hover:bg-primary-foreground/10"
+            >
+              {t("ctaScheduleConsultation")}
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StatsSection({ t }: { t: any }) {
+  return (
+    <section className="py-16 bg-background border-t">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="space-y-2">
+            <div className="text-3xl lg:text-4xl font-bold text-primary">500+</div>
+            <div className="text-muted-foreground">{t("projectsCompleted")}</div>
+          </div>
+          <div className="space-y-2">
+            <div className="text-3xl lg:text-4xl font-bold text-primary">98%</div>
+            <div className="text-muted-foreground">{t("clientSatisfaction")}</div>
+          </div>
+          <div className="space-y-2">
+            <div className="text-3xl lg:text-4xl font-bold text-primary">24/7</div>
+            <div className="text-muted-foreground">{t("supportAvailable")}</div>
+          </div>
+          <div className="space-y-2">
+            <div className="text-3xl lg:text-4xl font-bold text-primary">5+</div>
+            <div className="text-muted-foreground">{t("yearsExperience")}</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default async function ServicesPage() {
   const t = await getTranslations("services")
   const locale = await getLocale()
@@ -207,317 +523,13 @@ export default async function ServicesPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-
       <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
-  
-          
-          <div className="relative container mx-auto px-4 py-24 lg:py-32">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
-              <div className="space-y-8">
-                <div className="space-y-6">
-                  <Badge variant="secondary" className="w-fit mb-2">
-                    <Sparkles className="w-4 h-4 mr-2" />
-                    {t("heroBadge")}
-                  </Badge>
-                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-foreground mt-0">
-                    <span className="text-primary">{t("heroTitle1")}</span>
-                    <br />
-                    <span className="text-secondary">{t("heroTitle2")}</span>
-                  </h1>
-                  <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                    {t("heroDescription")}
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    <Target className="w-5 h-5 mr-2" />
-                    {t("ctaGetQuoteNow")}
-                  </Button>
-                  <Button size="lg" variant="outline">
-                    {t("ctaViewPortfolio")}
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </Button>
-                </div>
-
-                <div className="flex items-center gap-6 pt-4">
-                  <div className="flex items-center gap-2">
-                    <div className="flex -space-x-2">
-                      {[1, 2, 3, 4].map((i) => (
-                        <Avatar key={i} className="border-2 border-background w-8 h-8">
-                          <AvatarImage src={`/placeholder.svg?height=32&width=32`} />
-                          <AvatarFallback>U{i}</AvatarFallback>
-                        </Avatar>
-                      ))}
-                    </div>
-                    <span className="text-sm text-muted-foreground">{t("happyClients")}</span>
-                  </div>
-                  <Separator orientation="vertical" className="h-6" />
-                  <div className="flex items-center gap-1">
-                    {[1, 2, 3, 4, 5].map((star) => (
-                      <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                    ))}
-                    <span className="text-sm text-muted-foreground ml-2">{t("rating")}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
-                <Card className="relative border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
-                  <CardContent className="p-0">
-                    <Image
-                      src="/assets/dta.svg"
-                      alt="Innovative Technology Solutions - Website Development, Mobile Apps, and Digital Marketing Services"
-                      width={600}
-                      height={500}
-                      className="rounded-lg"
-                      priority
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section className="py-24 bg-muted/30" id="services">
-          <div className="container mx-auto px-4">
-            <header className="text-center mb-16">
-              <Badge variant="outline" className="mb-4">
-                <Zap className="w-4 h-4 mr-2" />
-                {t("professionalServices")}
-              </Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                {t("tecnoUsed")}
-              </h2>
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                {t("blendingCreativity")}
-              </p>
-            </header>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <Card
-                  key={index}
-                  className="group hover:shadow-xl transition-all duration-500 border hover:border-primary/20 hover:-translate-y-2 bg-card/80 backdrop-blur-sm"
-                >
-                  {/* Icon at the top, centered */}
-                  <div className="flex justify-center mt-6 mb-2">
-                    <div className={`${service.bgColor} p-4 rounded-full border shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                      {React.createElement(service.icon, { className: `w-10 h-10 ${service.textColor}` })}
-                    </div>
-                  </div>
-                  {/* End icon */}
-                  <CardHeader className="pb-4">
-                    <CardTitle className={`text-xl font-bold group-hover:${service.textColor} transition-colors`}>
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-
-                  <CardContent className="space-y-6">
-                    <CardDescription className="text-muted-foreground leading-relaxed text-sm">
-                      {service.description}
-                    </CardDescription>
-
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-sm text-foreground flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-primary" />
-                        {t("keyFeatures")}
-                      </h4>
-                      <div className="grid grid-cols-2 gap-2">
-                        {service.features.map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center gap-2 bg-muted/50 p-2 rounded-md">
-                            <CheckCircle className={`w-3 h-3 ${service.textColor} flex-shrink-0`} />
-                            <span className="text-xs text-muted-foreground">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-colors`}>
-                      {t("learnMoreAbout", { service: service.title })}
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Why Choose Us Section */}
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <Badge variant="outline">
-                    <Award className="w-4 h-4 mr-2" />
-                    {t("whyChooseUs")}
-                  </Badge>
-                  <h2 className="text-4xl font-bold text-foreground">{t("innovateFutureSolutions")}</h2>
-                  <p className="text-lg text-muted-foreground leading-relaxed">
-                    {t("whyChooseUsDesc")}
-                  </p>
-                </div>
-
-                <div className="grid gap-6">
-                  {[
-                    {
-                      icon: Rocket,
-                      title: t("fastDelivery"),
-                      description: t("fastDeliveryDesc"),
-                    },
-                    {
-                      icon: Shield,
-                      title: t("secureSolutions"),
-                      description: t("secureSolutionsDesc"),
-                    },
-                    {
-                      icon: Clock,
-                      title: t("support247"),
-                      description: t("support247Desc"),
-                    },
-                  ].map((item, index) => (
-                    <div key={index} className="flex gap-4">
-                      <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
-                        <item.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="relative">
-                <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
-                  <CardContent className="p-0 relative overflow-hidden">
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 opacity-70 blur-sm z-10 pointer-events-none" />
-                    <Image
-                      src="/assets/dta.svg"
-                      alt="DreamToApp Logo - Professional team working on innovative technology solutions"
-                      width={500}
-                      height={400}
-                      className="rounded-lg opacity-80 relative z-20"
-                      loading="lazy"
-                    />
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Testimonials Section */}
-        <section className="py-24 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <header className="text-center mb-16">
-              <Badge variant="outline" className="mb-4">
-                <Star className="w-4 h-4 mr-2" />
-                {t("clientTestimonials")}
-              </Badge>
-              <h2 className="text-4xl font-bold text-foreground mb-4">{t("whatOurClientsSay")}</h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                {t("testimonialsIntro")}
-              </p>
-            </header>
-
-            <div className="grid md:grid-cols-3 gap-8">
-              {testimonials.map((testimonial, index) => (
-                <Card key={index} className="border-0 shadow-lg bg-card/80 backdrop-blur-sm">
-                  <CardContent className="p-6 space-y-4">
-                    <div className="flex gap-1">
-                      {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                      ))}
-                    </div>
-                    <blockquote className="text-muted-foreground italic leading-relaxed">
-                      "{testimonial.content}"
-                    </blockquote>
-                    <div className="flex items-center gap-3 pt-4">
-                      <Avatar>
-                        <AvatarImage src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.name} />
-                        <AvatarFallback>
-                          {testimonial.name
-                            .split(" ")
-                            .map((n) => n[0])
-                            .join("")}
-                        </AvatarFallback>
-                      </Avatar>
-                      <div>
-                        <div className="font-semibold text-foreground">{testimonial.name}</div>
-                        <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-r from-primary via-primary/90 to-secondary text-primary-foreground relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/10"></div>
-          <div className="relative container mx-auto px-4 text-center">
-            <div className="max-w-4xl mx-auto space-y-8">
-              <Badge className="bg-background/20 text-primary-foreground border-primary-foreground/30">
-                <Sparkles className="w-4 h-4 mr-2" />
-                {t("limitedTimeOffer")}
-              </Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold">{t("highDiscounts")}</h2>
-              <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
-                {t("ctaReady")}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
-                  <Target className="w-5 h-5 mr-2" />
-                  {t("ctaFreeQuote")}
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
-                >
-                  {t("ctaScheduleConsultation")}
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Stats Section */}
-        <section className="py-16 bg-background border-t">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-              <div className="space-y-2">
-                <div className="text-3xl lg:text-4xl font-bold text-primary">500+</div>
-                <div className="text-muted-foreground">{t("projectsCompleted")}</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl lg:text-4xl font-bold text-primary">98%</div>
-                <div className="text-muted-foreground">{t("clientSatisfaction")}</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl lg:text-4xl font-bold text-primary">24/7</div>
-                <div className="text-muted-foreground">{t("supportAvailable")}</div>
-              </div>
-              <div className="space-y-2">
-                <div className="text-3xl lg:text-4xl font-bold text-primary">5+</div>
-                <div className="text-muted-foreground">{t("yearsExperience")}</div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <HeroSection t={t} />
+        <ServicesSection t={t} services={services} />
+        <WhyChooseUsSection t={t} />
+        <TestimonialsSection t={t} testimonials={testimonials} />
+        <CTASection t={t} />
+        <StatsSection t={t} />
       </div>
     </>
   )
