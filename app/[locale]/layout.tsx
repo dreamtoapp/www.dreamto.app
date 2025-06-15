@@ -19,7 +19,7 @@ import Link from "@/components/link";
 type Locale = typeof locales[number];
 
 // Generate metadata for SEO
-export async function generateMetadata({ params }: { params: { locale: Locale } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
   const { locale } = await params;
   return {
     title: {
@@ -42,9 +42,9 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: Locale };
+  params: Promise<{ locale: Locale }>;
 }) {
-  const { locale } = await params;
+  const locale = (await params).locale;
 
   // Validate locale
   if (!locales.includes(locale)) {
