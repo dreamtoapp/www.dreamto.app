@@ -14,6 +14,7 @@ import { Settings } from "lucide-react";
 import LangSwitcher from "@/components/naviqation/LangSwicher";
 import ThemeSwitch from "@/components/naviqation/ThemeSwitch";
 import Setting from "@/components/ui/Setting";
+import Link from "@/components/link";
 
 type Locale = typeof locales[number];
 
@@ -54,10 +55,12 @@ export default async function LocaleLayout({
     <div className="flex flex-col min-h-screen" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
       <header className="bg-background border-b border-border p-4">
         <div className="flex justify-between items-center">
+          <Link href={`/${locale}`}>
           <div className="flex items-center gap-2">
             <AnimatedLogo />
             <h1 className="text-xl font-bold">DreamToApp</h1>
           </div>
+          </Link>
           <div className="flex items-center gap-2">
   {/* Mobile: Setting first, then MobileMenu; Desktop: DesktopMenu last */}
   <div className="flex md:hidden items-center gap-2">
