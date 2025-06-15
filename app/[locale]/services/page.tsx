@@ -24,6 +24,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import React from "react"
+import { getTranslations, getLocale } from "next-intl/server"
 
 // Structured data for SEO
 const structuredData = {
@@ -109,81 +110,69 @@ const structuredData = {
   },
 }
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const t = await getTranslations("services")
+  const locale = await getLocale()
   const services = [
     {
       icon: Globe,
-      title: "Website Development",
-      description:
-        "We turn your ideas into exceptional websites that impress visitors and engage them with your brand. Our websites are not only visually appealing but also designed to be fast and responsive, ensuring a pleasant and comfortable user experience that converts visitors into loyal customers.",
-      
-      features: ["Responsive Design", "Fast Loading", "SEO Optimized", "User-Friendly"],
+      title: t("websiteDevelopmentTitle"),
+      description: t("websiteDevelopmentDescription"),
+      features: [t("responsiveDesign"), t("fastLoading"), t("seoOptimized"), t("userFriendly")],
       color: "bg-primary",
       textColor: "text-primary",
       bgColor: "bg-primary/10",
     },
     {
       icon: Smartphone,
-      title: "Mobile Applications",
-      description:
-        "We create innovative and user-friendly applications that allow your clients to access your services easily anytime and anywhere. Whether you need business or entertainment applications, we ensure a distinctive design filled with features that increase customer engagement with your brand.",
-      
-      features: ["Cross-Platform", "Native Performance", "Push Notifications", "Offline Support"],
+      title: t("mobileAppDevelopmentTitle"),
+      description: t("mobileAppDevelopmentDescription"),
+      features: [t("crossPlatform"), t("nativePerformance"), t("pushNotifications"), t("offlineSupport")],
       color: "bg-secondary",
       textColor: "text-secondary",
       bgColor: "bg-secondary/10",
     },
     {
       icon: Users,
-      title: "CRM Systems",
-      description:
-        "We provide advanced systems for managing customer relationships, helping you organize their data, track their needs, and deliver personalized services that enhance their loyalty. With our smart tools, you can provide an ideal customer experience and increase their loyalty in the long run.",
-      
-      features: ["Customer Analytics", "Automated Workflows", "Integration Ready", "Real-time Reports"],
+      title: t("crmDevelopmentTitle"),
+      description: t("crmDevelopmentDescription"),
+      features: [t("customerAnalytics"), t("automatedWorkflows"), t("integrationReady"), t("realTimeReports")],
       color: "bg-accent",
       textColor: "text-accent-foreground",
       bgColor: "bg-accent/10",
     },
     {
       icon: ShoppingCart,
-      title: "E-commerce Stores",
-      description:
-        "We build a complete online store that reflects your brand identity and facilitates the buying and selling process. We offer modern designs, secure payment gateways, and a unique shopping experience that helps you increase your sales and reach a wider audience.",
-      
-      features: ["Secure Payments", "Inventory Management", "Multi-Currency", "Analytics Dashboard"],
+      title: t("ecommerceDevelopmentTitle"),
+      description: t("ecommerceDevelopmentDescription"),
+      features: [t("securePayments"), t("inventoryManagement"), t("multiCurrency"), t("analyticsDashboard")],
       color: "bg-destructive",
       textColor: "text-destructive",
       bgColor: "bg-destructive/10",
     },
     {
       icon: Palette,
-      title: "User Interface Designs",
-      description:
-        "We provide innovative modern designs that focus on user experience, making every interaction with your website or application enjoyable and seamless. We study customer behavior to deliver designs that meet their needs and enhance their connection with your services.",
-      
-      features: ["User Research", "Prototyping", "Design Systems", "Usability Testing"],
+      title: t("uiUxDesignTitle"),
+      description: t("uiUxDesignDescription"),
+      features: [t("userResearch"), t("prototyping"), t("designSystems"), t("usabilityTesting")],
       color: "bg-muted",
       textColor: "text-muted-foreground",
       bgColor: "bg-muted/50",
     },
     {
       icon: TrendingUp,
-      title: "Digital Marketing",
-      description:
-        "We position your brand at the forefront of competition through integrated marketing strategies. We use the latest methods such as paid advertising and search engine optimization to ensure your brand reaches the right audience and achieves tangible results.",
-      
-      features: ["SEO Optimization", "Social Media", "PPC Campaigns", "Content Strategy"],
+      title: t("digitalMarketingTitle"),
+      description: t("digitalMarketingDescription"),
+      features: [t("seoOptimization"), t("socialMedia"), t("ppcCampaigns"), t("contentStrategy")],
       color: "bg-primary",
       textColor: "text-primary",
       bgColor: "bg-primary/10",
     },
     {
       icon: Eye,
-      title: "Visual Identity",
-      description:
-        "We create a unique visual identity that reflects your brand's personality and makes it memorable to your audience. From choosing colors and logos to designing promotional materials, we ensure that your identity is unique and strong, enhancing your distinctiveness.",
-      
-      features: ["Logo Design", "Brand Guidelines", "Marketing Materials", "Brand Strategy"],
+      title: t("visualIdentityTitle"),
+      description: t("visualIdentityDescription"),
+      features: [t("logoDesign"), t("brandGuidelines"), t("marketingMaterials"), t("brandStrategy")],
       color: "bg-secondary",
       textColor: "text-secondary",
       bgColor: "bg-secondary/10",
@@ -228,28 +217,27 @@ export default function ServicesPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="space-y-8">
                 <div className="space-y-6">
-                  <Badge variant="secondary" className="w-fit">
+                  <Badge variant="secondary" className="w-fit mb-2">
                     <Sparkles className="w-4 h-4 mr-2" />
-                    Innovative Technologies That Meet Your Needs
+                    {t("heroBadge")}
                   </Badge>
-                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-foreground">
-                    <span className="text-primary">Innovative Solutions</span>
+                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-foreground mt-0">
+                    <span className="text-primary">{t("heroTitle1")}</span>
                     <br />
-                    <span className="text-secondary">For Today's Achievements</span>
+                    <span className="text-secondary">{t("heroTitle2")}</span>
                   </h1>
                   <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-                    We combine creativity and technology to provide customized solutions for your business. Building
-                    tomorrow's solutions with innovative technologies that meet your needs.
+                    {t("heroDescription")}
                   </p>
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="bg-primary hover:bg-primary/90">
                     <Target className="w-5 h-5 mr-2" />
-                    Get Your Quote Now
+                    {t("ctaGetQuoteNow")}
                   </Button>
                   <Button size="lg" variant="outline">
-                    View Our Portfolio
+                    {t("ctaViewPortfolio")}
                     <ArrowRight className="w-5 h-5 ml-2" />
                   </Button>
                 </div>
@@ -264,14 +252,14 @@ export default function ServicesPage() {
                         </Avatar>
                       ))}
                     </div>
-                    <span className="text-sm text-muted-foreground">500+ Happy Clients</span>
+                    <span className="text-sm text-muted-foreground">{t("happyClients")}</span>
                   </div>
                   <Separator orientation="vertical" className="h-6" />
                   <div className="flex items-center gap-1">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                     ))}
-                    <span className="text-sm text-muted-foreground ml-2">4.9/5 Rating</span>
+                    <span className="text-sm text-muted-foreground ml-2">{t("rating")}</span>
                   </div>
                 </div>
               </div>
@@ -301,14 +289,13 @@ export default function ServicesPage() {
             <header className="text-center mb-16">
               <Badge variant="outline" className="mb-4">
                 <Zap className="w-4 h-4 mr-2" />
-                Our Professional Services
+                {t("professionalServices")}
               </Badge>
               <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
-                Innovative Technologies That Meet Your Needs
+                {t("tecnoUsed")}
               </h2>
               <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                We innovate future solutions with cutting-edge technology and creative expertise. Blending creativity
-                with advanced technology to deliver exceptional results.
+                {t("blendingCreativity")}
               </p>
             </header>
 
@@ -339,7 +326,7 @@ export default function ServicesPage() {
                     <div className="space-y-3">
                       <h4 className="font-semibold text-sm text-foreground flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-primary" />
-                        Key Features:
+                        {t("keyFeatures")}
                       </h4>
                       <div className="grid grid-cols-2 gap-2">
                         {service.features.map((feature, featureIndex) => (
@@ -352,7 +339,7 @@ export default function ServicesPage() {
                     </div>
 
                     <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-colors`}>
-                      Learn More About {service.title}
+                      {t("learnMoreAbout", { service: service.title })}
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
                   </CardContent>
@@ -370,12 +357,11 @@ export default function ServicesPage() {
                 <div className="space-y-4">
                   <Badge variant="outline">
                     <Award className="w-4 h-4 mr-2" />
-                    Why Choose Us
+                    {t("whyChooseUs")}
                   </Badge>
-                  <h2 className="text-4xl font-bold text-foreground">We Innovate Future Solutions</h2>
+                  <h2 className="text-4xl font-bold text-foreground">{t("innovateFutureSolutions")}</h2>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Building tomorrow's technology solutions today with innovative approaches that blend creativity and
-                    cutting-edge technology.
+                    {t("whyChooseUsDesc")}
                   </p>
                 </div>
 
@@ -383,18 +369,18 @@ export default function ServicesPage() {
                   {[
                     {
                       icon: Rocket,
-                      title: "Fast Delivery",
-                      description: "Quick turnaround times without compromising quality",
+                      title: t("fastDelivery"),
+                      description: t("fastDeliveryDesc"),
                     },
                     {
                       icon: Shield,
-                      title: "Secure Solutions",
-                      description: "Enterprise-grade security in all our implementations",
+                      title: t("secureSolutions"),
+                      description: t("secureSolutionsDesc"),
                     },
                     {
                       icon: Clock,
-                      title: "24/7 Support",
-                      description: "Round-the-clock technical support and maintenance",
+                      title: t("support247"),
+                      description: t("support247Desc"),
                     },
                   ].map((item, index) => (
                     <div key={index} className="flex gap-4">
@@ -436,11 +422,11 @@ export default function ServicesPage() {
             <header className="text-center mb-16">
               <Badge variant="outline" className="mb-4">
                 <Star className="w-4 h-4 mr-2" />
-                Client Testimonials
+                {t("clientTestimonials")}
               </Badge>
-              <h2 className="text-4xl font-bold text-foreground mb-4">What Our Clients Say</h2>
+              <h2 className="text-4xl font-bold text-foreground mb-4">{t("whatOurClientsSay")}</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Don't just take our word for it. Here's what our satisfied clients have to say about our services.
+                {t("testimonialsIntro")}
               </p>
             </header>
 
@@ -485,24 +471,23 @@ export default function ServicesPage() {
             <div className="max-w-4xl mx-auto space-y-8">
               <Badge className="bg-background/20 text-primary-foreground border-primary-foreground/30">
                 <Sparkles className="w-4 h-4 mr-2" />
-                Limited Time Offer
+                {t("limitedTimeOffer")}
               </Badge>
-              <h2 className="text-4xl lg:text-5xl font-bold">High Discounts, Don't Hesitate...</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold">{t("highDiscounts")}</h2>
               <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
-                Ready to transform your business with innovative technology solutions? Get started today with our
-                special pricing and expert consultation.
+                {t("ctaReady")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
                   <Target className="w-5 h-5 mr-2" />
-                  Get Your Free Quote Now
+                  {t("ctaFreeQuote")}
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
                   className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10"
                 >
-                  Schedule Free Consultation
+                  {t("ctaScheduleConsultation")}
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
               </div>
@@ -516,19 +501,19 @@ export default function ServicesPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div className="space-y-2">
                 <div className="text-3xl lg:text-4xl font-bold text-primary">500+</div>
-                <div className="text-muted-foreground">Projects Completed</div>
+                <div className="text-muted-foreground">{t("projectsCompleted")}</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl lg:text-4xl font-bold text-secondary">98%</div>
-                <div className="text-muted-foreground">Client Satisfaction</div>
+                <div className="text-3xl lg:text-4xl font-bold text-primary">98%</div>
+                <div className="text-muted-foreground">{t("clientSatisfaction")}</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl lg:text-4xl font-bold text-accent-foreground">24/7</div>
-                <div className="text-muted-foreground">Support Available</div>
+                <div className="text-3xl lg:text-4xl font-bold text-primary">24/7</div>
+                <div className="text-muted-foreground">{t("supportAvailable")}</div>
               </div>
               <div className="space-y-2">
                 <div className="text-3xl lg:text-4xl font-bold text-primary">5+</div>
-                <div className="text-muted-foreground">Years Experience</div>
+                <div className="text-muted-foreground">{t("yearsExperience")}</div>
               </div>
             </div>
           </div>
