@@ -1,8 +1,8 @@
 export const dynamic = "force-dynamic";
 import { getTranslations } from 'next-intl/server';
-import HeroClientWrapper from './component/HeroClientWrapper';
 import CromboDetail from './component/CromboDetail';
 import HomePageBody from './component/HomePageBody';
+import Hero, { HeroProps } from '@/components/ui/hero';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -53,6 +53,16 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 export default async function Page() {
   const t = await getTranslations('homepage');
 
+  const heroProps: HeroProps = {
+    logoAlt: t('logo.alt'),
+    tagline: t('tagline', { defaultValue: 'DREAM. DESIGN. DELIVER.' }),
+    title: t('title'),
+    description: t('description'),
+    ctaPrimary: t('cta.primary'),
+    ctaSecondary: t('cta.secondary'),
+    sectionsHero: t('sections.hero'),
+  };
+
   return (
     <div className='flex flex-col gap-4'>
       {/* Organization & BreadcrumbList Structured Data */}
@@ -93,17 +103,15 @@ export default async function Page() {
           ])
         }}
       />
-      {/* <main id="main-content" role="main" className="flex flex-col gap-4 p-4 sm:p-6 md:p-8"> */}
-        <section aria-label={t('sections.hero')}>
-          <HeroClientWrapper />
-        </section>
-        <section aria-label={t('sections.cromboDetails')} className="grid gap-4 grid-cols-1 md:grid-cols-1">
-          <CromboDetail />
-        </section>
-        <section aria-label={t('sections.homepageBody')} className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min max-w-full mx-auto p-2">
-          <HomePageBody />
-        </section>
-      {/* </main> */}
+      <section aria-label={heroProps.sectionsHero}>
+        <Hero {...heroProps} />
+      </section>
+      <section aria-label={t('sections.cromboDetails')} className="grid gap-4 grid-cols-1 md:grid-cols-1">
+        <CromboDetail />
+      </section>
+      <section aria-label={t('sections.homepageBody')} className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min max-w-full mx-auto p-2">
+        <HomePageBody />
+      </section>
     </div>
   );
 }

@@ -1,6 +1,4 @@
 import React, { memo } from "react"
-import { Button } from "./button"
-import { getTranslations } from "next-intl/server"
 import Link from "../link"
 
 // Enhanced particle configuration with varied sizes and behaviors (memoized)
@@ -130,9 +128,25 @@ const ProgressiveBackground = memo(() => (
 ))
 ProgressiveBackground.displayName = "ProgressiveBackground"
 
-const Hero = async () => {
-  const t = await getTranslations("homepage")
+// Define the props for all translation strings used in Hero
+export interface HeroProps {
+  logoAlt: string;
+  tagline: string;
+  title: string;
+  description: string;
+  ctaPrimary: string;
+  ctaSecondary: string;
+  sectionsHero: string;
+}
 
+const Hero: React.FC<HeroProps> = ({
+  logoAlt,
+  tagline,
+  title,
+  description,
+  ctaPrimary,
+  ctaSecondary,
+}) => {
   return (
     <section className="relative flex flex-col items-center justify-center min-h-screen w-full px-4 pt-24 pb-12 sm:py-20 overflow-hidden">
       {/* Enhanced animated gradient background */}
@@ -175,7 +189,7 @@ const Hero = async () => {
               width="75%"
               height="75%"
               className="relative z-10 drop-shadow-lg"
-              aria-label={t("logo.alt")}
+              aria-label={logoAlt}
               focusable="false"
             >
               <g>
@@ -219,18 +233,18 @@ const Hero = async () => {
         {/* Enhanced tagline with gradient background */}
         <div className="relative">
           <span className="inline-block mb-4 px-6 py-2 rounded-full bg-gradient-to-r from-blue-600/90 via-purple-600/90 to-blue-600/90 text-white text-xs sm:text-sm font-bold tracking-widest shadow-lg uppercase font-cairo backdrop-blur-sm border border-white/20 animate-gradient-x">
-            {t("tagline", { defaultValue: "DREAM. DESIGN. DELIVER." })}
+            {tagline}
           </span>
         </div>
 
         {/* Enhanced heading with better gradient and shadow */}
         <h1 className="font-extrabold text-4xl bg-gradient-to-r from-blue-400 via-purple-300 via-cyan-300 to-blue-400 text-transparent bg-clip-text leading-loose tracking-wide drop-shadow-2xl animate-gradient-x">
-          {t("title")}
+          {title}
         </h1>
 
         {/* Enhanced description with better typography */}
         <p className="text-2xl text-gray-100 max-w-3xl mx-auto font-light leading-relaxed opacity-95 drop-shadow-lg">
-          {t("description")}
+          {description}
         </p>
 
         {/* Enhanced buttons with modern styling */}
@@ -238,13 +252,13 @@ const Hero = async () => {
           <Link href="/contactus" 
             className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white px-10 py-4 rounded-full text-base sm:text-lg font-bold shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px] border border-blue-500/50 backdrop-blur-sm overflow-hidden">
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative z-10">{t("cta.primary")}</span>
+              <span className="relative z-10">{ctaPrimary}</span>
             
           </Link>
           <Link href="/services"   className="group relative border-2 border-blue-400/60 hover:border-blue-300 text-blue-100 hover:text-white px-10 py-4 rounded-full text-base sm:text-lg font-bold shadow-xl transition-all duration-300 transform hover:scale-105 min-w-[200px] bg-white/10 backdrop-blur-sm hover:bg-white/20 overflow-hidden">
           
               <span className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-400/20 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <span className="relative z-10">{t("cta.secondary")}</span>
+              <span className="relative z-10">{ctaSecondary}</span>
           
           </Link>
         </div>

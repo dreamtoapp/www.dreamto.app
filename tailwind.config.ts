@@ -128,6 +128,28 @@ export default {
         "gradient-blue-light": "linear-gradient(to bottom, #e0f2fe, #90cdf4)", // Light pastel blue gradient
         "gradient-blue-modern": "linear-gradient(to bottom, #cfe8ff, #3b82f6)",
       },
+      keyframes: {
+        'pulse-slow': {
+          '0%, 100%': { transform: 'scale(1)', opacity: '0.6' },
+          '50%': { transform: 'scale(1.15)', opacity: '0.8' },
+        },
+        'pulse-slower': {
+          '0%, 100%': { transform: 'scale(1.1)', opacity: '0.5' },
+          '50%': { transform: 'scale(0.95)', opacity: '0.7' },
+        },
+        float: {
+          '0%': { transform: 'translateY(0)', opacity: '0.2' },
+          '30%': { opacity: '1' },
+          '50%': { transform: 'translateY(-40px)', opacity: '0.7' },
+          '70%': { opacity: '1' },
+          '100%': { transform: 'translateY(0)', opacity: '0.2' },
+        },
+      },
+      animation: {
+        'pulse-slow': 'pulse-slow 6s ease-in-out infinite',
+        'pulse-slower': 'pulse-slower 10s ease-in-out infinite',
+        float: 'float 4s ease-in-out infinite',
+      },
     },
   },
   plugins: [require("tailwindcss-animate"), require("tailwindcss-rtl")],
