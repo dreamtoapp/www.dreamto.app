@@ -1,17 +1,9 @@
-import { AppSidebar } from "@/components/naviqation/app-sidebar";
 import Image from "next/image";
-import Navbar from "@/components/naviqation/navbar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { isRTL } from "@/i18n/routing";
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { locales } from '@/i18n/routing';
-import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Settings } from "lucide-react";
-import LangSwitcher from "@/components/naviqation/LangSwicher";
-import ThemeSwitch from "@/components/naviqation/ThemeSwitch";
-import Setting from "@/components/ui/Setting";
 import Link from "@/components/link";
 import ClientNavMenus from './ClientNavMenus';
 
