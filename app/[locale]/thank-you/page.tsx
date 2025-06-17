@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaCheckCircle } from "react-icons/fa";
@@ -17,10 +16,7 @@ export default function ThankYouPage() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+    <div
       className="flex items-center justify-center min-h-screen bg-background p-6"
     >
       <Card className="max-w-xl w-full shadow-2xl p-10 rounded-3xl border bg-card text-center">
@@ -35,17 +31,17 @@ export default function ThankYouPage() {
             <p className="text-muted-foreground text-sm mb-6">
               {t("messageSecondary")}
             </p>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <div>
               <Button
                 onClick={gohome}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 px-8 rounded-lg transition shadow-lg text-lg"
               >
                 {t("returnHome")}
               </Button>
-            </motion.div>
+            </div>
           </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   );
 }

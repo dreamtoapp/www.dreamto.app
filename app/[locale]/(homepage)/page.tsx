@@ -1,7 +1,6 @@
 export const dynamic = "force-dynamic";
 import { getTranslations } from 'next-intl/server';
-import { getIpInfo } from '../../../lib/actions/getIp';
-import Hero from '../../../components/ui/hero';
+import HeroClientWrapper from './component/HeroClientWrapper';
 import CromboDetail from './component/CromboDetail';
 import HomePageBody from './component/HomePageBody';
 
@@ -52,7 +51,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 }
 
 export default async function Page() {
-  const ipInfo = await getIpInfo();
   const t = await getTranslations('homepage');
 
   return (
@@ -97,7 +95,7 @@ export default async function Page() {
       />
       {/* <main id="main-content" role="main" className="flex flex-col gap-4 p-4 sm:p-6 md:p-8"> */}
         <section aria-label={t('sections.hero')}>
-          <Hero />
+          <HeroClientWrapper />
         </section>
         <section aria-label={t('sections.cromboDetails')} className="grid gap-4 grid-cols-1 md:grid-cols-1">
           <CromboDetail />

@@ -25,7 +25,7 @@ import {
 import Image from "next/image"
 import React from "react"
 import { getTranslations, getLocale } from "next-intl/server"
-import Link from "next/link"
+import Link from '@/components/link'
 
 // Structured data for SEO
 const structuredData = {

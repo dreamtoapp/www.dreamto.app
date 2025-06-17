@@ -8,13 +8,12 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { locales } from '@/i18n/routing';
 import { Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import MobileMenu from "@/components/naviqation/MobileMenu";
-import DesktopMenu from "@/components/naviqation/DesktopMenu";
 import { Settings } from "lucide-react";
 import LangSwitcher from "@/components/naviqation/LangSwicher";
 import ThemeSwitch from "@/components/naviqation/ThemeSwitch";
 import Setting from "@/components/ui/Setting";
 import Link from "@/components/link";
+import ClientNavMenus from './ClientNavMenus';
 
 type Locale = typeof locales[number];
 
@@ -61,17 +60,7 @@ export default async function LocaleLayout({
               <h1 className="text-xl font-bold">DreamToApp</h1>
             </div>
           </Link>
-          <div className="flex items-center gap-2">
-            {/* Mobile: Setting first, then MobileMenu; Desktop: DesktopMenu last */}
-            <div className="flex md:hidden items-center gap-2">
-              <Setting />
-              <MobileMenu locale={locale} />
-            </div>
-            <div className="hidden md:flex items-center gap-2">
-              <DesktopMenu locale={locale} />
-              <Setting />
-            </div>
-          </div>
+          <ClientNavMenus locale={locale} />
         </div>
       </header>
       <main className="flex-1">

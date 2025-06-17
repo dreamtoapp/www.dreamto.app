@@ -11,9 +11,6 @@ importers:
       '@hookform/resolvers':
         specifier: ^5.1.1
         version: 5.1.1(react-hook-form@7.58.0(react@19.1.0))
-      '@next/bundle-analyzer':
-        specifier: ^15.3.3
-        version: 15.3.3
       '@portabletext/react':
         specifier: ^3.2.1
         version: 3.2.1(react@19.1.0)
@@ -132,6 +129,9 @@ importers:
         specifier: ^3.25.64
         version: 3.25.64
     devDependencies:
+      '@next/bundle-analyzer':
+        specifier: ^15.3.3
+        version: 15.3.3
       '@svgr/webpack':
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.8.3)
@@ -156,6 +156,9 @@ importers:
       prisma:
         specifier: ^6.9.0
         version: 6.9.0(typescript@5.8.3)
+      sharp:
+        specifier: ^0.34.2
+        version: 0.34.2
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
@@ -5735,13 +5738,11 @@ snapshots:
     dependencies:
       color-name: 1.1.4
       simple-swizzle: 0.2.2
-    optional: true
 
   color@4.2.3:
     dependencies:
       color-convert: 2.0.1
       color-string: 1.9.1
-    optional: true
 
   commander@4.1.1: {}
 
@@ -5846,8 +5847,7 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
-  detect-libc@2.0.4:
-    optional: true
+  detect-libc@2.0.4: {}
 
   detect-node-es@1.1.0: {}
 
@@ -6470,8 +6470,7 @@ snapshots:
 
   is-arrayish@0.2.1: {}
 
-  is-arrayish@0.3.2:
-    optional: true
+  is-arrayish@0.3.2: {}
 
   is-async-function@2.1.1:
     dependencies:
@@ -7189,7 +7188,6 @@ snapshots:
       '@img/sharp-win32-arm64': 0.34.2
       '@img/sharp-win32-ia32': 0.34.2
       '@img/sharp-win32-x64': 0.34.2
-    optional: true
 
   shebang-command@2.0.0:
     dependencies:
@@ -7230,7 +7228,6 @@ snapshots:
   simple-swizzle@0.2.2:
     dependencies:
       is-arrayish: 0.3.2
-    optional: true
 
   sirv@2.0.4:
     dependencies:

@@ -29,11 +29,12 @@ function CanonDetail() {
         <div className="flex items-center space-x-4 rtl:space-x-reverse">
           <figure className="relative w-[70px] h-[130px] flex-shrink-0">
             <Image
-              src={"/assets/homepage/canon.png"}
+              src={"/assets/homepage/canon.avif"}
               fill
-              alt={"Canon Project promotional image"}
+              alt={"Canon Project promotional image for DreamTo IT Agency"}
               className="object-contain object-center "
               priority
+              placeholder="blur"
               sizes="(max-width: 400px) 100vw, 400px"
             />
             <figcaption className="sr-only">Canon Project promotional image</figcaption>

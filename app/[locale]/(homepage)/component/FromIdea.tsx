@@ -15,16 +15,12 @@ const ImageWithErrorHandling = () => {
   return (
     <figure className="relative h-48 sm:h-64 w-full">
       <Image
-        src="/assets/homepage/images/website.jpeg"
+        src="/assets/homepage/images/website.avif"
         fill
-        alt="Website project showcase image"
+        alt="Website project showcase image for DreamTo IT Agency"
         priority
         className="object-cover rounded-t-xl transition-transform duration-300 hover:scale-105"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        // onError={(e) => {
-        //   const target = e.target as HTMLImageElement;
-        //   target.style.display = 'none';
-        // }}
       />
       <figcaption className="sr-only">Website project showcase image</figcaption>
     </figure>

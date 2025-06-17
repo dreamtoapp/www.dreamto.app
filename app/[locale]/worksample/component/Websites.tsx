@@ -1,15 +1,16 @@
 "use client";
 import React from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from "@/components/ui/carousel"; // Import shadcn carousel components
 import { Card, CardContent } from "@/components/ui/card"; // Import shadcn card components
 import { ArrowRightIcon } from "lucide-react"; // Optional: For hover effect icon
 import Autoplay from "embla-carousel-autoplay"; // For autoplay functionality
 import Image from "next/image"; // Import next/image for optimized images
 import { useLocale } from "next-intl";
+import dynamic from 'next/dynamic';
+import { Skeleton } from '@/components/ui/skeleton';
+
+const Carousel = dynamic(() => import('@/components/ui/carousel').then(mod => mod.Carousel), { ssr: false, loading: () => <Skeleton className="w-full h-64" /> });
+const CarouselContent = dynamic(() => import('@/components/ui/carousel').then(mod => mod.CarouselContent), { ssr: false, loading: () => <Skeleton className="w-full h-64" /> });
+const CarouselItem = dynamic(() => import('@/components/ui/carousel').then(mod => mod.CarouselItem), { ssr: false, loading: () => <Skeleton className="w-full h-64" /> });
 
 // Dummy data for the carousel
 

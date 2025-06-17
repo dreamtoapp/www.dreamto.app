@@ -40,9 +40,9 @@ async function CromboDetail() {
         {/* Product Image */}
         <div className="relative w-[100px] h-[160px] md:w-[140px] md:h-[200px] flex-shrink-0">
           <Image
-            src="/assets/homepage/cromboPlugin.png"
+            src="/assets/homepage/cromboPlugin.avif"
             fill
-            alt="Crombo Plugin"
+            alt="Crombo Plugin promotional image for DreamTo IT Agency"
             className="object-contain object-center"
             sizes="(max-width: 400px) 100vw, 400px"
             priority

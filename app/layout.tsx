@@ -122,3 +122,6 @@ export default async function RootLayout({
     </html>
   );
 }
+
+// To analyze your bundle, run: BUNDLE_ANALYZE=true pnpm build
+// import withBundleAnalyzer from '@next/bundle-analyzer';

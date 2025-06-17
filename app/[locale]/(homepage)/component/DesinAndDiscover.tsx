@@ -20,10 +20,12 @@ export const DesinAndDiscover = async () => {
       <CardHeader className="relative p-0">
         <div className="relative h-48 sm:h-64 w-full">
           <Image
-            src="/assets/homepage/images/img7.jpeg"
+            src="/assets/homepage/images/img7.avif"
             fill
-            alt="Canon Project"
+            alt="Discover Canon Project - DreamTo IT Agency"
             priority
+            placeholder="blur"
+            blurDataURL="data:image/avif;base64,AAAAHGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZgAAANZtZXRhAAAAAAAAACFoZGxyAAAAAAAAAABwaWN0AAAAAAAAAAAAAAAAAAAAAA5waXRtAAAAAAABAAAAImlsb2MAAAAAREAAAQABAAAAAAD6AAEAAAAAAAAASgAAACNpaW5mAAAAAAABAAAAFWluZmUCAAAAAAEAAGF2MDEAAAAAVmlwcnAAAAA4aXBjbwAAAAxhdjFDgSACAAAAABRpc3BlAAAAAAAAAAoAAAAGAAAAEHBpeGkAAAAAAwgICAAAABZpcG1hAAAAAAAAAAEAAQOBAgMAAABSbWRhdBIACgg4DKawgIaDSDI8GAAAAED+axfA8Qx3RtZwLFBQEGxt2Xg/qLd6wiwZ7X1gT2W/W8PoWu/h1ekq3ffDy1mgqEJUSNwxWZmw"
             className="object-cover rounded-t-xl transition-transform duration-300 hover:scale-105"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />

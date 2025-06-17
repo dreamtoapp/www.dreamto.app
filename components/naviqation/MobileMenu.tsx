@@ -7,7 +7,8 @@ import { getMenuItems } from "./menuItems";
 import { DialogTitle } from "@/components/ui/dialog";
 import Link from "../link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from 'framer-motion';
+import React, { useMemo } from 'react';
 
 export default function MobileMenu({ locale }: { locale: string }) {
   const t = useTranslations("navigation");

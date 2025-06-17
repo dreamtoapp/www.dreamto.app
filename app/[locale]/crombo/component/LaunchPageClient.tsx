@@ -127,11 +127,12 @@ export default function LaunchPageClient() {
           <CardContent className="mt-8">
             <div className="flex justify-center mb-8">
               <Image
-                src="/assets/homepage/crombo.png"
-                alt="Try Karambo"
-                width={150}
-                height={150}
-                className="rounded-2xl shadow-lg transition-transform hover:scale-105 bg-muted"
+                src="/assets/homepage/crombo.avif"
+                alt="Crombo Logo"
+                width={120}
+                height={120}
+                className="object-contain mx-auto"
+                priority
               />
             </div>
 

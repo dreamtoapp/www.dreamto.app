@@ -99,42 +99,24 @@ const AnimatedBackground = () => {
 // Optimized video component with performance enhancements
 // Progressive background: static image first, then video enhancement
 const ProgressiveBackground = React.memo(() => {
-  const [showVideo, setShowVideo] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    // Defer video until after first paint for Speed Index
-    const timeout = setTimeout(() => setShowVideo(true), 1200);
-    return () => clearTimeout(timeout);
-  }, []);
-
+  // Only show the static SVG background for instant paint, remove video for best LCP
   return (
     <>
-      {/* Static fallback image for instant paint */}
-      <Image
-        src="/assets/dta.svg"
-        alt="DreamToApp background"
-        fill
-        priority
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 10666.66 8000"
+        width="100%"
+        height="100%"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 0, opacity: 0.12 }}
         aria-hidden="true"
-      />
-      {/* Video loads after initial paint for progressive enhancement */}
-      {showVideo && (
-        <video
-          ref={videoRef}
-          src="https://framerusercontent.com/assets/1g8IkhtJmlWcC4zEYWKUmeGWzI.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="none"
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{ filter: "brightness(0.7) contrast(1.1)", transform: "scale(1.05)", zIndex: 1 }}
-          aria-hidden="true"
-        />
-      )}
+      >
+        <g>
+          <path fill="black" stroke="black" strokeWidth="10.41" strokeMiterlimit="2.61313" d="M5066.54 51.45c2162.72,0 3915.95,1753.23 3915.95,3915.95 0,2162.72 -1753.23,3915.95 -3915.95,3915.95 -39,0 -77.82,-0.74 -116.54,-1.87l0 -1223.61c38.66,1.65 77.48,2.67 116.54,2.67 1487.38,0 2693.13,-1205.76 2693.13,-2693.13 0,-1487.37 -1205.75,-2693.13 -2693.13,-2693.13 -39.06,0 -77.89,1.02 -116.54,2.67l0 -1223.61c38.72,-1.13 77.54,-1.87 116.54,-1.87z"/>
+          <path fill="black" stroke="black" strokeWidth="10.41" strokeMiterlimit="2.61313" d="M5066.54 2513.58c793.27,0 1436.33,643.07 1436.33,1436.34 0,793.27 -643.07,1436.33 -1436.33,1436.33 -39.24,0 -78.09,-1.63 -116.54,-4.72l0 -2863.23c38.45,-3.09 77.3,-4.72 116.54,-4.72z"/>
+          <path fill="black" stroke="black" strokeWidth="10.41" strokeMiterlimit="2.61313" d="M3880.31 63.11l-1375.25 0 0 3289.91 1375.25 0 0 -3289.91zm-1375.25 4367.17l0 3441.42 1375.25 0 0 -3441.42 -1375.25 0z"/>
+        </g>
+      </svg>
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/80 pointer-events-none z-10" />
     </>
   );
@@ -232,16 +214,17 @@ const Hero: React.FC = () => {
           variants={fadeUpVariants}
         >
           <motion.div
-            className="relative w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-full"
+            className="relative w-32 h-32 sm:w-40 sm:h-40 bg-white rounded-full flex items-center justify-center"
             variants={logoVariants}
           >
-            <Image
-              src="/assets/dta.svg"
-              alt={t('logo.alt')}
-              fill
-              className="object-contain"
-              priority
-            />
+            {/* Inline SVG for logo */}
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10666.66 8000" width="100%" height="100%" style={{ maxWidth: '100%', maxHeight: '100%' }} aria-label={t('logo.alt')}>
+              <g>
+                <path fill="black" stroke="black" strokeWidth="10.41" strokeMiterlimit="2.61313" d="M5066.54 51.45c2162.72,0 3915.95,1753.23 3915.95,3915.95 0,2162.72 -1753.23,3915.95 -3915.95,3915.95 -39,0 -77.82,-0.74 -116.54,-1.87l0 -1223.61c38.66,1.65 77.48,2.67 116.54,2.67 1487.38,0 2693.13,-1205.76 2693.13,-2693.13 0,-1487.37 -1205.75,-2693.13 -2693.13,-2693.13 -39.06,0 -77.89,1.02 -116.54,2.67l0 -1223.61c38.72,-1.13 77.54,-1.87 116.54,-1.87z"/>
+                <path fill="black" stroke="black" strokeWidth="10.41" strokeMiterlimit="2.61313" d="M5066.54 2513.58c793.27,0 1436.33,643.07 1436.33,1436.34 0,793.27 -643.07,1436.33 -1436.33,1436.33 -39.24,0 -78.09,-1.63 -116.54,-4.72l0 -2863.23c38.45,-3.09 77.3,-4.72 116.54,-4.72z"/>
+                <path fill="black" stroke="black" strokeWidth="10.41" strokeMiterlimit="2.61313" d="M3880.31 63.11l-1375.25 0 0 3289.91 1375.25 0 0 -3289.91zm-1375.25 4367.17l0 3441.42 1375.25 0 0 -3441.42 -1375.25 0z"/>
+              </g>
+            </svg>
           </motion.div>
 
           <motion.h1

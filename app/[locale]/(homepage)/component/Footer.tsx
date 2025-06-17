@@ -21,6 +21,7 @@ import {
   technology,
 } from '../../../../constant/icons';
 import { cn } from '../../../../lib/utils';
+import logoWebp from '@/public/assets/logo.webp';
 
 // Define types for contact items
 type ContactItem = {
@@ -91,8 +92,7 @@ const Footer: React.FC = () => {
         {/* About / Logo */}
         <div className="flex flex-col items-start gap-3">
           <div className="relative bg-foreground w-20 h-20">
-
-          <Image src="/assets/dta.svg" alt="DreamTo IT Agency" fill className="mb-2 rounded-lg shadow-lg " />
+            <img src="/assets/dta.svg" alt="DreamTo IT Agency Logo" className="mb-2 rounded-lg shadow-lg w-full h-full object-contain" />
           </div> 
             
           
