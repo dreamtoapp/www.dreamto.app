@@ -106,7 +106,7 @@ export default async function ContactUs({
               <h2 className="text-2xl md:text-3xl font-bold tracking-tight">Send us a Message</h2>
             </div>
             <div className="w-full">
-              <FormContact locale={locale} />
+          <FormContact locale={locale} />
             </div>
           </div>
         </div>

@@ -57,7 +57,7 @@ export default async function LocaleLayout({
         <div className="flex justify-between items-center">
           <Link href={`/${locale}`}>
             <div className="flex items-center gap-2">
-              <Image src="/assets/dta.svg" alt="DTA Logo" width={40} height={40} priority />
+              <Image src="/assets/dta.svg" alt="DTA Logo" width={40} height={40} style={{height: 'auto'}} priority />
               <h1 className="text-xl font-bold">DreamToApp</h1>
             </div>
           </Link>
