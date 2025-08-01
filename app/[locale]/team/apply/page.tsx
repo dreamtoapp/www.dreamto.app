@@ -25,14 +25,14 @@ import { Textarea } from '@/components/ui/textarea';
 import AttachmentInput from './AttachmentInput';
 
 const expertiseAreas = [
-  "Web Development",
-  "Mobile Development",
-  "UI/UX Design",
-  "Marketing",
-  "Project Management",
-  "Quality Assurance",
-  "DevOps",
-  "Data Science",
+  "web-development",
+  "mobile-development",
+  "ui-ux-design",
+  "marketing",
+  "project-management",
+  "quality-assurance",
+  "devops",
+  "data-science",
 ];
 
 export default function ApplyPage() {
@@ -81,9 +81,9 @@ export default function ApplyPage() {
                   {expertiseAreas.map((area) => (
                     <SelectItem
                       key={area}
-                      value={area.toLowerCase().replace(/\s+/g, "-")}
+                      value={area}
                     >
-                      {area}
+                      {t(`expertise.${area}`)}
                     </SelectItem>
                   ))}
                 </SelectContent>

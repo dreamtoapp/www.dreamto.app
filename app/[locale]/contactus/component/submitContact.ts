@@ -42,17 +42,6 @@ const serviceNameMap: Record<string, string> = {
   "visual-identity": "Visual Identity"
 };
 
-// Arabic service name mapping
-const arabicServiceNameMap: Record<string, string> = {
-  "website-development": "تطوير المواقع الإلكترونية",
-  "mobile-app-development": "تطبيقات الجوال",
-  "ecommerce-development": "متاجر إلكترونية",
-  "crm-development": "أنظمة CRM",
-  "ui-ux-design": "تصاميم واجهات المستخدم",
-  "digital-marketing": "التسويق الرقمي",
-  "visual-identity": "الهوية البصرية"
-};
-
 // Submit Contact Function
 export async function submitContact(
   prev: any,
@@ -83,7 +72,6 @@ export async function submitContact(
     // Process selected services
     const selectedServices = rawData.projectType.split(',').map(s => s.trim());
     const serviceNames = selectedServices.map(service => serviceNameMap[service] || service);
-    const arabicServiceNames = selectedServices.map(service => arabicServiceNameMap[service] || service);
 
     // Create enhanced project type string
     const enhancedProjectType = selectedServices.length > 1
@@ -95,14 +83,13 @@ export async function submitContact(
       ...rawData,
       projectType: enhancedProjectType,
       // Store additional service information if needed
-      projectDetails: `${rawData.projectDetails}\n\nSelected Services:\n${serviceNames.join('\n')}\n\nالخدمات المختارة:\n${arabicServiceNames.join('\n')}`
+      projectDetails: `${rawData.projectDetails}\n\nSelected Services:\n${serviceNames.join('\n')}`
     };
 
     await db.projectRequest.create({ data: contactData });
 
     // Create WhatsApp message with enhanced service information
     const servicesList = selectedServices.map(service => `• ${serviceNameMap[service] || service}`).join('\n');
-    const arabicServicesList = selectedServices.map(service => `• ${arabicServiceNameMap[service] || service}`).join('\n');
 
     const messageContent = `🆕 New Contact Submission:
 
@@ -112,9 +99,6 @@ export async function submitContact(
 
 🛠️ Selected Services (${selectedServices.length}):
 ${servicesList}
-
-الخدمات المختارة (${selectedServices.length}):
-${arabicServicesList}
 
 💰 Budget: ${rawData.budget}
 📋 Project Details: ${rawData.projectDetails}

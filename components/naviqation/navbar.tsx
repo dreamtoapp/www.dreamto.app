@@ -271,7 +271,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
               {navbarT("readyToStart")}
             </p>
             <p className="text-xs text-muted-foreground">
-              هل أنت مستعد لبدء مشروعك؟
+              {navbarT("readyToStart")}
             </p>
           </div>
           <div className="flex justify-center">
@@ -300,7 +300,7 @@ const MobileCTA: React.FC<{ locale: string }> = ({ locale }) => {
           {t("readyToStart")}
         </p>
         <p className="text-sm text-muted-foreground">
-          هل أنت مستعد لبدء مشروعك؟
+          {t("readyToStart")}
         </p>
       </div>
       <div className="flex justify-center">

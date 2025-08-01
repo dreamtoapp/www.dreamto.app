@@ -71,7 +71,7 @@
         "uiUx": "تصاميم واجهات المستخدم",
         "visualIdentity": "تصاميم الهوية البصرية",
         "digitalMarketing": "حملات التسويق الرقمي",
-        "more": "مشاريع أخرى"
+        "more": "أحلام أخرى"
       }
     },
     "prices": {
@@ -94,7 +94,7 @@
       "usedTecno": "تقنيات مشروعك",
       "workSample": "بعض من أعمالنا",
       "quickAccess": "وصول سريع للخدمات",
-      "contactUsCTA": "ابدأ مشروعك الآن",
+      "contactUsCTA": "ابدأ حلمك الآن",
       "price": "خطط أسعار تنافسية",
       "team": "نجاحك معنا"
     },
@@ -191,7 +191,7 @@
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "التخطيط والاكتشاف",
-    "discoveryPlanningDescription": "نفهم احتياجاتك ونضع خطة واضحة لمشروعك.",
+    "discoveryPlanningDescription": "نفهم احتياجاتك ونضع خطة واضحة لحلمك.",
     "uiUxDesignTitle": "تصميم جذاب وسهل",
     "uiUxDesignDescription": "نصمم واجهات مستخدم جميلة وسهلة الاستخدام.",
     "developmentTitle": "التطوير",
@@ -297,7 +297,7 @@
     "ctaReady": "هل أنت مستعد لتحويل عملك بحلول تقنية مبتكرة؟ ابدأ اليوم بأسعارنا الخاصة واستشارتنا المجانية.",
     "ctaFreeQuote": "احصل على عرض مجاني الآن",
     "ctaScheduleConsultation": "احجز استشارة مجانية",
-    "projectsCompleted": "مشاريع مكتملة",
+    "projectsCompleted": "أحلام محققة",
     "clientSatisfaction": "رضا العملاء",
     "supportAvailable": "دعم متوفر",
     "yearsExperience": "سنوات خبرة",
@@ -316,7 +316,7 @@
     "itExpertsTitle": "خبراء تقنية المعلومات",
     "itExpertsDescription": "يضم فريقنا محترفين ذوي خبرة عميقة في المجال التقني.",
     "timeFlexibilityTitle": "مرونة الوقت",
-    "timeFlexibilityDescription": "نتكيف مع جدولك الزمني ونلتزم بتسليم المشاريع في الوقت المحدد دائمًا.",
+    "timeFlexibilityDescription": "نتكيف مع جدولك الزمني ونلتزم بتسليم أحلامك في الوقت المحدد دائمًا.",
     "securePrivacyTitle": "الأمان والخصوصية",
     "securePrivacyDescription": "نولي أولوية قصوى لأمان وخصوصية بياناتك في كل حل نقدمه."
   },
@@ -337,8 +337,8 @@
       "Photoshop": "أداة تحرير الصور الرائدة عالميًا، تُستخدم لإنشاء تصميمات إبداعية وعلامات تجارية شهيرة مثل Nike وCoca-Cola.",
       "Illustrator": "أداة تصميم رسومية مخصصة لإنشاء الشعارات والرسوم المتجهة. تُستخدم من قِبل محترفين في جميع المجالات الإبداعية.",
       "SQLite": "محرك قاعدة بيانات مضمن وخفيف الوزن، مثالي للتطبيقات الصغيرة مثل أنظمة الأجهزة المحمولة.",
-      "TypeScript": "لغة برمجة تعتمد على JavaScript وتضيف أمان النوع للمشاريع الكبيرة. تُستخدم في تطوير تطبيقات المؤسسات الكبرى مثل Microsoft Teams.",
-      "Prisma": "أداة ORM تُبسّط الوصول إلى قواعد البيانات، وتوفر واجهات برمجة تطبيقات واضحة وسهلة الاستخدام. تُستخدم في مشاريع حديثة ومتقدمة.",
+      "TypeScript": "لغة برمجة تعتمد على JavaScript وتضيف أمان النوع للتطبيقات الكبيرة. تُستخدم في تطوير حلول المؤسسات الكبرى مثل Microsoft Teams.",
+      "Prisma": "أداة ORM تُبسّط الوصول إلى قواعد البيانات، وتوفر واجهات برمجة تطبيقات واضحة وسهلة الاستخدام. تُستخدم في تطبيقات حديثة ومتقدمة.",
       "Adobe_Xd": "أداة تصميم متقدمة لإنشاء النماذج الأولية وتجارب المستخدم. تُعتمد في تصميم التطبيقات والمواقع الكبيرة.",
       "Figma": "منصة تصميم تعاونية قائمة على السحابة، تُستخدم في إنشاء التصميمات والنماذج الأولية. تُعتمد من قِبل فرق تصميم لدى Slack وZoom.",
       "Sentry": "منصة لمراقبة الأعطال وإصلاحها في الوقت الفعلي، تُستخدم من قِبل تطبيقات ضخمة مثل GitHub وAirbnb لتحسين الأداء.",
@@ -369,8 +369,8 @@
     }
   },
   "contactus": {
-    "projectType": "نوع المشروع",
-    "projectDetails": "تفاصيل المشروع",
+    "projectType": "نوع الحلم",
+    "projectDetails": "تفاصيل الحلم",
     "budget": "الميزانية",
     "timeline": "الجدول الزمني",
     "attachment": "مرفق",
@@ -406,7 +406,7 @@
     "contactFormTitle": "عنوان نموذج الاتصال",
     "sendButton": "أرسل رسالتك الآن",
     "getInTouch": "تواصل معنا",
-    "getInTouchSubtitle": "مستعد لتحويل أفكارك إلى واقع؟ دعنا نناقش مشروعك",
+    "getInTouchSubtitle": "مستعد لتحويل أفكارك إلى واقع؟ دعنا نناقش حلمك",
     "phone": "الهاتف",
     "email": "البريد الإلكتروني",
     "businessHours": "ساعات العمل",
@@ -417,11 +417,11 @@
     "sendUsMessage": "أرسل لنا رسالة",
     "wellGetBackToYou": "سنرد عليك خلال 24 ساعة",
     "selectRequiredServices": "اختر الخدمات المطلوبة",
-    "selectServicesSubtitle": "يمكنك اختيار خدمة واحدة أو أكثر حسب احتياجات مشروعك",
+    "selectServicesSubtitle": "يمكنك اختيار خدمة واحدة أو أكثر حسب احتياجات حلمك",
     "selectedServices": "الخدمات المختارة",
     "showAllServices": "عرض جميع الخدمات",
     "showLess": "عرض أقل",
-    "projectDetailsPlaceholder": "أخبرنا عن متطلبات مشروعك وأهدافك ورؤيتك...",
+    "projectDetailsPlaceholder": "أخبرنا عن متطلبات حلمك وأهدافك ورؤيتك...",
     "budgetPlaceholder": "مثال: 5,000 - 10,000 ريال أو مرنة",
     "messagePlaceholder": "أي معلومات إضافية أو أسئلة...",
     "privacyNotice": "نحترم خصوصيتك. لن يتم مشاركة معلوماتك أبداً.",
@@ -484,9 +484,9 @@
     "graphicDesign": "تصميم الجرافيك",
     "contentWriting": "كتابة المحتوى",
     "digitalMarketing": "التسويق الرقمي",
-    "projectDetailsTitle": "أخبرنا عن مشروعك",
-    "projectDetailsPlaceholder": "صف متطلبات مشروعك بإيجاز...",
-    "projectPricingTitle": "احصل على تسعير مخصص لمشروعك",
+    "projectDetailsTitle": "أخبرنا عن حلمك",
+    "projectDetailsPlaceholder": "صف متطلبات حلمك بإيجاز...",
+    "projectPricingTitle": "احصل على تسعير مخصص لحلمك",
     "lastPriceLabel": "أدخل آخر سعر",
     "lastPricePlaceholder": "أدخل السعر السابق",
     "newPriceLabel": "السعر الجديد",
@@ -538,7 +538,10 @@
     "na": "غير متوفر",
     "visitTime": "وقت الزيارة"
   },
-  "worksample": "عينة عمل",
+  "worksample": {
+    "title": "عينة عمل",
+    "featuredWebsites": "المواقع المميزة"
+  },
   "thankyou": {
     "title": "شكرًا لك!",
     "subtitle": "نقدّر اهتمامك وتواصلك معنا.",
@@ -599,7 +602,17 @@
     "jobRolesAndTerms": "الأدوار الوظيفية والشروط",
     "submitApplication": "إرسال الطلب",
     "backToTeamPage": "العودة إلى صفحة الفريق",
-    "termsAlert": "يرجى الموافقة على الشروط والأحكام قبل الإرسال."
+    "termsAlert": "يرجى الموافقة على الشروط والأحكام قبل الإرسال.",
+    "expertise": {
+      "web-development": "تطوير الويب",
+      "mobile-development": "تطوير الجوال",
+      "ui-ux-design": "تصميم واجهات المستخدم",
+      "marketing": "التسويق",
+      "project-management": "إدارة الأحلام",
+      "quality-assurance": "ضمان الجودة",
+      "devops": "DevOps",
+      "data-science": "علوم البيانات"
+    }
   },
   "underConstruction": {
     "title": "قيد الإنشاء",
@@ -617,7 +630,7 @@
   },
   "navbar": {
     "settings": "الإعدادات",
-    "readyToStart": "هل أنت مستعد لبدء مشروعك؟",
+    "readyToStart": "هل أنت مستعد لبدء حلمك؟",
     "getStarted": "ابدأ الآن",
     "startProject": "ابدأ الحلم",
     "openMenu": "فتح القائمة",

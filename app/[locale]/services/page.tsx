@@ -84,7 +84,7 @@ const getStructuredData = () => ({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "DreamToApp",
-  alternateName: "دريم تو آب",
+  alternateName: "DreamToApp",
   description: "We combine creativity and technology to provide customized solutions for your business in Jeddah, Saudi Arabia",
   url: "https://dreamtoapp.com",
   logo: "https://dreamtoapp.com/assets/dreamtoapp/dreamToApp.svg",

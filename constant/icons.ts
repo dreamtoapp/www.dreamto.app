@@ -76,7 +76,7 @@ export const misc = {
 // };
 
 
- 
+
 
 export const serviceIcon = {
   website: { name: "Website", icon: Globe },
@@ -86,7 +86,7 @@ export const serviceIcon = {
   uiux: { name: "UI/UX", icon: Paintbrush },
   dm: { name: "Digital Marketing", icon: Megaphone },
   branding: { name: "Visual Identity", icon: Palette }, // الهوية البصرية
-  "الهوية البصرية": { name: "الهوية البصرية", icon: Palette },
+  "visual-identity": { name: "Visual Identity", icon: Palette },
   vd: { name: "Video", icon: Rocket },
 };
 

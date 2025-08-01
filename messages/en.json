@@ -71,7 +71,7 @@
         "uiUx": "User Interface Designs",
         "visualIdentity": "Visual Identity Designs",
         "digitalMarketing": "Digital Marketing Campaigns",
-        "more": "Other Projects"
+        "more": "Other Dreams"
       }
     },
     "prices": {
@@ -162,7 +162,7 @@
     "tagline": "DREAM. DESIGN. DELIVER.",
     "dreamTagline": "DREAM. DESIGN. ACHIEVE.",
     "cta": {
-      "primary": "Start Your Project",
+      "primary": "Start Your Dream",
       "secondary": "Explore Our Services"
     },
     "fromIdeaTitle": "From Idea to Digital Success",
@@ -191,7 +191,7 @@
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "Planning and Discovery",
-    "discoveryPlanningDescription": "We understand your needs and create a clear plan for your project.",
+    "discoveryPlanningDescription": "We understand your needs and create a clear plan for your dream.",
     "uiUxDesignTitle": "Attractive and Easy Design",
     "uiUxDesignDescription": "We design beautiful and user-friendly interfaces.",
     "developmentTitle": "Development",
@@ -297,7 +297,7 @@
     "ctaReady": "Ready to transform your business with innovative technology solutions? Get started today with our special pricing and expert consultation.",
     "ctaFreeQuote": "Get Your Free Quote Now",
     "ctaScheduleConsultation": "Schedule Free Consultation",
-    "projectsCompleted": "Projects Completed",
+    "projectsCompleted": "Dreams Realized",
     "clientSatisfaction": "Client Satisfaction",
     "supportAvailable": "Support Available",
     "yearsExperience": "Years Experience",
@@ -316,7 +316,7 @@
     "itExpertsTitle": "IT Experts",
     "itExpertsDescription": "Our team consists of experienced professionals with deep technical expertise.",
     "timeFlexibilityTitle": "Time Flexibility",
-    "timeFlexibilityDescription": "We adapt to your schedule and deliver projects on time, every time.",
+    "timeFlexibilityDescription": "We adapt to your schedule and deliver your dreams on time, every time.",
     "securePrivacyTitle": "Security & Privacy",
     "securePrivacyDescription": "We prioritize your data security and privacy in every solution we build."
   },
@@ -337,8 +337,8 @@
       "Photoshop": "The leading global image editing tool, used to create creative designs and famous brands like Nike and Coca-Cola.",
       "Illustrator": "A graphic design tool dedicated to creating logos and vector graphics. It is used by professionals in all creative fields.",
       "SQLite": "A lightweight embedded database engine, ideal for small applications like mobile systems.",
-      "TypeScript": "A programming language based on JavaScript that adds type safety for large projects. It is used in developing enterprise applications like Microsoft Teams.",
-      "Prisma": "An ORM tool that simplifies database access, providing clear and easy-to-use APIs. It is used in modern and advanced projects.",
+      "TypeScript": "A programming language based on JavaScript that adds type safety for large applications. It is used in developing enterprise solutions like Microsoft Teams.",
+      "Prisma": "An ORM tool that simplifies database access, providing clear and easy-to-use APIs. It is used in modern and advanced applications.",
       "Adobe_Xd": "An advanced design tool for creating prototypes and user experiences. It is relied upon in designing large applications and websites.",
       "Figma": "A cloud-based collaborative design platform used to create designs and prototypes. It is relied upon by design teams at Slack and Zoom.",
       "Sentry": "A platform for monitoring and fixing errors in real time, used by large applications like GitHub and Airbnb to improve performance.",
@@ -369,8 +369,8 @@
     }
   },
   "contactus": {
-    "projectType": "Project Type",
-    "projectDetails": "Project Details",
+    "projectType": "Dream Type",
+    "projectDetails": "Dream Details",
     "budget": "Budget",
     "timeline": "Timeline",
     "attachment": "Attachment",
@@ -403,7 +403,7 @@
     "contactFormTitle": "Send us a message",
     "sendButton": "Send Message",
     "getInTouch": "Get in Touch",
-    "getInTouchSubtitle": "Ready to transform your ideas into reality? Let's discuss your project",
+    "getInTouchSubtitle": "Ready to transform your ideas into reality? Let's discuss your dream",
     "phone": "Phone",
     "email": "Email",
     "businessHours": "Business Hours",
@@ -414,11 +414,11 @@
     "sendUsMessage": "Send us a Message",
     "wellGetBackToYou": "We'll get back to you within 24 hours",
     "selectRequiredServices": "Select Required Services",
-    "selectServicesSubtitle": "You can choose one or more services according to your project needs",
+    "selectServicesSubtitle": "You can choose one or more services according to your dream needs",
     "selectedServices": "Selected Services",
     "showAllServices": "Show all services",
     "showLess": "Show less",
-    "projectDetailsPlaceholder": "Tell us about your project requirements and goals...",
+    "projectDetailsPlaceholder": "Tell us about your dream requirements and goals...",
     "budgetPlaceholder": "Example: 5,000 - 10,000 SAR or flexible",
     "messagePlaceholder": "Any additional information or questions...",
     "privacyNotice": "We respect your privacy. Your information will never be shared.",
@@ -481,9 +481,9 @@
     "graphicDesign": "Graphic Design",
     "contentWriting": "Content Writing",
     "digitalMarketing": "Digital Marketing",
-    "projectDetailsTitle": "Tell Us About Your Project",
-    "projectDetailsPlaceholder": "Briefly describe your project requirements...",
-    "projectPricingTitle": "Get Your Custom Project Pricing",
+    "projectDetailsTitle": "Tell Us About Your Dream",
+    "projectDetailsPlaceholder": "Briefly describe your dream requirements...",
+    "projectPricingTitle": "Get Your Custom Dream Pricing",
     "lastPriceLabel": "Enter Last Price",
     "lastPricePlaceholder": "Enter Previous Price",
     "newPriceLabel": "New Price",
@@ -539,7 +539,8 @@
     "noFolders": "No folders found.",
     "noImage": "No Image Available",
     "taskCount": "{count, plural, =0 {No tasks} =1 {One task} other {# tasks}}",
-    "viewGallery": "View Gallery"
+    "viewGallery": "View Gallery",
+    "featuredWebsites": "Featured Websites"
   },
   "thankyou": {
     "title": "Thank You!",
@@ -597,7 +598,17 @@
     "jobRolesAndTerms": "job roles and terms",
     "submitApplication": "Submit Application",
     "backToTeamPage": "Back to Team Page",
-    "termsAlert": "Please agree to the terms and conditions before submitting."
+    "termsAlert": "Please agree to the terms and conditions before submitting.",
+    "expertise": {
+      "web-development": "Web Development",
+      "mobile-development": "Mobile Development",
+      "ui-ux-design": "UI/UX Design",
+      "marketing": "Marketing",
+      "project-management": "Dream Management",
+      "quality-assurance": "Quality Assurance",
+      "devops": "DevOps",
+      "data-science": "Data Science"
+    }
   },
   "underConstruction": {
     "title": "Under Construction",
@@ -615,7 +626,7 @@
   },
   "navbar": {
     "settings": "Settings",
-    "readyToStart": "Ready to start your project?",
+    "readyToStart": "Ready to start your dream?",
     "getStarted": "Get Started",
     "startProject": "Start Dream",
     "openMenu": "Open menu",

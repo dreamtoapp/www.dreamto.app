@@ -102,7 +102,7 @@ function Websites() {
   ];
   return (
     <div className="w-full   h-auto rounded-md p-6" dir="ltr">
-      <h2 className="text-2xl font-bold text-foreground mb-4">Featured Websites</h2>
+      <h2 className="text-2xl font-bold text-foreground mb-4">{t("worksample.featuredWebsites")}</h2>
       <Carousel
         plugins={[Autoplay({ delay: 3000 })]} // Auto-play every 3 seconds
         className="w-full max-w-4xl mx-auto"
