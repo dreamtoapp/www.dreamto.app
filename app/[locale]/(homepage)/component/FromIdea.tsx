@@ -32,7 +32,7 @@ export const FromIdea = async () => {
   const t = await getTranslations("homepage");
 
   return (
-    <article className="flex flex-col justify-between border border-[#d7a50d]/30 rounded-xl shadow-lg overflow-hidden hover:border-[#d7a50d]/50 hover:shadow-xl transition-all duration-300" aria-labelledby="from-idea-title">
+    <article className="flex flex-col justify-between border border-[#d7a50d]/30 rounded-xl shadow-lg overflow-hidden hover:border-[#d7a50d]/50 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-[#d7a50d]/5 to-[#f4c430]/5">
       {/* Card Header with Image */}
       <CardHeader className="relative p-0">
         <ImageWithErrorHandling />
@@ -40,22 +40,34 @@ export const FromIdea = async () => {
         <div className="absolute -top-2 -left-2 size-4 sm:size-6 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] animate-pulse rounded-full" />
       </CardHeader>
 
-      {/* Card Title & Description */}
-      <CardDescription className="text-center mt-4 sm:mt-6 px-4 sm:px-6">
-        <h2
-          id="from-idea-title"
-          className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-[#d7a50d] leading-tight"
-        >
-          {t("fromIdeaTitle")}
-        </h2>
-      </CardDescription>
+      {/* Content Section - Better Structure */}
+      <div className="flex-1 flex flex-col p-6 sm:p-8">
+        {/* Title */}
+        <div className="text-center mb-6">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#d7a50d] leading-tight mb-4">
+            {t("fromIdeaTitle")}
+          </h3>
+        </div>
 
-      {/* Card Content */}
-      <CardContent className="px-4 sm:px-6 py-3 sm:py-4 text-muted-foreground leading-relaxed">
-        <p className="text-sm sm:text-base text-pretty">
-          {t("fromIdeaContent")}
-        </p>
-      </CardContent>
+        {/* Main Content - Single Instance */}
+        <div className="bg-gradient-to-r from-[#d7a50d]/10 to-[#f4c430]/10 rounded-lg p-4 mb-6">
+          <div className="text-center">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              {t("fromIdeaContent")}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Section */}
+      <div className="flex flex-col items-center gap-4 p-6 sm:p-8 bg-gradient-to-t from-[#d7a50d]/5 to-transparent">
+        {/* Call to Action */}
+        <div className="text-center">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            ابدأ رحلتك اليوم واحصل على دليل مجاني للخطوات الأولى
+          </p>
+        </div>
+      </div>
     </article>
   );
 };

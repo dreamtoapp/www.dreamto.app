@@ -9,13 +9,12 @@ import {
 import Image from "next/image";
 
 import { getTranslations } from "next-intl/server";
-import InlineQueryWrapper from "@/components/InlineQuery/InlineQueryWrapper";
 
 export const DesinAndDiscover = async () => {
   const t = await getTranslations("homepage");
 
   return (
-    <Card className="flex flex-col justify-between border border-[#0d3ad7]/30 rounded-xl shadow-lg overflow-hidden hover:border-[#0d3ad7]/50 hover:shadow-xl transition-all duration-300">
+    <Card className="flex flex-col justify-between border border-[#0d3ad7]/30 rounded-xl shadow-lg overflow-hidden hover:border-[#0d3ad7]/50 hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-[#0d3ad7]/5 to-[#99e4ff]/5">
       {/* Header Section with Image */}
       <CardHeader className="relative p-0">
         <div className="relative h-40 sm:h-48 lg:h-64 w-full">
@@ -34,41 +33,33 @@ export const DesinAndDiscover = async () => {
         <div className="absolute -top-2 -left-2 size-4 sm:size-6 bg-gradient-to-r from-[#0d3ad7] to-[#99e4ff] animate-pulse rounded-full" />
       </CardHeader>
 
-      {/* Title */}
-      <CardDescription className="text-center mt-4 sm:mt-6 px-4 sm:px-6">
-        <p className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-extrabold text-[#0d3ad7] leading-tight">
-          {t("discoverTitle")}
-        </p>
-      </CardDescription>
+      {/* Content Section - Better Structure */}
+      <div className="flex-1 flex flex-col p-6 sm:p-8">
+        {/* Title */}
+        <div className="text-center mb-6">
+          <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#0d3ad7] leading-tight mb-4">
+            {t("discoverTitle")}
+          </h3>
+        </div>
 
-      {/* Content Section */}
-      <CardContent className="flex flex-col items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 text-muted-foreground">
-        <p className="text-base sm:text-lg lg:text-xl text-center font-semibold border-[#0d3ad7] border-dashed border-b-2 leading-relaxed">
-          {t("discoverTitle1")}
-        </p>
-        <p className="text-base sm:text-lg lg:text-xl text-center font-semibold leading-relaxed">
-          {t("discoverTitle2")}
-        </p>
-        <p className="text-lg sm:text-xl lg:text-2xl text-center font-bold leading-tight text-[#99e4ff]">
-          {t("discoverTitle3")}
-        </p>
-      </CardContent>
+        {/* Main Content - Single Instance */}
+        <div className="bg-gradient-to-r from-[#0d3ad7]/10 to-[#99e4ff]/10 rounded-lg p-4 mb-6">
+          <div className="text-center">
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed whitespace-pre-line">
+              {t("discoverContent")}
+            </p>
+          </div>
+        </div>
+      </div>
 
-      {/* Footer Section */}
-      <CardFooter className="flex flex-col items-center gap-3 sm:gap-4 p-4 sm:p-6">
-        {/* Inline Query Component */}
-        <InlineQueryWrapper
-          btnTitle={t("discoverButton")}
-          title={t("discoverDilogTitle")}
-          subtitle={t("discoverDilog")}
-          description={t("discoverDilog1")}
-        />
-
-        {/* Supporting Text */}
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          {t("discoverContent")}
-        </p>
-      </CardFooter>
+      {/* Footer Section - Clean without button */}
+      <div className="flex flex-col items-center gap-4 p-6 sm:p-8 bg-gradient-to-t from-[#0d3ad7]/5 to-transparent">
+        <div className="text-center">
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            ابدأ رحلتك اليوم واحصل على دليل مجاني للخطوات الأولى
+          </p>
+        </div>
+      </div>
     </Card>
   );
 };

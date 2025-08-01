@@ -178,27 +178,11 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             {/* From Idea Section */}
             <div className="space-y-6">
-              <div className="text-center lg:text-start">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 leading-tight">
-                  <span className="text-[#d7a50d]">{t('fromIdeaTitle')}</span>
-                </h2>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {t('fromIdeaContent')}
-                </p>
-              </div>
               <FromIdea />
             </div>
 
             {/* Discover Section */}
             <div className="space-y-6">
-              <div className="text-center lg:text-start">
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 leading-tight">
-                  <span className="text-[#0d3ad7]">{t('discoverTitle')}</span>
-                </h2>
-                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                  {t('discoverContent')}
-                </p>
-              </div>
               <DesinAndDiscover />
             </div>
           </div>
