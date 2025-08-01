@@ -50,4 +50,4 @@ export async function saveCromboData(data: CromboData) {
       error: "Failed to save data",
     };
   }
-}
+} 

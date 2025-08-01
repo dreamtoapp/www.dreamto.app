@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Menu } from "lucide-react";
 import { useTranslations } from 'next-intl';
 import {
@@ -24,19 +24,18 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
 
   // Memoize menuItems to prevent recreation on every render
   const menuItems = useMemo(() => [
-    { href: `/${locale}`, label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
-    { href: `/${locale}/services`, label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' },
-    { href: `/${locale}/worksample`, label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' },
-    { href: `/${locale}/contactus`, label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
-  ], [locale, t]);
+    { href: '/', label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
+    { href: '/services', label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' },
+    { href: '/worksample', label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' },
+    { href: '/contactus', label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
+  ], [t]);
 
   // Set active item based on current pathname
   useEffect(() => {
     const pathname = window.location.pathname;
     const currentItem = menuItems.find(item => {
-      if (item.href === `/${locale}` && pathname === `/${locale}`) return true;
-      if (item.href === `/${locale}` && pathname === '/') return true;
-      return pathname.startsWith(item.href);
+      if (item.href === '/' && (pathname === `/${locale}` || pathname === '/')) return true;
+      return pathname.includes(item.href);
     });
 
     if (currentItem) {
@@ -51,49 +50,57 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
     // Create global ripple effect on navbar
     const navbar = document.querySelector('header') as HTMLElement;
     if (navbar) {
-      // Create ripple element
-      const ripple = document.createElement('div');
-      ripple.style.position = 'absolute';
-      ripple.style.top = '0';
-      ripple.style.left = '0';
-      ripple.style.width = '4px';
-      ripple.style.height = '4px';
-      ripple.style.borderRadius = '50%';
-      ripple.style.backgroundColor = `${itemColor}40`;
-      ripple.style.transform = 'scale(0)';
-      ripple.style.opacity = '0';
-      ripple.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-      ripple.style.pointerEvents = 'none';
-      ripple.style.zIndex = '9999';
-      ripple.style.transformOrigin = 'top left';
+      try {
+        // Create ripple element
+        const ripple = document.createElement('div');
+        ripple.style.cssText = `
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background-color: ${itemColor}40;
+          transform: scale(0);
+          opacity: 0;
+          transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          pointer-events: none;
+          z-index: 9999;
+          transform-origin: top left;
+        `;
 
-      // Add to navbar
-      navbar.style.position = 'relative';
-      navbar.appendChild(ripple);
+        // Add to navbar
+        navbar.style.position = 'relative';
+        navbar.appendChild(ripple);
 
-      // Trigger ripple animation
-      setTimeout(() => {
-        ripple.style.transform = 'scale(100)';
-        ripple.style.opacity = '0.6';
-      }, 10);
+        // Trigger ripple animation with requestAnimationFrame
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            ripple.style.transform = 'scale(100)';
+            ripple.style.opacity = '0.6';
+          });
+        });
 
-      // Start fade out animation
-      setTimeout(() => {
-        ripple.style.opacity = '0';
-        ripple.style.transform = 'scale(120)';
-      }, 600);
+        // Start fade out animation
+        setTimeout(() => {
+          ripple.style.opacity = '0';
+          ripple.style.transform = 'scale(120)';
+        }, 600);
 
-      // Remove ripple after fade out
-      setTimeout(() => {
-        if (ripple.parentNode) {
-          ripple.parentNode.removeChild(ripple);
-        }
-      }, 1000);
+        // Remove ripple after fade out
+        setTimeout(() => {
+          if (ripple && ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+          }
+        }, 1000);
+      } catch (error) {
+        console.warn('Ripple animation failed:', error);
+      }
     }
 
     // Navigate after a short delay
     setTimeout(() => {
-      window.location.href = itemHref;
+      window.location.href = `/${locale}${itemHref}`;
     }, 500);
   };
 
@@ -179,7 +186,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
           </div>
           <div className="flex justify-center">
             <button
-              onClick={() => handleItemClick(`/${locale}/contactus`, '#d7a50d')}
+              onClick={() => handleItemClick('/contactus', '#d7a50d')}
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-lg text-sm font-semibold hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[#d7a50d]/30 transform hover:-translate-y-1"
             >
               <span>{navbarT("startProject")}</span>

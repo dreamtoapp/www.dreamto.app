@@ -57,14 +57,13 @@ export const metadata = {
   },
 };
 
-import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
 import Script from 'next/script';
 import NextTopLoader from 'nextjs-toploader';
 import { Suspense } from 'react';
+import { getLocale } from 'next-intl/server';
+import { Directions } from '@/constant/enums';
 
 import { Toaster } from '@/components/ui/sonner';
-import { Directions } from '@/constant/enums';
 import { tajawal } from './font';
 import { ThemeProvider } from '@/provider/theme-provider';
 
@@ -80,7 +79,6 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const messages = await getMessages();
   const locale = await getLocale();
 
   return (
@@ -99,24 +97,18 @@ export default async function RootLayout({
         />
       </head>
       <body className={`${tajawal.className} min-h-screen bg-background antialiased`}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <NextTopLoader
+        <NextTopLoader />
 
-          />
+        <main id="main-content" tabIndex={-1} role="main">
+          <ThemeProvider>
+            {children}
+          </ThemeProvider>
+        </main>
 
+        <footer role="contentinfo" className="border-t">
+          {/* Insert global footer here if needed */}
+        </footer>
 
-          <main id="main-content" tabIndex={-1} role="main"  >
-            <ThemeProvider>
-
-              {children}
-
-            </ThemeProvider>
-          </main>
-          <footer role="contentinfo" className="border-t">
-            {/* Insert global footer here if needed */}
-          </footer>
-
-        </NextIntlClientProvider>
         <Toaster position="top-right" />
       </body>
     </html>

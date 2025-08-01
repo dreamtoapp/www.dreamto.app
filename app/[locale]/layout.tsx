@@ -4,6 +4,9 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { locales } from '@/i18n/routing';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { Directions } from '@/constant/enums';
 import Link from "@/components/link";
 import Navbar from '@/components/naviqation/navbar';
 import FloatingConsultationCTA from '@/components/ui/FloatingConsultationCTA';
@@ -43,16 +46,21 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  // Get messages for the current locale
+  const messages = await getMessages();
+
   return (
-    <div className="flex flex-col min-h-screen" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
-      <Navbar locale={locale} />
-      <main className="flex-1">
-        <Suspense fallback={<div>Loading...</div>}>
-          {children}
-        </Suspense>
-      </main>
-      <FloatingConsultationCTA />
-    </div>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <div className="flex flex-col min-h-screen" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
+        <Navbar locale={locale} />
+        <main className="flex-1">
+          <Suspense fallback={<div>Loading...</div>}>
+            {children}
+          </Suspense>
+        </main>
+        <FloatingConsultationCTA />
+      </div>
+    </NextIntlClientProvider>
   );
 }
 

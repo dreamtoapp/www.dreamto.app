@@ -1,72 +1,56 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
-import { usePathname, useRouter } from "next/navigation";
+import { Link, usePathname } from "@/i18n/routing";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, memo } from "react";
 import arabic from "@/public/assets/arabic.png";
 import english from "@/public/assets/english.png";
-import { locales } from "@/i18n/routing";
 
 const languageData = {
   ar: { image: arabic, label: "Arabic" },
   en: { image: english, label: "English" },
 } as const;
 
-export default function LangSwitcher() {
+const LangSwitcher = memo(function LangSwitcher() {
   const locale = useLocale() as keyof typeof languageData;
-  const router = useRouter();
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations('navigation');
 
+  // Memoize the current language data to prevent unnecessary re-renders
+  const currentLanguage = useMemo(() => languageData[locale], [locale]);
+
+  // Get the pathname without the current locale prefix
+  const pathWithoutLocale = useMemo(() => {
+    return pathname.replace(/^\/[a-z]{2}/, '') || '/';
+  }, [pathname]);
+
+  // Get the target locale
+  const targetLocale = useMemo(() => {
+    return locale === "ar" ? "en" : "ar";
+  }, [locale]);
+
   useEffect(() => {
+    // Set mounted immediately to prevent skeleton flash
     setMounted(true);
   }, []);
 
-  const switchLanguage = () => {
-    const newLocale = locale === "ar" ? "en" : "ar";
-    const pathWithoutLocale = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
-    const newPath = `/${newLocale}${pathWithoutLocale}`.replace(/\/+/g, "/");
-    router.push(newPath);
-    router.refresh();
-  };
-
+  // Show skeleton only if not mounted (should be very brief)
   if (!mounted) {
     return (
-      <div className="flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-muted">
-        {/* Loader Spinner */}
-        <svg
-          className="animate-spin h-5 w-5 text-muted-foreground"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-        >
-          <circle
-            className="opacity-25"
-            cx="12"
-            cy="12"
-            r="10"
-            stroke="currentColor"
-            strokeWidth="4"
-          ></circle>
-          <path
-            className="opacity-75"
-            fill="currentColor"
-            d="M4 12a8 8 0 018-8v8H4z"
-          ></path>
-        </svg>
+      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-muted animate-pulse">
+        <div className="w-4 h-4 bg-muted-foreground/20 rounded-full" />
       </div>
     );
   }
 
-  const currentLanguage = languageData[locale];
-
   return (
-    <div className="flex items-center gap-2 sm:gap-3  px-1 rounded-lg  ">
-      <button
-        onClick={switchLanguage}
-        className="flex items-center justify-center w-6 h-6   rounded-full overflow-hidden border border-transparent hover:border-border hover:shadow-sm transition-all duration-300"
-        aria-label={t('switchLanguage', { language: currentLanguage.label })}
+    <div className="flex items-center gap-2 sm:gap-3 px-1 rounded-lg">
+      <Link
+        href={pathWithoutLocale}
+        locale={targetLocale}
+        className="flex items-center justify-center w-6 h-6 rounded-full overflow-hidden border border-transparent hover:border-border hover:shadow-sm transition-all duration-300"
+        aria-label={t('switchLanguage', { language: languageData[targetLocale].label })}
       >
         <Image
           src={currentLanguage.image}
@@ -74,11 +58,14 @@ export default function LangSwitcher() {
           height={24}
           alt={currentLanguage.label}
           className="rounded-full"
+          priority
         />
-      </button>
+      </Link>
     </div>
   );
-}
+});
+
+export default LangSwitcher;
 
 function ThemeToggle() {
   const [isDarkMode, setIsDarkMode] = useState(false);

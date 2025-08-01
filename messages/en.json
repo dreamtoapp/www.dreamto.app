@@ -452,12 +452,15 @@
     "successMessage": "✅ Your data has been successfully submitted!",
     "errorMessage": "❌ An error occurred, please try again!",
     "submitErrorMessage": "❌ An error occurred during submission!",
+    "validationErrorMessage": "❌ Validation error: {errors}",
     "privacyNotice": "By registering, you agree to our Terms of Service and Privacy Policy.",
     "days": "Days",
     "hours": "Hours",
     "minutes": "Minutes",
     "seconds": "Seconds",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "bookNow": "Book Now",
+    "bookNowFree": "Book for free now and don't miss the chance!"
   },
   "crombo": {
     "name": "Crombo",

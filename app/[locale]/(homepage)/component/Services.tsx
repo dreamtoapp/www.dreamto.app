@@ -1,7 +1,7 @@
 import React from "react";
 
 import { getLocale, getTranslations } from "next-intl/server";
-import { cardData } from "./serviceData";
+import { cardData } from "../actions/serviceData";
 import CardComponent from "./ServiceCard";
 // Define the card data type
 

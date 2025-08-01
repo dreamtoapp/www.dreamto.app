@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 import { getTranslations } from 'next-intl/server';
 import CromboDetail from './component/CromboDetail';
-import Services from './component/service/Services';
+import Services from './component/Services';
 import FromIdea from './component/FromIdea';
 import WhyChooseUs from './component/WhyChooseUs';
 import DesinAndDiscover from './component/DesinAndDiscover';

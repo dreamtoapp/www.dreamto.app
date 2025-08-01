@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { useTranslations } from 'next-intl';
 import { normalIcons, serviceIcon, misc, technology } from "@/constant/icons";
 
@@ -13,11 +13,11 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
 
   // Memoize menuItems to prevent recreation on every render
   const menuItems = useMemo(() => [
-    { href: `/${locale}`, label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold
-    { href: `/${locale}/services`, label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' }, // Blue
-    { href: `/${locale}/worksample`, label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' }, // Light Blue
-    { href: `/${locale}/contactus`, label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold (reusing for contact)
-  ], [locale, t]);
+    { href: '/', label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold
+    { href: '/services', label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' }, // Blue
+    { href: '/worksample', label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' }, // Light Blue
+    { href: '/contactus', label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold (reusing for contact)
+  ], [t]);
 
   // Initialize ripple states only once when menuItems change
   useEffect(() => {
@@ -33,10 +33,9 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
     const pathname = window.location.pathname;
     const currentItem = menuItems.find(item => {
       // Handle home page special case
-      if (item.href === `/${locale}` && pathname === `/${locale}`) return true;
-      if (item.href === `/${locale}` && pathname === '/') return true;
+      if (item.href === '/' && (pathname === `/${locale}` || pathname === '/')) return true;
       // Handle other pages
-      return pathname.startsWith(item.href);
+      return pathname.includes(item.href);
     });
 
     if (currentItem) {

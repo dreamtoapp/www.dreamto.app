@@ -455,12 +455,15 @@
     "successMessage": "✅ تم إرسال بياناتك بنجاح!",
     "errorMessage": "❌ حدث خطأ، حاول مرة أخرى!",
     "submitErrorMessage": "❌ حدث خطأ أثناء الإرسال!",
+    "validationErrorMessage": "❌ خطأ في التحقق: {errors}",
     "privacyNotice": "بالتسجيل، أنت توافق على شروط الخدمة وسياسة الخصوصية الخاصة بنا.",
     "loading": "جار التحميل...",
     "days": "أيام",
     "hours": "ساعات",
     "minutes": "دقائق",
-    "seconds": "ثواني"
+    "seconds": "ثواني",
+    "bookNow": "احجز الآن",
+    "bookNowFree": "احجز مجاناً الآن ولا تفوت الفرصة!"
   },
   "crombo": {
     "name": "اشكيك لمين",
