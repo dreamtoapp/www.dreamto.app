@@ -24,7 +24,7 @@ export default function ThemeSwitch() {
           <FaSun
             className={cn(
               "w-5 h-5",
-              "text-yellow-500",
+              "text-accent",
               "transition-all duration-300",
               "hover:rotate-90"
             )}
@@ -33,7 +33,7 @@ export default function ThemeSwitch() {
           <FaMoon
             className={cn(
               "w-5 h-5",
-              "text-blue-500",
+              "text-primary",
               "transition-all duration-300",
               "hover:-rotate-12"
             )}

@@ -5,7 +5,8 @@ import { Metadata } from 'next';
 import { Suspense } from 'react';
 import { locales } from '@/i18n/routing';
 import Link from "@/components/link";
-import ClientNavMenus from './ClientNavMenus';
+import Navbar from '@/components/naviqation/navbar';
+import FloatingConsultationCTA from '@/components/ui/FloatingConsultationCTA';
 
 type Locale = typeof locales[number];
 
@@ -44,22 +45,13 @@ export default async function LocaleLayout({
 
   return (
     <div className="flex flex-col min-h-screen" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
-      <header className="bg-background border-b border-border p-4">
-        <div className="flex justify-between items-center">
-          <Link href={`/${locale}`}>
-            <div className="flex items-center gap-2">
-              <Image src="/assets/dta.svg" alt="DTA Logo" width={40} height={40} style={{height: 'auto'}} priority />
-              <h1 className="text-xl font-bold">DreamToApp</h1>
-            </div>
-          </Link>
-          <ClientNavMenus locale={locale} />
-        </div>
-      </header>
+      <Navbar locale={locale} />
       <main className="flex-1">
         <Suspense fallback={<div>Loading...</div>}>
           {children}
         </Suspense>
       </main>
+      <FloatingConsultationCTA />
     </div>
   );
 }

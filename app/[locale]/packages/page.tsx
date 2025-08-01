@@ -27,12 +27,12 @@ export default function Page() {
   const t = useTranslations("page");
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-muted/30">
       {/* Welcome Message Section */}
-      <h1 className="text-3xl font-bold text-center text-gray-800 mb-4">
+      <h1 className="text-3xl font-bold text-center text-foreground mb-4">
         {t("welcomeTitle")}
       </h1>
-      <p className="text-lg text-center text-gray-600 mb-8">
+      <p className="text-lg text-center text-muted-foreground mb-8">
         {t("welcomeMessage")}
       </p>
 
@@ -80,10 +80,10 @@ function Form({ t }: { t: (key: string) => string }) {
     <>
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-2xl bg-white p-8 rounded-lg shadow-md space-y-6"
+        className="w-full max-w-2xl bg-background p-8 rounded-lg shadow-md space-y-6"
       >
         {/* User Information */}
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 className="text-xl font-semibold text-foreground">
           {t("contactInfoTitle")}
         </h2>
         <InputField
@@ -139,7 +139,7 @@ function Form({ t }: { t: (key: string) => string }) {
         <Button
           type="submit"
           disabled={isPending} // Disable button while submitting
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-md transition duration-300"
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-3 rounded-md transition duration-300"
         >
           {isPending ? (
             <span className="flex items-center justify-center">
@@ -202,7 +202,7 @@ const InputField = ({
       placeholder={placeholder}
       value={value}
       onChange={onChange}
-      className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+      className="w-full px-4 py-3 text-sm sm:text-base border border-border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
     />
   );
 };
@@ -219,7 +219,7 @@ function SelectService({
 }) {
   return (
     <div className="space-y-2">
-      <h3 className="text-lg font-medium text-gray-800">
+      <h3 className="text-lg font-medium text-foreground">
         {t("selectServiceTitle")}
       </h3>
       <Select onValueChange={onChange}>
@@ -257,14 +257,14 @@ function ProjectDetails({
 }) {
   return (
     <div className="space-y-2">
-      <h3 className="text-lg font-medium text-gray-800">
+      <h3 className="text-lg font-medium text-foreground">
         {t("projectDetailsTitle")}
       </h3>
       <Textarea
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={t("projectDetailsPlaceholder")}
-        className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none h-32"
+        className="w-full px-4 py-3 text-sm sm:text-base border border-border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none h-32"
       />
     </div>
   );
@@ -284,7 +284,7 @@ function ProjectPricing({
 
   return (
     <div className="space-y-2">
-      <h3 className="text-lg font-medium text-gray-800">
+      <h3 className="text-lg font-medium text-foreground">
         {t("projectPricingTitle")}
       </h3>
       <div className="space-y-4">
@@ -296,15 +296,15 @@ function ProjectPricing({
             onChange(isNaN(newValue) ? 0 : newValue); // Fallback to 0 if NaN
           }}
           placeholder={t("lastPriceLabel")}
-          className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+          className="w-full px-4 py-3 text-sm sm:text-base border border-border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-transparent"
         />
         {lastPrice ? (
-          <p className="text-base font-bold text-green-600">
+          <p className="text-base font-bold text-secondary">
             {t("newPriceLabel")}: $
             {(lastPrice * (1 - DISCOUNT_PERCENTAGE / 100)).toFixed(2)}
           </p>
         ) : (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             {t("discountedPricePlaceholder")}
           </p>
         )}
@@ -325,7 +325,7 @@ function AcceptButton({
 }) {
   return (
     <div className="space-y-2">
-      <h3 className="text-lg font-medium text-gray-800">
+      <h3 className="text-lg font-medium text-foreground">
         {t("agreementOptionsTitle")}
       </h3>
       <div className="flex flex-col space-y-2">

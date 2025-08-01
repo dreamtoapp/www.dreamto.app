@@ -27,7 +27,7 @@ export default async function Page() {
   const t2 = await getTranslations("buttons");
 
   if (!folders.length) {
-    return <p className="text-center text-gray-500">{t("noFolders")}</p>;
+    return <p className="text-center text-muted-foreground">{t("noFolders")}</p>;
   }
 
   return (
@@ -43,7 +43,7 @@ export default async function Page() {
               className="relative group shadow-md hover:shadow-lg transition-shadow rounded-lg overflow-hidden border border-primary/40"
             >
               <CardHeader className="p-0">
-                <div className="relative w-full h-64 overflow-hidden bg-gray-100">
+                <div className="relative w-full h-64 overflow-hidden bg-muted">
                   {folder.coverImage ? (
                     <Image
                       src={folder.coverImage.secure_url}
@@ -55,7 +55,7 @@ export default async function Page() {
                       blurDataURL="/placeholder.png"
                     />
                   ) : (
-                    <div className="flex items-center justify-center w-full h-full text-gray-500 text-lg font-semibold">
+                    <div className="flex items-center justify-center w-full h-full text-muted-foreground text-lg font-semibold">
                       {t("noImage")}
                     </div>
                   )}
@@ -78,7 +78,7 @@ export default async function Page() {
                   href={`/${locale}/worksample/show/${encodeURIComponent(
                     lastSegment
                   )}`}
-                  className="block w-full text-center text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 transition-colors py-2 rounded-lg"
+                  className="block w-full text-center text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors py-2 rounded-lg"
                 >
                   <p>{t2("showMore")}</p>
                 </Link>

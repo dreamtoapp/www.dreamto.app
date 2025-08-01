@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 
 import Link from '@/components/link';
@@ -40,11 +40,12 @@ export default function ApplyPage() {
   const [attachment, setAttachment] = useState<File | null>(null);
   const router = useRouter();
   const locale = useLocale();
+  const t = useTranslations("teamApply");
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!agreeToTerms) {
-      alert("Please agree to the terms and conditions before submitting.");
+      alert(t("termsAlert"));
       return;
     }
     // Handle form submission here
@@ -54,27 +55,27 @@ export default function ApplyPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <div className="max-w-2xl mx-auto bg-white dark:bg-neutral-900 rounded-2xl shadow-xl border border-blue-100 dark:border-neutral-800 p-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-blue-900 dark:text-white tracking-tight">Apply to Join Our Team</h1>
+      <div className="max-w-2xl mx-auto bg-background rounded-2xl shadow-xl border border-border p-8">
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-6 text-center text-foreground tracking-tight">{t("title")}</h1>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-              <Label htmlFor="name">Name</Label>
+              <Label htmlFor="name">{t("name")}</Label>
               <Input id="name" required autoComplete="name" className="mt-1" />
             </div>
             <div>
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">{t("email")}</Label>
               <Input id="email" type="email" required autoComplete="email" className="mt-1" />
             </div>
             <div>
-              <Label htmlFor="phone">Phone</Label>
+              <Label htmlFor="phone">{t("phone")}</Label>
               <Input id="phone" type="tel" required autoComplete="tel" className="mt-1" />
             </div>
             <div>
-              <Label htmlFor="expertise">Area of Expertise</Label>
+              <Label htmlFor="expertise">{t("areaOfExpertise")}</Label>
               <Select required>
                 <SelectTrigger>
-                  <SelectValue placeholder="Select your expertise" />
+                  <SelectValue placeholder={t("selectExpertise")} />
                 </SelectTrigger>
                 <SelectContent>
                   {expertiseAreas.map((area) => (
@@ -89,36 +90,36 @@ export default function ApplyPage() {
               </Select>
             </div>
             <div>
-              <Label htmlFor="experience">Years of Experience</Label>
+              <Label htmlFor="experience">{t("yearsOfExperience")}</Label>
               <Input id="experience" type="number" min="0" required className="mt-1" />
             </div>
             <div>
-              <Label htmlFor="age">Age</Label>
+              <Label htmlFor="age">{t("age")}</Label>
               <Input id="age" type="number" min="18" required className="mt-1" />
             </div>
             <div className="md:col-span-2">
-              <Label>Gender</Label>
+              <Label>{t("gender")}</Label>
               <RadioGroup defaultValue="prefer-not-to-say" className="flex flex-row gap-6 mt-1">
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="male" id="male" />
-                  <Label htmlFor="male">Male</Label>
+                  <Label htmlFor="male">{t("male")}</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="female" id="female" />
-                  <Label htmlFor="female">Female</Label>
+                  <Label htmlFor="female">{t("female")}</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="prefer-not-to-say" id="prefer-not-to-say" />
-                  <Label htmlFor="prefer-not-to-say">Prefer not to say</Label>
+                  <Label htmlFor="prefer-not-to-say">{t("preferNotToSay")}</Label>
                 </div>
               </RadioGroup>
             </div>
             <div className="md:col-span-2">
-              <Label htmlFor="about">About You</Label>
+              <Label htmlFor="about">{t("aboutYou")}</Label>
               <Textarea id="about" required className="mt-1 min-h-[80px]" />
             </div>
             <div className="md:col-span-2">
-              <Label>Attachment (CV / Portfolio)</Label>
+              <Label>{t("attachment")}</Label>
               <AttachmentInput onFileChange={setAttachment} />
             </div>
           </div>
@@ -129,19 +130,19 @@ export default function ApplyPage() {
               onCheckedChange={(checked) => setAgreeToTerms(checked as boolean)}
             />
             <Label htmlFor="terms">
-              I agree to the{' '}
+              {t("agreeToTerms")}{' '}
               <Link
                 href={`/${locale}/team/job-roles`}
                 className="text-primary hover:underline"
               >
-                job roles and terms
+                {t("jobRolesAndTerms")}
               </Link>
             </Label>
           </div>
           <div className="flex justify-between items-center gap-4 mt-6">
-            <Link href={`/${locale}/team`} className="text-blue-700 dark:text-blue-300 hover:underline font-medium">Back to Team Page</Link>
+            <Link href={`/${locale}/team`} className="text-primary hover:underline font-medium">{t("backToTeamPage")}</Link>
             <Button type="submit" disabled={!agreeToTerms} size="lg" className="px-8 py-3 font-bold text-lg shadow-md">
-              Submit Application
+              {t("submitApplication")}
             </Button>
           </div>
         </form>

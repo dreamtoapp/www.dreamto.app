@@ -113,12 +113,12 @@ export default function LaunchPageClient() {
           <CardHeader className="space-y-4 p-0">
             {/* <ShowTimer /> */}
             <CardTitle className="text-3xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary leading-tight ">
-              <h2 className="text-balance font-cairo">
+              <h2 className="text-balance">
                 {t("title")}
               </h2>
             </CardTitle>
             <CardDescription className="text-lg sm:text-xl font-medium text-muted-foreground">
-              <p className="text-balance font-cairo">
+              <p className="text-balance">
                 {t("description")}
               </p>
             </CardDescription>

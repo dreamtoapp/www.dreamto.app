@@ -19,11 +19,11 @@ const Services = async () => {
             className="text-4xl font-bold text-primary"
           >
             <span className="text-primary">{t("buildingTomorrow")}</span>
-            <span className="text-orange-500"> {t("solutions")} </span>
+            <span className="text-accent"> {t("solutions")} </span>
             <span className="text-primary">{t("today")}</span>
           </h2>
           <p
-            className="mt-4 text-lg text-gray-600"
+            className="mt-4 text-lg text-muted-foreground"
           >
             {t("blendingCreativity")}
           </p>

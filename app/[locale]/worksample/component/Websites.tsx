@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"; // Import shadcn card 
 import { ArrowRightIcon } from "lucide-react"; // Optional: For hover effect icon
 import Autoplay from "embla-carousel-autoplay"; // For autoplay functionality
 import Image from "next/image"; // Import next/image for optimized images
+import Link from "next/link"; // Import next/link for navigation
 import { useLocale } from "next-intl";
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
@@ -101,7 +102,7 @@ function Websites() {
   ];
   return (
     <div className="w-full   h-auto rounded-md p-6" dir="ltr">
-      <h2 className="text-2xl font-bold text-white mb-4">Featured Websites</h2>
+      <h2 className="text-2xl font-bold text-foreground mb-4">Featured Websites</h2>
       <Carousel
         plugins={[Autoplay({ delay: 3000 })]} // Auto-play every 3 seconds
         className="w-full max-w-4xl mx-auto"
@@ -112,7 +113,7 @@ function Websites() {
               key={website.id}
               className="md:basis-1/2 lg:basis-1/3"
             >
-              <a href={website.url} target="_blank" rel="noopener noreferrer">
+              <Link href={website.url} target="_blank" rel="noopener noreferrer">
                 <Card className="overflow-hidden relative transition-transform hover:scale-105 duration-300">
                   {/* Use next/image for optimized images */}
                   <Image
@@ -127,25 +128,23 @@ function Websites() {
                   />
                   <CardContent className="p-4">
                     <h3
-                      className={`text-lg font-semibold text-gray-900 ${
-                        website.mode === "development" &&
-                        "bg-green-700 text-white w-fit p-1 rounded-full text-sm px-2 border-green-300 border"
-                      } ${
-                        website.mode === "doing" &&
-                        "bg-blue-700 text-white w-fit p-1 rounded-full text-sm px-2 border-blue-300 border"
-                      }`}
+                      className={`text-lg font-semibold text-foreground ${website.mode === "development" &&
+                        "bg-secondary text-secondary-foreground w-fit p-1 rounded-full text-sm px-2 border-secondary border"
+                        } ${website.mode === "doing" &&
+                        "bg-primary text-primary-foreground w-fit p-1 rounded-full text-sm px-2 border-primary border"
+                        }`}
                     >
                       {website.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mt-2">
+                    <p className="text-sm text-muted-foreground mt-2">
                       {website.description}
                     </p>
                     <div className="absolute bottom-4 right-4">
-                      <ArrowRightIcon className="w-6 h-6 text-gray-500 hover:text-gray-900 transition-colors" />
+                      <ArrowRightIcon className="w-6 h-6 text-muted-foreground hover:text-foreground transition-colors" />
                     </div>
                   </CardContent>
                 </Card>
-              </a>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>

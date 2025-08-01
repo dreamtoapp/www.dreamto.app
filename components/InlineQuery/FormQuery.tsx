@@ -54,7 +54,7 @@ export default function FormQuery({
   }, [state.success, state.message]); // Trigger when form submission is successful
 
   return (
-    <Card className="w-full mx-auto shadow-lg p-6 rounded-xl border border-gray-200 bg-white overflow-auto text-primary">
+    <Card className="w-full mx-auto shadow-lg p-6 rounded-xl border border-border bg-background overflow-auto text-primary">
       <CardContent>
         <form action={action} className="grid gap-6">
           {/* Type Field */}
@@ -67,7 +67,7 @@ export default function FormQuery({
             <Input
               id="name"
               name="name"
-              className={state.errors?.name ? "border-red-500" : ""}
+              className={state.errors?.name ? "border-destructive" : ""}
             />
           </div>
 
@@ -80,7 +80,7 @@ export default function FormQuery({
               id="mobile"
               name="mobile"
               type="tel"
-              className={state.errors?.mobile ? "border-red-500" : ""}
+              className={state.errors?.mobile ? "border-destructive" : ""}
             />
           </div>
 
@@ -92,7 +92,7 @@ export default function FormQuery({
             <Textarea
               id="brief"
               name="brief"
-              className={state.errors?.brief ? "border-red-500" : ""}
+              className={state.errors?.brief ? "border-destructive" : ""}
             />
           </div>
 
@@ -101,14 +101,14 @@ export default function FormQuery({
             <Button
               type="submit"
               disabled={isPending}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-2 px-4 rounded-lg shadow-md transition duration-300"
             >
               {isPending ? t("sending") : t("submit")}
             </Button>
             <DialogClose
               className={cn(
                 buttonVariants({ variant: "default" }),
-                "bg-white text-black text-lg hover:bg-white/90 transition-all duration-300 ease-in-out px-8 py-3 rounded-lg shadow-md"
+                "bg-background text-foreground text-lg hover:bg-background/90 transition-all duration-300 ease-in-out px-8 py-3 rounded-lg shadow-md"
               )}
               type="button"
             >

@@ -4,7 +4,7 @@ import {
   useRef,
 } from 'react';
 
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 import Link from '@/components/link';
 
@@ -13,6 +13,7 @@ export default function Home() {
   const logoRef = useRef<SVGSVGElement>(null);
   const pathRefs = useRef<(SVGPathElement | null)[]>([]);
   const locale = useLocale();
+  const t = useTranslations("underConstruction");
 
   // No JS animation needed; SVG paths will animate via CSS keyframes.
 
@@ -97,10 +98,10 @@ export default function Home() {
 
         {/* Title and Subtitle */}
         <h1 className="text-6xl font-bold text-white mt-8 mb-4">
-          Under Construction
+          {t("title")}
         </h1>
-        <p className="text-xl text-gray-300 mb-8">
-          We're working hard to bring you something amazing!
+        <p className="text-xl text-muted-foreground mb-8">
+          {t("subtitle")}
         </p>
 
         {/* Buttons */}
@@ -108,18 +109,18 @@ export default function Home() {
           {/* Back Button */}
           <Link
             href={"/"}
-            className="px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-semibold rounded-lg transition duration-300"
+            className="px-6 py-3 bg-muted hover:bg-muted/80 text-foreground font-semibold rounded-lg transition duration-300"
 
           >
-            Go Home
+            {t("goHome")}
           </Link>
 
           {/* CTA Button */}
           <Link
             href={`/${locale}/contactus `}
-            className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-300"
+            className="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-lg transition duration-300"
           >
-            Contact Us for More Info
+            {t("contactForInfo")}
           </Link>
         </div>
       </div>

@@ -30,7 +30,7 @@ async function CromboDetail() {
         <CardTitle className="flex flex-col items-center gap-3">
           <h1 className="text-2xl font-bold text-white">{t("name")}</h1>
         </CardTitle>
-        <CardDescription className="text-lg font-medium text-gray-300">
+        <CardDescription className="text-lg font-medium text-muted-foreground">
           {t("title")}
         </CardDescription>
       </CardHeader>
@@ -50,7 +50,7 @@ async function CromboDetail() {
         </div>
 
         {/* Description */}
-        <p className="text-base leading-relaxed text-gray-200 text-center md:text-left">
+        <p className="text-base leading-relaxed text-muted-foreground text-center md:text-left">
           {t("description")}
         </p>
       </CardContent>

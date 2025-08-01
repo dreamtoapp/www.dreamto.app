@@ -29,22 +29,22 @@ export default function InlineQuery({
       <DialogTrigger asChild>
         <Button
           variant="default"
-          className="font-cairo w-full bg-blue-600 hover:bg-blue-700 text-white"
+          className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
         >
           {btnTitle}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] bg-gray-50 border border-gray-200 shadow-lg rounded-lg max-h-screen">
+      <DialogContent className="sm:max-w-[425px] bg-background border border-border shadow-lg rounded-lg max-h-screen">
         <DialogHeader className="flex flex-col items-center justify-center space-y-2">
-          <DialogTitle className="bg-gradient-to-r from-blue-500 to-green-500 py-3 px-6 rounded-lg text-white font-bold shadow-md">
+          <DialogTitle className="bg-gradient-to-r from-primary to-secondary py-3 px-6 rounded-lg text-primary-foreground font-bold shadow-md">
             {title}
           </DialogTitle>
           {subtitle && (
-            <DialogTitle className="text-gray-800 font-semibold text-balance text-center">
+            <DialogTitle className="text-foreground font-semibold text-balance text-center">
               {subtitle}
             </DialogTitle>
           )}
-          <DialogDescription className="text-gray-600 text-center">
+          <DialogDescription className="text-muted-foreground text-center">
             {description}
           </DialogDescription>
         </DialogHeader>

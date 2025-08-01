@@ -1,17 +1,41 @@
 "use client";
 
-import React, { useEffect, useActionState } from "react";
+import React, { useEffect, useActionState, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { submitContact } from "./submitContact";
-
-import { motion } from "framer-motion";
-import { FaRegComments, FaUser, FaPhone, FaEnvelope, FaTools, FaInfoCircle, FaMoneyBill, FaCalendarAlt, FaPaperclip } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaRegComments,
+  FaUser,
+  FaPhone,
+  FaEnvelope,
+  FaTools,
+  FaInfoCircle,
+  FaMoneyBill,
+  FaCalendarAlt,
+  FaPaperclip,
+  FaWhatsapp,
+  FaCheckCircle,
+  FaArrowRight,
+  FaGlobe,
+  FaMobile,
+  FaUsers,
+  FaShoppingCart,
+  FaPalette,
+  FaChartLine,
+  FaEye,
+  FaPlus,
+  FaMinus
+} from "react-icons/fa";
+import { useTranslations } from "next-intl";
 
 interface FormState {
   success: boolean;
@@ -25,7 +49,86 @@ const initialState: FormState = {
   errors: {},
 };
 
-import { useTranslations } from "next-intl";
+// Service configuration with icons and colors using CSS variables
+const getServicesConfig = (t: any) => [
+  {
+    id: "website-development",
+    value: "website-development",
+    label: t("websiteDevelopmentTitle"),
+    description: t("websiteDevelopmentDescription"),
+    icon: FaGlobe,
+    color: "bg-primary/5 border-primary/20",
+    selectedColor: "bg-primary/10 border-primary/30",
+    iconColor: "text-primary",
+    features: [t("responsiveDesign"), t("seoOptimized"), t("fastLoading"), t("userFriendly")]
+  },
+  {
+    id: "mobile-app-development",
+    value: "mobile-app-development",
+    label: t("mobileAppDevelopmentTitle"),
+    description: t("mobileAppDevelopmentDescription"),
+    icon: FaMobile,
+    color: "bg-secondary/5 border-secondary/20",
+    selectedColor: "bg-secondary/10 border-secondary/30",
+    iconColor: "text-secondary",
+    features: [t("crossPlatform"), t("nativePerformance"), t("pushNotifications"), t("offlineSupport")]
+  },
+  {
+    id: "ecommerce-development",
+    value: "ecommerce-development",
+    label: t("ecommerceDevelopmentTitle"),
+    description: t("ecommerceDevelopmentDescription"),
+    icon: FaShoppingCart,
+    color: "bg-accent/5 border-accent/20",
+    selectedColor: "bg-accent/10 border-accent/30",
+    iconColor: "text-accent",
+    features: [t("securePayments"), t("inventoryManagement"), t("multiCurrency"), t("analyticsDashboard")]
+  },
+  {
+    id: "crm-development",
+    value: "crm-development",
+    label: t("crmDevelopmentTitle"),
+    description: t("crmDevelopmentDescription"),
+    icon: FaUsers,
+    color: "bg-primary/5 border-primary/20",
+    selectedColor: "bg-primary/10 border-primary/30",
+    iconColor: "text-primary",
+    features: [t("customerAnalytics"), t("automatedWorkflows"), t("integrationReady"), t("realTimeReports")]
+  },
+  {
+    id: "ui-ux-design",
+    value: "ui-ux-design",
+    label: t("uiUxDesignTitle"),
+    description: t("uiUxDesignDescription"),
+    icon: FaPalette,
+    color: "bg-secondary/5 border-secondary/20",
+    selectedColor: "bg-secondary/10 border-secondary/30",
+    iconColor: "text-secondary",
+    features: [t("userResearch"), t("prototyping"), t("designSystems"), t("usabilityTesting")]
+  },
+  {
+    id: "digital-marketing",
+    value: "digital-marketing",
+    label: t("digitalMarketingTitle"),
+    description: t("digitalMarketingDescription"),
+    icon: FaChartLine,
+    color: "bg-accent/5 border-accent/20",
+    selectedColor: "bg-accent/10 border-accent/30",
+    iconColor: "text-accent",
+    features: [t("seoOptimization"), t("socialMedia"), t("ppcCampaigns"), t("contentStrategy")]
+  },
+  {
+    id: "visual-identity",
+    value: "visual-identity",
+    label: t("visualIdentityTitle"),
+    description: t("visualIdentityDescription"),
+    icon: FaEye,
+    color: "bg-primary/5 border-primary/20",
+    selectedColor: "bg-primary/10 border-primary/30",
+    iconColor: "text-primary",
+    features: [t("logoDesign"), t("brandGuidelines"), t("marketingMaterials"), t("brandStrategy")]
+  }
+];
 
 export default function FormContact({ locale }: { locale: string }) {
   const router = useRouter();
@@ -33,6 +136,12 @@ export default function FormContact({ locale }: { locale: string }) {
     submitContact,
     initialState
   );
+  const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [showAllServices, setShowAllServices] = useState(false);
+  const t = useTranslations("contactus");
+  const servicesT = useTranslations("services");
+
+  const servicesConfig = getServicesConfig(servicesT);
 
   useEffect(() => {
     if (state.errors && Object.keys(state.errors).length > 0) {
@@ -47,223 +156,409 @@ export default function FormContact({ locale }: { locale: string }) {
       toast.success(state.message || t("successMessage"));
       setTimeout(() => router.push(`/${locale}/thank-you`), 2000);
     }
-  }, [state.success, state.message, router]);
+  }, [state.success, state.message, router, locale, t]);
 
-  const t = useTranslations("contactus");
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
+  const handleServiceToggle = (serviceId: string) => {
+    setSelectedServices(prev =>
+      prev.includes(serviceId)
+        ? prev.filter(id => id !== serviceId)
+        : [...prev, serviceId]
+    );
+  };
+
+  const handleSubmit = (formData: FormData) => {
+    formData.append('projectType', selectedServices.join(','));
+    formAction(formData);
+  };
+
+  const displayedServices = showAllServices ? servicesConfig : servicesConfig.slice(0, 4);
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.7, type: 'spring', bounce: 0.3 }}
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
       className="w-full"
     >
-      <header className="flex flex-col items-center mb-2">
-        <h2 id="contact-form-title" className="sr-only">
-          {t("contactFormTitle") || "Contact Us"}
-        </h2>
-      </header>
-      {/* Success State Animation */}
-      {state.success && (
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          className="flex flex-col items-center justify-center mb-6"
-          role="status"
-          aria-live="polite"
-        >
-          <FaRegComments className="w-16 h-16 text-success mb-2 animate-bounce" aria-hidden="true" />
-          <span className="text-success font-bold text-lg">{t("successMessage")}</span>
-        </motion.div>
-      )}
-      {/* WhatsApp Direct Contact Hint */}
-      <div className="flex flex-col items-center mb-8">
-        <span className="text-base text-foreground mb-2 flex items-center gap-2">
-          <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" className="text-green-500"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.497.813 4.902 2.35 6.962L4.06 28.062a1 1 0 0 0 1.25 1.25l6.1-2.29A12.948 12.948 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 2c5.523 0 10 4.477 10 10 0 5.522-4.477 10-10 10a10.95 10.95 0 0 1-5.367-1.45 1 1 0 0 0-.824-.073l-4.176 1.567 1.567-4.176a1 1 0 0 0-.073-.824A10.95 10.95 0 0 1 6 15c0-5.523 4.477-10 10-10zm-3.167 6.167c-.217-.484-.447-.495-.66-.504l-.563-.009a1.13 1.13 0 0 0-.82.383c-.234.27-.82.801-.82 1.953 0 1.152.84 2.265.957 2.422.117.157 1.61 2.574 3.98 3.507 1.97.777 2.37.622 2.797.584.427-.038 1.377-.562 1.572-1.104.195-.542.195-1.006.137-1.104-.058-.098-.214-.156-.447-.273-.234-.117-1.377-.679-1.59-.757-.212-.078-.366-.117-.52.117-.156.234-.599.757-.734.914-.136.156-.268.176-.502.059-.234-.117-.987-.364-1.88-1.162-.695-.62-1.164-1.385-1.302-1.619-.136-.234-.015-.36.102-.477.104-.104.234-.27.351-.406.117-.137.156-.234.234-.39.078-.156.039-.293-.02-.41-.058-.117-.52-1.293-.734-1.777z"></path></svg>
-          {t("whatsappHint")}
-        </span>
+      {/* Success State */}
+      <AnimatePresence>
+        {state.success && (
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0, opacity: 0 }}
+            className="flex flex-col items-center justify-center p-8 mb-8 bg-secondary/10 rounded-xl border border-secondary/20"
+            role="status"
+            aria-live="polite"
+          >
+            <div className="relative">
+              <FaCheckCircle className="w-16 h-16 text-secondary mb-4" aria-hidden="true" />
+              <div className="absolute inset-0 w-16 h-16 bg-secondary/20 rounded-full animate-ping" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-2">Message Sent Successfully!</h3>
+            <p className="text-muted-foreground text-center">{t("successMessage")}</p>
+            <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+              Redirecting to thank you page...
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Simplified WhatsApp Contact */}
+      <motion.div
+        variants={itemVariants}
+        className="flex flex-col items-center mb-8 p-6 bg-secondary/5 rounded-xl border border-secondary/20"
+      >
+        <div className="flex items-center gap-2 mb-3">
+          <FaWhatsapp className="w-5 h-5 text-secondary" />
+          <span className="text-sm font-medium text-foreground">{t("whatsappHint")}</span>
+        </div>
         <a
           href="https://wa.me/966554113107"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-3 bg-green-500 text-white rounded-xl font-semibold shadow hover:bg-green-600 transition-colors duration-200 text-lg"
+          className="group inline-flex items-center gap-3 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold shadow-sm hover:bg-secondary/90 hover:shadow-md transition-all duration-300 text-base"
           style={{ direction: locale === 'ar' ? 'rtl' : 'ltr' }}
         >
-          <svg viewBox="0 0 32 32" width="20" height="20" fill="currentColor" className="text-white"><path d="M16 3C9.373 3 4 8.373 4 15c0 2.497.813 4.902 2.35 6.962L4.06 28.062a1 1 0 0 0 1.25 1.25l6.1-2.29A12.948 12.948 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3zm0 2c5.523 0 10 4.477 10 10 0 5.522-4.477 10-10 10a10.95 10.95 0 0 1-5.367-1.45 1 1 0 0 0-.824-.073l-4.176 1.567 1.567-4.176a1 1 0 0 0-.073-.824A10.95 10.95 0 0 1 6 15c0-5.523 4.477-10 10-10zm-3.167 6.167c-.217-.484-.447-.495-.66-.504l-.563-.009a1.13 1.13 0 0 0-.82.383c-.234.27-.82.801-.82 1.953 0 1.152.84 2.265.957 2.422.117.157 1.61 2.574 3.98 3.507 1.97.777 2.37.622 2.797.584.427-.038 1.377-.562 1.572-1.104.195-.542.195-1.006.137-1.104-.058-.098-.214-.156-.447-.273-.234-.117-1.377-.679-1.59-.757-.212-.078-.366-.117-.52.117-.156.234-.599.757-.734.914-.136.156-.268.176-.502.059-.234-.117-.987-.364-1.88-1.162-.695-.62-1.164-1.385-1.302-1.619-.136-.234-.015-.36.102-.477.104-.104.234-.27.351-.406.117-.137.156-.234.234-.39.078-.156.039-.293-.02-.41-.058-.117-.52-1.293-.734-1.777z"></path></svg>
-          {t("whatsappButton")}
+          <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
+          <span>{t("whatsappButton")}</span>
+          <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
         </a>
-      </div>
+      </motion.div>
 
-      <form action={formAction} className="grid gap-10" role="form" aria-labelledby="contact-form-title">
-        {/* Project Type Radio Group */}
-        <div className="grid gap-2">
-          <Label className="flex items-center gap-2 text-lg font-semibold text-foreground mb-2">
-            <FaTools className="w-5 h-5 text-primary" />
-            {t("projectType")}
-          </Label>
-          <div className="flex gap-6 mt-1">
-            <label className="flex items-center gap-2 text-base font-medium">
-              <input type="radio" name="projectType" value="mobile" required className="accent-primary scale-125" />
-              {t("mobileApp")}
-            </label>
-            <label className="flex items-center gap-2 text-base font-medium">
-              <input type="radio" name="projectType" value="web" required className="accent-primary scale-125" />
-              {t("webApp")}
-            </label>
-            <label className="flex items-center gap-2 text-base font-medium">
-              <input type="radio" name="projectType" value="both" required className="accent-primary scale-125" />
-              {t("both")}
-            </label>
-          </div>
-          {state.errors?.projectType?.[0] && (
-            <p className="text-destructive text-xs mt-1" role="alert">
-              {state.errors.projectType?.[0]}
+      <form action={handleSubmit} className="space-y-8" role="form" aria-labelledby="contact-form-title">
+        {/* Refined Service Selection */}
+        <motion.div variants={itemVariants} className="space-y-6">
+          <div className="mb-6">
+            <h3 className="text-lg font-semibold text-foreground mb-2">
+              {t("projectType")} - {t("selectRequiredServices")}
+            </h3>
+            <p className="text-sm text-muted-foreground">
+              {t("selectServicesSubtitle")}
             </p>
+          </div>
+
+          {/* Selected Services Summary */}
+          {selectedServices.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 bg-primary/5 rounded-lg border border-primary/20"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <FaCheckCircle className="w-4 h-4 text-primary" />
+                <span className="text-sm font-medium text-foreground">
+                  {t("selectedServices")} ({selectedServices.length})
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {selectedServices.map(serviceId => {
+                  const service = servicesConfig.find(s => s.id === serviceId);
+                  return service ? (
+                    <Badge key={serviceId} variant="secondary" className="text-xs bg-primary/10 text-primary">
+                      {service.label}
+                    </Badge>
+                  ) : null;
+                })}
+              </div>
+            </motion.div>
           )}
-        </div>
 
-        <div className="border-t border-border my-4"></div>
+          {/* Refined Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {displayedServices.map((service) => {
+              const Icon = service.icon;
+              const isSelected = selectedServices.includes(service.id);
 
-        {/* Name, Mobile, Email Fields */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {[
-            {
-              name: "name",
-              label: t("name"),
-              type: "text",
-            },
-            {
-              name: "mobile",
-              label: t("mobile"),
-              type: "tel",
-            },
-            {
-              name: "email",
-              label: t("email"),
-              type: "email",
-            },
-          ].map(({ name, label, type }) => (
-            <div key={name} className="relative">
-              <Input
-                id={name}
-                name={name}
-                type={type}
-                autoComplete={name}
-                aria-invalid={!!state.errors?.[name]}
-                aria-describedby={state.errors?.[name]?.[0] ? `${name}-error` : undefined}
-                className={`peer border-2 rounded-xl p-6 pt-8 text-lg focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 w-full h-16 ${
-                  state.errors?.[name] ? "border-destructive" : "border-border focus:border-primary"
-                }`}
-              />
-              <Label
-                htmlFor={name}
-                className="absolute left-4 top-4 text-base font-medium text-muted-foreground pointer-events-none transition-all duration-200 peer-focus:-translate-y-4 peer-focus:scale-90 peer-focus:text-primary peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:text-muted-foreground"
+              return (
+                <motion.div
+                  key={service.id}
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className={`relative group cursor-pointer transition-all duration-300 border rounded-lg p-4 ${isSelected
+                    ? `${service.selectedColor} shadow-md`
+                    : `${service.color} hover:shadow-sm`
+                    }`}
+                >
+                  <label className="block cursor-pointer">
+                    <div className="flex items-start gap-3">
+                      <div className={`p-2 rounded-lg ${service.iconColor} bg-background shadow-sm`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h4 className="font-semibold text-foreground text-sm leading-tight">
+                            {service.label}
+                          </h4>
+                          <Checkbox
+                            checked={isSelected}
+                            onChange={() => handleServiceToggle(service.id)}
+                            className="data-[state=checked]:bg-primary data-[state=checked]:border-primary mt-0.5"
+                          />
+                        </div>
+                        <p className="text-xs text-muted-foreground mb-3 line-clamp-2 leading-relaxed">
+                          {service.description}
+                        </p>
+                        <div className="flex flex-wrap gap-1">
+                          {service.features.slice(0, 2).map((feature, index) => (
+                            <Badge key={index} variant="outline" className="text-xs bg-background/50">
+                              {feature}
+                            </Badge>
+                          ))}
+                          {service.features.length > 2 && (
+                            <Badge variant="outline" className="text-xs bg-background/50">
+                              +{service.features.length - 2} أكثر
+                            </Badge>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </label>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Show More/Less Button */}
+          {servicesConfig.length > 4 && (
+            <div className="text-center">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowAllServices(!showAllServices)}
+                className="flex items-center gap-2 border-border text-muted-foreground hover:bg-muted"
               >
-                {name === "name" && <FaUser className="w-5 h-5 text-primary inline-block mr-1" />}
-                {name === "mobile" && <FaPhone className="w-5 h-5 text-primary inline-block mr-1" />}
-                {name === "email" && <FaEnvelope className="w-5 h-5 text-primary inline-block mr-1" />}
-                {label}
-              </Label>
-               
-              {state.errors?.[name]?.[0] && (
-                <p id={`${name}-error`} className="text-destructive text-xs mt-1" role="alert">
-                  {state.errors[name]?.[0]}
-                </p>
-              )}
+                {showAllServices ? (
+                  <>
+                    <FaMinus className="w-4 h-4" />
+                    {t("showLess")}
+                  </>
+                ) : (
+                  <>
+                    <FaPlus className="w-4 h-4" />
+                    {t("showAllServices")}
+                  </>
+                )}
+              </Button>
             </div>
-          ))}
-        </div>
+          )}
 
-        {/* Project Details */}
-        <div className="grid gap-2">
-          <Label htmlFor="projectDetails" className="flex items-center gap-2 text-lg font-semibold text-foreground mb-2">
-            <FaInfoCircle className="w-5 h-5 text-primary" />
-            {t("projectDetails") || "Project Details"}
+          {state.errors?.projectType?.[0] && (
+            <motion.p
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-destructive text-sm flex items-center gap-2"
+              role="alert"
+            >
+              <FaInfoCircle className="w-4 h-4" />
+              {state.errors.projectType[0]}
+            </motion.p>
+          )}
+        </motion.div>
+
+        {/* Refined Personal Information */}
+        <motion.div variants={itemVariants} className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: "name",
+                label: t("name"),
+                type: "text",
+                icon: FaUser,
+                autoComplete: "name"
+              },
+              {
+                name: "mobile",
+                label: t("mobile"),
+                type: "tel",
+                icon: FaPhone,
+                autoComplete: "tel"
+              },
+              {
+                name: "email",
+                label: t("email"),
+                type: "email",
+                icon: FaEnvelope,
+                autoComplete: "email"
+              },
+            ].map(({ name, label, type, icon: Icon, autoComplete }) => (
+              <div key={name} className="space-y-2">
+                <Label htmlFor={name} className="text-sm font-medium text-foreground">
+                  {label}
+                </Label>
+                <div className="relative">
+                  <Input
+                    id={name}
+                    name={name}
+                    type={type}
+                    autoComplete={autoComplete}
+                    aria-invalid={!!state.errors?.[name]}
+                    aria-describedby={state.errors?.[name]?.[0] ? `${name}-error` : undefined}
+                    className={`h-12 border-border focus:border-primary focus:ring-primary bg-background transition-colors ${state.errors?.[name]
+                      ? "border-destructive focus:border-destructive focus:ring-destructive"
+                      : ""
+                      }`}
+                    placeholder=" "
+                  />
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Icon className="w-4 h-4 text-muted-foreground" />
+                  </div>
+                </div>
+
+                {state.errors?.[name]?.[0] && (
+                  <motion.p
+                    id={`${name}-error`}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-destructive text-sm flex items-center gap-2"
+                    role="alert"
+                  >
+                    <FaInfoCircle className="w-4 h-4" />
+                    {state.errors[name][0]}
+                  </motion.p>
+                )}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Refined Project Details */}
+        <motion.div variants={itemVariants} className="space-y-3">
+          <Label htmlFor="projectDetails" className="text-sm font-medium text-foreground">
+            {t("projectDetails")}
           </Label>
           <Textarea
             id="projectDetails"
             name="projectDetails"
-            rows={5}
+            rows={4}
+            placeholder={t("projectDetailsPlaceholder")}
             aria-invalid={!!state.errors?.projectDetails}
             aria-describedby={state.errors?.projectDetails?.[0] ? "projectDetails-error" : undefined}
-            className={`border-2 rounded-xl p-6 text-lg focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 w-full ${
-              state.errors?.projectDetails ? "border-destructive" : "border-border focus:border-primary"
-            }`}
+            className={`border-border focus:border-primary focus:ring-primary bg-background resize-none transition-colors ${state.errors?.projectDetails
+              ? "border-destructive focus:border-destructive focus:ring-destructive"
+              : ""
+              }`}
             required
           />
           {state.errors?.projectDetails?.[0] && (
-            <p id="projectDetails-error" className="text-destructive text-xs mt-1" role="alert">
-              {state.errors.projectDetails?.[0]}
-            </p>
+            <motion.p
+              id="projectDetails-error"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-destructive text-sm flex items-center gap-2"
+              role="alert"
+            >
+              <FaInfoCircle className="w-4 h-4" />
+              {state.errors.projectDetails[0]}
+            </motion.p>
           )}
-        </div>
+        </motion.div>
 
-        {/* Budget */}
-        <div className="grid gap-1.5">
-          <Label htmlFor="budget" className="flex items-center gap-2 text-base font-semibold text-foreground">
-            <FaMoneyBill className="w-5 h-5 text-primary" />
-            {t("budget") || "Budget"}
+        {/* Refined Budget */}
+        <motion.div variants={itemVariants} className="space-y-3">
+          <Label htmlFor="budget" className="text-sm font-medium text-foreground">
+            {t("budget")}
           </Label>
           <Input
             id="budget"
             name="budget"
             type="text"
+            placeholder={t("budgetPlaceholder")}
             aria-invalid={!!state.errors?.budget}
             aria-describedby={state.errors?.budget?.[0] ? "budget-error" : undefined}
-            className={`border-2 rounded-xl p-3 focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 ${
-              state.errors?.budget ? "border-destructive" : "border-border focus:border-primary"
-            }`}
+            className={`border-border focus:border-primary focus:ring-primary bg-background transition-colors ${state.errors?.budget
+              ? "border-destructive focus:border-destructive focus:ring-destructive"
+              : ""
+              }`}
             required
           />
           {state.errors?.budget?.[0] && (
-            <p id="budget-error" className="text-destructive text-xs mt-1" role="alert">
-              {state.errors.budget?.[0]}
-            </p>
+            <motion.p
+              id="budget-error"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-destructive text-sm flex items-center gap-2"
+              role="alert"
+            >
+              <FaInfoCircle className="w-4 h-4" />
+              {state.errors.budget[0]}
+            </motion.p>
           )}
-        </div>
+        </motion.div>
 
-        <div className="grid gap-1.5">
-          <Label
-            htmlFor="message"
-            className="flex items-center gap-2 text-base font-semibold text-foreground"
-          >
-            <FaRegComments className="w-5 h-5 text-primary" />
+        {/* Refined Additional Message */}
+        <motion.div variants={itemVariants} className="space-y-3">
+          <Label htmlFor="message" className="text-sm font-medium text-foreground">
             {t("message")}
           </Label>
           <Textarea
             id="message"
             name="message"
-            rows={5}
+            rows={4}
+            placeholder={t("messagePlaceholder")}
             aria-invalid={!!state.errors?.message}
             aria-describedby={state.errors?.message?.[0] ? "message-error" : undefined}
-            className={`border-2 rounded-xl p-3 focus:ring-2 focus:ring-primary bg-muted transition-all duration-200 ${
-              state.errors?.message ? "border-destructive" : "border-border focus:border-primary"
-            }`}
+            className={`border-border focus:border-primary focus:ring-primary bg-background resize-none transition-colors ${state.errors?.message
+              ? "border-destructive focus:border-destructive focus:ring-destructive"
+              : ""
+              }`}
           />
           {state.errors?.message?.[0] && (
-            <p id="message-error" className="text-destructive text-xs mt-1" role="alert">
-              {state.errors.message?.[0]}
-            </p>
+            <motion.p
+              id="message-error"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-destructive text-sm flex items-center gap-2"
+              role="alert"
+            >
+              <FaInfoCircle className="w-4 h-4" />
+              {state.errors.message[0]}
+            </motion.p>
           )}
-        </div>
+        </motion.div>
 
-        {/* Submit Button */}
-        <Button
-          type="submit"
-          className="w-full py-5 text-lg font-bold rounded-xl bg-primary text-white shadow-lg hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
-          disabled={isPending}
-        >
-          {isPending && (
-            <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
-            </svg>
-          )}
-          {isPending ? t("sending") : t("sendButton")}
-        </Button>
-        <p className="text-xs text-muted-foreground text-center mt-4">
-          We respect your privacy. Your information will never be shared.
-        </p>
+        {/* Refined Submit Button */}
+        <motion.div variants={itemVariants} className="space-y-4">
+          <Button
+            type="submit"
+            className="w-full h-12 text-base font-semibold rounded-lg bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-3 group"
+            disabled={isPending || selectedServices.length === 0}
+          >
+            {isPending ? (
+              <>
+                <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                <span>{t("sending")}</span>
+              </>
+            ) : (
+              <>
+                <span>{t("sendButton")}</span>
+                <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+              </>
+            )}
+          </Button>
+
+          <p className="text-xs text-muted-foreground text-center">
+            {t("privacyNotice")}
+          </p>
+        </motion.div>
       </form>
     </motion.div>
   );

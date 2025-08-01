@@ -1,22 +1,87 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // Best practice: Use your real domain and include all static and dynamic routes
-  // For dynamic routes, you would fetch slugs/ids from your data source
-  // Here is a static example for demonstration
+  const baseUrl = 'https://www.dreamto.app';
+  const currentDate = new Date().toISOString();
+
   return [
     {
-      url: 'https://www.dreamto.app/',
-      lastModified: new Date().toISOString(),
+      url: baseUrl,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1,
     },
     {
-      url: 'https://www.dreamto.app/en',
-      lastModified: new Date().toISOString(),
+      url: `${baseUrl}/en`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1,
     },
     {
-      url: 'https://www.dreamto.app/ar',
-      lastModified: new Date().toISOString(),
+      url: `${baseUrl}/ar`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly',
+      priority: 1,
     },
-    // Add more static or dynamic URLs as needed
+    {
+      url: `${baseUrl}/en/services`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ar/services`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/worksample`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ar/worksample`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/en/team`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/ar/team`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/en/contactus`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ar/contactus`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/en/packages`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ar/packages`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
   ];
 }

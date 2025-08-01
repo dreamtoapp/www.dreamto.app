@@ -5,6 +5,7 @@ import { technology } from "@/constant/icons";
 import { getLocale, getTranslations } from "next-intl/server";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface Technology {
   name: string;
@@ -187,14 +188,14 @@ const TechnologyShowcase: React.FC = async () => {
               </CardContent>
             </div>
             <div className="text-center mt-auto mb-4">
-              <a
+              <Link
                 href={tech.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(buttonVariants({ variant: "default" }))}
               >
                 {t("learnMore")}
-              </a>
+              </Link>
             </div>
           </Card>
         ))}

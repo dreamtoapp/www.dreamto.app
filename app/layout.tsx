@@ -65,7 +65,7 @@ import { Suspense } from 'react';
 
 import { Toaster } from '@/components/ui/sonner';
 import { Directions } from '@/constant/enums';
-import { cairo } from './font';
+import { tajawal } from './font';
 import { ThemeProvider } from '@/provider/theme-provider';
 
 // Loading component for suspense boundaries
@@ -98,24 +98,24 @@ export default async function RootLayout({
           src="//static.getclicky.com/js"
         />
       </head>
-      <body className={`${cairo.className} min-h-screen bg-background antialiased`}>
+      <body className={`${tajawal.className} min-h-screen bg-background antialiased`}>
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <NextTopLoader 
-          
+          <NextTopLoader
+
           />
-           
-           
-            <main id="main-content" tabIndex={-1} role="main"  >
-              <ThemeProvider>
-                 
-                  {children}
-               
-              </ThemeProvider>
-            </main>
-            <footer role="contentinfo" className="border-t">
-              {/* Insert global footer here if needed */}
-            </footer>
-        
+
+
+          <main id="main-content" tabIndex={-1} role="main"  >
+            <ThemeProvider>
+
+              {children}
+
+            </ThemeProvider>
+          </main>
+          <footer role="contentinfo" className="border-t">
+            {/* Insert global footer here if needed */}
+          </footer>
+
         </NextIntlClientProvider>
         <Toaster position="top-right" />
       </body>

@@ -43,7 +43,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
     >
-      <article className="h-full flex flex-col" aria-labelledby={`service-card-title-${t(card.title)}`}> 
+      <article className="h-full flex flex-col" aria-labelledby={`service-card-title-${t(card.title)}`}>
         {/* Header Section */}
         <CardHeader className="flex flex-col items-center text-center space-y-3 pt-6 pb-2">
           {/* Icon with animated ring on hover */}
@@ -58,8 +58,8 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
             )}
           </div>
           {/* Title */}
-          <CardTitle className="text-2xl font-bold text-foreground" id={`service-card-title-${t(card.title)}`}> 
-            <h3 className="text-balance font-cairo">{t(card.title)}</h3>
+          <CardTitle className="text-2xl font-bold text-foreground" id={`service-card-title-${t(card.title)}`}>
+            <h3 className="text-balance">{t(card.title)}</h3>
           </CardTitle>
           {/* Description */}
           <CardDescription className="text-muted-foreground text-base">

@@ -92,13 +92,13 @@ const Footer: React.FC = () => {
         {/* About / Logo */}
         <div className="flex flex-col items-start gap-3">
           <div className="relative bg-foreground w-20 h-20">
-            <img src="/assets/dta.svg" alt="DreamTo IT Agency Logo" className="mb-2 rounded-lg shadow-lg w-full h-full object-contain" />
-          </div> 
-            
-          
+            <Image src="/assets/dta.svg" alt="DreamTo IT Agency Logo" width={200} height={200} className="mb-2 rounded-lg shadow-lg w-full h-full object-contain" />
+          </div>
+
+
           <span className="font-bold text-xl tracking-wide">DreamTo IT Agency</span>
           <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-            {footer("agencyDescription") }
+            {footer("agencyDescription")}
           </p>
         </div>
 
@@ -118,7 +118,7 @@ const Footer: React.FC = () => {
 
         {/* Contact Info */}
         <address className="not-italic flex flex-col gap-2 text-base">
-          <span className="font-semibold text-lg mb-2">{footer("chatWithUs")  }</span>
+          <span className="font-semibold text-lg mb-2">{footer("chatWithUs")}</span>
           <div className="flex items-center gap-2">
             <contactUs.email.icon className="w-5 h-5 text-primary" />
             <Link href="mailto:info@dreamto.app" className="hover:text-primary transition-colors">info@dreamto.app</Link>

@@ -1,9 +1,16 @@
 {
   "app": {
     "name": "Dream to App",
-    "slogan": "Turning your ideas into tangible reality"
+    "slogan": "Turning your ideas into tangible reality",
+    "localSEO": {
+      "title": "Web Development Agency in Jeddah, Saudi Arabia",
+      "description": "Professional web development, mobile apps, and digital solutions in Jeddah. Leading IT company in Saudi Arabia.",
+      "keywords": "web development Jeddah, mobile app development Saudi Arabia, software company Jeddah, website design Saudi Arabia, digital agency Jeddah, IT services Saudi Arabia, تطوير مواقع جدة, شركة برمجة جدة"
+    }
   },
   "navigation": {
+    "switchLanguage": "Switch to {language}",
+    "toggleTheme": "Toggle theme",
     "services": {
       "title": "Our Services",
       "subMenu": {
@@ -75,14 +82,11 @@
       "custom": "Custom Offer"
     },
     "contactus": {
-      
       "title": "Contact Us",
       "whatsapp": "Message us on WhatsApp",
       "email": "Send an Email",
       "phone": "Call Us Directly",
       "form": "Fill out the Contact Form",
-      "contactFormTitle": "Contact Form Title",
-      "sendButton": "Send Your Message Now",
       "phoneHint": "Saudi Arabia (Jeddah) | International: include country code"
     },
     "otherMenu": {
@@ -98,9 +102,7 @@
       "title": "Plugins",
       "crombo": "Crombo",
       "latestnews": "Conan"
-    },
-    "switchLanguage": "Switch to {language}",
-    "toggleTheme": "Toggle theme"
+    }
   },
   "buttons": {
     "showMore": "Show More",
@@ -128,7 +130,6 @@
     "message": "Message",
     "messagePlaceholder": "How can we assist you?",
     "messageValidationError": "The message must contain at least 10 characters",
-    "sendButton": "Send Your Message Now",
     "name": "Name"
   },
   "notFound": {
@@ -138,10 +139,10 @@
     "button": "Return to Home Page"
   },
   "homepage": {
-    "home":"Home",
-    "services":"Our Services",
-    "portfolio":"Our Portfolio",
-    "contact":"Contact Us",
+    "home": "Home",
+    "services": "Our Services",
+    "portfolio": "Our Portfolio",
+    "contact": "Contact Us",
     "title": "Dreamto – Shaping Your Digital Future",
     "description": "A leading tech agency crafting web, mobile, and cloud solutions for your ambitions. Discover our services and start your journey to digital excellence.",
     "organization": {
@@ -158,6 +159,8 @@
     "logo": {
       "alt": "Dreamto Logo"
     },
+    "tagline": "DREAM. DESIGN. DELIVER.",
+    "dreamTagline": "DREAM. DESIGN. ACHIEVE.",
     "cta": {
       "primary": "Start Your Project",
       "secondary": "Explore Our Services"
@@ -183,7 +186,8 @@
     "ecommDilogTitle": "The Journey to Success",
     "uiDilogTitle": "The Journey to Success",
     "ctaButton": "Start Your Success Journey Today",
-    "chatWithUs": "Chat with Us Now"
+    "chatWithUs": "Chat with Us Now",
+    "whyChooseUs": "Why Choose Us"
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "Planning and Discovery",
@@ -210,11 +214,10 @@
     "chatWithUs": "Chat with us now for support",
     "phoneNumber": "966554113107",
     "emailAddress": "info@dreamto.app",
-     "copyright": "All rights reserved",
+    "copyright": "All rights reserved",
     "socialMedia": "Social Media",
     "quickLinks": "Quick Links",
-    "agencyDescription":"We build digital experiences that drive success for ambitious brands."
-    
+    "agencyDescription": "We build digital experiences that drive success for ambitious brands."
   },
   "services": {
     "tecnoUsed": "Innovative technologies that meet your needs",
@@ -222,6 +225,10 @@
     "solutions": "Innovative Solutions",
     "today": "For Today's Achievements",
     "blendingCreativity": "We combine creativity and technology to provide customized solutions for your business.",
+    "heroBadge": "Innovative Technologies That Meet Your Needs",
+    "heroTitle1": "Innovative Solutions",
+    "heroTitle2": "For Today's Achievements",
+    "heroDescription": "We combine creativity and technology to provide customized solutions for your business. Building tomorrow's solutions with innovative technologies that meet your needs.",
     "websiteDevelopmentTitle": "Website Development",
     "websiteDevelopmentDescription": "We turn your ideas into exceptional websites that impress visitors and engage them with your brand. Our websites are not only visually appealing but also designed to be fast and responsive, ensuring a pleasant and comfortable user experience that converts visitors into loyal customers.",
     "mobileAppDevelopmentTitle": "Mobile Applications",
@@ -274,10 +281,6 @@
     "limitedTimeOffer": "Limited Time Offer",
     "ctaGetQuote": "Get Your Quote Now",
     "ctaViewPortfolio": "View Our Portfolio",
-    "heroBadge": "Innovative Technologies That Meet Your Needs",
-    "heroTitle1": "Innovative Solutions",
-    "heroTitle2": "For Today's Achievements",
-    "heroDescription": "We combine creativity and technology to provide customized solutions for your business. Building tomorrow's solutions with innovative technologies that meet your needs.",
     "ctaGetQuoteNow": "Get Your Quote Now",
     "happyClients": "500+ Happy Clients",
     "rating": "4.9/5 Rating",
@@ -297,7 +300,11 @@
     "projectsCompleted": "Projects Completed",
     "clientSatisfaction": "Client Satisfaction",
     "supportAvailable": "Support Available",
-    "yearsExperience": "Years Experience"
+    "yearsExperience": "Years Experience",
+    "atLeastOneMessage": "Please provide either a text message or a voice message.",
+    "messageType": "Message Type",
+    "text": "Text",
+    "voice": "Voice"
   },
   "whyChooseUs": {
     "sectionTitle": "Why Choose Us?",
@@ -363,25 +370,28 @@
   },
   "contactus": {
     "projectType": "Project Type",
-      "mobileApp": "Mobile App",
-      "webApp": "Web App",
-      "both": "Both",
-      "projectDetails": "Project Details",
-      "budget": "Budget",
-      "timeline": "Timeline",
-      "attachment": "Attachment",
+    "projectDetails": "Project Details",
+    "budget": "Budget",
+    "timeline": "Timeline",
+    "attachment": "Attachment",
+    "mobileApp": "Mobile App",
+    "webApp": "Web App",
+    "both": "Both",
+    "title": "Contact Us",
+    "whatsapp": "Message us on WhatsApp",
+    "phone": "Call Us Directly",
+    "form": "Fill out the Contact Form",
+    "phoneHint": "Saudi Arabia (Jeddah) | International: include country code",
     "pagetitle": "Contact Us",
     "hint": "Correct information is required to help us respond as quickly as possible, providing the best possible service.",
-"phoneHint": "Saudi Arabia (Jeddah) | For international calls: Please add the country code",
     "mobile": "Mobile Number",
     "mobilePlaceHolder": "10-digit mobile number",
     "mobileValidationError": "Must be at least 10 digits",
-
     "email": "Email",
     "emailPlaceHolder": "example@example.com",
     "emailValidationError": "Invalid email",
-
     "msg": "Message",
+    "message": "Message",
     "msgplaceHolder": "How can we help you?",
     "msgValidationError": "The minimum is 10 characters",
     "sendBtn": "Send .. We are waiting for you",
@@ -389,7 +399,35 @@
     "Done": "Done",
     "doneMsg": "Thank you for your message. We will get back to you soon.",
     "whatsappHint": "Or contact us directly on WhatsApp for a faster response!",
-    "whatsappButton": "Chat on WhatsApp"
+    "whatsappButton": "Chat on WhatsApp",
+    "contactFormTitle": "Send us a message",
+    "sendButton": "Send Message",
+    "getInTouch": "Get in Touch",
+    "getInTouchSubtitle": "Ready to transform your ideas into reality? Let's discuss your project",
+    "phone": "Phone",
+    "email": "Email",
+    "businessHours": "Business Hours",
+    "location": "Location",
+    "needImmediateHelp": "Need Immediate Help?",
+    "getInstantSupport": "Get instant support via WhatsApp",
+    "chatOnWhatsApp": "Chat on WhatsApp",
+    "sendUsMessage": "Send us a Message",
+    "wellGetBackToYou": "We'll get back to you within 24 hours",
+    "selectRequiredServices": "Select Required Services",
+    "selectServicesSubtitle": "You can choose one or more services according to your project needs",
+    "selectedServices": "Selected Services",
+    "showAllServices": "Show all services",
+    "showLess": "Show less",
+    "projectDetailsPlaceholder": "Tell us about your project requirements and goals...",
+    "budgetPlaceholder": "Example: 5,000 - 10,000 SAR or flexible",
+    "messagePlaceholder": "Any additional information or questions...",
+    "privacyNotice": "We respect your privacy. Your information will never be shared.",
+    "mondayFriday": "Monday - Friday: 9:00 AM - 6:00 PM",
+    "saturday": "Saturday: 10:00 AM - 4:00 PM",
+    "sunday": "Sunday: Closed",
+    "jeddahSaudiArabia": "Jeddah, Saudi Arabia",
+    "servingClientsWorldwide": "Serving clients worldwide",
+    "weRespondWithin2Hours": "We respond within 2 hours"
   },
   "LaunchPage": {
     "offerEndsIn": "Offer ends in",
@@ -455,9 +493,9 @@
     "negotiationOption": "I'd like to negotiate further. Please book a call with me.",
     "noPriceOption": "I don't have a previous price. Please book a call with me.",
     "submitButton": "Submit",
-    "submittingButton": "Sendingd...",
-    "thankYouTitle": "Thank You ",
-    "thankYouMessage": "thank you will contact you with in 48 hour"
+    "submittingButton": "Sending...",
+    "thankYouTitle": "Thank You",
+    "thankYouMessage": "Thank you, we will contact you within 48 hours"
   },
   "team": {
     "ourTeam": "Our Team",
@@ -509,5 +547,80 @@
     "messageMain": "Your message has been successfully submitted. We appreciate you reaching out and will get back to you as soon as possible.",
     "messageSecondary": "Feel free to browse our site or contact us for more information.",
     "returnHome": "Return to Home"
+  },
+  "consultationCTA": {
+    "cta": "Free Consultation",
+    "title": "Request a Free Consultation",
+    "description": "Fill out the form and our team will contact you soon.",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "How can we help you?",
+    "submit": "Send Request",
+    "sending": "Sending...",
+    "success": "Thank you! Your request has been received.",
+    "error": "Something went wrong. Please try again.",
+    "close": "Close",
+    "voiceLabel": "Voice Message (optional)",
+    "record": "Record",
+    "stop": "Stop",
+    "fileTypeError": "Invalid audio file type.",
+    "recordError": "Unable to access microphone. Please check your browser settings."
+  },
+  "voiceRecorder": {
+    "record": "Record",
+    "startRecording": "Start Recording",
+    "stop": "Stop",
+    "clear": "Clear",
+    "confirm": "Confirm",
+    "close": "Close",
+    "title": "Voice Recorder",
+    "recordingTooShort": "Recording is too short. Please record a longer message.",
+    "microphoneError": "Unable to access microphone. Please check your browser settings."
+  },
+  "teamApply": {
+    "title": "Apply to Join Our Team",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "areaOfExpertise": "Area of Expertise",
+    "selectExpertise": "Select your expertise",
+    "yearsOfExperience": "Years of Experience",
+    "age": "Age",
+    "gender": "Gender",
+    "male": "Male",
+    "female": "Female",
+    "preferNotToSay": "Prefer not to say",
+    "aboutYou": "About You",
+    "attachment": "Attachment (CV / Portfolio)",
+    "agreeToTerms": "I agree to the",
+    "jobRolesAndTerms": "job roles and terms",
+    "submitApplication": "Submit Application",
+    "backToTeamPage": "Back to Team Page",
+    "termsAlert": "Please agree to the terms and conditions before submitting."
+  },
+  "underConstruction": {
+    "title": "Under Construction",
+    "subtitle": "We're working hard to bring you something amazing!",
+    "goHome": "Go Home",
+    "contactForInfo": "Contact Us for More Info"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "errorLoading": "Error loading gallery",
+    "reloadImage": "Reload Image",
+    "enlargedView": "Enlarged View",
+    "enlargedDescription": "This is an enlarged preview of the selected image. Press ESC or click outside to close.",
+    "fallbackImage": "Fallback Image"
+  },
+  "navbar": {
+    "settings": "Settings",
+    "readyToStart": "Ready to start your project?",
+    "getStarted": "Get Started",
+    "startProject": "Start Dream",
+    "openMenu": "Open menu",
+    "mainNavigation": "Main navigation",
+    "dreamToAppHome": "DreamToApp Home",
+    "dreamToAppLogo": "DreamToApp Logo"
   }
 }

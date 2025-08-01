@@ -93,3 +93,14 @@ model FormData {
   noPrice         Boolean? // Whether the user doesn't have a previous price
   createdAt       DateTime @default(now()) // Timestamp of submission
 }
+
+// Model for storing free consultation requests from the floating CTA
+model ConsultationRequest {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  name      String   // Full name of the visitor
+  email     String   // Visitor's email address
+  phone     String?  // Optional phone number
+  message   String   // Consultation message
+  voiceUrl  String?  // Optional Cloudinary URL for the voice message
+  createdAt DateTime @default(now()) // Timestamp of submission
+}

@@ -50,15 +50,15 @@ export default {
           "4": "hsl(var(--chart-4))",
           "5": "hsl(var(--chart-5))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+
+        // DreamToApp Brand Colors
+        brand: {
+          primary: "#0d3ad7",    // Dark blue
+          secondary: "#99e4ff",  // Light blue
+          accent: "#d7a50d",     // Golden yellow
+          "primary-dark": "#0a2eb3", // Darker shade for hover states
+          "secondary-light": "#b3edff", // Lighter shade for backgrounds
+          "accent-light": "#e6c25a", // Lighter shade for backgrounds
         },
       },
       borderRadius: {
@@ -68,8 +68,8 @@ export default {
       },
       fontFamily: {
         roboto: ["var(--font-roboto)", "sans-serif"], // Roboto variable font
-        tajawal: ["var(--font-tajawal)", "sans-serif"], // Tajawal font
-        cairo: ["var(--font-cairo)", "sans-serif"], // cairo font
+        tajawal: ["var(--font-tajawal)", "sans-serif"], // Tajawal font - Primary Arabic font
+        sans: ["var(--font-tajawal)", "sans-serif"], // Default sans-serif font
       },
       fontWeight: {
         thin: "100",
@@ -83,49 +83,31 @@ export default {
         black: "900",
       },
       backgroundImage: {
-        // Existing Custom Gradient
-        "gradient-custom":
-          "linear-gradient(to bottom, #0f172a, #1f2937, #374151, rgba(55, 65, 81, 0))",
+        // DreamToApp Brand Gradients
+        "gradient-brand-primary": "linear-gradient(135deg, #0d3ad7 0%, #99e4ff 100%)", // Primary to secondary
+        "gradient-brand-secondary": "linear-gradient(135deg, #99e4ff 0%, #d7a50d 100%)", // Secondary to accent
+        "gradient-brand-accent": "linear-gradient(135deg, #d7a50d 0%, #0d3ad7 100%)", // Accent to primary
+        "gradient-brand-hero": "linear-gradient(135deg, #0d3ad7 0%, #99e4ff 50%, #d7a50d 100%)", // Full brand spectrum
+        "gradient-brand-vertical": "linear-gradient(to bottom, #0d3ad7 0%, #99e4ff 50%, #d7a50d 100%)", // Vertical brand spectrum
+        "gradient-brand-subtle": "linear-gradient(135deg, #99e4ff 0%, #b3edff 100%)", // Subtle light blue
+        "gradient-brand-warm": "linear-gradient(135deg, #d7a50d 0%, #e6c25a 100%)", // Warm golden
+        "gradient-brand-cool": "linear-gradient(135deg, #0d3ad7 0%, #0a2eb3 100%)", // Cool dark blue
 
-        // Gradient 1: Vibrant Sunset
-        "gradient-sunset": "linear-gradient(to bottom, #ff7e5f, #feb47b)", // Vibrant orange-pink transition
-
-        // Gradient 2: Cool Ocean
-        "gradient-ocean": "linear-gradient(to bottom, #2193b0, #6dd5ed)", // Light blue to teal
-
-        // Gradient 3: Purple Bliss
-        "gradient-purple": "linear-gradient(to bottom, #8e2de2, #4a00e0)", // Deep purple to rich blue
-
-        // Gradient 4: Tropical Vibes
-        "gradient-tropical": "linear-gradient(to bottom, #00c6ff, #0072ff)", // Bright cyan to royal blue
-
-        // Gradient 5: Golden Hour
-        "gradient-golden": "linear-gradient(to bottom, #f2994a, #f2c94c)", // Warm gold and yellow
-
-        // Gradient 6: Forest Hues
-        "gradient-forest": "linear-gradient(to bottom, #11998e, #38ef7d)", // Rich green to light green
-
-        // Gradient 7: Modern Gray Fade
+        // Legacy Gradients (keeping for compatibility)
+        "gradient-custom": "linear-gradient(to bottom, #0f172a, #1f2937, #374151, rgba(55, 65, 81, 0))",
+        "gradient-sunset": "linear-gradient(to bottom, #ff7e5f, #feb47b)",
+        "gradient-ocean": "linear-gradient(to bottom, #2193b0, #6dd5ed)",
+        "gradient-purple": "linear-gradient(to bottom, #8e2de2, #4a00e0)",
+        "gradient-tropical": "linear-gradient(to bottom, #00c6ff, #0072ff)",
+        "gradient-golden": "linear-gradient(to bottom, #f2994a, #f2c94c)",
+        "gradient-forest": "linear-gradient(to bottom, #11998e, #38ef7d)",
         "gradient-gray": "linear-gradient(to bottom, #2c3e50, #bdc3c7)",
-        "gradient-blue-official":
-          "linear-gradient(to bottom, #0f172a, #1e40af, #2563eb)", // Navy blue to royal blue
-
-        // Gradient 2: Subtle Sky Blue
-        "gradient-blue-sky":
-          "linear-gradient(to bottom, #2563eb, #60a5fa, #93c5fd)", // Royal blue to soft sky blue
-
-        // Gradient 3: Elegant Blue Fade
-        "gradient-blue-fade":
-          "linear-gradient(to bottom, #1e3a8a, #3b82f6, rgba(59, 130, 246, 0))", // Dark blue to fade-out
-
-        // Gradient 4: Deep Ocean
-        "gradient-blue-ocean":
-          "linear-gradient(to bottom, #0f172a, #1e3a8a, #2563eb, #60a5fa)", // Navy blue to light blue
-
-        // Gradient 5: Corporate Cool
-        "gradient-blue-corporate":
-          "linear-gradient(to bottom, #1e40af, #3b82f6)", // Dark gray to light gray
-        "gradient-blue-light": "linear-gradient(to bottom, #e0f2fe, #90cdf4)", // Light pastel blue gradient
+        "gradient-blue-official": "linear-gradient(to bottom, #0f172a, #1e40af, #2563eb)",
+        "gradient-blue-sky": "linear-gradient(to bottom, #2563eb, #60a5fa, #93c5fd)",
+        "gradient-blue-fade": "linear-gradient(to bottom, #1e3a8a, #3b82f6, rgba(59, 130, 246, 0))",
+        "gradient-blue-ocean": "linear-gradient(to bottom, #0f172a, #1e3a8a, #2563eb, #60a5fa)",
+        "gradient-blue-corporate": "linear-gradient(to bottom, #1e40af, #3b82f6)",
+        "gradient-blue-light": "linear-gradient(to bottom, #e0f2fe, #90cdf4)",
         "gradient-blue-modern": "linear-gradient(to bottom, #cfe8ff, #3b82f6)",
       },
       keyframes: {

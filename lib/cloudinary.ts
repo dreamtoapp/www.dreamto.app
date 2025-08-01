@@ -154,3 +154,28 @@ export async function getImagesFromFolder(
     throw new Error(`Image loading failed: ${(error as Error).message}`);
   }
 }
+
+// Uploads a voice (audio) file to Cloudinary and returns the secure URL
+export async function uploadVoiceToCloudinary(fileBuffer: Buffer, filename: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        resource_type: "video", // Cloudinary treats audio as video
+        folder: "consultation-voices",
+        public_id: filename,
+        overwrite: true,
+      },
+      (error, result) => {
+        if (error) {
+          console.error("Cloudinary voice upload error:", error);
+          reject(new Error("Voice upload failed"));
+        } else if (result && result.secure_url) {
+          resolve(result.secure_url);
+        } else {
+          reject(new Error("No result from Cloudinary upload"));
+        }
+      }
+    );
+    stream.end(fileBuffer);
+  });
+}

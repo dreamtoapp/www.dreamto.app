@@ -12,19 +12,22 @@ import {
 import { Button } from "@/components/ui/button";
 import { Expand } from "lucide-react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { useTranslations } from "next-intl";
 function Resize({ image }: { image: string }) {
+  const t = useTranslations("gallery");
+
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="opacity-40 group-hover:opacity-100 bg-white p-3 rounded-full shadow-lg transition-all duration-300">
-          <Expand className="text-gray-800" />
+        <Button className="opacity-40 group-hover:opacity-100 bg-background p-3 rounded-full shadow-lg transition-all duration-300">
+          <Expand className="text-foreground" />
         </Button>
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-[800px]">
-        <DialogTitle>Enlarged View</DialogTitle>
+        <DialogTitle>{t("enlargedView")}</DialogTitle>
         <DialogDescription>
-          This is an enlarged preview of the selected image. Press ESC or click outside to close.
+          {t("enlargedDescription")}
         </DialogDescription>
         <Image
           src={image}

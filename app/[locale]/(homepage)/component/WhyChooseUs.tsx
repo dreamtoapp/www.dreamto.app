@@ -49,7 +49,7 @@ const WhyChooseUs: React.FC = async () => {
   return (
     <section
       id="whyChooseUs"
-      className="py-16 bg-gray-50 dark:bg-gray-900"
+      className="py-16 bg-muted/30"
       aria-labelledby="why-choose-us-heading"
       role="region"
     >
@@ -58,7 +58,7 @@ const WhyChooseUs: React.FC = async () => {
         <header className="text-center mb-12">
           <h2
             id="why-choose-us-heading"
-            className="text-4xl font-bold mb-4 text-gray-900 dark:text-white"
+            className="text-4xl font-bold mb-4 text-foreground"
           >
             {t("sectionTitle")}
           </h2>
@@ -77,7 +77,7 @@ const WhyChooseUs: React.FC = async () => {
               className="group"
             >
               <Card
-                className="h-full rounded-2xl shadow-md transition-transform hover:shadow-lg drop-shadow-lg bg-white dark:bg-gray-800"
+                className="h-full rounded-2xl shadow-md transition-transform hover:shadow-lg drop-shadow-lg bg-card"
                 aria-label={t(feature.title)}
               >
                 <CardHeader className="flex flex-col items-center space-y-2">
@@ -92,7 +92,7 @@ const WhyChooseUs: React.FC = async () => {
                     )}
                   </div>
                   {/* Title */}
-                  <CardTitle className="text-lg font-semibold text-gray-900 dark:text-white">
+                  <CardTitle className="text-lg font-semibold text-foreground">
                     {t(feature.title)}
                   </CardTitle>
                 </CardHeader>

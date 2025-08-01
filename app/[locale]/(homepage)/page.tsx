@@ -1,8 +1,12 @@
 export const dynamic = "force-dynamic";
 import { getTranslations } from 'next-intl/server';
 import CromboDetail from './component/CromboDetail';
-import HomePageBody from './component/HomePageBody';
-import Hero, { HeroProps } from '@/components/ui/hero';
+import Services from './component/service/Services';
+import FromIdea from './component/FromIdea';
+import WhyChooseUs from './component/WhyChooseUs';
+import DesinAndDiscover from './component/DesinAndDiscover';
+import Footer from './component/Footer';
+import HeroSection from '@/components/NewHero';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -50,12 +54,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-export default async function Page() {
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   const t = await getTranslations('homepage');
 
-  const heroProps: HeroProps = {
+  const heroProps = {
     logoAlt: t('logo.alt'),
-    tagline: t('tagline', { defaultValue: 'DREAM. DESIGN. DELIVER.' }),
+    tagline: t('tagline'),
     title: t('title'),
     description: t('description'),
     ctaPrimary: t('cta.primary'),
@@ -65,7 +70,8 @@ export default async function Page() {
 
   return (
     <div className='flex flex-col gap-4'>
-      {/* Organization & BreadcrumbList Structured Data */}
+
+      {/* Enhanced Schema Markup */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -76,6 +82,12 @@ export default async function Page() {
               name: t('organization.name'),
               url: 'https://www.dreamto.app',
               logo: 'https://www.dreamto.app/og-image.png',
+              description: t('description'),
+              address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Jeddah',
+                addressCountry: 'SA'
+              },
               sameAs: [
                 'https://www.linkedin.com/company/dreamto',
                 'https://twitter.com/dreamtoapp'
@@ -85,8 +97,24 @@ export default async function Page() {
                 telephone: '+966554113107',
                 contactType: 'customer service',
                 areaServed: 'SA',
-                availableLanguage: ['English','Arabic']
-              }]
+                availableLanguage: ['English', 'Arabic']
+              }],
+              serviceArea: {
+                '@type': 'Country',
+                name: 'Saudi Arabia'
+              }
+            },
+            {
+              '@context': 'https://schema.org',
+              '@type': 'Service',
+              name: 'Web Development Services',
+              provider: {
+                '@type': 'Organization',
+                name: t('organization.name')
+              },
+              description: 'Professional web development, mobile app development, and digital marketing services',
+              serviceType: 'Web Development',
+              areaServed: 'Saudi Arabia'
             },
             {
               '@context': 'https://schema.org',
@@ -103,14 +131,31 @@ export default async function Page() {
           ])
         }}
       />
-      <section aria-label={heroProps.sectionsHero}>
-        <Hero {...heroProps} />
+      <section aria-label={t('sections.hero')} className="relative z-10">
+        <HeroSection {...heroProps} locale={locale} />
       </section>
       <section aria-label={t('sections.cromboDetails')} className="grid gap-4 grid-cols-1 md:grid-cols-1">
         <CromboDetail />
       </section>
-      <section aria-label={t('sections.homepageBody')} className="min-h-[50vh] flex-1 rounded-xl bg-muted/50 md:min-h-min max-w-full mx-auto p-2">
-        <HomePageBody />
+      <section aria-label={t('fromIdeaTitle')} className="py-4">
+        <h2 className="text-2xl font-bold mb-4">{t('fromIdeaTitle')}</h2>
+        <FromIdea />
+      </section>
+      <section aria-label={t('discoverTitle')} className="py-4">
+        <h2 className="text-2xl font-bold mb-4">{t('discoverTitle')}</h2>
+        <DesinAndDiscover />
+      </section>
+      <section aria-label={t('services')} className="py-4">
+        <h2 className="text-2xl font-bold mb-4">{t('services')}</h2>
+        <Services />
+      </section>
+      <section aria-label={t('whyChooseUs')} className="py-4">
+        <h2 className="text-2xl font-bold mb-4">{t('whyChooseUs')}</h2>
+        <WhyChooseUs />
+      </section>
+      <section aria-label="Footer" className="pt-4">
+        <h2 className="sr-only">Footer</h2>
+        <Footer />
       </section>
     </div>
   );

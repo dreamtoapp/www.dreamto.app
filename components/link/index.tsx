@@ -10,25 +10,29 @@ type CustomLinkProps = NextLinkProps & {
 } & HTMLAttributes<HTMLAnchorElement>;
 
 const Link: FC<CustomLinkProps> = ({ children, href, ...rest }) => {
-  const [prefetching, setPrefetching] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
-  const setPrefetchListener = () => {
-    setPrefetching(true);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // Ensure click event is properly handled
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Add small delay to ensure click registration
+    setTimeout(() => {
+      if (linkRef.current) {
+        linkRef.current.click();
+      }
+    }, 50);
   };
-  const removePrefetchListener = () => {
-    setPrefetching(false);
-  };
-  useEffect(() => {
-    const linkElement = linkRef.current;
-    linkElement?.addEventListener('mouseover', setPrefetchListener);
-    linkElement?.addEventListener('mouseleave', removePrefetchListener);
-    return () => {
-      linkElement?.removeEventListener('mouseover', setPrefetchListener);
-      linkElement?.removeEventListener('mouseleave', removePrefetchListener);
-    };
-  }, [prefetching]);
+
   return (
-    <NextLink href={href} ref={linkRef} prefetch={prefetching} {...rest}>
+    <NextLink
+      href={href}
+      ref={linkRef}
+      prefetch={true}
+      onClick={handleClick}
+      {...rest}
+    >
       {children}
     </NextLink>
   );
