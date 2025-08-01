@@ -243,15 +243,27 @@ const HeroSection: React.FC<HeroProps & { locale: string }> = ({
             backdrop-filter: blur(10px);
             border: 2px solid rgba(153,228,255,0.4);
             color: white;
+            min-height: 56px;
+            min-width: 200px;
+          }
+          
+          @media (max-width: 768px) {
+            .cta-button {
+              padding: 1.25rem 2.5rem;
+              font-size: 18px;
+              min-height: 64px;
+              min-width: 240px;
+            }
           }
           
           .cta-button.primary {
-            background: linear-gradient(135deg, #d7a50d, #0d3ad7);
-            box-shadow: 0 8px 32px rgba(215,165,13,0.3);
+            background: linear-gradient(135deg, #d7a50d, #f4c430);
+            box-shadow: 0 8px 32px rgba(215,165,13,0.4), 0 4px 16px rgba(215,165,13,0.2);
+            border: 2px solid rgba(215,165,13,0.3);
           }
           
           .cta-button.secondary {
-            background: transparent;
+            background: linear-gradient(135deg, rgba(13,58,215,0.1), rgba(153,228,255,0.1));
             border: 2px solid rgba(153,228,255,0.6);
             color: rgba(153,228,255,0.9);
             box-shadow: 0 8px 32px rgba(153,228,255,0.2);
@@ -263,9 +275,15 @@ const HeroSection: React.FC<HeroProps & { locale: string }> = ({
             border-color: rgba(153,228,255,0.8);
           }
           
+          .cta-button.primary:hover {
+            background: linear-gradient(135deg, #f4c430, #d7a50d);
+            box-shadow: 0 16px 64px rgba(215,165,13,0.6), 0 8px 32px rgba(215,165,13,0.3);
+          }
+          
           .cta-button.secondary:hover {
-            background: rgba(153,228,255,0.1);
+            background: linear-gradient(135deg, rgba(13,58,215,0.2), rgba(153,228,255,0.2));
             color: white;
+            border-color: rgba(153,228,255,0.9);
           }
           
           .playing .wave {

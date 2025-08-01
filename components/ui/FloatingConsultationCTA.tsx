@@ -80,17 +80,43 @@ export default function FloatingConsultationCTA() {
 
   return (
     <>
-      <Button
-        className={cn(
-          "fixed z-50 bottom-6 right-6 bg-gradient-to-r from-primary to-secondary text-white shadow-lg rounded-full px-6 py-3 text-lg font-bold flex items-center gap-2 hover:scale-105 transition-all",
-          "rtl:right-auto rtl:left-6"
-        )}
-        aria-label={t("cta")}
-        onClick={() => setOpen(true)}
-      >
-        <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-2.83.48-5.48-1.51-5.96-4.34-.09-.52.36-.99.89-.99.44 0 .81.32.89.75.34 1.81 2.13 3.08 3.96 2.74 1.81-.34 3.08-2.13 2.74-3.96-.34-1.81-2.13-3.08-3.96-2.74-.52.09-.99-.36-.99-.89 0-.44.32-.81.75-.89 2.83-.48 5.48 1.51 5.96 4.34.09.52-.36.99-.89.99-.44 0-.81-.32-.89-.75-.34-1.81-2.13-3.08-3.96-2.74-1.81.34-3.08 2.13-2.74 3.96.34 1.81 2.13 3.08 3.96 2.74.52-.09.99.36.99.89 0 .44-.32.81-.75.89z" fill="currentColor" /></svg>
-        {t("cta")}
-      </Button>
+      <style jsx>{`
+        @keyframes gentle-pulse {
+          0%, 100% {
+            box-shadow: 0 8px 32px rgba(13, 58, 215, 0.2);
+            transform: scale(1);
+          }
+          50% {
+            box-shadow: 0 12px 40px rgba(13, 58, 215, 0.4);
+            transform: scale(1.02);
+          }
+        }
+      `}</style>
+      <div className="fixed z-50 bottom-6 right-6 group rtl:right-auto rtl:left-6">
+        {/* Tooltip */}
+        <div className="absolute bottom-full right-0 mb-3 px-4 py-2 bg-[#0d3ad7] text-white text-sm font-medium rounded-lg shadow-lg opacity-100 transition-all duration-300 transform translate-y-0 pointer-events-none whitespace-nowrap rtl:right-auto rtl:left-0">
+          {t("cta")}
+          {/* Tooltip Arrow */}
+          <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#0d3ad7] rtl:right-auto rtl:left-4"></div>
+        </div>
+
+        {/* Floating Button */}
+        <Button
+          className={cn(
+            "bg-gradient-to-r from-[#0d3ad7] to-[#1e40af] text-white shadow-2xl rounded-full p-4 hover:scale-110 hover:shadow-3xl transition-all duration-300 border-2 border-white/20 backdrop-blur-sm hover:rotate-12",
+            "hover:animate-none"
+          )}
+          style={{
+            animation: 'gentle-pulse 4s ease-in-out infinite'
+          }}
+          aria-label={t("cta")}
+          onClick={() => setOpen(true)}
+        >
+          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4l4 4 4-4h4c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" fill="currentColor" />
+          </svg>
+        </Button>
+      </div>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-md w-full">
           <DialogHeader>
