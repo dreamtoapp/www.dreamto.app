@@ -106,17 +106,70 @@ const NavbarBrand: React.FC<{ locale: string }> = ({ locale }) => {
   );
 };
 
+// Mobile Brand Component with Full Width Logo
+const MobileBrand: React.FC<{ locale: string }> = ({ locale }) => {
+  const t = useTranslations('navbar');
+
+  const getLogoPath = (isDark: boolean = false): string => {
+    return isDark
+      ? "/assets/dreamtoapp/dreamToApp-dark.svg"
+      : "/assets/dreamtoapp/dreamToApp.svg";
+  };
+
+  return (
+    <Link
+      href={`/${locale}`}
+      className="flex items-center justify-center w-full group transition-all duration-300"
+      aria-label={t("dreamToAppHome")}
+    >
+      <div className="relative">
+        <Image
+          src={getLogoPath(false)}
+          alt={t("dreamToAppLogo")}
+          width={80}
+          height={80}
+          className="w-20 h-20 block dark:hidden transition-all duration-300"
+          priority
+        />
+        <Image
+          src={getLogoPath(true)}
+          alt={t("dreamToAppLogo")}
+          width={80}
+          height={80}
+          className="w-20 h-20 hidden dark:block transition-all duration-300"
+          priority
+        />
+      </div>
+    </Link>
+  );
+};
+
 // Enhanced Mobile Menu Component
 const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
   const t = useTranslations('homepage');
   const navbarT = useTranslations('navbar');
+  const [activeItem, setActiveItem] = useState<string>('');
 
   const menuItems = [
-    { href: `/${locale}`, label: t('home'), icon: normalIcons.home.icon },
-    { href: `/${locale}/services`, label: t('services'), icon: serviceIcon.website.icon },
-    { href: `/${locale}/worksample`, label: t('portfolio'), icon: technology.workSample.icon },
-    { href: `/${locale}/contactus`, label: t('contact'), icon: misc.emailIcon },
+    { href: `/${locale}`, label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
+    { href: `/${locale}/services`, label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' },
+    { href: `/${locale}/worksample`, label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' },
+    { href: `/${locale}/contactus`, label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
   ];
+
+  // Set active item based on current pathname
+  useEffect(() => {
+    const pathname = window.location.pathname;
+    const currentItem = menuItems.find(item => {
+      if (item.href === `/${locale}` && pathname === `/${locale}`) return true;
+      if (item.href === `/${locale}` && pathname === '/') return true;
+      return pathname.startsWith(item.href);
+    });
+
+    if (currentItem) {
+      setActiveItem(currentItem.href);
+    }
+  }, [locale, menuItems]);
 
   return (
     <Sheet>
@@ -133,63 +186,133 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
           </div>
         </Button>
       </SheetTrigger>
-      <SheetContent side="right" className="w-[320px] sm:w-[400px] bg-background/95 backdrop-blur-xl border-l border-border/50">
-        <SheetHeader className="pb-6">
-          <SheetTitle className="text-left">
-            <NavbarBrand locale={locale} />
+      <SheetContent side="right" className="w-[320px] sm:w-[400px] bg-background/95 backdrop-blur-xl border-l border-border/50 shadow-2xl flex flex-col">
+        <SheetHeader className="pb-4 border-b border-border/20">
+          <SheetTitle className="text-center">
+            <MobileBrand locale={locale} />
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col h-full">
-          <nav className="flex-1">
+        <div className="flex flex-col flex-1">
+          <nav className="pt-4">
             <div className="space-y-2">
               {menuItems.map((item, index) => {
                 const IconComponent = item.icon;
+                const isActive = activeItem === item.href;
+
                 return (
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="flex items-center px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300 hover:bg-primary/10 hover:text-primary group"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    className="relative flex items-center px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group overflow-hidden"
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      backgroundColor: isActive ? `${item.bgColor}20` : 'transparent'
+                    }}
+                    onClick={() => {
+                      // Mobile ripple effect
+                      const ripple = document.querySelector(`[data-mobile-ripple="${item.href}"]`) as HTMLElement;
+                      if (ripple) {
+                        ripple.style.transform = 'scale(0)';
+                        ripple.style.opacity = '0';
+                        setTimeout(() => {
+                          ripple.style.transform = 'scale(1)';
+                          ripple.style.opacity = '0.4';
+                          setTimeout(() => {
+                            ripple.style.transform = 'scale(3)';
+                            ripple.style.opacity = '0.2';
+                          }, 50);
+                        }, 10);
+                      }
+                    }}
                   >
-                    <IconComponent className="mr-3 w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="group-hover:translate-x-1 transition-transform duration-300">
+                    {/* Ripple Effect */}
+                    <div
+                      data-mobile-ripple={item.href}
+                      className="absolute inset-0 scale-0 rounded-xl duration-500 transition-all ease-out"
+                      style={{ backgroundColor: `${item.rippleColor}20` }}
+                    />
+
+                    {/* Icon Container */}
+                    <div className="relative flex items-center justify-center w-10 h-10 mr-8 rounded-lg transition-all duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: `${item.bgColor}15` }}>
+                      <IconComponent
+                        className="w-5 h-5 transition-colors duration-300"
+                        style={{ color: item.color }}
+                      />
+                    </div>
+
+                    {/* Label */}
+                    <span
+                      className="transition-all duration-300 group-hover:translate-x-1"
+                      style={{ color: isActive ? item.color : undefined }}
+                    >
                       {item.label}
                     </span>
+
+                    {/* Active Indicator */}
+                    {isActive && (
+                      <div
+                        className="absolute right-4 w-2 h-2 rounded-full"
+                        style={{ backgroundColor: item.color }}
+                      />
+                    )}
                   </Link>
                 );
               })}
             </div>
           </nav>
+        </div>
 
-          <Separator className="my-6" />
-
-          <div className="space-y-4">
-            <div className="px-4 py-3 bg-gradient-to-r from-[#d7a50d]/10 to-[#f4c430]/10 rounded-xl border border-[#d7a50d]/20">
-              <p className="text-sm text-muted-foreground mb-2">
-                {navbarT("readyToStart")}
-              </p>
-              <Link
-                href={`/${locale}/contactus`}
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-lg text-sm font-medium hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[#d7a50d]/25"
-              >
-                {navbarT("startProject")}
-              </Link>
-            </div>
-
-            <div className="flex items-center justify-between px-4 py-3 bg-muted/50 rounded-xl">
-              <span className="text-sm font-medium text-muted-foreground">
-                {navbarT("settings")}
-              </span>
-              <div className="flex items-center gap-2">
-                <LangSwicher />
-                <ThemeSwitch />
-              </div>
-            </div>
+        {/* CTA Section - Fixed at bottom */}
+        <div className="mt-auto pt-6 px-4 py-4 bg-gradient-to-r from-[#d7a50d]/15 to-[#f4c430]/15 rounded-xl border border-[#d7a50d]/30 shadow-lg">
+          <div className="text-center mb-3">
+            <p className="text-sm font-medium text-foreground mb-1">
+              {navbarT("readyToStart")}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              هل أنت مستعد لبدء مشروعك؟
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <Link
+              href={`/${locale}/contactus`}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-lg text-sm font-semibold hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[#d7a50d]/30 transform hover:-translate-y-1"
+            >
+              <span>{navbarT("startProject")}</span>
+              <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+            </Link>
           </div>
         </div>
       </SheetContent>
     </Sheet>
+  );
+};
+
+// Mobile CTA Component for Main Content
+const MobileCTA: React.FC<{ locale: string }> = ({ locale }) => {
+  const t = useTranslations('navbar');
+
+  return (
+    <div className="px-4 py-6 bg-gradient-to-r from-[#d7a50d]/15 to-[#f4c430]/15 rounded-xl border border-[#d7a50d]/30 shadow-lg">
+      <div className="text-center mb-4">
+        <p className="text-base font-medium text-foreground mb-2">
+          {t("readyToStart")}
+        </p>
+        <p className="text-sm text-muted-foreground">
+          هل أنت مستعد لبدء مشروعك؟
+        </p>
+      </div>
+      <div className="flex justify-center">
+        <Link
+          href={`/${locale}/contactus`}
+          className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-xl text-base font-semibold hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[#d7a50d]/30 transform hover:-translate-y-1"
+        >
+          <span>{t("startProject")}</span>
+          <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+        </Link>
+      </div>
+    </div>
   );
 };
 
