@@ -97,7 +97,7 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
 
               {/* Ripple Effect */}
               <div
-                className={`absolute -z-10 h-full w-full rounded-full transition-all duration-300 ease-out ${rippleState.isActive
+                className={`absolute -z-10 h-full w-full rounded-full transition-all duration-300 ease-out pointer-events-none ${rippleState.isActive
                   ? 'scale-[6] opacity-40'
                   : 'scale-0 opacity-0'
                   }`}
