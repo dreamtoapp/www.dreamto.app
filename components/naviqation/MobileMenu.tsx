@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useTranslations } from 'next-intl';
@@ -20,13 +20,15 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
   const t = useTranslations('homepage');
   const navbarT = useTranslations('navbar');
   const [activeItem, setActiveItem] = useState<string>('');
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
-  const menuItems = [
+  // Memoize menuItems to prevent recreation on every render
+  const menuItems = useMemo(() => [
     { href: `/${locale}`, label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
     { href: `/${locale}/services`, label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' },
     { href: `/${locale}/worksample`, label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' },
     { href: `/${locale}/contactus`, label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' },
-  ];
+  ], [locale, t]);
 
   // Set active item based on current pathname
   useEffect(() => {
@@ -42,8 +44,61 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
     }
   }, [locale, menuItems]);
 
+  const handleItemClick = (itemHref: string, itemColor: string) => {
+    // Close the sheet first
+    setIsSheetOpen(false);
+
+    // Create global ripple effect on navbar
+    const navbar = document.querySelector('header') as HTMLElement;
+    if (navbar) {
+      // Create ripple element
+      const ripple = document.createElement('div');
+      ripple.style.position = 'absolute';
+      ripple.style.top = '0';
+      ripple.style.left = '0';
+      ripple.style.width = '4px';
+      ripple.style.height = '4px';
+      ripple.style.borderRadius = '50%';
+      ripple.style.backgroundColor = `${itemColor}40`;
+      ripple.style.transform = 'scale(0)';
+      ripple.style.opacity = '0';
+      ripple.style.transition = 'all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.zIndex = '9999';
+      ripple.style.transformOrigin = 'top left';
+
+      // Add to navbar
+      navbar.style.position = 'relative';
+      navbar.appendChild(ripple);
+
+      // Trigger ripple animation
+      setTimeout(() => {
+        ripple.style.transform = 'scale(100)';
+        ripple.style.opacity = '0.6';
+      }, 10);
+
+      // Start fade out animation
+      setTimeout(() => {
+        ripple.style.opacity = '0';
+        ripple.style.transform = 'scale(120)';
+      }, 600);
+
+      // Remove ripple after fade out
+      setTimeout(() => {
+        if (ripple.parentNode) {
+          ripple.parentNode.removeChild(ripple);
+        }
+      }, 1000);
+    }
+
+    // Navigate after a short delay
+    setTimeout(() => {
+      window.location.href = itemHref;
+    }, 500);
+  };
+
   return (
-    <Sheet>
+    <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
       <SheetTrigger asChild>
         <Button
           variant="ghost"
@@ -72,38 +127,15 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
                 const isActive = activeItem === item.href;
 
                 return (
-                  <Link
+                  <button
                     key={item.href}
-                    href={item.href}
-                    className="relative flex items-center px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group overflow-hidden"
+                    onClick={() => handleItemClick(item.href, item.color)}
+                    className="relative flex items-center w-full px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group hover:bg-muted/20"
                     style={{
                       animationDelay: `${index * 100}ms`,
                       backgroundColor: isActive ? `${item.bgColor}20` : 'transparent'
                     }}
-                    onClick={() => {
-                      // Mobile ripple effect
-                      const ripple = document.querySelector(`[data-mobile-ripple="${item.href}"]`) as HTMLElement;
-                      if (ripple) {
-                        ripple.style.transform = 'scale(0)';
-                        ripple.style.opacity = '0';
-                        setTimeout(() => {
-                          ripple.style.transform = 'scale(1)';
-                          ripple.style.opacity = '0.4';
-                          setTimeout(() => {
-                            ripple.style.transform = 'scale(3)';
-                            ripple.style.opacity = '0.2';
-                          }, 50);
-                        }, 10);
-                      }
-                    }}
                   >
-                    {/* Ripple Effect */}
-                    <div
-                      data-mobile-ripple={item.href}
-                      className="absolute inset-0 scale-0 rounded-xl duration-500 transition-all ease-out"
-                      style={{ backgroundColor: `${item.rippleColor}20` }}
-                    />
-
                     {/* Icon Container */}
                     <div className="relative flex items-center justify-center w-10 h-10 mr-8 rounded-lg transition-all duration-300 group-hover:scale-110"
                       style={{ backgroundColor: `${item.bgColor}15` }}>
@@ -128,7 +160,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
                         style={{ backgroundColor: item.color }}
                       />
                     )}
-                  </Link>
+                  </button>
                 );
               })}
             </div>
@@ -146,13 +178,13 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
             </p>
           </div>
           <div className="flex justify-center">
-            <Link
-              href={`/${locale}/contactus`}
+            <button
+              onClick={() => handleItemClick(`/${locale}/contactus`, '#d7a50d')}
               className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-lg text-sm font-semibold hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[#d7a50d]/30 transform hover:-translate-y-1"
             >
               <span>{navbarT("startProject")}</span>
               <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
-            </Link>
+            </button>
           </div>
         </div>
       </SheetContent>
