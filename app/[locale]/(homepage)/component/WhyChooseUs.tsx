@@ -2,8 +2,8 @@ import React from "react";
 
 import { getLocale, getTranslations } from "next-intl/server";
 import { whyChooseUs } from "@/constant/icons";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; // ShadCN Card
-import { Badge } from "@/components/ui/badge"; // ShadCN Badge
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import MotionDiv from "@/components/MotionDiv";
 
 // Define the type for the feature items
@@ -49,65 +49,63 @@ const WhyChooseUs: React.FC = async () => {
   return (
     <section
       id="whyChooseUs"
-      className="py-16 bg-muted/30"
+      className="w-full"
       aria-labelledby="why-choose-us-heading"
       role="region"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <header className="text-center mb-12">
+      {/* Section Header */}
+      <header className="text-center mb-12 sm:mb-16">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           <h2
             id="why-choose-us-heading"
-            className="text-4xl font-bold mb-4 text-foreground"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
           >
-            {t("sectionTitle")}
+            <span className="text-[#d7a50d]">{t("sectionTitle")}</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t("whatMakesUsDifferent")}
           </p>
-        </header>
-
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => (
-            <MotionDiv
-              whileHoverEffect={{ scale: 1.05 }}
-              whileTapEffect={{ scale: 0.98 }}
-              key={index}
-              className="group"
-            >
-              <Card
-                className="h-full rounded-2xl shadow-md transition-transform hover:shadow-lg drop-shadow-lg bg-card"
-                aria-label={t(feature.title)}
-              >
-                <CardHeader className="flex flex-col items-center space-y-2">
-                  {/* Icon Container */}
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    {feature.icon && (
-                      <feature.icon
-                        className="w-8 h-8 text-primary group-hover:text-white transition-colors"
-                        aria-label={t(feature.title)}
-                        role="img"
-                      />
-                    )}
-                  </div>
-                  {/* Title */}
-                  <CardTitle className="text-lg font-semibold text-foreground">
-                    {t(feature.title)}
-                  </CardTitle>
-                </CardHeader>
-                {/* Description */}
-                <CardContent>
-                  <p
-                    className="text-sm text-muted-foreground"
-                  >
-                    {t(feature.description)}
-                  </p>
-                </CardContent>
-              </Card>
-            </MotionDiv>
-          ))}
         </div>
+      </header>
+
+      {/* Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
+        {features.map((feature, index) => (
+          <MotionDiv
+            whileHoverEffect={{ scale: 1.05 }}
+            whileTapEffect={{ scale: 0.98 }}
+            key={index}
+            className="group"
+          >
+            <Card
+              className="h-full rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 bg-card/50 backdrop-blur-sm border border-border/50 group-hover:border-[#0d3ad7]/30"
+              aria-label={t(feature.title)}
+            >
+              <CardHeader className="flex flex-col items-center space-y-4 p-6 sm:p-8">
+                {/* Icon Container */}
+                <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#d7a50d]/10 to-[#0d3ad7]/10 rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:from-[#d7a50d]/20 group-hover:to-[#0d3ad7]/20 transition-all duration-300">
+                  {feature.icon && (
+                    <feature.icon
+                      className="w-8 h-8 sm:w-10 sm:h-10 text-[#0d3ad7] group-hover:text-[#d7a50d] transition-colors"
+                      aria-label={t(feature.title)}
+                      role="img"
+                    />
+                  )}
+                </div>
+                {/* Title */}
+                <CardTitle className="text-lg sm:text-xl lg:text-2xl font-bold text-center leading-tight">
+                  {t(feature.title)}
+                </CardTitle>
+              </CardHeader>
+              {/* Description */}
+              <CardContent className="px-6 sm:px-8 pb-6 sm:pb-8">
+                <p className="text-sm sm:text-base text-muted-foreground text-center leading-relaxed">
+                  {t(feature.description)}
+                </p>
+              </CardContent>
+            </Card>
+          </MotionDiv>
+        ))}
       </div>
     </section>
   );

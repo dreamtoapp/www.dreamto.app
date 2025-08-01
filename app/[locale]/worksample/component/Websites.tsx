@@ -5,7 +5,7 @@ import { ArrowRightIcon } from "lucide-react"; // Optional: For hover effect ico
 import Autoplay from "embla-carousel-autoplay"; // For autoplay functionality
 import Image from "next/image"; // Import next/image for optimized images
 import Link from "next/link"; // Import next/link for navigation
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import dynamic from 'next/dynamic';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -17,6 +17,7 @@ const CarouselItem = dynamic(() => import('@/components/ui/carousel').then(mod =
 
 function Websites() {
   const locale = useLocale();
+  const t = useTranslations('worksample');
   const websitesData = [
     {
       id: 1,
@@ -89,20 +90,10 @@ function Websites() {
       height: 200,
       mode: "doing",
     },
-    {
-      id: 8,
-      title: "Crombo",
-      description: "Crombo will help to qrow up",
-      url: `/${locale}/crombo`,
-      image: "/website/crombo.png", // Local image path or external URL
-      width: 300,
-      height: 200,
-      mode: "development",
-    },
   ];
   return (
     <div className="w-full   h-auto rounded-md p-6" dir="ltr">
-      <h2 className="text-2xl font-bold text-foreground mb-4">{t("worksample.featuredWebsites")}</h2>
+      <h2 className="text-2xl font-bold text-foreground mb-4">{t("featuredWebsites")}</h2>
       <Carousel
         plugins={[Autoplay({ delay: 3000 })]} // Auto-play every 3 seconds
         className="w-full max-w-4xl mx-auto"

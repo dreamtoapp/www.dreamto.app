@@ -69,8 +69,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   };
 
   return (
-    <div className='flex flex-col gap-4'>
-
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-[#99e4ff]/5">
       {/* Enhanced Schema Markup */}
       <script
         type="application/ld+json"
@@ -131,30 +130,83 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
           ])
         }}
       />
-      <section aria-label={t('sections.hero')} className="relative z-10">
-        <HeroSection {...heroProps} locale={locale} />
+
+      {/* Hero Section - Full Viewport Height */}
+      <section
+        aria-label={t('sections.hero')}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#d7a50d]/10 via-transparent to-[#0d3ad7]/10" />
+        <div className="relative z-10 w-full">
+          <HeroSection {...heroProps} locale={locale} />
+        </div>
       </section>
-      <section aria-label={t('sections.cromboDetails')} className="grid gap-4 grid-cols-1 md:grid-cols-1">
-        <CromboDetail />
+
+      {/* Crombo Section - Prominent Placement */}
+      <section
+        aria-label={t('sections.cromboDetails')}
+        className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#d7a50d]/10 to-[#0d3ad7]/10"
+      >
+        <div className="max-w-6xl mx-auto">
+          <CromboDetail />
+        </div>
       </section>
-      <section aria-label={t('fromIdeaTitle')} className="py-4">
-        <h2 className="text-2xl font-bold mb-4">{t('fromIdeaTitle')}</h2>
-        <FromIdea />
+
+      {/* Services Section - Core Offering */}
+      <section
+        aria-label={t('services')}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-background"
+      >
+        <div className="max-w-7xl mx-auto">
+          <Services />
+        </div>
       </section>
-      <section aria-label={t('discoverTitle')} className="py-4">
-        <h2 className="text-2xl font-bold mb-4">{t('discoverTitle')}</h2>
-        <DesinAndDiscover />
+
+      {/* Why Choose Us Section - Trust Building */}
+      <section
+        aria-label={t('whyChooseUs')}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#99e4ff]/5 to-[#0d3ad7]/5"
+      >
+        <div className="max-w-7xl mx-auto">
+          <WhyChooseUs />
+        </div>
       </section>
-      <section aria-label={t('services')} className="py-4">
-        <h2 className="text-2xl font-bold mb-4">{t('services')}</h2>
-        <Services />
+
+      {/* Content Sections - Two Column Layout */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background to-[#d7a50d]/5">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* From Idea Section */}
+            <div className="space-y-6">
+              <div className="text-center lg:text-start">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 leading-tight">
+                  <span className="text-[#d7a50d]">{t('fromIdeaTitle')}</span>
+                </h2>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  {t('fromIdeaContent')}
+                </p>
+              </div>
+              <FromIdea />
+            </div>
+
+            {/* Discover Section */}
+            <div className="space-y-6">
+              <div className="text-center lg:text-start">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4 leading-tight">
+                  <span className="text-[#0d3ad7]">{t('discoverTitle')}</span>
+                </h2>
+                <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  {t('discoverContent')}
+                </p>
+              </div>
+              <DesinAndDiscover />
+            </div>
+          </div>
+        </div>
       </section>
-      <section aria-label={t('whyChooseUs')} className="py-4">
-        <h2 className="text-2xl font-bold mb-4">{t('whyChooseUs')}</h2>
-        <WhyChooseUs />
-      </section>
-      <section aria-label="Footer" className="pt-4">
-        <h2 className="sr-only">Footer</h2>
+
+      {/* Footer Section */}
+      <section aria-label="Footer" className="bg-gradient-to-r from-[#0d3ad7]/10 to-[#99e4ff]/10">
         <Footer />
       </section>
     </div>

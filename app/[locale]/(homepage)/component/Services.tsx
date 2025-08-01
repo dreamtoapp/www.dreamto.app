@@ -10,29 +10,29 @@ const Services = async () => {
   const locale = await getLocale();
 
   return (
-    <section className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center" aria-labelledby="services-heading">
-      <div className="max-w-7xl w-full">
-        {/* Header Section */}
-        <header className="text-center mb-12">
+    <section className="w-full" aria-labelledby="services-heading">
+      {/* Header Section */}
+      <header className="text-center mb-12 sm:mb-16">
+        <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6">
           <h2
             id="services-heading"
-            className="text-4xl font-bold text-primary"
+            className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight"
           >
-            <span className="text-primary">{t("buildingTomorrow")}</span>
-            <span className="text-accent"> {t("solutions")} </span>
-            <span className="text-primary">{t("today")}</span>
+            <span className="text-[#d7a50d]">{t("buildingTomorrow")}</span>
+            <span className="text-[#0d3ad7]"> {t("solutions")} </span>
+            <span className="text-[#99e4ff]">{t("today")}</span>
           </h2>
-          <p
-            className="mt-4 text-lg text-muted-foreground"
-          >
+          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             {t("blendingCreativity")}
           </p>
-        </header>
+        </div>
+      </header>
 
-        {/* Cards Grid */}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6" role="list">
+      {/* Cards Grid */}
+      <div className="w-full">
+        <ul className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12" role="list">
           {cardData.map((card, index) => (
-            <li key={index} role="listitem">
+            <li key={index} role="listitem" className="flex">
               <CardComponent card={card} t={t} locale={locale} />
             </li>
           ))}

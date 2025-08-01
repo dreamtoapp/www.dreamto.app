@@ -39,7 +39,7 @@ interface CardComponentProps {
 const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
   return (
     <MotionDiv
-      className="h-full flex flex-col min-w-[300px] bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group focus-within:ring-2 focus-within:ring-primary/60"
+      className="h-full flex flex-col min-w-[300px] bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group focus-within:ring-2 focus-within:ring-[#d7a50d]/60 hover:border-[#0d3ad7]/30"
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
     >
@@ -48,21 +48,21 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
         <CardHeader className="flex flex-col items-center text-center space-y-3 pt-6 pb-2">
           {/* Icon with animated ring on hover */}
           <div className="relative flex items-center justify-center mb-2">
-            <span className="absolute inset-0 rounded-full bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
+            <span className="absolute inset-0 rounded-full bg-[#d7a50d]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm" />
             {card.icon && (
               <card.icon
-                className="w-14 h-14 text-primary drop-shadow-md group-hover:scale-110 transition-transform duration-300"
+                className="w-12 h-12 sm:w-14 sm:h-14 text-[#0d3ad7] drop-shadow-md group-hover:scale-110 group-hover:text-[#d7a50d] transition-all duration-300"
                 aria-label={t(card.title)}
                 role="img"
               />
             )}
           </div>
           {/* Title */}
-          <CardTitle className="text-2xl font-bold text-foreground" id={`service-card-title-${t(card.title)}`}>
+          <CardTitle className="text-xl sm:text-2xl font-bold text-foreground leading-tight" id={`service-card-title-${t(card.title)}`}>
             <h3 className="text-balance">{t(card.title)}</h3>
           </CardTitle>
           {/* Description */}
-          <CardDescription className="text-muted-foreground text-base">
+          <CardDescription className="text-muted-foreground text-sm sm:text-base leading-relaxed">
             <p className="text-balance" aria-hidden="false">
               {t(card.description)}
             </p>
@@ -72,7 +72,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
         {/* Content Section */}
         <CardContent className="flex-1 flex flex-col justify-end gap-3 pb-4">
           {/* Technology Used Label */}
-          <span className="text-center mb-1 text-primary/80 font-semibold tracking-wide text-sm uppercase">
+          <span className="text-center mb-2 text-[#d7a50d] font-semibold tracking-wide text-xs sm:text-sm uppercase">
             {t("tecnoUsed")}
           </span>
           {/* Tags List */}
@@ -81,20 +81,20 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
               <Badge
                 key={index}
                 variant="secondary"
-                className="flex items-center gap-2 bg-secondary text-secondary-foreground border border-border shadow-sm px-3 py-1 rounded-full text-xs font-medium"
+                className="flex items-center gap-1.5 sm:gap-2 bg-gradient-to-br from-[#0d3ad7]/15 via-[#0d3ad7]/10 to-[#99e4ff]/15 text-[#0d3ad7] border border-[#0d3ad7]/25 shadow-sm hover:shadow-md px-3 sm:px-4 py-1.5 rounded-full text-xs font-medium hover:from-[#0d3ad7]/25 hover:via-[#0d3ad7]/20 hover:to-[#99e4ff]/25 hover:border-[#0d3ad7]/40 hover:scale-105 transition-all duration-300 group-hover:shadow-[#0d3ad7]/20"
                 role="listitem"
               >
                 {/* Tag Icon */}
                 {tag.icon && (
                   <tag.icon
-                    className="w-4 h-4"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#0d3ad7] group-hover:text-[#d7a50d] transition-colors duration-300"
                     aria-hidden="true"
                     role="img"
                     aria-label={tag.text}
                   />
                 )}
                 {/* Tag Text */}
-                <span className="capitalize">{tag.text}</span>
+                <span className="capitalize font-medium">{tag.text}</span>
               </Badge>
             ))}
           </div>
