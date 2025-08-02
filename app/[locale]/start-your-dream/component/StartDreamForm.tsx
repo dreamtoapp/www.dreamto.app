@@ -8,7 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
 import { submitStartDream } from "../actions/submitStartDream";
@@ -28,52 +27,75 @@ import {
   FaPalette,
   FaChartLine,
   FaEye,
-  FaRocket
+  FaRocket,
+  FaCode,
+  FaLaptop,
+  FaBrush,
+  FaBullhorn,
+  FaCog
 } from "react-icons/fa";
 import { useTranslations } from "next-intl";
 
-// Service options for the simplified form
+// Enhanced service options with better icons and descriptions
 const serviceOptions = [
-  { value: "web-development", icon: FaGlobe, key: "serviceWebDevelopment" },
-  { value: "mobile-app", icon: FaMobile, key: "serviceMobileApp" },
-  { value: "ecommerce", icon: FaShoppingCart, key: "serviceEcommerce" },
-  { value: "crm", icon: FaUsers, key: "serviceCRM" },
-  { value: "ui-ux", icon: FaPalette, key: "serviceUIUX" },
-  { value: "digital-marketing", icon: FaChartLine, key: "serviceDigitalMarketing" },
-  { value: "visual-identity", icon: FaEye, key: "serviceVisualIdentity" },
-  { value: "other", icon: FaTools, key: "serviceOther" }
+  {
+    value: "web-development",
+    icon: FaGlobe,
+    key: "serviceWebDevelopment",
+    color: "text-blue-500",
+    bgColor: "bg-blue-50 dark:bg-blue-950/20"
+  },
+  {
+    value: "mobile-app",
+    icon: FaMobile,
+    key: "serviceMobileApp",
+    color: "text-green-500",
+    bgColor: "bg-green-50 dark:bg-green-950/20"
+  },
+  {
+    value: "ecommerce",
+    icon: FaShoppingCart,
+    key: "serviceEcommerce",
+    color: "text-purple-500",
+    bgColor: "bg-purple-50 dark:bg-purple-950/20"
+  },
+  {
+    value: "ui-ux",
+    icon: FaPalette,
+    key: "serviceUIUX",
+    color: "text-pink-500",
+    bgColor: "bg-pink-50 dark:bg-pink-950/20"
+  },
+  {
+    value: "digital-marketing",
+    icon: FaChartLine,
+    key: "serviceDigitalMarketing",
+    color: "text-orange-500",
+    bgColor: "bg-orange-50 dark:bg-orange-950/20"
+  },
+  {
+    value: "visual-identity",
+    icon: FaEye,
+    key: "serviceVisualIdentity",
+    color: "text-teal-500",
+    bgColor: "bg-teal-50 dark:bg-teal-950/20"
+  },
+  {
+    value: "other",
+    icon: FaCog,
+    key: "serviceOther",
+    color: "text-gray-500",
+    bgColor: "bg-gray-50 dark:bg-gray-950/20"
+  }
 ];
 
-// Budget options
-const budgetOptions = [
-  { value: "under5k", key: "under5k" },
-  { value: "5kTo10k", key: "5kTo10k" },
-  { value: "10kTo25k", key: "10kTo25k" },
-  { value: "25kTo50k", key: "25kTo50k" },
-  { value: "50kTo100k", key: "50kTo100k" },
-  { value: "over100k", key: "over100k" },
-  { value: "notSure", key: "notSure" }
-];
-
-// Timeline options
-const timelineOptions = [
-  { value: "asap", key: "asap" },
-  { value: "1To2Weeks", key: "1To2Weeks" },
-  { value: "1Month", key: "1Month" },
-  { value: "2To3Months", key: "2To3Months" },
-  { value: "3To6Months", key: "3To6Months" },
-  { value: "flexible", key: "flexible" }
-];
-
-// Zod schema for form validation
+// Updated Zod schema to support multiple service selection
 const schema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   mobile: z.string().regex(/^[0-9]{10,15}$/, "Invalid mobile number"),
   email: z.string().email("Invalid email address"),
-  serviceType: z.string().min(1, "Please select a service"),
+  serviceType: z.array(z.string()).min(1, "Please select at least one service"),
   projectDescription: z.string().min(10, "Project description must be at least 10 characters"),
-  budget: z.string().min(1, "Please select a budget range"),
-  timeline: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -91,10 +113,8 @@ export default function StartDreamForm({ locale }: { locale: string }) {
       name: "",
       mobile: "",
       email: "",
-      serviceType: "",
+      serviceType: [],
       projectDescription: "",
-      budget: "",
-      timeline: "",
       message: "",
     },
   });
@@ -104,7 +124,14 @@ export default function StartDreamForm({ locale }: { locale: string }) {
     try {
       const formData = new FormData();
       Object.entries(data).forEach(([key, value]) => {
-        if (value) formData.append(key, value);
+        if (value) {
+          if (Array.isArray(value)) {
+            // Handle array values (serviceType)
+            value.forEach(item => formData.append(key, item));
+          } else {
+            formData.append(key, value);
+          }
+        }
       });
 
       const result = await submitStartDream(null, formData);
@@ -176,8 +203,6 @@ export default function StartDreamForm({ locale }: { locale: string }) {
           </motion.div>
         )}
       </AnimatePresence>
-
-
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" role="form" aria-labelledby="start-dream-form-title">
@@ -267,37 +292,96 @@ export default function StartDreamForm({ locale }: { locale: string }) {
             />
           </motion.div>
 
-          {/* Service Selection */}
+          {/* Service Selection - Enhanced Multi-Select Checklist */}
           <motion.div variants={itemVariants}>
             <FormField
               control={form.control}
               name="serviceType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm font-medium text-foreground">
+                  <FormLabel className="text-sm font-medium text-foreground mb-4 block">
                     {t("serviceType")} <span className="text-destructive">*</span>
+                    <span className="text-xs text-muted-foreground ml-2">(Select multiple services)</span>
                   </FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger className="h-12 border-border focus:border-primary focus:ring-primary bg-background">
-                        <SelectValue placeholder={t("selectService")} />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
+                  <FormControl>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                       {serviceOptions.map((service) => {
                         const Icon = service.icon;
+                        const isSelected = field.value.includes(service.value);
                         return (
-                          <SelectItem key={service.value} value={service.value}>
-                            <div className="flex items-center gap-2">
-                              <Icon className="w-4 h-4" />
-                              <span>{t(service.key)}</span>
+                          <div
+                            key={service.value}
+                            className={`relative cursor-pointer group transition-all duration-300 ${isSelected
+                              ? 'bg-primary/5'
+                              : 'hover:bg-muted/50'
+                              }`}
+                            onClick={() => {
+                              const currentValue = field.value;
+                              if (isSelected) {
+                                // Remove from selection
+                                field.onChange(currentValue.filter(item => item !== service.value));
+                              } else {
+                                // Add to selection
+                                field.onChange([...currentValue, service.value]);
+                              }
+                            }}
+                          >
+                            <div className={`
+                              p-4 rounded-xl border transition-all duration-300
+                              ${isSelected
+                                ? 'border-primary/30 bg-primary/5 shadow-sm'
+                                : 'border-border hover:border-primary/30 hover:shadow-sm'
+                              }
+                            `}>
+                              <div className="flex flex-col items-center text-center space-y-3">
+                                <div className={`
+                                  w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300
+                                  ${isSelected ? 'bg-primary text-primary-foreground' : service.bgColor}
+                                `}>
+                                  <Icon className={`w-6 h-6 ${isSelected ? 'text-primary-foreground' : service.color}`} />
+                                </div>
+                                <span className={`text-sm font-medium transition-colors duration-300 ${isSelected ? 'text-primary' : 'text-foreground'
+                                  }`}>
+                                  {t(service.key)}
+                                </span>
+                              </div>
+
+                              {/* Selection indicator */}
+                              {isSelected && (
+                                <div className="absolute top-2 right-2 w-6 h-6 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                                  <FaCheckCircle className="w-3 h-3 text-white" />
+                                </div>
+                              )}
                             </div>
-                          </SelectItem>
+                          </div>
                         );
                       })}
-                    </SelectContent>
-                  </Select>
+                    </div>
+                  </FormControl>
                   <FormMessage />
+                  {field.value.length > 0 && (
+                    <div className="mt-3 p-3 bg-muted/30 rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-2">
+                        Selected services ({field.value.length}):
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {field.value.map((selectedService) => {
+                          const service = serviceOptions.find(s => s.value === selectedService);
+                          if (!service) return null;
+                          const Icon = service.icon;
+                          return (
+                            <div
+                              key={selectedService}
+                              className="flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                            >
+                              <Icon className="w-3 h-3" />
+                              <span>{t(service.key)}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </FormItem>
               )}
             />
@@ -321,66 +405,6 @@ export default function StartDreamForm({ locale }: { locale: string }) {
                       className="border-border focus:border-primary focus:ring-primary bg-background resize-none transition-colors"
                     />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </motion.div>
-
-          {/* Budget Range */}
-          <motion.div variants={itemVariants}>
-            <FormField
-              control={form.control}
-              name="budget"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-sm font-medium text-foreground">
-                    {t("budget")} <span className="text-destructive">*</span>
-                  </FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger className="h-12 border-border focus:border-primary focus:ring-primary bg-background">
-                        <SelectValue placeholder={t("selectBudget")} />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {budgetOptions.map((budget) => (
-                        <SelectItem key={budget.value} value={budget.value}>
-                          {t(budget.key)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </motion.div>
-
-          {/* Timeline */}
-          <motion.div variants={itemVariants}>
-            <FormField
-              control={form.control}
-              name="timeline"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-sm font-medium text-foreground">
-                    {t("timeline")}
-                  </FormLabel>
-                  <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl>
-                      <SelectTrigger className="h-12 border-border focus:border-primary focus:ring-primary bg-background">
-                        <SelectValue placeholder={t("selectTimeline")} />
-                      </SelectTrigger>
-                    </FormControl>
-                    <SelectContent>
-                      {timelineOptions.map((timeline) => (
-                        <SelectItem key={timeline.value} value={timeline.value}>
-                          {t(timeline.key)}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
