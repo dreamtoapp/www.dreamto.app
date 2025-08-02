@@ -10,7 +10,6 @@ import { Textarea } from "./textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./form";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-// import { VoiceRecorder } from "./VoiceRecorder";
 import { RadioGroup } from "@/components/ui/radio-group";
 
 const ConsultationSchema = z.object({
