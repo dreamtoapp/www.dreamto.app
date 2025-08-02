@@ -5,11 +5,9 @@ import {
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import MotionDiv from "@/components/MotionDiv";
-import InlineQueryWrapper from "@/components/InlineQuery/InlineQueryWrapper";
 import { memo } from "react";
 
 // Define interfaces for better type safety and modularity
@@ -101,13 +99,7 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
         </CardContent>
       </article>
 
-      {/* Footer Section */}
-      <CardFooter className="flex items-center justify-center w-full mt-2 pb-4">
-        <InlineQueryWrapper
-          btnTitle={t("getQuote")}
-          title={t(card.title)}
-        />
-      </CardFooter>
+
     </MotionDiv>
   );
 };
