@@ -962,12 +962,6 @@
       "data-science": "Data Science"
     }
   },
-  "underConstruction": {
-    "title": "Under Construction",
-    "subtitle": "We're working hard to bring you something amazing!",
-    "goHome": "Go Home",
-    "contactForInfo": "Contact Us for More Info"
-  },
   "gallery": {
     "title": "Gallery",
     "errorLoading": "Error loading gallery",

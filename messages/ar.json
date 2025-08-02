@@ -966,12 +966,6 @@
       "data-science": "علوم البيانات"
     }
   },
-  "underConstruction": {
-    "title": "قيد الإنشاء",
-    "subtitle": "نحن نعمل بجد لتقديم شيء مذهل لك!",
-    "goHome": "العودة للرئيسية",
-    "contactForInfo": "تواصل معنا للمزيد من المعلومات"
-  },
   "gallery": {
     "title": "المعرض",
     "errorLoading": "خطأ في تحميل المعرض",

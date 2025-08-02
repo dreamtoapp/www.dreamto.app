@@ -53,7 +53,7 @@ function Websites() {
       id: 4,
       title: "On Progress",
       description: "Still under development",
-      url: `/${locale}/underconstraction`,
+      url: "#", // Disabled for now
       image: "/website/cardoc.png", // Local image path or external URL
       width: 300,
       height: 200,
@@ -74,7 +74,7 @@ function Websites() {
       title: "DoIt",
       description: "SaaS App To track you tasks",
       // url: "https://Doit.dreamto.app/ar",
-      url: `/${locale}/underconstraction`,
+      url: "#", // Disabled for now
       image: "/website/dtax.png", // Local image path or external URL
       width: 300,
       height: 200,
