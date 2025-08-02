@@ -13,25 +13,18 @@ import { toast } from "sonner";
 import { submitStartDream } from "../actions/submitStartDream";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  FaRegComments,
   FaUser,
   FaPhone,
   FaEnvelope,
-  FaTools,
   FaCheckCircle,
   FaArrowRight,
   FaGlobe,
   FaMobile,
-  FaUsers,
   FaShoppingCart,
   FaPalette,
   FaChartLine,
   FaEye,
   FaRocket,
-  FaCode,
-  FaLaptop,
-  FaBrush,
-  FaBullhorn,
   FaCog
 } from "react-icons/fa";
 import { useTranslations } from "next-intl";

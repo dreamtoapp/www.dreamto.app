@@ -5,15 +5,13 @@ import { revalidatePath } from "next/cache";
 import db from "@/lib/prisma";
 import { sendWhatsAppMessage } from "@/lib/actions/sendWhatsapp";
 
-// Start Dream Form Schema
+// Start Dream Form Schema - Updated to handle multiple services
 const startDreamFormSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   mobile: z.string().min(10, "Mobile number must be at least 10 characters"),
   email: z.string().email("Please enter a valid email address"),
-  serviceType: z.string().min(1, "Please select a service type"),
+  serviceType: z.array(z.string()).min(1, "Please select at least one service"),
   projectDescription: z.string().min(10, "Project description must be at least 10 characters"),
-  budget: z.string().optional(),
-  timeline: z.string().optional(),
   message: z.string().optional(),
 });
 
@@ -22,14 +20,20 @@ export async function submitStartDream(
   formData: FormData
 ) {
   try {
+    // Handle multiple serviceType values from FormData
+    const serviceTypeValues: string[] = [];
+    formData.getAll("serviceType").forEach((value) => {
+      if (typeof value === "string") {
+        serviceTypeValues.push(value);
+      }
+    });
+
     const rawData = {
       name: formData.get("name") as string,
       mobile: formData.get("mobile") as string,
       email: formData.get("email") as string,
-      serviceType: formData.get("serviceType") as string,
+      serviceType: serviceTypeValues,
       projectDescription: formData.get("projectDescription") as string,
-      budget: formData.get("budget") as string,
-      timeline: formData.get("timeline") as string,
       message: formData.get("message") as string,
     };
 
@@ -54,15 +58,18 @@ export async function submitStartDream(
 
     const data = validation.data;
 
+    // Convert service types array to readable string
+    const serviceTypeString = data.serviceType.join(", ");
+
     // Save to database
     const contact = await db.contactus.create({
       data: {
         name: data.name,
         mobile: data.mobile,
         email: data.email,
-        projectType: data.serviceType,
+        projectType: serviceTypeString,
         projectDetails: data.projectDescription,
-        budget: data.budget || "",
+        budget: "", // Removed from form
         message: data.message || "",
       },
     });
@@ -73,10 +80,8 @@ export async function submitStartDream(
 👤 *Name:* ${data.name}
 📱 *Mobile:* ${data.mobile}
 📧 *Email:* ${data.email}
-🛠️ *Service:* ${data.serviceType}
+🛠️ *Services:* ${serviceTypeString}
 📝 *Project:* ${data.projectDescription}
-💰 *Budget:* ${data.budget || "Not specified"}
-⏰ *Timeline:* ${data.timeline || "Not specified"}
 💬 *Additional:* ${data.message || "None"}
 
 🆔 *ID:* ${contact.id || "N/A"}
