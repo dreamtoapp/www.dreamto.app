@@ -131,6 +131,44 @@ export async function getFoldersWithCoverImages(
   }
 }
 
+// Helper function to get all available folders from Cloudinary
+export async function getAllFolders(baseFolder: string): Promise<string[]> {
+  try {
+    // Validate configuration first
+    validateCloudinaryConfig();
+
+    const cacheKey = `all_folders_${baseFolder}`;
+
+    return await getCachedOrFetch(cacheKey, async () => {
+      // Get all resources in the base folder
+      const response = await cloudinary.api.resources({
+        type: "upload",
+        prefix: baseFolder,
+        max_results: 1000, // Get more results to ensure we capture all folders
+      });
+
+      // Extract unique folder names from the resources
+      const folders = new Set<string>();
+      (response.resources as CloudinaryResource[]).forEach((item: CloudinaryResource) => {
+        const folderPath = item.public_id.split("/").slice(0, -1).join("/");
+        if (folderPath.startsWith(baseFolder)) {
+          // Extract just the folder name (last part after baseFolder)
+          const folderName = folderPath.replace(`${baseFolder}/`, "");
+          if (folderName && !folderName.includes("/")) {
+            folders.add(folderName);
+          }
+        }
+      });
+
+      return Array.from(folders).sort();
+    });
+  } catch (error) {
+    console.error("Error fetching folders from Cloudinary:", error);
+    // Return fallback folders if Cloudinary fails
+    return ['flyer', 'coverage', 'cnc', 'character'];
+  }
+}
+
 // Define the type for the optimized image data you want to return
 interface OptimizedImage {
   public_id: string;

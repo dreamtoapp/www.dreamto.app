@@ -1,4 +1,4 @@
-import { getImagesFromFolder } from "@/lib/cloudinary";
+import { getImagesFromFolder, getAllFolders } from "@/lib/cloudinary";
 import Resize from "./component/Resize";
 import ImageWithFallback from "./component/ImageWithFallback.client";
 import { getTranslations } from "next-intl/server";
@@ -23,9 +23,8 @@ import { Metadata } from "next";
 import Link from "@/components/link";
 import MotionDiv from "@/components/MotionDiv";
 
-// Valid folder names for validation
-const VALID_FOLDERS = ['flyer', 'coverage', 'cnc', 'character'] as const;
-type ValidFolder = typeof VALID_FOLDERS[number];
+// Dynamic folder validation
+type ValidFolder = string;
 
 // Enhanced loading skeleton component
 function ImageSkeleton() {
@@ -41,14 +40,8 @@ function ImageSkeleton() {
 
 // Fallback images for when Cloudinary is not configured
 const getFallbackImages = (foldername: string) => {
-  const fallbackCounts: Record<string, number> = {
-    flyer: 56,
-    coverage: 2,
-    cnc: 6,
-    character: 10
-  };
-
-  const count = fallbackCounts[foldername] || 8;
+  // Default fallback count for any folder
+  const count = 8;
 
   return Array.from({ length: count }, (_, index) => ({
     public_id: `${foldername}_image_${index + 1}`,
@@ -145,12 +138,14 @@ async function GalleryContent({ foldername }: { foldername: string }) {
 
 
       {/* Enhanced Gallery Grid with Masonry Layout */}
-      <div className="max-w-7xl mx-auto flex justify-center">
+      <div className="flex justify-center">
         <div
           className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-6"
           style={{
             columnGap: '1.5rem',
-            columnFill: 'balance'
+            columnFill: 'balance',
+            maxWidth: '1400px',
+            width: '100%'
           }}
         >
           {images.map((image, index) => (
@@ -203,8 +198,11 @@ export default async function Page({
   const { foldername } = await params;
   const t = await getTranslations("gallery");
 
+  // Get all valid folders dynamically
+  const validFolders = await getAllFolders("dreamToApp/workSample");
+
   // Validate folder name and return 404 if invalid
-  if (!VALID_FOLDERS.includes(foldername as ValidFolder)) {
+  if (!validFolders.includes(foldername)) {
     notFound();
   }
 
@@ -278,12 +276,14 @@ export default async function Page({
 
         {/* Gallery Content */}
         <Suspense fallback={
-          <div className="max-w-7xl mx-auto flex justify-center">
+          <div className="flex justify-center">
             <div
               className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-6"
               style={{
                 columnGap: '1.5rem',
-                columnFill: 'balance'
+                columnFill: 'balance',
+                maxWidth: '1400px',
+                width: '100%'
               }}
             >
               {Array.from({ length: 8 }).map((_, index) => (
