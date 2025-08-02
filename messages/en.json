@@ -1083,6 +1083,8 @@
     "needImmediateHelp": "Need Immediate Help?",
     "getInstantSupport": "Get instant support via WhatsApp",
     "chatOnWhatsApp": "Chat Now",
+    "selectMultipleServices": "Select multiple services",
+    "selectedServices": "Selected services",
     "nameLabel": "Full Name",
     "namePlaceholder": "Enter your full name",
     "mobileLabel": "Mobile Number",

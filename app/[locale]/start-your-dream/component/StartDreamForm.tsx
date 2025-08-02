@@ -206,6 +206,101 @@ export default function StartDreamForm({ locale }: { locale: string }) {
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" role="form" aria-labelledby="start-dream-form-title">
+          {/* Service Selection - Enhanced Multi-Select Checklist */}
+          <motion.div variants={itemVariants}>
+            <FormField
+              control={form.control}
+              name="serviceType"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-sm font-medium text-foreground mb-4 block">
+                    {t("serviceType")} <span className="text-destructive">*</span>
+                    <span className="text-xs text-muted-foreground ml-2">({t("selectMultipleServices")})</span>
+                  </FormLabel>
+                  <FormControl>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                      {serviceOptions.map((service) => {
+                        const Icon = service.icon;
+                        const isSelected = field.value.includes(service.value);
+                        return (
+                          <div
+                            key={service.value}
+                            className={`relative cursor-pointer group transition-all duration-300 ${isSelected
+                              ? 'bg-primary/5'
+                              : 'hover:bg-muted/50'
+                              }`}
+                            onClick={() => {
+                              const currentValue = field.value;
+                              if (isSelected) {
+                                // Remove from selection
+                                field.onChange(currentValue.filter(item => item !== service.value));
+                              } else {
+                                // Add to selection
+                                field.onChange([...currentValue, service.value]);
+                              }
+                            }}
+                          >
+                            <div className={`
+                              p-4 rounded-xl border transition-all duration-300
+                              ${isSelected
+                                ? 'border-primary/30 bg-primary/5 shadow-sm'
+                                : 'border-border hover:border-primary/30 hover:shadow-sm'
+                              }
+                            `}>
+                              <div className="flex flex-col items-center text-center space-y-3">
+                                <div className={`
+                                  w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300
+                                  ${isSelected ? 'bg-primary text-primary-foreground' : service.bgColor}
+                                `}>
+                                  <Icon className={`w-6 h-6 ${isSelected ? 'text-primary-foreground' : service.color}`} />
+                                </div>
+                                <span className={`text-sm font-medium transition-colors duration-300 ${isSelected ? 'text-primary' : 'text-foreground'
+                                  }`}>
+                                  {t(service.key)}
+                                </span>
+                              </div>
+
+                              {/* Selection indicator */}
+                              {isSelected && (
+                                <div className="absolute top-2 right-2 w-6 h-6 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
+                                  <FaCheckCircle className="w-3 h-3 text-white" />
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </FormControl>
+                  <FormMessage />
+                  {field.value.length > 0 && (
+                    <div className="mt-3 p-3 bg-muted/30 rounded-lg">
+                      <p className="text-sm text-muted-foreground mb-2">
+                        {t("selectedServices")} ({field.value.length}):
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {field.value.map((selectedService) => {
+                          const service = serviceOptions.find(s => s.value === selectedService);
+                          if (!service) return null;
+                          const Icon = service.icon;
+                          return (
+                            <div
+                              key={selectedService}
+                              className="flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
+                            >
+                              <Icon className="w-3 h-3" />
+                              <span>{t(service.key)}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
+                </FormItem>
+              )}
+            />
+          </motion.div>
+
           {/* Personal Information */}
           <motion.div variants={itemVariants} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -287,101 +382,6 @@ export default function StartDreamForm({ locale }: { locale: string }) {
                     </div>
                   </FormControl>
                   <FormMessage />
-                </FormItem>
-              )}
-            />
-          </motion.div>
-
-          {/* Service Selection - Enhanced Multi-Select Checklist */}
-          <motion.div variants={itemVariants}>
-            <FormField
-              control={form.control}
-              name="serviceType"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-sm font-medium text-foreground mb-4 block">
-                    {t("serviceType")} <span className="text-destructive">*</span>
-                    <span className="text-xs text-muted-foreground ml-2">(Select multiple services)</span>
-                  </FormLabel>
-                  <FormControl>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-                      {serviceOptions.map((service) => {
-                        const Icon = service.icon;
-                        const isSelected = field.value.includes(service.value);
-                        return (
-                          <div
-                            key={service.value}
-                            className={`relative cursor-pointer group transition-all duration-300 ${isSelected
-                              ? 'bg-primary/5'
-                              : 'hover:bg-muted/50'
-                              }`}
-                            onClick={() => {
-                              const currentValue = field.value;
-                              if (isSelected) {
-                                // Remove from selection
-                                field.onChange(currentValue.filter(item => item !== service.value));
-                              } else {
-                                // Add to selection
-                                field.onChange([...currentValue, service.value]);
-                              }
-                            }}
-                          >
-                            <div className={`
-                              p-4 rounded-xl border transition-all duration-300
-                              ${isSelected
-                                ? 'border-primary/30 bg-primary/5 shadow-sm'
-                                : 'border-border hover:border-primary/30 hover:shadow-sm'
-                              }
-                            `}>
-                              <div className="flex flex-col items-center text-center space-y-3">
-                                <div className={`
-                                  w-12 h-12 rounded-lg flex items-center justify-center transition-all duration-300
-                                  ${isSelected ? 'bg-primary text-primary-foreground' : service.bgColor}
-                                `}>
-                                  <Icon className={`w-6 h-6 ${isSelected ? 'text-primary-foreground' : service.color}`} />
-                                </div>
-                                <span className={`text-sm font-medium transition-colors duration-300 ${isSelected ? 'text-primary' : 'text-foreground'
-                                  }`}>
-                                  {t(service.key)}
-                                </span>
-                              </div>
-
-                              {/* Selection indicator */}
-                              {isSelected && (
-                                <div className="absolute top-2 right-2 w-6 h-6 bg-primary/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg">
-                                  <FaCheckCircle className="w-3 h-3 text-white" />
-                                </div>
-                              )}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                  {field.value.length > 0 && (
-                    <div className="mt-3 p-3 bg-muted/30 rounded-lg">
-                      <p className="text-sm text-muted-foreground mb-2">
-                        Selected services ({field.value.length}):
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {field.value.map((selectedService) => {
-                          const service = serviceOptions.find(s => s.value === selectedService);
-                          if (!service) return null;
-                          const Icon = service.icon;
-                          return (
-                            <div
-                              key={selectedService}
-                              className="flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary rounded-full text-sm"
-                            >
-                              <Icon className="w-3 h-3" />
-                              <span>{t(service.key)}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  )}
                 </FormItem>
               )}
             />

@@ -1087,6 +1087,8 @@
     "needImmediateHelp": "تحتاج مساعدة فورية؟",
     "getInstantSupport": "احصل على دعم فوري عبر واتساب",
     "chatOnWhatsApp": "راسلنا الآن",
+    "selectMultipleServices": "اختر خدمات متعددة",
+    "selectedServices": "الخدمات المختارة",
     "nameLabel": "الاسم الكامل",
     "namePlaceholder": "أدخل اسمك الكامل",
     "mobileLabel": "رقم الجوال",
