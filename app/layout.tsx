@@ -66,6 +66,7 @@ import { Directions } from '@/constant/enums';
 import { Toaster } from '@/components/ui/sonner';
 import { tajawal } from './font';
 import { ThemeProvider } from '@/provider/theme-provider';
+import BackToTopWrapper from '@/components/ui/BackToTopWrapper';
 
 // Loading component for suspense boundaries
 const LoadingFallback = () => (
@@ -110,6 +111,7 @@ export default async function RootLayout({
         </footer>
 
         <Toaster position="top-right" />
+        <BackToTopWrapper />
       </body>
     </html>
   );

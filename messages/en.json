@@ -205,6 +205,343 @@
     "userFeedbackIterationTitle": "Improvement Based on User Feedback",
     "userFeedbackIterationDescription": "We listen to user feedback to continuously improve your application."
   },
+  "privacy": {
+    "meta": {
+      "title": "Privacy Policy | DreamToApp IT Solutions",
+      "description": "Learn how DreamToApp collects, uses, and protects your personal information. Our comprehensive privacy policy ensures your data security and privacy rights."
+    },
+    "title": "Privacy Policy",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "December 15, 2024",
+    "introduction": {
+      "title": "Introduction",
+      "paragraph1": "DreamToApp IT Agency ('we', 'our', or 'us') is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us.",
+      "paragraph2": "By using our services, you agree to the collection and use of information in accordance with this policy. We are committed to transparency and will always inform you about how we handle your data."
+    },
+    "informationWeCollect": {
+      "title": "Information We Collect",
+      "personalData": {
+        "title": "Personal Information",
+        "description": "We may collect personal information that you voluntarily provide to us when you:",
+        "items": {
+          "name": "Full name and contact information",
+          "email": "Email address",
+          "phone": "Phone number",
+          "company": "Company name and details",
+          "position": "Job title and position"
+        }
+      },
+      "technicalData": {
+        "title": "Technical Information",
+        "description": "We automatically collect certain technical information when you visit our website:",
+        "items": {
+          "ip": "IP address and location data",
+          "browser": "Browser type and version",
+          "device": "Device information and operating system",
+          "cookies": "Cookies and similar tracking technologies"
+        }
+      },
+      "usageData": {
+        "title": "Usage Information",
+        "description": "We collect information about how you interact with our website:",
+        "items": {
+          "pages": "Pages visited and time spent",
+          "time": "Time and date of visits",
+          "actions": "Actions taken on the website"
+        }
+      }
+    },
+    "howWeUse": {
+      "title": "How We Use Your Information",
+      "description": "We use the collected information for the following purposes:",
+      "purposes": {
+        "communication": "To communicate with you about our services and respond to your inquiries",
+        "services": "To provide and improve our services",
+        "improvement": "To analyze website usage and improve user experience",
+        "security": "To ensure the security and integrity of our services",
+        "legal": "To comply with legal obligations and protect our rights",
+        "marketing": "To send you relevant marketing communications (with your consent)"
+      }
+    },
+    "informationSharing": {
+      "title": "Information Sharing and Disclosure",
+      "description": "We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except in the following circumstances:",
+      "thirdParties": {
+        "title": "Service Providers",
+        "description": "We may share information with trusted third-party service providers who assist us in:",
+        "items": {
+          "service": "Providing our services and maintaining our website",
+          "analytics": "Analyzing website usage and performance",
+          "payment": "Processing payments and financial transactions"
+        }
+      },
+      "legal": {
+        "title": "Legal Requirements",
+        "description": "We may disclose your information if required by law or to protect our rights, property, or safety."
+      }
+    },
+    "dataSecurity": {
+      "title": "Data Security",
+      "description": "We implement appropriate technical and organizational measures to protect your personal information:",
+      "measures": {
+        "encryption": "Encryption of data in transit and at rest",
+        "access": "Restricted access to personal information",
+        "monitoring": "Regular security monitoring and updates",
+        "training": "Employee training on data protection practices"
+      }
+    },
+    "yourRights": {
+      "title": "Your Rights",
+      "description": "You have the following rights regarding your personal information:",
+      "rights": {
+        "access": "Right of Access",
+        "accessDesc": "Request a copy of the personal information we hold about you",
+        "correction": "Right of Correction",
+        "correctionDesc": "Request correction of inaccurate or incomplete information",
+        "deletion": "Right of Deletion",
+        "deletionDesc": "Request deletion of your personal information",
+        "portability": "Right of Portability",
+        "portabilityDesc": "Request transfer of your data to another service provider",
+        "objection": "Right of Objection",
+        "objectionDesc": "Object to processing of your personal information",
+        "withdrawal": "Right of Withdrawal",
+        "withdrawalDesc": "Withdraw consent for marketing communications"
+      }
+    },
+    "cookies": {
+      "title": "Cookies and Tracking Technologies",
+      "description": "We use cookies and similar technologies to enhance your browsing experience:",
+      "types": {
+        "essential": {
+          "title": "Essential Cookies",
+          "description": "These cookies are necessary for the website to function properly and cannot be disabled."
+        },
+        "analytics": {
+          "title": "Analytics Cookies",
+          "description": "These cookies help us understand how visitors interact with our website."
+        },
+        "marketing": {
+          "title": "Marketing Cookies",
+          "description": "These cookies are used to deliver relevant advertisements and track marketing campaigns."
+        }
+      },
+      "management": "You can manage your cookie preferences through your browser settings or our cookie consent tool."
+    },
+    "childrenPrivacy": {
+      "title": "Children's Privacy",
+      "description": "Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13."
+    },
+    "internationalTransfers": {
+      "title": "International Data Transfers",
+      "description": "Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data."
+    },
+    "changesToPolicy": {
+      "title": "Changes to This Privacy Policy",
+      "description": "We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the 'Last Updated' date."
+    },
+    "contactInformation": {
+      "title": "Contact Information",
+      "description": "If you have any questions about this Privacy Policy or our data practices, please contact us:",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
+    },
+    "dataProtectionOfficer": {
+      "title": "Data Protection Officer",
+      "description": "For privacy-related inquiries, you may also contact our Data Protection Officer:",
+      "email": "Email"
+    },
+    "footer": "This Privacy Policy is effective as of the date stated above and applies to all users of our services."
+  },
+  "terms": {
+    "meta": {
+      "title": "Terms of Service | DreamToApp IT Solutions",
+      "description": "Read our comprehensive Terms of Service for DreamToApp IT Agency. Understand your rights, obligations, and our service terms for web development and digital solutions."
+    },
+    "title": "Terms of Service",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "December 15, 2024",
+    "introduction": {
+      "title": "Introduction",
+      "paragraph1": "Welcome to DreamToApp IT Agency. These Terms of Service ('Terms') govern your use of our website and services. By accessing or using our services, you agree to be bound by these Terms.",
+      "paragraph2": "DreamToApp IT Agency ('we', 'our', or 'us') provides web development, mobile application development, and digital solutions services. These Terms apply to all users, clients, and visitors of our website and services.",
+      "paragraph3": "Please read these Terms carefully before using our services. If you do not agree with any part of these Terms, you should not use our services."
+    },
+    "definitions": {
+      "title": "Definitions",
+      "terms": {
+        "company": "DreamToApp IT Agency",
+        "companyDesc": "Refers to DreamToApp IT Agency, its employees, agents, and representatives.",
+        "client": "Client",
+        "clientDesc": "Any individual or entity that uses our services or enters into a service agreement with us.",
+        "services": "Services",
+        "servicesDesc": "All services provided by DreamToApp IT Agency, including but not limited to web development, mobile app development, and consulting services.",
+        "website": "Website",
+        "websiteDesc": "The DreamToApp website located at dreamto.app and all associated pages and content.",
+        "content": "Content",
+        "contentDesc": "All text, images, graphics, software, and other materials available on our website or provided through our services."
+      }
+    },
+    "services": {
+      "title": "Services",
+      "description": "DreamToApp IT Agency provides the following services:",
+      "types": {
+        "web": "Web development and website design",
+        "mobile": "Mobile application development for iOS and Android",
+        "crm": "Customer Relationship Management (CRM) systems",
+        "ecommerce": "E-commerce solutions and online stores",
+        "consulting": "IT consulting and digital strategy",
+        "maintenance": "Website and application maintenance and support"
+      }
+    },
+    "acceptance": {
+      "title": "Acceptance of Terms",
+      "description": "By using our services, you acknowledge and agree that:",
+      "conditions": {
+        "use": "You have read, understood, and agree to be bound by these Terms",
+        "legal": "You have the legal capacity to enter into these Terms",
+        "age": "You are at least 18 years old or have parental consent",
+        "capacity": "You have the authority to bind your organization to these Terms"
+      }
+    },
+    "userResponsibilities": {
+      "title": "User Responsibilities",
+      "description": "As a user of our services, you agree to:",
+      "obligations": {
+        "accuracy": "Provide accurate and complete information",
+        "compliance": "Comply with all applicable laws and regulations",
+        "security": "Maintain the security of your account and information",
+        "legal": "Use our services only for lawful purposes",
+        "cooperation": "Cooperate with us in providing services",
+        "payment": "Pay all fees and charges in a timely manner"
+      }
+    },
+    "intellectualProperty": {
+      "title": "Intellectual Property Rights",
+      "ourRights": {
+        "title": "Our Intellectual Property",
+        "description": "All content, trademarks, logos, and intellectual property on our website and in our services are owned by DreamToApp IT Agency or our licensors."
+      },
+      "yourRights": {
+        "title": "Your Intellectual Property",
+        "description": "You retain ownership of any content or materials you provide to us. You grant us a license to use such content for the purpose of providing our services."
+      },
+      "licensing": {
+        "title": "License to Use",
+        "description": "We grant you a limited, non-exclusive, non-transferable license to access and use our website and services for their intended purpose."
+      }
+    },
+    "paymentTerms": {
+      "title": "Payment Terms",
+      "description": "Payment terms and conditions for our services:",
+      "pricing": {
+        "title": "Pricing",
+        "description": "All prices are quoted in Saudi Riyals (SAR) unless otherwise specified. Prices are subject to change with prior notice."
+      },
+      "payment": {
+        "title": "Payment Methods",
+        "description": "We accept various payment methods including bank transfers, credit cards, and digital payments. Payment terms will be specified in individual service agreements."
+      },
+      "latePayment": {
+        "title": "Late Payment",
+        "description": "Late payments may result in suspension of services and additional charges. Interest may be charged on overdue amounts."
+      },
+      "refunds": {
+        "title": "Refunds",
+        "description": "Refund policies vary by service and will be specified in individual service agreements. Generally, refunds are not provided for completed work."
+      }
+    },
+    "projectTerms": {
+      "title": "Project Terms",
+      "timeline": {
+        "title": "Project Timeline",
+        "description": "Project timelines will be agreed upon in writing before work begins. Delays may occur due to client feedback, changes in requirements, or unforeseen circumstances."
+      },
+      "changes": {
+        "title": "Change Requests",
+        "description": "Changes to project scope may result in additional costs and timeline adjustments. All changes must be approved in writing."
+      },
+      "approval": {
+        "title": "Client Approval",
+        "description": "Client approval is required at key project milestones. Delays in approval may affect project timeline and delivery."
+      },
+      "deliverables": {
+        "title": "Deliverables",
+        "description": "Project deliverables will be specified in individual service agreements. We will provide all agreed-upon deliverables upon project completion."
+      }
+    },
+    "confidentiality": {
+      "title": "Confidentiality",
+      "description": "We are committed to maintaining the confidentiality of your information:",
+      "obligations": {
+        "nonDisclosure": "We will not disclose your confidential information to third parties without your consent",
+        "security": "We implement appropriate security measures to protect your information",
+        "limitedAccess": "Access to your information is limited to authorized personnel only",
+        "return": "We will return or destroy confidential information upon request"
+      }
+    },
+    "limitationOfLiability": {
+      "title": "Limitation of Liability",
+      "description": "To the maximum extent permitted by law, DreamToApp IT Agency shall not be liable for:",
+      "exclusions": {
+        "damages": "Indirect, incidental, special, or consequential damages",
+        "thirdParty": "Damages caused by third-party services or products",
+        "forceMajeure": "Damages caused by events beyond our reasonable control",
+        "unauthorized": "Damages caused by unauthorized use or modification of our services"
+      }
+    },
+    "termination": {
+      "title": "Termination",
+      "byClient": {
+        "title": "Termination by Client",
+        "description": "You may terminate our services at any time with written notice. Early termination may result in additional charges."
+      },
+      "byCompany": {
+        "title": "Termination by Company",
+        "description": "We may terminate services for breach of these Terms, non-payment, or other valid reasons with written notice."
+      },
+      "effects": {
+        "title": "Effects of Termination",
+        "description": "Upon termination, you will lose access to our services, and we may delete your data in accordance with our data retention policies."
+      }
+    },
+    "disputeResolution": {
+      "title": "Dispute Resolution",
+      "description": "We are committed to resolving disputes amicably:",
+      "negotiation": {
+        "title": "Negotiation",
+        "description": "Parties agree to attempt to resolve disputes through good faith negotiation before pursuing other remedies."
+      },
+      "mediation": {
+        "title": "Mediation",
+        "description": "If negotiation fails, parties may agree to mediation with a neutral third party."
+      },
+      "arbitration": {
+        "title": "Arbitration",
+        "description": "Any disputes not resolved through negotiation or mediation shall be resolved through binding arbitration in Saudi Arabia."
+      }
+    },
+    "governingLaw": {
+      "title": "Governing Law",
+      "description": "These Terms shall be governed by and construed in accordance with the laws of the Kingdom of Saudi Arabia."
+    },
+    "severability": {
+      "title": "Severability",
+      "description": "If any provision of these Terms is found to be unenforceable, the remaining provisions shall continue in full force and effect."
+    },
+    "entireAgreement": {
+      "title": "Entire Agreement",
+      "description": "These Terms constitute the entire agreement between you and DreamToApp IT Agency regarding the use of our services."
+    },
+    "contactInformation": {
+      "title": "Contact Information",
+      "description": "If you have any questions about these Terms, please contact us:",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address"
+    },
+    "footer": "These Terms of Service are effective as of the date stated above and apply to all users of our services."
+  },
   "footer": {
     "readyToTransform": "Are you ready to turn your idea into reality?",
     "buildSomethingGreat": "Let's build something amazing together",
@@ -217,7 +554,19 @@
     "copyright": "All rights reserved",
     "socialMedia": "Social Media",
     "quickLinks": "Quick Links",
-    "agencyDescription": "We build digital experiences that drive success for ambitious brands."
+    "agencyDescription": "We build digital experiences that drive success for ambitious brands.",
+    "newsletterTitle": "Subscribe to our newsletter",
+    "newsletterPlaceholder": "Enter your email",
+    "newsletterButton": "Subscribe",
+    "newsletterDescription": "Get the latest updates and insights delivered to your inbox.",
+    "newsletterLoading": "Sending...",
+    "newsletterError": "An error occurred during subscription. Please try again.",
+    "newsletterEmailRequired": "Please enter an email address",
+    "newsletterSuccess": "Successfully subscribed to our newsletter",
+    "newsletterAlreadySubscribed": "You are already subscribed to our newsletter",
+    "newsletterReactivated": "Your newsletter subscription has been reactivated successfully",
+    "backToTop": "Back to top",
+    "team": "Team"
   },
   "services": {
     "tecnoUsed": "Innovative technologies that meet your needs",

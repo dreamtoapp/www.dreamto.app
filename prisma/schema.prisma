@@ -104,3 +104,11 @@ model ConsultationRequest {
   voiceUrl  String?  // Optional Cloudinary URL for the voice message
   createdAt DateTime @default(now()) // Timestamp of submission
 }
+
+model NewsletterSubscription {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique // Email address (unique to prevent duplicates)
+  isActive  Boolean  @default(true) // Whether the subscription is active
+  createdAt DateTime @default(now()) // Timestamp of subscription
+  updatedAt DateTime @updatedAt // Timestamp of last update
+}

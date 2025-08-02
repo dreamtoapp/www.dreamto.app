@@ -5,7 +5,6 @@ import Services from './component/Services';
 import FromIdea from './component/FromIdea';
 import WhyChooseUs from './component/WhyChooseUs';
 import DesinAndDiscover from './component/DesinAndDiscover';
-import Footer from './component/Footer';
 import HeroSection from '@/components/NewHero';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -189,10 +188,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* Footer Section */}
-      <section aria-label="Footer" className="bg-gradient-to-r from-[#0d3ad7]/10 to-[#99e4ff]/10">
-        <Footer />
-      </section>
     </div>
   );
 }
