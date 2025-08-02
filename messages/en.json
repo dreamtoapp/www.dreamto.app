@@ -841,10 +841,47 @@
   },
   "worksample": {
     "noFolders": "No folders found.",
+    "noFoldersDescription": "We're currently preparing our portfolio. Check back soon for amazing projects!",
     "noImage": "No Image Available",
     "taskCount": "{count, plural, =0 {No tasks} =1 {One task} other {# tasks}}",
     "viewGallery": "View Gallery",
-    "featuredWebsites": "Featured Websites"
+    "featuredWebsites": "Featured Websites",
+    "coverImage": "Cover for {folderName}",
+    "portfolio": "Portfolio",
+    "heroTitle": "Our Creative Portfolio",
+    "heroDescription": "Explore our diverse collection of projects showcasing innovation, creativity, and technical excellence",
+    "items": "items",
+    "projectDescription": "Discover the {projectName} project - a showcase of our expertise and creativity in action.",
+    "websites": {
+      "happyMoments": {
+        "title": "Happy Moments",
+        "description": "Gallery For Any Collection"
+      },
+      "alkhuramiEst": {
+        "title": "Al-khurami Est",
+        "description": "JAC Forkleft."
+      },
+      "dreamToApp": {
+        "title": "Dream To App",
+        "description": "Where Dream Begin"
+      },
+      "onProgress": {
+        "title": "On Progress",
+        "description": "Still under development"
+      },
+      "mixyBlog": {
+        "title": "mixyBlog",
+        "description": "Learn more about our third website."
+      },
+      "doIt": {
+        "title": "DoIt",
+        "description": "SaaS App To track you tasks"
+      },
+      "carDotNet": {
+        "title": "CarDotNet",
+        "description": "Learn more about our third website."
+      }
+    }
   },
   "thankyou": {
     "title": "Thank You!",
@@ -920,7 +957,12 @@
     "reloadImage": "Reload Image",
     "enlargedView": "Enlarged View",
     "enlargedDescription": "This is an enlarged preview of the selected image. Press ESC or click outside to close.",
-    "fallbackImage": "Fallback Image"
+    "fallbackImage": "Fallback Image",
+    "backToPortfolio": "Back to Portfolio",
+    "images": "images",
+    "galleryDescription": "Explore the {projectName} gallery - a visual journey through our creative process and final results.",
+    "openInNewTab": "Open in New Tab",
+    "download": "Download"
   },
   "navbar": {
     "settings": "Settings",

@@ -844,7 +844,48 @@
   },
   "worksample": {
     "title": "عينة عمل",
-    "featuredWebsites": "المواقع المميزة"
+    "featuredWebsites": "المواقع المميزة",
+    "noFolders": "لم يتم العثور على مجلدات.",
+    "noFoldersDescription": "نحن نعد محفظة أعمالنا حالياً. عد قريباً لمشاريع مذهلة!",
+    "noImage": "لا توجد صورة متاحة",
+    "taskCount": "{count, plural, =0 {لا توجد مهام} =1 {مهمة واحدة} other {# مهام}}",
+    "viewGallery": "عرض المعرض",
+    "coverImage": "صورة غلاف لـ {folderName}",
+    "portfolio": "محفظة الأعمال",
+    "heroTitle": "محفظة أعمالنا الإبداعية",
+    "heroDescription": "استكشف مجموعتنا المتنوعة من المشاريع التي تعرض الابتكار والإبداع والتميز التقني",
+    "items": "عناصر",
+    "projectDescription": "اكتشف مشروع {projectName} - عرض لمهاراتنا وإبداعنا في العمل.",
+    "websites": {
+      "happyMoments": {
+        "title": "لحظات سعيدة",
+        "description": "معرض لأي مجموعة"
+      },
+      "alkhuramiEst": {
+        "title": "مؤسسة الخرمي",
+        "description": "JAC Forkleft."
+      },
+      "dreamToApp": {
+        "title": "حلم إلى تطبيق",
+        "description": "حيث يبدأ الحلم"
+      },
+      "onProgress": {
+        "title": "قيد التطوير",
+        "description": "لا يزال قيد التطوير"
+      },
+      "mixyBlog": {
+        "title": "مدونة ميكسي",
+        "description": "تعرف على المزيد حول موقعنا الثالث."
+      },
+      "doIt": {
+        "title": "افعلها",
+        "description": "تطبيق SaaS لتتبع مهامك"
+      },
+      "carDotNet": {
+        "title": "كار دوت نت",
+        "description": "تعرف على المزيد حول موقعنا الثالث."
+      }
+    }
   },
   "thankyou": {
     "title": "شكرًا لك!",
@@ -924,7 +965,12 @@
     "reloadImage": "إعادة تحميل الصورة",
     "enlargedView": "عرض مكبر",
     "enlargedDescription": "هذا معاينة مكبرة للصورة المحددة. اضغط ESC أو انقر خارجها للإغلاق.",
-    "fallbackImage": "صورة بديلة"
+    "fallbackImage": "صورة بديلة",
+    "backToPortfolio": "العودة إلى المحفظة",
+    "images": "صور",
+    "galleryDescription": "استكشف معرض {projectName} - رحلة بصرية عبر عملية إبداعنا والنتائج النهائية.",
+    "openInNewTab": "فتح في تبويب جديد",
+    "download": "تحميل"
   },
   "navbar": {
     "settings": "الإعدادات",

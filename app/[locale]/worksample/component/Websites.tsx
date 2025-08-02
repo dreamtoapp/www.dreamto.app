@@ -21,71 +21,70 @@ function Websites() {
   const websitesData = [
     {
       id: 1,
-      title: "Happy Moments",
-      description: "Gallery For Any Collection",
+      title: t('websites.happyMoments.title'),
+      description: t('websites.happyMoments.description'),
       url: "https://example.com/website1",
-      image: "/website/moments.png", // Local image path or external URL
+      image: "/website/moments.png",
       width: 300,
       height: 200,
       mode: "",
     },
     {
       id: 2,
-      title: "Al-khurami Est",
-      description: "JAC Forkleft.",
+      title: t('websites.alkhuramiEst.title'),
+      description: t('websites.alkhuramiEst.description'),
       url: "https://jac.dreamto.app/",
-      image: "/website/khremi.png", // Local image path or external URL
+      image: "/website/khremi.png",
       width: 300,
       height: 200,
       mode: "",
     },
     {
       id: 3,
-      title: "Dream To App",
-      description: "Where Dream Begin",
+      title: t('websites.dreamToApp.title'),
+      description: t('websites.dreamToApp.description'),
       url: "/",
-      image: "/website/dta.png", // Local image path or external URL
+      image: "/website/dta.png",
       width: 300,
       height: 200,
       mode: "",
     },
     {
       id: 4,
-      title: "On Progress",
-      description: "Still under development",
+      title: t('websites.onProgress.title'),
+      description: t('websites.onProgress.description'),
       url: "#", // Disabled for now
-      image: "/website/cardoc.png", // Local image path or external URL
+      image: "/website/cardoc.png",
       width: 300,
       height: 200,
       mode: "development",
     },
     {
       id: 5,
-      title: "mixyBlog",
-      description: "Learn more about our third website.",
+      title: t('websites.mixyBlog.title'),
+      description: t('websites.mixyBlog.description'),
       url: "https://nadish.dreamto.app/ar",
-      image: "/website/next.png", // Local image path or external URL
+      image: "/website/next.png",
       width: 300,
       height: 200,
       mode: "",
     },
     {
       id: 6,
-      title: "DoIt",
-      description: "SaaS App To track you tasks",
-      // url: "https://Doit.dreamto.app/ar",
+      title: t('websites.doIt.title'),
+      description: t('websites.doIt.description'),
       url: "#", // Disabled for now
-      image: "/website/dtax.png", // Local image path or external URL
+      image: "/website/dtax.png",
       width: 300,
       height: 200,
       mode: "",
     },
     {
       id: 7,
-      title: "CarDotNet",
-      description: "Learn more about our third website.",
+      title: t('websites.carDotNet.title'),
+      description: t('websites.carDotNet.description'),
       url: "https://aws.dreamto.app/",
-      image: "/website/carshop.png", // Local image path or external URL
+      image: "/website/carshop.png",
       width: 300,
       height: 200,
       mode: "doing",
@@ -114,7 +113,7 @@ function Websites() {
                     height={website.height}
                     className="w-full h-48 object-cover rounded-t-md"
                     placeholder="blur" // Add a blur placeholder for better UX
-                    blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==" // Base64 blur placeholder
+                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
                     priority={false} // Lazy load images
                   />
                   <CardContent className="p-4">

@@ -3,9 +3,42 @@ import { useTheme } from "next-themes";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useEffect, useState } from "react";
 
 export default function ThemeSwitch() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  // Prevent hydration mismatch by only rendering after mount
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Show a placeholder during SSR and initial mount
+  if (!mounted) {
+    return (
+      <Button
+        variant="ghost"
+        size="icon"
+        className={cn(
+          "rounded-full w-9 h-9",
+          "bg-background/50 hover:bg-background/80",
+          "border border-border/20",
+          "transition-all duration-300"
+        )}
+      >
+        <div>
+          <FaSun
+            className={cn(
+              "w-5 h-5",
+              "text-muted-foreground",
+              "transition-all duration-300"
+            )}
+          />
+        </div>
+      </Button>
+    );
+  }
 
   return (
     <Button

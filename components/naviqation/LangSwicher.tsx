@@ -20,9 +20,20 @@ const LangSwitcher = memo(function LangSwitcher() {
   // Memoize the current language data to prevent unnecessary re-renders
   const currentLanguage = useMemo(() => languageData[locale], [locale]);
 
-  // Get the pathname without the current locale prefix
+  // Get the pathname without the current locale prefix - FIXED VERSION
   const pathWithoutLocale = useMemo(() => {
-    return pathname.replace(/^\/[a-z]{2}/, '') || '/';
+    // Ensure we have a valid pathname
+    if (!pathname || pathname === '/') return '/';
+
+    // Remove the locale prefix more safely
+    const pathSegments = pathname.split('/');
+    if (pathSegments.length > 1 && ['ar', 'en'].includes(pathSegments[1])) {
+      // Remove the locale segment and join the rest
+      return '/' + pathSegments.slice(2).join('/');
+    }
+
+    // If no locale prefix found, return the original pathname
+    return pathname;
   }, [pathname]);
 
   // Get the target locale
