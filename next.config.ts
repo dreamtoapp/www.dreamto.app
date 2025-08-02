@@ -37,7 +37,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "cdn.sanity.io",
       },
-
       {
         protocol: "https",
         hostname: "lh3.googleusercontent.com",
@@ -49,6 +48,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "d2yq1wt6p3tg8m.cloudfront.net",
+      },
+      {
+        protocol: "https",
+        hostname: "via.placeholder.com",
       },
     ],
   },

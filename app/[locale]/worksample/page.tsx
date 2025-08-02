@@ -11,7 +11,7 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { getFoldersWithCoverImages } from '@/lib/cloudinary';
-import { FolderOpen, Image as ImageIcon, ArrowRight, Eye } from 'lucide-react';
+import { FolderOpen, Image as ImageIcon, ArrowRight, Eye, AlertCircle } from 'lucide-react';
 import MotionDiv from '@/components/MotionDiv';
 
 function getLastNode(folderName: string) {
@@ -19,31 +19,79 @@ function getLastNode(folderName: string) {
   return parts[parts.length - 1];
 }
 
+// Fallback data for when Cloudinary is not configured
+const fallbackFolders = [
+  {
+    folderName: "dreamToApp/workSample/flyer",
+    coverImage: null,
+    itemCount: 56,
+    items: []
+  },
+  {
+    folderName: "dreamToApp/workSample/coverage",
+    coverImage: null,
+    itemCount: 2,
+    items: []
+  },
+  {
+    folderName: "dreamToApp/workSample/cnc",
+    coverImage: null,
+    itemCount: 6,
+    items: []
+  },
+  {
+    folderName: "dreamToApp/workSample/character",
+    coverImage: null,
+    itemCount: 10,
+    items: []
+  }
+];
+
 export default async function Page() {
-  const baseFolder = "dreamToApp/worksample";
-  const folders = await getFoldersWithCoverImages(baseFolder);
+  const baseFolder = "dreamToApp/workSample";
   const locale = await getLocale();
   const t = await getTranslations("worksample");
   const t2 = await getTranslations("buttons");
 
-  if (!folders.length) {
-    return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-16 h-16 mx-auto bg-muted rounded-full flex items-center justify-center">
-            <FolderOpen className="w-8 h-8 text-muted-foreground" />
-          </div>
-          <h3 className="text-lg font-semibold text-foreground">{t("noFolders")}</h3>
-          <p className="text-muted-foreground max-w-md">
-            {t("noFoldersDescription")}
-          </p>
-        </div>
-      </div>
-    );
+  let folders;
+  let hasCloudinaryError = false;
+
+  try {
+    folders = await getFoldersWithCoverImages(baseFolder);
+
+    // If no folders returned, it might be a configuration issue
+    if (!folders || folders.length === 0) {
+      hasCloudinaryError = true;
+      folders = fallbackFolders;
+    }
+  } catch (error) {
+    console.error("Failed to load folders from Cloudinary:", error);
+    hasCloudinaryError = true;
+    folders = fallbackFolders;
   }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
+      {/* Configuration Warning */}
+      {hasCloudinaryError && (
+        <div className="container mx-auto px-4 py-4">
+          <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mb-6">
+            <div className="flex items-center gap-3">
+              <AlertCircle className="w-5 h-5 text-yellow-500" />
+              <div>
+                <h3 className="font-semibold text-yellow-700 dark:text-yellow-400">
+                  Cloudinary Not Configured
+                </h3>
+                <p className="text-sm text-yellow-600 dark:text-yellow-300">
+                  Please set up your Cloudinary environment variables to see actual images.
+                  Check CLOUDINARY_SETUP.md for instructions.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Hero Section */}
       <div className="container mx-auto px-4 py-12">
         <MotionDiv
@@ -68,6 +116,7 @@ export default async function Page() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {folders.map((folder, index) => {
             const lastSegment = getLastNode(folder.folderName);
+            const galleryUrl = `/${locale}/worksample/show/${lastSegment}`;
 
             return (
               <MotionDiv
@@ -116,7 +165,7 @@ export default async function Page() {
                         size="sm"
                         className="bg-primary/90 backdrop-blur-sm hover:bg-primary text-primary-foreground"
                       >
-                        <Link href={`/${locale}/worksample/show/${encodeURIComponent(lastSegment)}`}>
+                        <Link href={galleryUrl}>
                           <Eye className="w-4 h-4 mr-2" />
                           {t("viewGallery")}
                         </Link>
@@ -139,7 +188,7 @@ export default async function Page() {
                       size="sm"
                       className="w-full group/btn"
                     >
-                      <Link href={`/${locale}/worksample/show/${encodeURIComponent(lastSegment)}`}>
+                      <Link href={galleryUrl}>
                         {t2("showMore")}
                         <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
