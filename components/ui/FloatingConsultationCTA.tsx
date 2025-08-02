@@ -7,7 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Button } from "./button";
 import { Input } from "./input";
 import { Textarea } from "./textarea";
-import { Label } from "./label";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./form";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 // import { VoiceRecorder } from "./VoiceRecorder";
@@ -129,58 +129,85 @@ export default function FloatingConsultationCTA() {
               <Button onClick={() => { setSuccess(false); setOpen(false); }}>{t("close")}</Button>
             </div>
           ) : (
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              <div>
-                <Label htmlFor="name">{t("name")}</Label>
-                <Input id="name" {...form.register("name")}
-                  disabled={loading}
-                  autoComplete="name"
-                  aria-invalid={!!form.formState.errors.name}
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("name")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={loading}
+                          autoComplete="name"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                {form.formState.errors.name && (
-                  <span className="text-destructive text-xs">{form.formState.errors.name.message}</span>
-                )}
-              </div>
-              <div>
-                <Label htmlFor="email">{t("email")}</Label>
-                <Input id="email" type="email" {...form.register("email")}
-                  disabled={loading}
-                  autoComplete="email"
-                  aria-invalid={!!form.formState.errors.email}
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("email")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          type="email"
+                          disabled={loading}
+                          autoComplete="email"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                {form.formState.errors.email && (
-                  <span className="text-destructive text-xs">{form.formState.errors.email.message}</span>
-                )}
-              </div>
-              <div>
-                <Label htmlFor="phone">{t("phone")}</Label>
-                <Input id="phone" {...form.register("phone")}
-                  disabled={loading}
-                  autoComplete="tel"
-                  aria-invalid={!!form.formState.errors.phone}
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("phone")}</FormLabel>
+                      <FormControl>
+                        <Input
+                          {...field}
+                          disabled={loading}
+                          autoComplete="tel"
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                {form.formState.errors.phone && (
-                  <span className="text-destructive text-xs">{form.formState.errors.phone.message}</span>
-                )}
-              </div>
-              {/* Conditionally show textarea or voice recorder */}
-              <div>
-                <Label htmlFor="message">{t("message")}</Label>
-                <Textarea id="message" rows={4} {...form.register("message")}
-                  disabled={loading}
-                  aria-invalid={!!form.formState.errors.message}
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{t("message")}</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          {...field}
+                          rows={4}
+                          disabled={loading}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
                 />
-                {form.formState.errors.message && (
-                  <span className="text-destructive text-xs">{form.formState.errors.message.message}</span>
-                )}
-              </div>
-              {error && <div className="text-destructive text-sm">{error}</div>}
-              <DialogFooter>
-                <Button type="submit" disabled={loading} className="w-full">
-                  {loading ? t("sending") : t("submit")}
-                </Button>
-              </DialogFooter>
-            </form>
+                {error && <div className="text-destructive text-sm">{error}</div>}
+                <DialogFooter>
+                  <Button type="submit" disabled={loading} className="w-full">
+                    {loading ? t("sending") : t("submit")}
+                  </Button>
+                </DialogFooter>
+              </form>
+            </Form>
           )}
         </DialogContent>
       </Dialog>

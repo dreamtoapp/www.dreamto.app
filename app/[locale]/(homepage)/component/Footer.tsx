@@ -5,6 +5,7 @@ import Link from '@/components/link';
 import { contactUs, technology } from '../../../../constant/icons';
 import { cn } from '../../../../lib/utils';
 import NewsletterSubscription from './NewsletterSubscription';
+import NavbarBrand from '@/components/naviqation/NavbarBrand';
 
 // Define types for contact items
 type ContactItem = {
@@ -178,39 +179,49 @@ const Footer: React.FC = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <footer className="w-full bg-background text-foreground pt-10 pb-4 px-4 mt-12 border-t border-border shadow-2xl" role="contentinfo">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+      <footer className="w-full bg-background text-foreground pt-6 pb-3 px-4 mt-8 border-t border-border shadow-lg" role="contentinfo">
+        <div className="max-w-7xl mx-auto space-y-6 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-8 lg:items-start">
           {/* About / Logo */}
-          <div className="flex flex-col items-start gap-3">
-            <div className="relative bg-foreground w-20 h-20 rounded-lg shadow-lg overflow-hidden">
+          <div className="flex flex-col items-center lg:items-start gap-3">
+            <div className="relative bg-primary/20 w-20 h-20 lg:w-24 lg:h-24 rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
               <Image
-                src="/assets/dta.svg"
+                src="/assets/dreamtoapp/dreamToApp.svg"
                 alt="DreamTo IT Agency Logo"
-                width={80}
-                height={80}
-                className="w-full h-full object-contain p-2"
+                width={48}
+                height={48}
+                className="w-12 h-12 lg:w-14 lg:h-14 block dark:hidden"
+                priority={false}
+              />
+              <Image
+                src="/assets/dreamtoapp/dreamToApp-dark.svg"
+                alt="DreamTo IT Agency Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12 lg:w-14 lg:h-14 hidden dark:block"
                 priority={false}
               />
             </div>
 
-            <h2 className="font-bold text-xl tracking-wide">DreamTo IT Agency</h2>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+            <h2 className="font-bold text-lg lg:text-xl tracking-wide text-center lg:text-left">DreamTo IT Agency</h2>
+            <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed max-w-xs text-center lg:text-left">
               {footer("agencyDescription")}
             </p>
 
-            {/* Newsletter Subscription */}
-            <NewsletterSubscription />
+            {/* Newsletter Subscription - Hidden on mobile to save space */}
+            <div className="hidden lg:block">
+              <NewsletterSubscription />
+            </div>
           </div>
 
           {/* Quick Links */}
           <nav aria-label="Quick Links" className="flex flex-col gap-2">
-            <h3 className="font-semibold text-lg mb-2 text-foreground">{footer("quickLinks")}</h3>
-            <ul className="space-y-2">
+            <h3 className="font-semibold text-base lg:text-lg mb-2 text-foreground text-center lg:text-left">{footer("quickLinks")}</h3>
+            <ul className="space-y-1 lg:space-y-2">
               {quickLinks.map(link => (
-                <li key={link.href}>
+                <li key={link.href} className="text-center lg:text-left">
                   <Link
                     href={link.href}
-                    className="hover:text-primary transition-colors text-foreground/90 text-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"
+                    className="hover:text-primary transition-colors text-foreground/90 text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"
                   >
                     {link.label}
                   </Link>
@@ -220,34 +231,25 @@ const Footer: React.FC = async () => {
           </nav>
 
           {/* Contact Info */}
-          <address className="not-italic flex flex-col gap-2 text-base">
-            <h3 className="font-semibold text-lg mb-2">{footer("chatWithUs")}</h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <contactUs.email.icon className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+          <address className="not-italic flex flex-col gap-2 text-sm lg:text-base">
+            <h3 className="font-semibold text-base lg:text-lg mb-2 text-center lg:text-left">{footer("chatWithUs")}</h3>
+            <div className="space-y-2 lg:space-y-3">
+              <div className="flex items-center justify-center lg:justify-start gap-2">
+                <contactUs.email.icon className="w-4 h-4 lg:w-5 lg:h-5 text-primary flex-shrink-0" aria-hidden="true" />
                 <Link
                   href="mailto:info@dreamto.app"
-                  className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"
+                  className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5 text-sm lg:text-base"
                   aria-label="Send us an email"
                 >
                   info@dreamto.app
                 </Link>
               </div>
-              <div className="flex items-center gap-2">
-                <contactUs.phone.icon className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
-                <Link
-                  href="tel:+966554113107"
-                  className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"
-                  aria-label="Call us"
-                >
-                  +966 55 411 3107
-                </Link>
-              </div>
-              <div className="flex items-center gap-2">
-                <contactUs.form.icon className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
+
+              <div className="flex items-center justify-center lg:justify-start gap-2">
+                <contactUs.form.icon className="w-4 h-4 lg:w-5 lg:h-5 text-primary flex-shrink-0" aria-hidden="true" />
                 <Link
                   href="#contact-form"
-                  className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"
+                  className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5 text-sm lg:text-base"
                   aria-label="Fill out our contact form"
                 >
                   {footer("getInTouch")}
@@ -257,9 +259,9 @@ const Footer: React.FC = async () => {
           </address>
 
           {/* Social Media */}
-          <div className="flex flex-col items-start">
-            <h3 className="font-semibold text-lg mb-2">{footer("socialMedia")}</h3>
-            <div className="grid grid-cols-3 gap-3 w-full">
+          <div className="flex flex-col items-center lg:items-start">
+            <h3 className="font-semibold text-base lg:text-lg mb-2 text-center lg:text-left">{footer("socialMedia")}</h3>
+            <div className="grid grid-cols-3 gap-2 lg:gap-3 w-full max-w-xs lg:max-w-none">
               {contact.map((item, index) => (
                 <Link
                   key={index}
@@ -267,9 +269,9 @@ const Footer: React.FC = async () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.ariaLabel}
-                  className="w-12 h-12 bg-muted rounded-full flex items-center justify-center text-primary shadow transition-all duration-300 hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                  className="w-10 h-10 lg:w-12 lg:h-12 bg-muted rounded-full flex items-center justify-center text-primary shadow transition-all duration-300 hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
                 >
-                  <item.icon className="w-6 h-6" aria-hidden="true" />
+                  <item.icon className="w-5 h-5 lg:w-6 lg:h-6" aria-hidden="true" />
                 </Link>
               ))}
             </div>
@@ -277,16 +279,16 @@ const Footer: React.FC = async () => {
         </div>
 
         {/* Copyright & Legal */}
-        <div className="mt-10 flex flex-col md:flex-row justify-center items-center gap-4 border-t border-border/10 pt-4 text-xs text-muted-foreground">
-          <span>&copy; {year} DreamToApp IT Agency. {footer("copyright")}.</span>
-          <span className="hidden md:inline">•</span>
+        <div className="mt-6 lg:mt-10 flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-4 border-t border-border/10 pt-3 lg:pt-4 text-xs text-muted-foreground">
+          <span className="text-center">&copy; {year} DreamToApp IT Agency. {footer("copyright")}.</span>
+          <span className="hidden lg:inline">•</span>
           <Link
             href={`/${locale}/privacy`}
             className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"
           >
             {locale === 'ar' ? 'سياسة الخصوصية' : 'Privacy Policy'}
           </Link>
-          <span className="hidden md:inline">•</span>
+          <span className="hidden lg:inline">•</span>
           <Link
             href={`/${locale}/terms`}
             className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5"

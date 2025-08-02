@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 const CTAButton: React.FC<{ locale: string }> = ({ locale }) => {
   const t = useTranslations('navbar');
   return (
-    <Link href={`/${locale}/contactus`}>
+    <Link href={`/${locale}/start-your-dream`}>
       <div className="relative group">
         <style jsx>{`
           @keyframes sharp-glow {
