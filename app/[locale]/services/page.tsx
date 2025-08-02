@@ -20,11 +20,25 @@ import {
   Clock,
   Shield,
   Rocket,
+  ChevronRight,
+  Play,
+  Users,
+  Code,
+  Layers,
+  BarChart3,
+  Lightbulb,
+  Heart,
+  ThumbsUp,
+  MessageCircle,
+  Phone,
+  Mail,
+  MapPin,
 } from "lucide-react"
 import Image from "next/image"
 import React from "react"
 import { getTranslations, getLocale } from "next-intl/server"
 import Link from '@/components/link'
+import MotionDiv from '@/components/MotionDiv'
 
 // ============================================================================
 // TYPES & INTERFACES
@@ -38,6 +52,8 @@ interface Service {
   color: string
   textColor: string
   bgColor: string
+  gradient: string
+  stats: { value: string; label: string }[]
 }
 
 interface Testimonial {
@@ -46,6 +62,7 @@ interface Testimonial {
   content: string
   avatar: string
   rating: number
+  company: string
 }
 
 interface HeroSectionProps {
@@ -193,46 +210,78 @@ const getStructuredData = () => ({
 // ============================================================================
 
 const HeroBadge: React.FC<{ t: any }> = ({ t }) => (
-  <Badge variant="secondary" className="w-fit mb-2">
-    <Sparkles className="w-4 h-4 mr-2" />
-    {t("heroBadge")}
-  </Badge>
+  <MotionDiv
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    <Badge variant="secondary" className="w-fit mb-4 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+      <Sparkles className="w-4 h-4 mr-2 text-primary" />
+      {t("heroBadge")}
+    </Badge>
+  </MotionDiv>
 )
 
 const HeroTitle: React.FC<{ t: any }> = ({ t }) => (
-  <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-foreground mt-0">
-    <span className="text-primary">{t("heroTitle1")}</span>
-    <br />
-    <span className="text-secondary">{t("heroTitle2")}</span>
-  </h1>
+  <MotionDiv
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay: 0.2 }}
+  >
+    <h1 className="text-5xl lg:text-7xl font-bold leading-tight text-foreground mt-0">
+      <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        {t("heroTitle1")}
+      </span>
+      <br />
+      <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+        {t("heroTitle2")}
+      </span>
+    </h1>
+  </MotionDiv>
 )
 
 const HeroDescription: React.FC<{ t: any }> = ({ t }) => (
-  <p className="text-xl text-muted-foreground max-w-2xl leading-relaxed">
-    {t("heroDescription")}
-  </p>
+  <MotionDiv
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.4 }}
+  >
+    <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl leading-relaxed">
+      {t("heroDescription")}
+    </p>
+  </MotionDiv>
 )
 
 const HeroCTAs: React.FC<{ t: any; locale: string }> = ({ t, locale }) => (
-  <div className="flex flex-col sm:flex-row gap-4">
+  <MotionDiv
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.6 }}
+    className="flex flex-col sm:flex-row gap-4"
+  >
     <Link href={`/${locale}/contactus`} passHref>
-      <Button size="lg" className="bg-primary hover:bg-primary/90">
+      <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
         <Target className="w-5 h-5 mr-2" />
         {t("ctaGetQuoteNow")}
       </Button>
     </Link>
     <Link href={`/${locale}/worksample`} passHref>
-      <Button size="lg" variant="outline">
+      <Button size="lg" variant="outline" className="border-2 hover:bg-primary/5 hover:border-primary transition-all duration-300 transform hover:scale-105">
         {t("ctaViewPortfolio")}
-        <ArrowRight className="w-5 h-5 ml-2" />
+        <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
       </Button>
     </Link>
-  </div>
+  </MotionDiv>
 )
 
 const HeroStats: React.FC<{ t: any }> = ({ t }) => (
-  <div className="flex items-center gap-6 pt-4">
-    <div className="flex items-center gap-2">
+  <MotionDiv
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: 0.8 }}
+    className="flex items-center gap-6 pt-6"
+  >
+    <div className="flex items-center gap-3 bg-background/50 backdrop-blur-sm rounded-full px-4 py-2 border border-border/20">
       <div className="flex -space-x-2">
         {[1, 2, 3, 4].map((i) => (
           <Avatar key={i} className="border-2 border-background w-8 h-8">
@@ -241,22 +290,27 @@ const HeroStats: React.FC<{ t: any }> = ({ t }) => (
           </Avatar>
         ))}
       </div>
-      <span className="text-sm text-muted-foreground">{t("happyClients")}</span>
+      <span className="text-sm text-muted-foreground font-medium">{t("happyClients")}</span>
     </div>
-    <Separator orientation="vertical" className="h-6" />
-    <div className="flex items-center gap-1">
+    <Separator orientation="vertical" className="h-8" />
+    <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm rounded-full px-4 py-2 border border-border/20">
       {[1, 2, 3, 4, 5].map((star) => (
-        <Star key={star} className="w-4 h-4 fill-accent text-accent" />
+        <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
       ))}
-      <span className="text-sm text-muted-foreground ml-2">{t("rating")}</span>
+      <span className="text-sm text-muted-foreground font-medium ml-2">{t("rating")}</span>
     </div>
-  </div>
+  </MotionDiv>
 )
 
 const HeroImage: React.FC = () => (
-  <div className="relative">
-    <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-3xl"></div>
-    <Card className="relative border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
+  <MotionDiv
+    initial={{ opacity: 0, scale: 0.9 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1, delay: 0.3 }}
+    className="relative"
+  >
+    <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-secondary/20 to-accent/30 rounded-3xl blur-3xl animate-pulse"></div>
+    <Card className="relative border-0 shadow-2xl bg-card/80 backdrop-blur-sm hover:shadow-3xl transition-all duration-500 transform hover:scale-105">
       <CardContent className="p-0">
         <Image
           src="/assets/dreamtoapp/dreamToApp.svg"
@@ -268,16 +322,17 @@ const HeroImage: React.FC = () => (
         />
       </CardContent>
     </Card>
-  </div>
+  </MotionDiv>
 )
 
 const HeroSection: React.FC<HeroSectionProps> = ({ t, locale }) => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10">
-      <div className="relative container mx-auto px-4 py-4">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 min-h-screen flex items-center">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+      <div className="relative container mx-auto px-4 py-16">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
-            <div className="space-y-6">
+            <div className="space-y-8">
               <HeroBadge t={t} />
               <HeroTitle t={t} />
               <HeroDescription t={t} />
@@ -297,74 +352,101 @@ const HeroSection: React.FC<HeroSectionProps> = ({ t, locale }) => {
 // ============================================================================
 
 const ServicesHeader: React.FC<{ t: any }> = ({ t }) => (
-  <header className="text-center mb-16">
-    <Badge variant="outline" className="mb-4">
-      <Zap className="w-4 h-4 mr-2" />
+  <MotionDiv
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="text-center mb-20"
+  >
+    <Badge variant="outline" className="mb-6 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+      <Zap className="w-4 h-4 mr-2 text-primary" />
       {t("professionalServices")}
     </Badge>
-    <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+    <h2 className="text-5xl lg:text-6xl font-bold text-foreground mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
       {t("tecnoUsed")}
     </h2>
-    <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+    <p className="text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
       {t("blendingCreativity")}
     </p>
-  </header>
+  </MotionDiv>
 )
 
 const ServiceIcon: React.FC<{ service: Service }> = ({ service }) => (
-  <div className="flex justify-center mt-6 mb-2">
-    <div className={`${service.bgColor} p-4 rounded-full border shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-      {React.createElement(service.icon, { className: `w-10 h-10 ${service.textColor}` })}
+  <div className="flex justify-center mt-6 mb-4">
+    <div className={`${service.bgColor} p-6 rounded-2xl border shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-500 ${service.gradient}`}>
+      {React.createElement(service.icon, { className: `w-12 h-12 ${service.textColor}` })}
     </div>
   </div>
 )
 
+const ServiceStats: React.FC<{ service: Service }> = ({ service }) => (
+  <div className="grid grid-cols-2 gap-4 mt-6">
+    {service.stats.map((stat, index) => (
+      <div key={index} className="text-center p-3 bg-muted/30 rounded-lg">
+        <div className={`text-lg font-bold ${service.textColor}`}>{stat.value}</div>
+        <div className="text-xs text-muted-foreground">{stat.label}</div>
+      </div>
+    ))}
+  </div>
+)
+
 const ServiceFeatures: React.FC<{ service: Service; t: any }> = ({ service, t }) => (
-  <div className="space-y-3">
+  <div className="space-y-4">
     <h4 className="font-semibold text-sm text-foreground flex items-center gap-2">
       <Sparkles className="w-4 h-4 text-primary" />
       {t("keyFeatures")}
     </h4>
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-1 gap-3">
       {service.features.map((feature: string, featureIndex: number) => (
-        <div key={featureIndex} className="flex items-center gap-2 bg-muted/50 p-2 rounded-md">
-          <CheckCircle className={`w-3 h-3 ${service.textColor} flex-shrink-0`} />
-          <span className="text-xs text-muted-foreground">{feature}</span>
+        <div key={featureIndex} className="flex items-center gap-3 bg-muted/30 p-3 rounded-lg hover:bg-muted/50 transition-colors">
+          <CheckCircle className={`w-4 h-4 ${service.textColor} flex-shrink-0`} />
+          <span className="text-sm text-muted-foreground">{feature}</span>
         </div>
       ))}
     </div>
   </div>
 )
 
-const ServiceCard: React.FC<{ service: Service; t: any }> = ({ service, t }) => (
-  <Card className="group hover:shadow-xl transition-all duration-500 border hover:border-primary/20 hover:-translate-y-2 bg-card/80 backdrop-blur-sm">
-    <ServiceIcon service={service} />
-    <CardHeader className="pb-4">
-      <CardTitle className={`text-xl font-bold group-hover:${service.textColor} transition-colors`}>
-        {service.title}
-      </CardTitle>
-    </CardHeader>
-    <CardContent className="space-y-6">
-      <CardDescription className="text-muted-foreground leading-relaxed text-sm">
-        {service.description}
-      </CardDescription>
-      <ServiceFeatures service={service} t={t} />
-      <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-colors`}>
-        {t("learnMoreAbout", { service: service.title })}
-        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-      </Button>
-    </CardContent>
-  </Card>
+const ServiceCard: React.FC<{ service: Service; t: any; index: number }> = ({ service, t, index }) => (
+  <MotionDiv
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+    viewport={{ once: true }}
+  >
+    <Card className="group hover:shadow-2xl transition-all duration-500 border hover:border-primary/30 hover:-translate-y-2 bg-card/80 backdrop-blur-sm relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <ServiceIcon service={service} />
+      <CardHeader className="pb-4 relative z-10">
+        <CardTitle className={`text-2xl font-bold group-hover:${service.textColor} transition-colors`}>
+          {service.title}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-6 relative z-10">
+        <CardDescription className="text-muted-foreground leading-relaxed text-base">
+          {service.description}
+        </CardDescription>
+        <ServiceFeatures service={service} t={t} />
+        <ServiceStats service={service} />
+        <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-all duration-300 transform group-hover:scale-105`}>
+          {t("learnMoreAbout", { service: service.title })}
+          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+        </Button>
+      </CardContent>
+    </Card>
+  </MotionDiv>
 )
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ t, services }) => {
   return (
-    <section className="py-24 bg-muted/30" id="services">
-      <div className="container mx-auto px-4">
+    <section className="py-32 bg-gradient-to-br from-muted/20 via-background to-muted/10 relative overflow-hidden" id="services">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:30px_30px]" />
+      <div className="relative container mx-auto px-4">
         <ServicesHeader t={t} />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <ServiceCard key={index} service={service} t={t} />
+            <ServiceCard key={index} service={service} t={t} index={index} />
           ))}
         </div>
       </div>
@@ -377,33 +459,54 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ t, services }) => {
 // ============================================================================
 
 const WhyChooseUsHeader: React.FC<{ t: any }> = ({ t }) => (
-  <div className="space-y-4">
-    <Badge variant="outline">
-      <Award className="w-4 h-4 mr-2" />
+  <MotionDiv
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="space-y-6"
+  >
+    <Badge variant="outline" className="bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+      <Award className="w-4 h-4 mr-2 text-primary" />
       {t("whyChooseUs")}
     </Badge>
-    <h2 className="text-4xl font-bold text-foreground">{t("innovateFutureSolutions")}</h2>
-    <p className="text-lg text-muted-foreground leading-relaxed">
+    <h2 className="text-5xl font-bold text-foreground bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+      {t("innovateFutureSolutions")}
+    </h2>
+    <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl">
       {t("whyChooseUsDesc")}
     </p>
-  </div>
+  </MotionDiv>
 )
 
-const WhyChooseUsItem: React.FC<{ item: { icon: React.ComponentType<{ className?: string }>; title: string; description: string } }> = ({ item }) => (
-  <div className="flex gap-4">
-    <div className="bg-primary/10 p-3 rounded-lg flex-shrink-0">
-      <item.icon className="w-6 h-6 text-primary" />
+const WhyChooseUsItem: React.FC<{ item: { icon: React.ComponentType<{ className?: string }>; title: string; description: string }; index: number }> = ({ item, index }) => (
+  <MotionDiv
+    initial={{ opacity: 0, x: -30 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+    viewport={{ once: true }}
+  >
+    <div className="flex gap-6 group hover:bg-muted/30 p-4 rounded-xl transition-all duration-300">
+      <div className="bg-gradient-to-br from-primary/20 to-secondary/20 p-4 rounded-xl flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+        <item.icon className="w-8 h-8 text-primary" />
+      </div>
+      <div>
+        <h3 className="font-bold text-lg text-foreground mb-2">{item.title}</h3>
+        <p className="text-muted-foreground leading-relaxed">{item.description}</p>
+      </div>
     </div>
-    <div>
-      <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
-      <p className="text-sm text-muted-foreground">{item.description}</p>
-    </div>
-  </div>
+  </MotionDiv>
 )
 
 const WhyChooseUsImage: React.FC = () => (
-  <div className="relative">
-    <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm">
+  <MotionDiv
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 1 }}
+    viewport={{ once: true }}
+    className="relative"
+  >
+    <Card className="border-0 shadow-2xl bg-card/80 backdrop-blur-sm hover:shadow-3xl transition-all duration-500 transform hover:scale-105">
       <CardContent className="p-0 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/20 to-accent/30 opacity-70 blur-sm z-10 pointer-events-none" />
         <Image
@@ -416,7 +519,7 @@ const WhyChooseUsImage: React.FC = () => (
         />
       </CardContent>
     </Card>
-  </div>
+  </MotionDiv>
 )
 
 const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ t }) => {
@@ -439,14 +542,15 @@ const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ t }) => {
   ]
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
+    <section className="py-32 bg-background relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:40px_40px]" />
+      <div className="relative container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="space-y-12">
             <WhyChooseUsHeader t={t} />
-            <div className="grid gap-6">
+            <div className="grid gap-8">
               {whyChooseItems.map((item, index) => (
-                <WhyChooseUsItem key={index} item={item} />
+                <WhyChooseUsItem key={index} item={item} index={index} />
               ))}
             </div>
           </div>
@@ -462,31 +566,39 @@ const WhyChooseUsSection: React.FC<WhyChooseUsSectionProps> = ({ t }) => {
 // ============================================================================
 
 const TestimonialsHeader: React.FC<{ t: any }> = ({ t }) => (
-  <header className="text-center mb-16">
-    <Badge variant="outline" className="mb-4">
-      <Star className="w-4 h-4 mr-2" />
+  <MotionDiv
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="text-center mb-20"
+  >
+    <Badge variant="outline" className="mb-6 bg-gradient-to-r from-primary/10 to-secondary/10 border-primary/20">
+      <Star className="w-4 h-4 mr-2 text-primary" />
       {t("clientTestimonials")}
     </Badge>
-    <h2 className="text-4xl font-bold text-foreground mb-4">{t("whatOurClientsSay")}</h2>
-    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+    <h2 className="text-5xl font-bold text-foreground mb-6 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+      {t("whatOurClientsSay")}
+    </h2>
+    <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
       {t("testimonialsIntro")}
     </p>
-  </header>
+  </MotionDiv>
 )
 
 const TestimonialRating: React.FC<{ rating: number }> = ({ rating }) => (
   <div className="flex gap-1">
     {[...Array(rating)].map((_, i) => (
-      <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+      <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
     ))}
   </div>
 )
 
 const TestimonialAuthor: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-  <div className="flex items-center gap-3 pt-4">
-    <Avatar>
+  <div className="flex items-center gap-4 pt-6">
+    <Avatar className="w-12 h-12">
       <AvatarImage src={testimonial.avatar || "/placeholder.svg"} alt={testimonial.name} />
-      <AvatarFallback>
+      <AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white">
         {testimonial.name
           .split(" ")
           .map((n: string) => n[0])
@@ -494,32 +606,42 @@ const TestimonialAuthor: React.FC<{ testimonial: Testimonial }> = ({ testimonial
       </AvatarFallback>
     </Avatar>
     <div>
-      <div className="font-semibold text-foreground">{testimonial.name}</div>
+      <div className="font-bold text-foreground">{testimonial.name}</div>
       <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+      <div className="text-xs text-primary font-medium">{testimonial.company}</div>
     </div>
   </div>
 )
 
-const TestimonialCard: React.FC<{ testimonial: Testimonial }> = ({ testimonial }) => (
-  <Card className="border-0 shadow-lg bg-card/80 backdrop-blur-sm">
-    <CardContent className="p-6 space-y-4">
-      <TestimonialRating rating={testimonial.rating} />
-      <blockquote className="text-muted-foreground italic leading-relaxed">
-        "{testimonial.content}"
-      </blockquote>
-      <TestimonialAuthor testimonial={testimonial} />
-    </CardContent>
-  </Card>
+const TestimonialCard: React.FC<{ testimonial: Testimonial; index: number }> = ({ testimonial, index }) => (
+  <MotionDiv
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+    viewport={{ once: true }}
+  >
+    <Card className="border-0 shadow-xl bg-card/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 relative overflow-hidden group">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <CardContent className="p-8 space-y-6 relative z-10">
+        <TestimonialRating rating={testimonial.rating} />
+        <blockquote className="text-muted-foreground italic leading-relaxed text-lg">
+          "{testimonial.content}"
+        </blockquote>
+        <TestimonialAuthor testimonial={testimonial} />
+      </CardContent>
+    </Card>
+  </MotionDiv>
 )
 
 const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ t, testimonials }) => {
   return (
-    <section className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-32 bg-gradient-to-br from-muted/20 via-background to-muted/10 relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:35px_35px]" />
+      <div className="relative container mx-auto px-4">
         <TestimonialsHeader t={t} />
         <div className="grid md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={index} testimonial={testimonial} />
+            <TestimonialCard key={index} testimonial={testimonial} index={index} />
           ))}
         </div>
       </div>
@@ -532,19 +654,27 @@ const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ t, testimonia
 // ============================================================================
 
 const CTAContent: React.FC<{ t: any; locale: string }> = ({ t, locale }) => (
-  <div className="max-w-4xl mx-auto space-y-8">
-    <Badge className="bg-background/20 text-primary-foreground border-primary-foreground/30">
-      <Sparkles className="w-4 h-4 mr-2" />
+  <MotionDiv
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true }}
+    className="max-w-5xl mx-auto space-y-10"
+  >
+    <Badge className="bg-background/20 text-primary-foreground border-primary-foreground/30 text-lg px-6 py-3">
+      <Sparkles className="w-5 h-5 mr-2" />
       {t("limitedTimeOffer")}
     </Badge>
-    <h2 className="text-4xl lg:text-5xl font-bold">{t("highDiscounts")}</h2>
-    <p className="text-xl opacity-90 max-w-2xl mx-auto leading-relaxed">
+    <h2 className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white to-primary-foreground/80 bg-clip-text text-transparent">
+      {t("highDiscounts")}
+    </h2>
+    <p className="text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
       {t("ctaReady")}
     </p>
-    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+    <div className="flex flex-col sm:flex-row gap-6 justify-center">
       <Link href={`/${locale}/contactus`} passHref>
-        <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90">
-          <Target className="w-5 h-5 mr-2" />
+        <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 px-8 py-6 text-lg">
+          <Target className="w-6 h-6 mr-3" />
           {t("ctaFreeQuote")}
         </Button>
       </Link>
@@ -552,20 +682,21 @@ const CTAContent: React.FC<{ t: any; locale: string }> = ({ t, locale }) => (
         <Button
           size="lg"
           variant="outline"
-          className="border-primary-foreground text-primary-foreground bg-accent hover:bg-accent/90"
+          className="border-primary-foreground text-primary-foreground bg-accent hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 px-8 py-6 text-lg"
         >
           {t("ctaScheduleConsultation")}
-          <ArrowRight className="w-5 h-5 ml-2" />
+          <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
         </Button>
       </Link>
     </div>
-  </div>
+  </MotionDiv>
 )
 
 const CTASection: React.FC<CTASectionProps> = ({ t, locale }) => {
   return (
-    <section className="py-24 bg-gradient-to-r from-primary via-primary/90 to-secondary text-primary-foreground relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-r from-primary via-primary/90 to-secondary text-primary-foreground relative overflow-hidden">
       <div className="absolute inset-0 bg-black/10"></div>
+      <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:50px_50px]" />
       <div className="relative container mx-auto px-4 text-center">
         <CTAContent t={t} locale={locale} />
       </div>
@@ -573,11 +704,20 @@ const CTASection: React.FC<CTASectionProps> = ({ t, locale }) => {
   )
 }
 
-const StatItem: React.FC<{ value: string; label: string }> = ({ value, label }) => (
-  <div className="space-y-2">
-    <div className="text-3xl lg:text-4xl font-bold text-primary">{value}</div>
-    <div className="text-muted-foreground">{label}</div>
-  </div>
+const StatItem: React.FC<{ value: string; label: string; index: number }> = ({ value, label, index }) => (
+  <MotionDiv
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay: index * 0.1 }}
+    viewport={{ once: true }}
+  >
+    <div className="space-y-3 text-center group hover:bg-muted/30 p-6 rounded-xl transition-all duration-300">
+      <div className="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent group-hover:scale-110 transition-transform duration-300">
+        {value}
+      </div>
+      <div className="text-muted-foreground font-medium">{label}</div>
+    </div>
+  </MotionDiv>
 )
 
 const StatsSection: React.FC<StatsSectionProps> = ({ t }) => {
@@ -589,11 +729,12 @@ const StatsSection: React.FC<StatsSectionProps> = ({ t }) => {
   ]
 
   return (
-    <section className="py-16 bg-background border-t">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+    <section className="py-20 bg-background border-t relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:25px_25px]" />
+      <div className="relative container mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <StatItem key={index} value={stat.value} label={stat.label} />
+            <StatItem key={index} value={stat.value} label={stat.label} index={index} />
           ))}
         </div>
       </div>
@@ -613,6 +754,8 @@ export default async function ServicesPage() {
       color: "bg-primary",
       textColor: "text-primary",
       bgColor: "bg-primary/10",
+      gradient: "bg-gradient-to-br from-primary/20 to-primary/5",
+      stats: [{ value: "200+", label: "Websites" }, { value: "99%", label: "Uptime" }]
     },
     {
       icon: Smartphone,
@@ -622,6 +765,8 @@ export default async function ServicesPage() {
       color: "bg-secondary",
       textColor: "text-secondary",
       bgColor: "bg-secondary/10",
+      gradient: "bg-gradient-to-br from-secondary/20 to-secondary/5",
+      stats: [{ value: "150+", label: "Apps" }, { value: "4.8★", label: "Rating" }]
     },
     {
       icon: ShoppingCart,
@@ -631,6 +776,8 @@ export default async function ServicesPage() {
       color: "bg-destructive",
       textColor: "text-destructive",
       bgColor: "bg-destructive/10",
+      gradient: "bg-gradient-to-br from-destructive/20 to-destructive/5",
+      stats: [{ value: "80+", label: "Stores" }, { value: "250%", label: "Growth" }]
     },
     {
       icon: Palette,
@@ -640,6 +787,8 @@ export default async function ServicesPage() {
       color: "bg-muted",
       textColor: "text-muted-foreground",
       bgColor: "bg-muted/50",
+      gradient: "bg-gradient-to-br from-muted/30 to-muted/10",
+      stats: [{ value: "300+", label: "Designs" }, { value: "95%", label: "Satisfaction" }]
     },
     {
       icon: TrendingUp,
@@ -649,6 +798,8 @@ export default async function ServicesPage() {
       color: "bg-accent",
       textColor: "text-accent-foreground",
       bgColor: "bg-accent/10",
+      gradient: "bg-gradient-to-br from-accent/20 to-accent/5",
+      stats: [{ value: "400%", label: "Traffic" }, { value: "120+", label: "Campaigns" }]
     },
     {
       icon: Eye,
@@ -658,29 +809,34 @@ export default async function ServicesPage() {
       color: "bg-primary",
       textColor: "text-primary",
       bgColor: "bg-primary/10",
+      gradient: "bg-gradient-to-br from-primary/20 to-primary/5",
+      stats: [{ value: "100+", label: "Brands" }, { value: "98%", label: "Recognition" }]
     },
   ]
 
   const testimonials = [
     {
       name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
+      role: "CEO",
+      company: "TechStart Inc.",
       content:
-        "Their website development service transformed our online presence completely. The results exceeded our expectations!",
+        "Their website development service transformed our online presence completely. The results exceeded our expectations and our conversion rates increased by 300%!",
       avatar: "/placeholder.svg?height=40&width=40",
       rating: 5,
     },
     {
       name: "Michael Chen",
-      role: "Marketing Director, GrowthCo",
-      content: "The mobile app they developed for us increased our customer engagement by 300%. Highly recommended!",
+      role: "Marketing Director",
+      company: "GrowthCo",
+      content: "The mobile app they developed for us increased our customer engagement by 300%. The user experience is flawless and our customers love it!",
       avatar: "/placeholder.svg?height=40&width=40",
       rating: 5,
     },
     {
       name: "Emily Rodriguez",
-      role: "Founder, E-Shop Plus",
-      content: "Our e-commerce store built by their team generated 250% more sales in the first quarter. Amazing work!",
+      role: "Founder",
+      company: "E-Shop Plus",
+      content: "Our e-commerce store built by their team generated 250% more sales in the first quarter. The platform is fast, secure, and incredibly user-friendly!",
       avatar: "/placeholder.svg?height=40&width=40",
       rating: 5,
     },
