@@ -5,14 +5,13 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { toast } from "sonner";
-import { submitStartDream } from "./submitStartDream";
+import { submitStartDream } from "../actions/submitStartDream";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaRegComments,
@@ -20,10 +19,6 @@ import {
   FaPhone,
   FaEnvelope,
   FaTools,
-  FaInfoCircle,
-  FaMoneyBill,
-  FaCalendarAlt,
-  FaWhatsapp,
   FaCheckCircle,
   FaArrowRight,
   FaGlobe,
@@ -39,35 +34,35 @@ import { useTranslations } from "next-intl";
 
 // Service options for the simplified form
 const serviceOptions = [
-  { value: "website-development", label: "Website Development", icon: FaGlobe },
-  { value: "mobile-app-development", label: "Mobile App Development", icon: FaMobile },
-  { value: "ecommerce-development", label: "E-commerce Development", icon: FaShoppingCart },
-  { value: "crm-development", label: "CRM Development", icon: FaUsers },
-  { value: "ui-ux-design", label: "UI/UX Design", icon: FaPalette },
-  { value: "digital-marketing", label: "Digital Marketing", icon: FaChartLine },
-  { value: "visual-identity", label: "Visual Identity", icon: FaEye },
-  { value: "other", label: "Other", icon: FaTools }
+  { value: "web-development", icon: FaGlobe, key: "serviceWebDevelopment" },
+  { value: "mobile-app", icon: FaMobile, key: "serviceMobileApp" },
+  { value: "ecommerce", icon: FaShoppingCart, key: "serviceEcommerce" },
+  { value: "crm", icon: FaUsers, key: "serviceCRM" },
+  { value: "ui-ux", icon: FaPalette, key: "serviceUIUX" },
+  { value: "digital-marketing", icon: FaChartLine, key: "serviceDigitalMarketing" },
+  { value: "visual-identity", icon: FaEye, key: "serviceVisualIdentity" },
+  { value: "other", icon: FaTools, key: "serviceOther" }
 ];
 
 // Budget options
 const budgetOptions = [
-  { value: "under-5k", label: "Under $5,000" },
-  { value: "5k-10k", label: "$5,000 - $10,000" },
-  { value: "10k-25k", label: "$10,000 - $25,000" },
-  { value: "25k-50k", label: "$25,000 - $50,000" },
-  { value: "50k-100k", label: "$50,000 - $100,000" },
-  { value: "over-100k", label: "Over $100,000" },
-  { value: "not-sure", label: "Not sure yet" }
+  { value: "under5k", key: "under5k" },
+  { value: "5kTo10k", key: "5kTo10k" },
+  { value: "10kTo25k", key: "10kTo25k" },
+  { value: "25kTo50k", key: "25kTo50k" },
+  { value: "50kTo100k", key: "50kTo100k" },
+  { value: "over100k", key: "over100k" },
+  { value: "notSure", key: "notSure" }
 ];
 
 // Timeline options
 const timelineOptions = [
-  { value: "asap", label: "As soon as possible" },
-  { value: "1-2-weeks", label: "1-2 weeks" },
-  { value: "1-month", label: "1 month" },
-  { value: "2-3-months", label: "2-3 months" },
-  { value: "3-6-months", label: "3-6 months" },
-  { value: "flexible", label: "Flexible" }
+  { value: "asap", key: "asap" },
+  { value: "1To2Weeks", key: "1To2Weeks" },
+  { value: "1Month", key: "1Month" },
+  { value: "2To3Months", key: "2To3Months" },
+  { value: "3To6Months", key: "3To6Months" },
+  { value: "flexible", key: "flexible" }
 ];
 
 // Zod schema for form validation
@@ -164,45 +159,25 @@ export default function StartDreamForm({ locale }: { locale: string }) {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="flex flex-col items-center justify-center p-8 mb-8 bg-secondary/10 rounded-xl border border-secondary/20"
+            className="flex flex-col items-center justify-center p-8 mb-8 bg-card border border-border rounded-xl"
             role="status"
             aria-live="polite"
           >
             <div className="relative">
-              <FaCheckCircle className="w-16 h-16 text-secondary mb-4" aria-hidden="true" />
-              <div className="absolute inset-0 w-16 h-16 bg-secondary/20 rounded-full animate-ping" />
+              <FaCheckCircle className="w-16 h-16 text-primary mb-4" aria-hidden="true" />
+              <div className="absolute inset-0 w-16 h-16 bg-primary/20 rounded-full animate-ping" />
             </div>
             <h3 className="text-xl font-bold text-foreground mb-2">{t("successTitle")}</h3>
             <p className="text-muted-foreground text-center">{t("successMessage")}</p>
             <div className="mt-4 flex items-center gap-2 text-sm text-muted-foreground">
-              <div className="w-2 h-2 bg-secondary rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
               {t("redirectingMessage")}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* WhatsApp Quick Contact */}
-      <motion.div
-        variants={itemVariants}
-        className="flex flex-col items-center mb-8 p-6 bg-secondary/5 rounded-xl border border-secondary/20"
-      >
-        <div className="flex items-center gap-2 mb-3">
-          <FaWhatsapp className="w-5 h-5 text-secondary" />
-          <span className="text-sm font-medium text-foreground">{t("whatsappHint")}</span>
-        </div>
-        <a
-          href="https://wa.me/966554113107"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group inline-flex items-center gap-3 px-6 py-3 bg-secondary text-secondary-foreground rounded-lg font-semibold shadow-sm hover:bg-secondary/90 hover:shadow-md transition-all duration-300 text-base"
-          style={{ direction: locale === 'ar' ? 'rtl' : 'ltr' }}
-        >
-          <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
-          <span>{t("whatsappButton")}</span>
-          <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-        </a>
-      </motion.div>
+
 
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6" role="form" aria-labelledby="start-dream-form-title">
@@ -315,7 +290,7 @@ export default function StartDreamForm({ locale }: { locale: string }) {
                           <SelectItem key={service.value} value={service.value}>
                             <div className="flex items-center gap-2">
                               <Icon className="w-4 h-4" />
-                              <span>{service.label}</span>
+                              <span>{t(service.key)}</span>
                             </div>
                           </SelectItem>
                         );
@@ -371,7 +346,7 @@ export default function StartDreamForm({ locale }: { locale: string }) {
                     <SelectContent>
                       {budgetOptions.map((budget) => (
                         <SelectItem key={budget.value} value={budget.value}>
-                          {budget.label}
+                          {t(budget.key)}
                         </SelectItem>
                       ))}
                     </SelectContent>
@@ -401,7 +376,7 @@ export default function StartDreamForm({ locale }: { locale: string }) {
                     <SelectContent>
                       {timelineOptions.map((timeline) => (
                         <SelectItem key={timeline.value} value={timeline.value}>
-                          {timeline.label}
+                          {t(timeline.key)}
                         </SelectItem>
                       ))}
                     </SelectContent>
