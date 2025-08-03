@@ -3,17 +3,18 @@
 import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from 'next-intl';
-import { normalIcons, serviceIcon, misc, technology } from "@/constant/icons";
+import { serviceIcon, misc, technology } from "@/constant/icons";
 
 // Enhanced Desktop Navigation Menu
 const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
   const t = useTranslations('homepage');
   const [activeItem, setActiveItem] = useState<string>('');
   const [rippleStates, setRippleStates] = useState<Record<string, { isActive: boolean; isAnimating: boolean }>>({});
+  const [isMounted, setIsMounted] = useState(false);
 
   // Memoize menuItems to prevent recreation on every render
   const menuItems = useMemo(() => [
-    { href: '/', label: t('home'), icon: normalIcons.home.icon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold
+    { href: '/', label: t('home'), icon: misc.home, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold
     { href: '/services', label: t('services'), icon: serviceIcon.website.icon, color: '#0d3ad7', rippleColor: '#0d3ad7', bgColor: '#0d3ad7' }, // Blue
     { href: '/worksample', label: t('portfolio'), icon: technology.workSample.icon, color: '#99e4ff', rippleColor: '#99e4ff', bgColor: '#99e4ff' }, // Light Blue
     { href: '/contactus', label: t('contact'), icon: misc.emailIcon, color: '#d7a50d', rippleColor: '#d7a50d', bgColor: '#d7a50d' }, // Gold (reusing for contact)
@@ -28,8 +29,15 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
     setRippleStates(initialStates);
   }, [menuItems]);
 
-  // Set active item based on current pathname
+  // Set mounted state to true after hydration
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // Set active item based on current pathname - only after mounting
+  useEffect(() => {
+    if (!isMounted) return;
+
     const pathname = window.location.pathname;
     const currentItem = menuItems.find(item => {
       // Handle home page special case
@@ -46,7 +54,7 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
         [currentItem.href]: { isActive: true, isAnimating: false }
       }));
     }
-  }, [locale, menuItems]);
+  }, [locale, menuItems, isMounted]);
 
   const handleItemClick = (itemHref: string) => {
     // Reset all ripples first
@@ -68,19 +76,20 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
     }));
   };
 
+  // Use consistent rendering structure to prevent hydration mismatch
   return (
     <nav className="hidden md:flex items-center gap-4">
       {menuItems.map((item) => {
         const IconComponent = item.icon;
-        const isActive = activeItem === item.href;
-        const rippleState = rippleStates[item.href] || { isActive: false, isAnimating: false };
+        const isActive = isMounted ? activeItem === item.href : false;
+        const rippleState = isMounted ? (rippleStates[item.href] || { isActive: false, isAnimating: false }) : { isActive: false, isAnimating: false };
 
         return (
           <Link
             key={item.href}
             href={item.href}
             className="relative flex items-center gap-3 group p-2 rounded-lg transition-all duration-300 hover:bg-muted/20"
-            onClick={() => handleItemClick(item.href)}
+            onClick={isMounted ? () => handleItemClick(item.href) : undefined}
           >
             {/* Menu Item Button */}
             <div className="relative flex h-[50px] w-[50px] items-center justify-center">
@@ -123,6 +132,8 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
       })}
     </nav>
   );
+
+
 };
 
 export default DesktopMenu;

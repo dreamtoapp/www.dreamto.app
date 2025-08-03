@@ -43,10 +43,10 @@ function TeamPageClient({ locale }: { locale: string }) {
         <div className="relative z-10 flex-1 flex flex-col items-center md:items-start text-center md:text-left">
           <h1 className="text-5xl md:text-6xl font-black text-foreground drop-shadow-lg mb-4 tracking-tight">{t('ourTeam')}</h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-4 font-medium "
-           style={{textShadow: '0 1px 8px rgba(0,0,0,0.12)'}}>{t('meetProfessionals')}</p>
+            style={{ textShadow: '0 1px 8px rgba(0,0,0,0.12)' }}>{t('meetProfessionals')}</p>
         </div>
         <div className="relative z-10 flex-shrink-0 mt-8 md:mt-0 flex justify-center md:justify-end w-full md:w-auto">
-          <Link href={`/${locale}/team/apply`}>
+          <Link href={`/${locale}/apply-job`}>
             <span className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-primary-foreground font-extrabold text-xl shadow-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/30">
               <User2Icon className="w-6 h-6 mr-1" />
               {t('joinOurTeam')}

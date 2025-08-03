@@ -75,16 +75,24 @@ const HeroDescription: React.FC<{ description: string }> = ({ description }) => 
 );
 
 // CTA Buttons Component
-const HeroCTA: React.FC<{ ctaPrimary: string; ctaSecondary: string; locale: string }> = ({ ctaPrimary, ctaSecondary, locale }) => (
-  <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
-    <Link href={`/${locale}/contactus`} className="cta-button primary">
-      {ctaPrimary}
-    </Link>
-    <Link href={`/${locale}/services`} className="cta-button secondary">
-      {ctaSecondary}
-    </Link>
-  </div>
-);
+const HeroCTA: React.FC<{ ctaPrimary: string; ctaSecondary: string; locale: string }> = ({ ctaPrimary, ctaSecondary, locale }) => {
+  return (
+    <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
+      <Link href={`/${locale}/start-your-dream`} className="cta-button primary">
+        {ctaPrimary}
+      </Link>
+      <Link href={`/${locale}/services`} className="cta-button secondary">
+        {ctaSecondary}
+      </Link>
+      <Link href={`/${locale}/apply-job`} className="cta-button tertiary" title="انضم إلى فريقنا">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+          <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      </Link>
+    </div>
+  );
+};
 
 // Wave Background Component
 const WaveBackground: React.FC = () => (
@@ -254,6 +262,19 @@ const HeroSection: React.FC<HeroProps & { locale: string }> = ({
               min-height: 64px;
               min-width: 240px;
             }
+            
+            .cta-button.tertiary {
+              padding: 1.25rem;
+              width: 70px;
+              height: 70px;
+              min-width: 70px;
+              min-height: 70px;
+            }
+            
+            .cta-button.tertiary svg {
+              width: 28px;
+              height: 28px;
+            }
           }
           
           .cta-button.primary {
@@ -284,6 +305,33 @@ const HeroSection: React.FC<HeroProps & { locale: string }> = ({
             background: linear-gradient(135deg, rgba(13,58,215,0.2), rgba(153,228,255,0.2));
             color: white;
             border-color: rgba(153,228,255,0.9);
+          }
+          
+          .cta-button.tertiary {
+            background: #22c55e;
+            box-shadow: 0 8px 32px rgba(34,197,94,0.4), 0 4px 16px rgba(34,197,94,0.2);
+            border: 2px solid #16a34a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            min-height: 60px;
+            position: relative;
+            z-index: 10;
+          }
+          
+          .cta-button.tertiary:hover {
+            background: #16a34a;
+            box-shadow: 0 16px 64px rgba(34,197,94,0.6), 0 8px 32px rgba(34,197,94,0.3);
+            transform: translateY(-2px) scale(1.05);
+          }
+          
+          .cta-button.tertiary svg {
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
           }
           
           .playing .wave {

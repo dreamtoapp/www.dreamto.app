@@ -256,3 +256,36 @@ export async function uploadVoiceToCloudinary(fileBuffer: Buffer, filename: stri
     stream.end(fileBuffer);
   });
 }
+
+// Uploads a job application attachment (CV/Portfolio) to Cloudinary and returns the secure URL
+export async function uploadJobAttachment(fileBuffer: Buffer, filename: string, applicantName: string): Promise<string> {
+  return new Promise((resolve, reject) => {
+    // Create a sanitized filename with timestamp
+    const timestamp = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+    const sanitizedName = applicantName.replace(/[^a-zA-Z0-9]/g, '_').toLowerCase();
+    const fileExtension = filename.split('.').pop();
+    const publicId = `job-applications/${sanitizedName}_${timestamp}.${fileExtension}`;
+
+    const stream = cloudinary.uploader.upload_stream(
+      {
+        resource_type: "auto", // Let Cloudinary detect the file type
+        folder: "dreamToApp/job-applications",
+        public_id: publicId,
+        overwrite: false, // Don't overwrite existing files
+        tags: ["job-application", "attachment", sanitizedName],
+      },
+      (error, result) => {
+        if (error) {
+          console.error("Cloudinary job attachment upload error:", error);
+          reject(new Error("File upload failed"));
+        } else if (result && result.secure_url) {
+          console.log("✅ Job attachment uploaded successfully:", result.secure_url);
+          resolve(result.secure_url);
+        } else {
+          reject(new Error("No result from Cloudinary upload"));
+        }
+      }
+    );
+    stream.end(fileBuffer);
+  });
+}

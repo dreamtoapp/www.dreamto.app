@@ -50,7 +50,7 @@ export default function ApplyPage() {
     }
     // Handle form submission here
     // Redirect to a thank you page or back to the team page
-    router.push("/thank-you");
+    router.push(`/${locale}/thank-you`);
   };
 
   return (

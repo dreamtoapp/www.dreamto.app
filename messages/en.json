@@ -136,7 +136,7 @@
     "title": "404",
     "message": "Sorry, the page does not exist",
     "description": "The page you are looking for is currently unavailable.",
-    "button": "Return to Home Page"
+    "button": "Back to Home"
   },
   "homepage": {
     "home": "Home",
@@ -187,7 +187,8 @@
     "uiDilogTitle": "The Journey to Success",
     "ctaButton": "Start Your Success Journey Today",
     "chatWithUs": "Chat with Us Now",
-    "whyChooseUs": "Why Choose Us"
+    "whyChooseUs": "Why Choose Us",
+    "joinOurTeam": "Join Our Team"
   },
   "mobileAppPhases": {
     "discoveryPlanningTitle": "Planning and Discovery",
@@ -902,7 +903,7 @@
     "subtitle": "We appreciate your interest.",
     "messageMain": "Your message has been successfully submitted. We appreciate you reaching out and will get back to you as soon as possible.",
     "messageSecondary": "Feel free to browse our site or contact us for more information.",
-    "returnHome": "Return to Home"
+    "returnHome": "Back to Home"
   },
   "offline": {
     "title": "You are offline",
@@ -968,11 +969,13 @@
     "female": "Female",
     "preferNotToSay": "Prefer not to say",
     "aboutYou": "About You",
+    "aboutYouPlaceholder": "Tell us about your experience, skills, and why you'd like to join our team...",
     "attachment": "Attachment (CV / Portfolio)",
     "agreeToTerms": "I agree to the",
     "jobRolesAndTerms": "job roles and terms",
     "submitApplication": "Submit Application",
-    "backToTeamPage": "Back to Team Page",
+    "submitting": "Submitting...",
+    "backToTeamPage": "Back to Team",
     "termsAlert": "Please agree to the terms and conditions before submitting.",
     "expertise": {
       "web-development": "Web Development",
@@ -983,6 +986,35 @@
       "quality-assurance": "Quality Assurance",
       "devops": "DevOps",
       "data-science": "Data Science"
+    }
+  },
+  "jobRoles": {
+    "title": "General Job Roles and Terms",
+    "subtitle": "Learn about our expectations, what we offer, and the terms for joining our dynamic team.",
+    "ourExpectations": "Our Expectations",
+    "whatWeOffer": "What We Offer",
+    "applicationTerms": "Application Terms",
+    "backToTeamPage": "Back to Team",
+    "expectations": {
+      "collaborate": "Collaborate effectively with cross-functional teams",
+      "stayUpdated": "Stay updated with the latest industry trends and technologies",
+      "positiveEnvironment": "Contribute to a positive and inclusive work environment",
+      "highQuality": "Deliver high-quality work within agreed timelines",
+      "codeReviews": "Participate in code reviews and knowledge sharing sessions"
+    },
+    "benefits": {
+      "competitiveSalary": "Competitive salary and benefits package",
+      "professionalGrowth": "Opportunities for professional growth and skill development",
+      "flexibleWork": "Flexible work arrangements",
+      "collaborativeCulture": "Collaborative and innovative work culture",
+      "excitingProjects": "Exciting projects with cutting-edge technologies"
+    },
+    "terms": {
+      "accurateInfo": "All information provided is accurate and complete",
+      "contactReferences": "We may contact your references and previous employers",
+      "keepOnFile": "Your application will be kept on file for future opportunities",
+      "privacyPolicy": "We will handle your personal information in accordance with our privacy policy",
+      "agreementText": "By submitting an application, you agree to the following:"
     }
   },
   "gallery": {

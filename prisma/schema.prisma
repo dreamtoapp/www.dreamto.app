@@ -112,3 +112,54 @@ model NewsletterSubscription {
   createdAt DateTime @default(now()) // Timestamp of subscription
   updatedAt DateTime @updatedAt // Timestamp of last update
 }
+
+model JobApplication {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  applicationNumber String   @unique @default(cuid())
+  fullName          String
+  email             String
+  phone             String
+  age               Int
+  gender            String
+  areaOfExpertise   String
+  yearsOfExperience Int
+  aboutYou          String
+  attachmentUrl     String?
+  attachmentName    String?
+  status            ApplicationStatus @default(DRAFT)
+  submittedAt       DateTime?
+  locale            String @default("en")
+  ipAddress         String?
+  userAgent         String?
+  source            String?
+  adminNotes        String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  
+  // Relation to status history
+  statusHistory     ApplicationStatusHistory[]
+}
+
+model ApplicationStatusHistory {
+  id                String   @id @default(auto()) @map("_id") @db.ObjectId
+  applicationId     String   @db.ObjectId
+  status            ApplicationStatus
+  notes             String?
+  changedBy         String?  // Admin who made the change
+  changedAt         DateTime @default(now())
+  
+  // Relation to application
+  application       JobApplication @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+}
+
+enum ApplicationStatus {
+  DRAFT
+  SUBMITTED
+  UNDER_REVIEW
+  INTERVIEW_SCHEDULED
+  INTERVIEWED
+  OFFER_EXTENDED
+  HIRED
+  REJECTED
+  WITHDRAWN
+}
