@@ -92,9 +92,7 @@ interface StatsSectionProps {
   t: any
 }
 
-// ============================================================================
-// SEO STRUCTURED DATA
-// ============================================================================
+
 
 const getStructuredData = () => ({
   "@context": "https://schema.org",
