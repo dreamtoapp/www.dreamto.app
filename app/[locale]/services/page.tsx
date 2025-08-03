@@ -53,7 +53,6 @@ interface Service {
   textColor: string
   bgColor: string
   gradient: string
-  stats: { value: string; label: string }[]
 }
 
 interface Testimonial {
@@ -257,42 +256,14 @@ const HeroCTAs: React.FC<{ t: any; locale: string }> = ({ t, locale }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay: 0.6 }}
-    className="flex flex-col sm:flex-row gap-4"
+    className="flex flex-col sm:flex-row gap-4 items-center"
   >
-    <Link href={`/${locale}/contactus`} passHref>
-      <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-        <Target className="w-5 h-5 mr-2" />
-        {t("ctaGetQuoteNow")}
-      </Button>
-    </Link>
     <Link href={`/${locale}/worksample`} passHref>
       <Button size="lg" variant="outline" className="border-2 hover:bg-primary/5 hover:border-primary transition-all duration-300 transform hover:scale-105">
         {t("ctaViewPortfolio")}
         <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
       </Button>
     </Link>
-  </MotionDiv>
-)
-
-const HeroStats: React.FC<{ t: any }> = ({ t }) => (
-  <MotionDiv
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, delay: 0.8 }}
-    className="flex items-center gap-6 pt-6"
-  >
-    <div className="flex items-center gap-3 bg-background/50 backdrop-blur-sm rounded-full px-4 py-2 border border-border/20">
-      <div className="flex -space-x-2">
-        {[1, 2, 3, 4].map((i) => (
-          <Avatar key={i} className="border-2 border-background w-8 h-8">
-            <AvatarImage src={`/placeholder.svg?height=32&width=32`} />
-            <AvatarFallback>U{i}</AvatarFallback>
-          </Avatar>
-        ))}
-      </div>
-      <span className="text-sm text-muted-foreground font-medium">{t("happyClients")}</span>
-    </div>
-    <Separator orientation="vertical" className="h-8" />
     <div className="flex items-center gap-2 bg-background/50 backdrop-blur-sm rounded-full px-4 py-2 border border-border/20">
       {[1, 2, 3, 4, 5].map((star) => (
         <Star key={star} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -301,6 +272,8 @@ const HeroStats: React.FC<{ t: any }> = ({ t }) => (
     </div>
   </MotionDiv>
 )
+
+
 
 const HeroImage: React.FC = () => (
   <MotionDiv
@@ -338,7 +311,6 @@ const HeroSection: React.FC<HeroSectionProps> = ({ t, locale }) => {
               <HeroDescription t={t} />
             </div>
             <HeroCTAs t={t} locale={locale} />
-            <HeroStats t={t} />
           </div>
           <HeroImage />
         </div>
@@ -380,16 +352,7 @@ const ServiceIcon: React.FC<{ service: Service }> = ({ service }) => (
   </div>
 )
 
-const ServiceStats: React.FC<{ service: Service }> = ({ service }) => (
-  <div className="grid grid-cols-2 gap-4 mt-6">
-    {service.stats.map((stat, index) => (
-      <div key={index} className="text-center p-3 bg-muted/30 rounded-lg">
-        <div className={`text-lg font-bold ${service.textColor}`}>{stat.value}</div>
-        <div className="text-xs text-muted-foreground">{stat.label}</div>
-      </div>
-    ))}
-  </div>
-)
+
 
 const ServiceFeatures: React.FC<{ service: Service; t: any }> = ({ service, t }) => (
   <div className="space-y-4">
@@ -428,11 +391,10 @@ const ServiceCard: React.FC<{ service: Service; t: any; index: number }> = ({ se
           {service.description}
         </CardDescription>
         <ServiceFeatures service={service} t={t} />
-        <ServiceStats service={service} />
-        <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-all duration-300 transform group-hover:scale-105`}>
+        {/* <Button className={`w-full group-hover:${service.bgColor} group-hover:text-foreground transition-all duration-300 transform group-hover:scale-105`}>
           {t("learnMoreAbout", { service: service.title })}
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-        </Button>
+        </Button> */}
       </CardContent>
     </Card>
   </MotionDiv>
@@ -674,17 +636,17 @@ const CTAContent: React.FC<{ t: any; locale: string }> = ({ t, locale }) => (
     <div className="flex flex-col sm:flex-row gap-6 justify-center">
       <Link href={`/${locale}/contactus`} passHref>
         <Button size="lg" variant="secondary" className="bg-background text-primary hover:bg-background/90 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 px-8 py-6 text-lg">
-          <Target className="w-6 h-6 mr-3" />
-          {t("ctaFreeQuote")}
+          <MessageCircle className="w-6 h-6 mr-3" />
+          {t("ctaContactUs")}
         </Button>
       </Link>
-      <Link href={`/${locale}/contactus`} passHref>
+      <Link href={`/${locale}/start-your-dream`} passHref>
         <Button
           size="lg"
           variant="outline"
           className="border-primary-foreground text-primary-foreground bg-accent hover:bg-accent/90 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 px-8 py-6 text-lg"
         >
-          {t("ctaScheduleConsultation")}
+          {t("ctaStartYourDream")}
           <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-1 transition-transform" />
         </Button>
       </Link>
@@ -722,17 +684,16 @@ const StatItem: React.FC<{ value: string; label: string; index: number }> = ({ v
 
 const StatsSection: React.FC<StatsSectionProps> = ({ t }) => {
   const stats = [
-    { value: "500+", label: t("projectsCompleted") },
     { value: "98%", label: t("clientSatisfaction") },
     { value: "24/7", label: t("supportAvailable") },
-    { value: "5+", label: t("yearsExperience") },
+    { value: "7+", label: t("yearsExperience") },
   ]
 
   return (
     <section className="py-20 bg-background border-t relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:25px_25px]" />
       <div className="relative container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-3 gap-8">
           {stats.map((stat, index) => (
             <StatItem key={index} value={stat.value} label={stat.label} index={index} />
           ))}
@@ -746,17 +707,16 @@ export default async function ServicesPage() {
   const t = await getTranslations("services")
   const locale = await getLocale()
   const services = [
-    {
-      icon: Globe,
-      title: t("websiteDevelopmentTitle"),
-      description: t("websiteDevelopmentDescription"),
-      features: [t("responsiveDesign"), t("fastLoading"), t("seoOptimized"), t("userFriendly")],
-      color: "bg-primary",
-      textColor: "text-primary",
-      bgColor: "bg-primary/10",
-      gradient: "bg-gradient-to-br from-primary/20 to-primary/5",
-      stats: [{ value: "200+", label: "Websites" }, { value: "99%", label: "Uptime" }]
-    },
+    // {
+    //   icon: Globe,
+    //   title: t("websiteDevelopmentTitle"),
+    //   description: t("websiteDevelopmentDescription"),
+    //   features: [t("responsiveDesign"), t("fastLoading"), t("seoOptimized"), t("userFriendly")],
+    //   color: "bg-primary",
+    //   textColor: "text-primary",
+    //   bgColor: "bg-primary/10",
+    //   gradient: "bg-gradient-to-br from-primary/20 to-primary/5"
+    // },
     {
       icon: Smartphone,
       title: t("mobileAppDevelopmentTitle"),
@@ -765,8 +725,7 @@ export default async function ServicesPage() {
       color: "bg-secondary",
       textColor: "text-secondary",
       bgColor: "bg-secondary/10",
-      gradient: "bg-gradient-to-br from-secondary/20 to-secondary/5",
-      stats: [{ value: "150+", label: "Apps" }, { value: "4.8★", label: "Rating" }]
+      gradient: "bg-gradient-to-br from-secondary/20 to-secondary/5"
     },
     {
       icon: ShoppingCart,
@@ -776,8 +735,7 @@ export default async function ServicesPage() {
       color: "bg-destructive",
       textColor: "text-destructive",
       bgColor: "bg-destructive/10",
-      gradient: "bg-gradient-to-br from-destructive/20 to-destructive/5",
-      stats: [{ value: "80+", label: "Stores" }, { value: "250%", label: "Growth" }]
+      gradient: "bg-gradient-to-br from-destructive/20 to-destructive/5"
     },
     {
       icon: Palette,
@@ -787,8 +745,7 @@ export default async function ServicesPage() {
       color: "bg-muted",
       textColor: "text-muted-foreground",
       bgColor: "bg-muted/50",
-      gradient: "bg-gradient-to-br from-muted/30 to-muted/10",
-      stats: [{ value: "300+", label: "Designs" }, { value: "95%", label: "Satisfaction" }]
+      gradient: "bg-gradient-to-br from-muted/30 to-muted/10"
     },
     {
       icon: TrendingUp,
@@ -798,8 +755,7 @@ export default async function ServicesPage() {
       color: "bg-accent",
       textColor: "text-accent-foreground",
       bgColor: "bg-accent/10",
-      gradient: "bg-gradient-to-br from-accent/20 to-accent/5",
-      stats: [{ value: "400%", label: "Traffic" }, { value: "120+", label: "Campaigns" }]
+      gradient: "bg-gradient-to-br from-accent/20 to-accent/5"
     },
     {
       icon: Eye,
@@ -809,35 +765,33 @@ export default async function ServicesPage() {
       color: "bg-primary",
       textColor: "text-primary",
       bgColor: "bg-primary/10",
-      gradient: "bg-gradient-to-br from-primary/20 to-primary/5",
-      stats: [{ value: "100+", label: "Brands" }, { value: "98%", label: "Recognition" }]
+      gradient: "bg-gradient-to-br from-primary/20 to-primary/5"
     },
   ]
 
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO",
-      company: "TechStart Inc.",
-      content:
-        "Their website development service transformed our online presence completely. The results exceeded our expectations and our conversion rates increased by 300%!",
-      avatar: "/placeholder.svg?height=40&width=40",
+      name: t("testimonial1Name"),
+      role: t("testimonial1Role"),
+      company: t("testimonial1Company"),
+      content: t("testimonial1Content"),
+      avatar: "/assets/testimonials/client1.webp",
       rating: 5,
     },
     {
-      name: "Michael Chen",
-      role: "Marketing Director",
-      company: "GrowthCo",
-      content: "The mobile app they developed for us increased our customer engagement by 300%. The user experience is flawless and our customers love it!",
-      avatar: "/placeholder.svg?height=40&width=40",
+      name: t("testimonial2Name"),
+      role: t("testimonial2Role"),
+      company: t("testimonial2Company"),
+      content: t("testimonial2Content"),
+      avatar: "/assets/testimonials/client2.webp",
       rating: 5,
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder",
-      company: "E-Shop Plus",
-      content: "Our e-commerce store built by their team generated 250% more sales in the first quarter. The platform is fast, secure, and incredibly user-friendly!",
-      avatar: "/placeholder.svg?height=40&width=40",
+      name: t("testimonial3Name"),
+      role: t("testimonial3Role"),
+      company: t("testimonial3Company"),
+      content: t("testimonial3Content"),
+      avatar: "/assets/testimonials/client3.webp",
       rating: 5,
     },
   ]
