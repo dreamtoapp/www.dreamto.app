@@ -6,6 +6,7 @@ import { contactUs, technology } from '../../../../constant/icons';
 import { cn } from '../../../../lib/utils';
 import NewsletterSubscription from './NewsletterSubscription';
 import NavbarBrand from '@/components/naviqation/NavbarBrand';
+import packageJson from '../../../../package.json';
 
 // Define types for contact items
 type ContactItem = {
@@ -209,7 +210,17 @@ const Footer: React.FC = async () => {
 
             {/* Newsletter Subscription - Hidden on mobile to save space */}
             <div className="hidden lg:block">
-              <NewsletterSubscription />
+              <NewsletterSubscription
+                translations={{
+                  newsletterTitle: footer("newsletterTitle"),
+                  newsletterPlaceholder: footer("newsletterPlaceholder"),
+                  newsletterButton: footer("newsletterButton"),
+                  newsletterLoading: footer("newsletterLoading"),
+                  newsletterDescription: footer("newsletterDescription"),
+                  newsletterEmailRequired: footer("newsletterEmailRequired"),
+                  newsletterError: footer("newsletterError"),
+                }}
+              />
             </div>
           </div>
 
@@ -281,6 +292,8 @@ const Footer: React.FC = async () => {
         {/* Copyright & Legal */}
         <div className="mt-6 lg:mt-10 flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-4 border-t border-border/10 pt-3 lg:pt-4 text-xs text-muted-foreground">
           <span className="text-center">&copy; {year} DreamToApp IT Agency. {footer("copyright")}.</span>
+          <span className="hidden lg:inline">•</span>
+          <span className="text-center">v{packageJson.version}</span>
           <span className="hidden lg:inline">•</span>
           <Link
             href={`/${locale}/privacy`}

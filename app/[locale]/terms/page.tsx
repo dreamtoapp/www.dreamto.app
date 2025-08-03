@@ -250,9 +250,8 @@ export default async function TermsOfServicePage() {
             <h2 className="text-2xl font-semibold mb-4 text-foreground">{t('contactInformation.title')}</h2>
             <p className="mb-4">{t('contactInformation.description')}</p>
             <div className="bg-muted p-4 rounded-lg">
-              <p className="mb-2"><strong>{t('contactInformation.email')}:</strong> legal@dreamto.app</p>
-              <p className="mb-2"><strong>{t('contactInformation.phone')}:</strong> +966 55 411 3107</p>
-              <p className="mb-2"><strong>{t('contactInformation.address')}:</strong> Riyadh, Saudi Arabia</p>
+              <p className="mb-2"><strong>{t('contactInformation.email')}:</strong> hi@dreamto.app</p>
+              <p className="mb-2"><strong>{t('contactInformation.address')}:</strong> Jeddah, Saudi Arabia</p>
             </div>
           </section>
 

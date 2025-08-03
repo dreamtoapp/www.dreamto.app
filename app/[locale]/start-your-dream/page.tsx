@@ -257,18 +257,7 @@ export default async function StartDreamPage({
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-12 lg:py-16 px-4 border-t border-border">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-sm text-muted-foreground mb-4">{t('trustedBy')}</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-            <div className="text-2xl font-bold text-foreground">Saudi Vision 2030</div>
-            <div className="text-2xl font-bold text-foreground">MOMRA</div>
-            <div className="text-2xl font-bold text-foreground">SABIC</div>
-            <div className="text-2xl font-bold text-foreground">STC</div>
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }
