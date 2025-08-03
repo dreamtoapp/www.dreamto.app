@@ -904,6 +904,26 @@
     "messageSecondary": "Feel free to browse our site or contact us for more information.",
     "returnHome": "Return to Home"
   },
+  "offline": {
+    "title": "You are offline",
+    "description": "Please check your internet connection and try again",
+    "tryAgain": "Try Again",
+    "goHome": "Go to Homepage",
+    "availableOffline": "Available offline:",
+    "homepage": "Homepage",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact Us"
+  },
+  "pwa": {
+    "installAvailable": "Install Available",
+    "enableNotifications": "Enable Notifications",
+    "notificationsBlocked": "Notifications Blocked",
+    "installPromptNotAvailable": "Install prompt not available",
+    "installing": "DreamToApp is being installed...",
+    "installationCancelled": "Installation was cancelled",
+    "installationFailed": "Installation failed. Please try again."
+  },
   "consultationCTA": {
     "cta": "Free Consultation",
     "title": "Request a Free Consultation",

@@ -11,6 +11,7 @@ import Link from "@/components/link";
 import Navbar from '@/components/naviqation/navbar';
 import Footer from './(homepage)/component/Footer';
 import FloatingConsultationCTA from '@/components/ui/FloatingConsultationCTA';
+import PWAStatus from '@/components/PWAStatus';
 
 type Locale = typeof locales[number];
 
@@ -61,6 +62,7 @@ export default async function LocaleLayout({
         </main>
         <Footer />
         <FloatingConsultationCTA />
+        <PWAStatus />
       </div>
     </NextIntlClientProvider>
   );

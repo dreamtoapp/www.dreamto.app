@@ -908,6 +908,26 @@
     "messageSecondary": "يمكنك تصفح الموقع أو التواصل معنا لمزيد من المعلومات.",
     "returnHome": "العودة إلى الصفحة الرئيسية"
   },
+  "offline": {
+    "title": "أنت غير متصل بالإنترنت",
+    "description": "يرجى التحقق من اتصالك بالإنترنت والمحاولة مرة أخرى",
+    "tryAgain": "إعادة المحاولة",
+    "goHome": "العودة للرئيسية",
+    "availableOffline": "الصفحات المتاحة بدون إنترنت:",
+    "homepage": "الصفحة الرئيسية",
+    "services": "الخدمات",
+    "portfolio": "أعمالنا",
+    "contact": "اتصل بنا"
+  },
+  "pwa": {
+    "installAvailable": "متاح للتثبيت",
+    "enableNotifications": "تفعيل الإشعارات",
+    "notificationsBlocked": "الإشعارات محظورة",
+    "installPromptNotAvailable": "موجه التثبيت غير متاح",
+    "installing": "جاري تثبيت دريم تو آب...",
+    "installationCancelled": "تم إلغاء التثبيت",
+    "installationFailed": "فشل التثبيت. يرجى المحاولة مرة أخرى."
+  },
   "consultationCTA": {
     "cta": "استشارة مجانية",
     "title": "اطلب استشارة مجانية",

@@ -1,6 +1,7 @@
 import './globals.css';
 
 export const metadata = {
+  manifest: '/manifest.json',
   metadataBase: new URL('https://www.dreamto.app'),
   title: {
     default: 'DreamToApp IT Solutions – Digital Innovation Agency',
@@ -67,6 +68,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { tajawal } from './font';
 import { ThemeProvider } from '@/provider/theme-provider';
 import BackToTopWrapper from '@/components/ui/BackToTopWrapper';
+
 
 // Loading component for suspense boundaries
 const LoadingFallback = () => (
