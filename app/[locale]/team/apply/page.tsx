@@ -139,8 +139,7 @@ export default function ApplyPage() {
               </Link>
             </Label>
           </div>
-          <div className="flex justify-between items-center gap-4 mt-6">
-            <Link href={`/${locale}/team`} className="text-primary hover:underline font-medium">{t("backToTeamPage")}</Link>
+          <div className="flex justify-end items-center gap-4 mt-6">
             <Button type="submit" disabled={!agreeToTerms} size="lg" className="px-8 py-3 font-bold text-lg shadow-md">
               {t("submitApplication")}
             </Button>

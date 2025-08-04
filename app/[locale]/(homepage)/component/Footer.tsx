@@ -103,7 +103,6 @@ const Footer: React.FC = async () => {
     { label: t("services"), href: "/services" },
     { label: t("portfolio"), href: "/worksample" },
     { label: t("chatWithUs"), href: "/contactus" },
-    { label: footer("team"), href: "/team" },
   ];
 
   // Structured Data for SEO

@@ -54,15 +54,21 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <div className="flex flex-col min-h-screen" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
-        <Navbar locale={locale} />
+        <Suspense fallback={<div>Loading navbar...</div>}>
+          <Navbar locale={locale} />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <PWAStatus />
+        </Suspense>
         <main className="flex-1">
           <Suspense fallback={<div>Loading...</div>}>
             {children}
           </Suspense>
         </main>
         <Footer />
-        <FloatingConsultationCTA />
-        <PWAStatus />
+        <Suspense fallback={<div>Loading...</div>}>
+          <FloatingConsultationCTA />
+        </Suspense>
       </div>
     </NextIntlClientProvider>
   );

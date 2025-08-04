@@ -1,39 +1,41 @@
 import createNextIntlPlugin from "next-intl/plugin";
 import BundleAnalyzer from "@next/bundle-analyzer";
-// @ts-ignore
+// @ts-ignore - next-pwa doesn't have proper TypeScript declarations for Next.js 15
 import withPWA from "next-pwa";
 import type { NextConfig } from "next";
 
-// Initialize bundle analyzer plugin
+// Initialize plugins
 const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === "true",
 });
 
-// Initialize internationalization plugin
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 
-  // Enable stable experimental features
+  // Experimental features for React 19 compatibility
   experimental: {
-    // Optimize package imports for reduced bundle size
+    // Disable React compiler to prevent conflicts
+    reactCompiler: false,
+    
+    // Optimize package imports for smaller bundles
     optimizePackageImports: [
       "@radix-ui/react-icons",
       "lucide-react",
       "@radix-ui/react-accordion",
       "framer-motion",
     ],
-    // Enable modern JavaScript optimizations
+
+    // Server Actions configuration
     serverActions: {
       bodySizeLimit: "2mb",
       allowedOrigins: ["localhost:3000", "dreamtoapp.vercel.app"],
     },
   },
 
-  // Image configuration
   images: {
+    formats: ["image/webp", "image/avif"],
     remotePatterns: [
       {
         protocol: "https",
@@ -58,197 +60,53 @@ const nextConfig: NextConfig = {
     ],
   },
 
-  // Add CORS and security headers
-  async headers() {
-    return [
-      {
-        source: "/:path*",
-        headers: [
-          { key: "Access-Control-Allow-Origin", value: "*" },
-          {
-            key: "Access-Control-Allow-Methods",
-            value: "GET,OPTIONS,PATCH,DELETE,POST,PUT",
-          },
-        ],
-      },
-    ];
-  },
 
-  // Configure allowed domains for fetch
-  async rewrites() {
-    return [
-      {
-        source: "/api/geo/:path*",
-        destination: "http://ip-api.com/:path*",
-      },
-    ];
-  },
-
-  webpack(config, { dev, isServer }) {
-    // Your existing webpack config
-    return config;
-  },
-
-  // Ignore specific build errors
-  onDemandEntries: {
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 2,
-  },
 };
 
-// PWA configuration
+// PWA configuration - minimal
 const pwaConfig = withPWA({
-  dest: 'public',
-  register: true,
+  dest: "public",
+  register: false,
   skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
+  disable: process.env.NODE_ENV === "development",
   buildExcludes: [/middleware-manifest\.json$/],
   runtimeCaching: [
     {
-      urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'google-fonts-cache',
-        expiration: {
-          maxEntries: 10,
-          maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-        },
-        cacheableResponse: {
-          statuses: [0, 200]
-        }
-      }
-    },
-    {
-      urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'gstatic-fonts-cache',
-        expiration: {
-          maxEntries: 10,
-          maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
-        },
-        cacheableResponse: {
-          statuses: [0, 200]
-        }
-      }
-    },
-    {
-      urlPattern: /\.(?:eot|otf|ttc|ttf|woff|woff2|font.css)$/i,
-      handler: 'StaleWhileRevalidate',
-      options: {
-        cacheName: 'static-font-assets',
-        expiration: {
-          maxEntries: 4,
-          maxAgeSeconds: 7 * 24 * 60 * 60 // 7 days
-        }
-      }
-    },
-    {
       urlPattern: /\.(?:jpg|jpeg|gif|png|svg|ico|webp|avif)$/i,
-      handler: 'StaleWhileRevalidate',
+      handler: "StaleWhileRevalidate",
       options: {
-        cacheName: 'static-image-assets',
+        cacheName: "static-images",
         expiration: {
           maxEntries: 64,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
+          maxAgeSeconds: 24 * 60 * 60,
+        },
+      },
     },
     {
-      urlPattern: /\/_next\/image\?url=.+$/i,
-      handler: 'StaleWhileRevalidate',
+      urlPattern: /\.(?:eot|otf|ttc|ttf|woff|woff2|font\.css)$/i,
+      handler: "CacheFirst",
       options: {
-        cacheName: 'next-image',
+        cacheName: "static-fonts",
         expiration: {
-          maxEntries: 64,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
-    },
-    {
-      urlPattern: /\.(?:mp3|wav|ogg)$/i,
-      handler: 'CacheFirst',
-      options: {
-        rangeRequests: true,
-        cacheName: 'static-audio-assets',
-        expiration: {
-          maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
-    },
-    {
-      urlPattern: /\.(?:mp4)$/i,
-      handler: 'CacheFirst',
-      options: {
-        rangeRequests: true,
-        cacheName: 'static-video-assets',
-        expiration: {
-          maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
-    },
-    {
-      urlPattern: /\.(?:js)$/i,
-      handler: 'StaleWhileRevalidate',
-      options: {
-        cacheName: 'static-js-assets',
-        expiration: {
-          maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
-    },
-    {
-      urlPattern: /\.(?:css|less)$/i,
-      handler: 'StaleWhileRevalidate',
-      options: {
-        cacheName: 'static-style-assets',
-        expiration: {
-          maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        }
-      }
-    },
-    {
-      urlPattern: /\/_next\/static.+\.js$/i,
-      handler: 'CacheFirst',
-      options: {
-        cacheName: 'next-static-js-assets',
-        expiration: {
-          maxEntries: 64,
-          maxAgeSeconds: 24 * 60 * 60 * 365 // 365 days
-        }
-      }
+          maxEntries: 10,
+          maxAgeSeconds: 60 * 60 * 24 * 365,
+        },
+      },
     },
     {
       urlPattern: /\/api\/.*$/i,
-      handler: 'NetworkFirst',
-      method: 'GET',
+      handler: "NetworkFirst",
+      method: "GET",
       options: {
-        cacheName: 'apis',
+        cacheName: "api-cache",
         expiration: {
           maxEntries: 16,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
+          maxAgeSeconds: 24 * 60 * 60,
         },
-        networkTimeoutSeconds: 10
-      }
+        networkTimeoutSeconds: 10,
+      },
     },
-    {
-      urlPattern: /.*/i,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'others',
-        expiration: {
-          maxEntries: 32,
-          maxAgeSeconds: 24 * 60 * 60 // 24 hours
-        },
-        networkTimeoutSeconds: 10
-      }
-    }
-  ]
+  ],
 });
 
-// Apply plugins and export configuration
-export default withBundleAnalyzer(withNextIntl(pwaConfig(nextConfig)));
+export default withBundleAnalyzer(withNextIntl(pwaConfig(nextConfig) as NextConfig));

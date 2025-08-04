@@ -1,35 +1,20 @@
 "use client"
 import React, { useEffect, useState, useMemo } from 'react';
+import { useTranslations, useLocale } from 'next-intl';
 import HeroContent from './HeroContent';
 import WaveBackground from './WaveBackground';
 import HeroStyles from './HeroStyles';
 
 interface HeroProps {
-  logoAlt: string;
-  tagline: string;
-  title: string;
-  description: string;
-  ctaPrimary: string;
-  ctaSecondary: string;
-  slogan: string;
-  sectionsHero: string;
   className?: string;
 }
 
-
-
-const HeroSection: React.FC<HeroProps & { locale: string }> = ({
-  logoAlt,
-  tagline,
-  title,
-  description,
-  ctaPrimary,
-  ctaSecondary,
-  slogan,
-  sectionsHero,
-  className = "",
-  locale
+const HeroSection: React.FC<HeroProps> = ({
+  className = ""
 }) => {
+  const locale = useLocale();
+  const t = useTranslations('homepage');
+
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -49,16 +34,16 @@ const HeroSection: React.FC<HeroProps & { locale: string }> = ({
   // Ensure consistent rendering between server and client
   const heroContent = useMemo(() => (
     <HeroContent
-      logoAlt={logoAlt}
-      tagline={tagline}
-      title={title}
-      description={description}
-      ctaPrimary={ctaPrimary}
-      ctaSecondary={ctaSecondary}
-      slogan={slogan}
+      logoAlt={t('logo.alt')}
+      tagline={t('tagline')}
+      title={t('title')}
+      description={t('description')}
+      ctaPrimary={t('cta.primary')}
+      ctaSecondary={t('cta.secondary')}
+      slogan={t('slogon')}
       locale={locale}
     />
-  ), [logoAlt, locale, title, tagline, description, ctaPrimary, ctaSecondary, slogan]);
+  ), [t, locale]);
 
   return (
     <div className={`w-full min-h-screen bg-gradient-to-br from-blue-950 via-amber-900 to-cyan-900 ${className}`}>

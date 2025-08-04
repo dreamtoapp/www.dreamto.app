@@ -31,7 +31,7 @@ const Navbar: React.FC<{ locale: string }> = ({ locale }) => {
 
           {/* Right Section - Actions */}
           <div className="flex items-center gap-3">
-            <NavbarActions />
+            <NavbarActions locale={locale} />
             <MobileMenu locale={locale} />
           </div>
         </div>

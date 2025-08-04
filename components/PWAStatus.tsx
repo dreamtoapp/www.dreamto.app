@@ -29,7 +29,18 @@ export default function PWAStatus() {
     // Check if PWA is installed
     if (typeof window !== 'undefined') {
       const checkInstallation = () => {
-        setIsInstalled(window.matchMedia('(display-mode: standalone)').matches);
+        try {
+          // Check multiple indicators of PWA installation
+          const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+          const isInApp = window.matchMedia('(display-mode: minimal-ui)').matches;
+          const hasNavigatorStandalone = 'standalone' in window.navigator && Boolean(window.navigator.standalone);
+
+          const installationStatus: boolean = isStandalone || isInApp || hasNavigatorStandalone;
+          setIsInstalled(installationStatus);
+          console.log('PWA Status: Installation check:', { isStandalone, isInApp, hasNavigatorStandalone, installationStatus });
+        } catch (error) {
+          console.warn('Error checking PWA installation status:', error);
+        }
       };
 
       checkInstallation();
@@ -37,14 +48,22 @@ export default function PWAStatus() {
 
       // Check notification permission
       if ('Notification' in window) {
-        setNotificationPermission(Notification.permission);
+        try {
+          setNotificationPermission(Notification.permission);
+        } catch (error) {
+          console.warn('Error checking notification permission:', error);
+        }
       }
 
       // Listen for install prompt
       const handleBeforeInstallPrompt = (e: Event) => {
-        e.preventDefault();
-        setDeferredPrompt(e as BeforeInstallPromptEvent);
-        setCanInstall(true);
+        try {
+          e.preventDefault();
+          setDeferredPrompt(e as BeforeInstallPromptEvent);
+          setCanInstall(true);
+        } catch (error) {
+          console.warn('Error handling install prompt:', error);
+        }
       };
 
       window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -63,6 +82,12 @@ export default function PWAStatus() {
 
   // Don't show if already installed
   if (isInstalled) {
+    console.log('PWA Status: PWA is installed, hiding banner');
+    return null;
+  }
+
+  // Don't show if no PWA features are available
+  if (!canInstall && notificationPermission !== 'default' && notificationPermission !== 'denied') {
     return null;
   }
 
@@ -90,13 +115,13 @@ export default function PWAStatus() {
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
-      <div className="bg-card border border-border rounded-lg shadow-lg p-3 max-w-xs">
-        <div className="flex items-center gap-2 text-sm">
+    <div className="w-full bg-muted/30 border-b border-border">
+      <div className="container mx-auto px-4 py-2">
+        <div className="flex items-center justify-center gap-4 text-sm">
           {canInstall && (
             <Button
               onClick={handleInstallClick}
-              variant="ghost"
+              variant="outline"
               size="sm"
               className="flex items-center gap-1 text-primary hover:text-primary/80"
             >
@@ -122,4 +147,4 @@ export default function PWAStatus() {
       </div>
     </div>
   );
-} 
+}

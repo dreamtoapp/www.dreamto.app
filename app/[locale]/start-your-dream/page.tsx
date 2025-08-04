@@ -209,11 +209,7 @@ export default async function StartDreamPage({
       {/* Stats Section */}
       <section className="py-16 lg:py-20 px-4 bg-muted/30">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-3xl lg:text-4xl font-bold text-primary">500+</div>
-              <div className="text-sm text-muted-foreground">{t('projectsCompleted')}</div>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="space-y-2">
               <div className="text-3xl lg:text-4xl font-bold text-primary">98%</div>
               <div className="text-sm text-muted-foreground">{t('clientSatisfaction')}</div>

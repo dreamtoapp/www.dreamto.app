@@ -57,17 +57,6 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   const t = await getTranslations('homepage');
 
-  const heroProps = {
-    logoAlt: t('logo.alt'),
-    tagline: t('tagline'),
-    title: t('title'),
-    description: t('description'),
-    ctaPrimary: t('cta.primary'),
-    ctaSecondary: t('cta.secondary'),
-    slogan: t('slogon'),
-    sectionsHero: t('sections.hero'),
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-[#99e4ff]/5">
       {/* Enhanced Schema Markup */}
@@ -138,7 +127,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#d7a50d]/10 via-transparent to-[#0d3ad7]/10" />
         <div className="relative z-10 w-full">
-          <HeroSection {...heroProps} locale={locale} />
+          <HeroSection />
         </div>
       </section>
 

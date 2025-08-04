@@ -90,7 +90,7 @@ export default async function RootLayout({
       dir={locale === "en" ? Directions.LTR : Directions.RTL}
       suppressHydrationWarning
     >
-      <head>
+      <head suppressHydrationWarning>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="preconnect" href="https://static.getclicky.com" />
         <Script

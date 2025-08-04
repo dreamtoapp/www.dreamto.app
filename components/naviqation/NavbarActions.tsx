@@ -5,11 +5,11 @@ import LangSwitcher from "./LangSwicher";
 import ThemeSwitch from "./ThemeSwitch";
 
 // Enhanced Action Buttons Component
-const NavbarActions: React.FC = () => {
+const NavbarActions: React.FC<{ locale: string }> = ({ locale }) => {
   return (
     <div className="flex items-center gap-2">
       <ThemeSwitch />
-      <LangSwitcher />
+      <LangSwitcher locale={locale} />
     </div>
   );
 };

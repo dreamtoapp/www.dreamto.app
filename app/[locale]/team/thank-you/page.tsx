@@ -13,7 +13,7 @@ export default async function ThankYouPage() {
         We appreciate your interest in joining our team. We'll review your
         application and get back to you soon.
       </p>
-      <Link href={`/${locale}/team`}>Back to Team Page</Link>
+      <Link href={`/${locale}/apply-job`}>Back to Apply Job</Link>
     </div>
   );
 }

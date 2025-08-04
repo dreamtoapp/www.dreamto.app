@@ -68,14 +68,22 @@ export default function PWAInstaller() {
 
           // Check for updates
           registration.addEventListener('updatefound', () => {
-            const newWorker = registration.installing;
-            if (newWorker) {
-              newWorker.addEventListener('statechange', () => {
-                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                  // New content is available
-                  toast.info('New version available! Refresh to update.');
-                }
-              });
+            try {
+              const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.addEventListener('statechange', () => {
+                  try {
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                      // New content is available
+                      toast.info('New version available! Refresh to update.');
+                    }
+                  } catch (error) {
+                    console.warn('Error handling service worker state change:', error);
+                  }
+                });
+              }
+            } catch (error) {
+              console.warn('Error handling service worker update:', error);
             }
           });
         } catch (error) {

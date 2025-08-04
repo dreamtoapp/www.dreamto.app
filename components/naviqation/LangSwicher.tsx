@@ -11,14 +11,15 @@ const languageData = {
   en: { image: english, label: "English" },
 } as const;
 
-const LangSwitcher = memo(function LangSwitcher() {
-  const locale = useLocale() as keyof typeof languageData;
+type LocaleType = keyof typeof languageData;
+
+const LangSwitcher = memo(function LangSwitcher({ locale }: { locale: string }) {
   const pathname = usePathname();
   const [mounted, setMounted] = useState(false);
   const t = useTranslations('navigation');
 
   // Memoize the current language data to prevent unnecessary re-renders
-  const currentLanguage = useMemo(() => languageData[locale], [locale]);
+  const currentLanguage = useMemo(() => languageData[locale as LocaleType], [locale]);
 
   // Get the pathname without the current locale prefix - FIXED VERSION
   const pathWithoutLocale = useMemo(() => {
@@ -61,7 +62,7 @@ const LangSwitcher = memo(function LangSwitcher() {
         href={pathWithoutLocale}
         locale={targetLocale}
         className="flex items-center justify-center w-6 h-6 rounded-full overflow-hidden border border-transparent hover:border-border hover:shadow-sm transition-all duration-300"
-        aria-label={t('switchLanguage', { language: languageData[targetLocale].label })}
+        aria-label={t('switchLanguage', { language: languageData[targetLocale as LocaleType].label })}
       >
         <Image
           src={currentLanguage.image}
