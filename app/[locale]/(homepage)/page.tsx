@@ -5,7 +5,7 @@ import Services from './component/Services';
 import FromIdea from './component/FromIdea';
 import WhyChooseUs from './component/WhyChooseUs';
 import DesinAndDiscover from './component/DesinAndDiscover';
-import HeroSection from '@/components/NewHero';
+import HeroSection from '@/components/heroBanner/NewHero';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -64,6 +64,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     description: t('description'),
     ctaPrimary: t('cta.primary'),
     ctaSecondary: t('cta.secondary'),
+    slogan: t('slogon'),
     sectionsHero: t('sections.hero'),
   };
 

@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { useFormPersistence } from '@/hooks/useFormPersistence';
+// import { useFormPersistence } from '@/hooks/useFormPersistence';
 
 import Link from '@/components/link';
 import { Button } from '@/components/ui/button';
@@ -31,7 +31,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import AttachmentInput from './AttachmentInput';
-import { submitApplication } from './actions/submitApplication';
+// import { submitApplication } from './actions/submitApplication';
 
 const expertiseAreas = [
   "web-development",
@@ -105,11 +105,16 @@ export default function ApplyJobPage() {
   });
 
   // Disable form persistence for job applications
-  const { clearSavedData } = useFormPersistence(form, {
-    key: 'job-application-form',
-    debounceMs: 1000,
-    enabled: false, // Disabled to prevent data persistence
-  });
+  // const { clearSavedData } = useFormPersistence(form, {
+  //   key: 'job-application-form',
+  //   debounceMs: 1000,
+  //   enabled: false, // Disabled to prevent data persistence
+  // });
+
+  // Temporary replacement for clearSavedData
+  const clearSavedData = () => {
+    console.log('Form data cleared');
+  };
 
   const onSubmit = async (data: ApplicationFormData) => {
     try {
@@ -135,7 +140,14 @@ export default function ApplyJobPage() {
         formData.append("attachmentFile", attachment);
       }
 
-      const result = await submitApplication(formData);
+      // const result = await submitApplication(formData);
+
+      // Temporary implementation for testing
+      const result = {
+        success: true,
+        message: "Application submitted successfully!",
+        applicationNumber: "TEST-" + Date.now(),
+      };
 
       if (result.success) {
         console.log("Application submitted successfully:", result.applicationNumber);

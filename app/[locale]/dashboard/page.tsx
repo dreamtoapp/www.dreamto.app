@@ -1,212 +1,244 @@
-// pages/dashboard.tsx
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; // ShadCN Card components
-import { Button } from "@/components/ui/button"; // ShadCN Button component
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"; // ShadCN Tabs components
-import { Badge } from "@/components/ui/badge"; // ShadCN Badge component
-import { getContactUsData } from "./action/action"; // Import the refactored server action
+"use client";
 
+import { useState, useEffect } from 'react';
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
-// Define types for each model (corrected for visitor data)
-type ContactUs = {
-  id: string;
-  name: string;
-  email: string;
-  mobile: string;
-  projectType: string;
-  projectDetails: string;
-  budget: string;
-  message: string;
-  createdAt: Date;
-};
+export default function Dashboard() {
+  const [data, setData] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-type ExpressQuery = {
-  id: string;
-  name: string;
-  brief: string;
-  mobile: string;
-  createdAt: Date; // updated to Date
-};
+  useEffect(() => {
+    loadDashboardData();
+  }, []);
 
-type Visitor = {
-  id: string;
-  createdAt: Date; // updated to Date
-  ip: string | null; // Optional field from Prisma schema
-  country: string | null; // Optional field from Prisma schema
-  city: string | null; // Optional field from Prisma schema
-  updatedAt: Date; // updated to Date
-  visitCount: number | 0;
-};
+  const loadDashboardData = async () => {
+    try {
+      setLoading(true);
+      // Simple data structure for testing
+      const mockData = {
+        stats: {
+          totalJobApplications: 5,
+          activeJobApplications: 3,
+          totalVisitors: 150,
+          recentSubmissions: 12
+        },
+        jobApplications: [
+          {
+            id: '1',
+            fullName: 'John Doe',
+            email: 'john@example.com',
+            phone: '+1234567890',
+            areaOfExpertise: 'Frontend Development',
+            yearsOfExperience: 3,
+            status: 'SUBMITTED',
+            createdAt: new Date().toISOString()
+          }
+        ],
+        contacts: [
+          {
+            id: '1',
+            name: 'Jane Smith',
+            email: 'jane@example.com',
+            mobile: '+0987654321',
+            projectType: 'Web Application',
+            budget: '$5000-10000',
+            createdAt: new Date().toISOString()
+          }
+        ],
+        visitors: [
+          {
+            id: '1',
+            ip: '192.168.1.1',
+            country: 'Saudi Arabia',
+            city: 'Riyadh',
+            visitCount: 5,
+            createdAt: new Date().toISOString()
+          }
+        ],
+        consultations: [
+          {
+            id: '1',
+            name: 'Ahmed Ali',
+            email: 'ahmed@example.com',
+            phone: '+966501234567',
+            message: 'I need consultation for my startup project',
+            createdAt: new Date().toISOString()
+          }
+        ]
+      };
 
-type Consultation = {
-  id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  message: string;
-  voiceUrl?: string;
-  createdAt: Date;
-};
+      setData(mockData);
+    } catch (error) {
+      console.error('Error loading dashboard data:', error);
+      toast.error('Failed to load dashboard data');
+    } finally {
+      setLoading(false);
+    }
+  };
 
-import { FaEnvelope, FaQuestionCircle, FaUsers, FaMicrophone } from 'react-icons/fa';
-import ViewMoreModal from './ViewMoreModal';
-import ExpressQueryModal from './ExpressQueryModal';
-import Link from 'next/link';
-
-export default async function Dashboard() {
-  // Fetch data using the server action
-  const result = await getContactUsData() ?? {};
-  const {
-    contacts = [],
-    expressQuery = [],
-    visitors = [],
-    consultations = [],
-  }: {
-    contacts?: ContactUs[];
-    expressQuery?: ExpressQuery[];
-    visitors?: Visitor[];
-    consultations?: Consultation[];
-  } = result;
-
-  return (
-    <div className="container mx-auto p-4 md:p-8">
-      <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
-
-      {/* Summary Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6 mb-10">
-        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
-          <FaEnvelope className="text-primary w-8 h-8" />
-          <div>
-            <div className="text-2xl font-bold">{contacts?.length || 0}</div>
-            <div className="text-sm text-muted-foreground">Project Requests</div>
-          </div>
-        </div>
-        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
-          <FaQuestionCircle className="text-primary w-8 h-8" />
-          <div>
-            <div className="text-2xl font-bold">{expressQuery?.length || 0}</div>
-            <div className="text-sm text-muted-foreground">Express Queries</div>
-          </div>
-        </div>
-        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
-          <FaUsers className="text-primary w-8 h-8" />
-          <div>
-            <div className="text-2xl font-bold">{visitors?.length || 0}</div>
-            <div className="text-sm text-muted-foreground">Visitors</div>
-          </div>
-        </div>
-        <div className="bg-card rounded-2xl shadow p-6 flex items-center gap-4">
-          <FaMicrophone className="text-primary w-8 h-8" />
-          <div>
-            <div className="text-2xl font-bold">{consultations?.length || 0}</div>
-            <div className="text-sm text-muted-foreground">Consultations</div>
-          </div>
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-lg text-muted-foreground">Loading dashboard...</p>
         </div>
       </div>
+    );
+  }
 
-      {/* Tabs Section */}
-      <Tabs defaultValue="contact-us">
-        <TabsList className="mb-6">
-          <TabsTrigger value="contact-us" className="flex items-center gap-2">
-            <FaEnvelope /> Project Requests
-          </TabsTrigger>
-          <TabsTrigger value="express-queries" className="flex items-center gap-2">
-            <FaQuestionCircle /> Express Queries
-          </TabsTrigger>
-          <TabsTrigger value="visitors" className="flex items-center gap-2">
-            <FaUsers /> Visitors
-          </TabsTrigger>
-          <TabsTrigger value="consultations" className="flex items-center gap-2">
-            <FaMicrophone /> Consultations
-          </TabsTrigger>
-        </TabsList>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="container mx-auto p-4 md:p-8">
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Admin Dashboard</h1>
+          <p className="text-lg text-gray-600">Complete control over all data and operations</p>
+        </div>
 
-        {/* Project Requests Table */}
-        <TabsContent value="contact-us">
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Project Requests Submissions</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {contacts?.map((item: ContactUs) => (
-                <div key={item.id} className="bg-card rounded-xl shadow p-6 flex flex-col gap-2">
-                  <div className="font-bold text-lg">{item.name}</div>
-                  <div className="text-sm text-muted-foreground">{item.email}</div>
-                  <div><strong>Mobile:</strong> {item.mobile}</div>
-                  <div><strong>Project Type:</strong> {item.projectType}</div>
-                  <div><strong>Budget:</strong> {item.budget}</div>
-                  <div><strong>Project Details:</strong> <div className="whitespace-pre-line break-words rounded p-2 mt-1">{item.projectDetails}</div></div>
-                  <div><strong>Message:</strong> <div className="whitespace-pre-line break-words rounded p-2 mt-1">{item.message}</div></div>
-                  <div className="text-xs text-muted-foreground mt-2"><strong>Submitted:</strong> {new Date(item.createdAt).toLocaleString()}</div>
-                  <div className="mt-2">
-                    <ViewMoreModal item={item} />
-                  </div>
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Total Applications</p>
+                  <p className="text-2xl font-bold text-gray-900">{data?.stats?.totalJobApplications || 0}</p>
                 </div>
-              ))}
-            </div>
-          </section>
-        </TabsContent>
+                <div className="h-8 w-8 bg-blue-500 rounded"></div>
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* Express Queries Table */}
-        <TabsContent value="express-queries">
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Express Queries</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {expressQuery?.map((item: ExpressQuery) => (
-                <div key={item.id} className="bg-card rounded-xl shadow p-6 flex flex-col gap-2">
-                  <div className="font-bold text-lg">{item.name}</div>
-                  <div><strong>Mobile:</strong> {item.mobile}</div>
-                  <div><strong>Brief:</strong> <div className="whitespace-pre-line break-words rounded p-2 mt-1">{item.brief}</div></div>
-                  <div className="text-xs text-muted-foreground mt-2"><strong>Submitted:</strong> {new Date(item.createdAt).toLocaleString()}</div>
-                  <div className="mt-2">
-                    <ExpressQueryModal item={item} />
-                  </div>
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Active Applications</p>
+                  <p className="text-2xl font-bold text-gray-900">{data?.stats?.activeJobApplications || 0}</p>
                 </div>
-              ))}
-            </div>
-          </section>
-        </TabsContent>
+                <div className="h-8 w-8 bg-green-500 rounded"></div>
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* Visitors Table */}
-        <TabsContent value="visitors">
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Visitors</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {visitors?.map((item: Visitor) => (
-                <div key={item.id} className="bg-card rounded-xl shadow p-6 flex flex-col gap-2">
-                  <div className="font-bold text-lg">{item.ip || 'N/A'}</div>
-                  <div><strong>Country:</strong> {item.country || 'N/A'}</div>
-                  <div><strong>City:</strong> {item.city || 'N/A'}</div>
-                  <div><strong>Visit Count:</strong> {item.visitCount}</div>
-                  <div className="text-xs text-muted-foreground mt-2"><strong>Visited:</strong> {new Date(item.createdAt).toLocaleString()}</div>
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Total Visitors</p>
+                  <p className="text-2xl font-bold text-gray-900">{data?.stats?.totalVisitors || 0}</p>
                 </div>
-              ))}
-            </div>
-          </section>
-        </TabsContent>
+                <div className="h-8 w-8 bg-purple-500 rounded"></div>
+              </div>
+            </CardContent>
+          </Card>
 
-        {/* Consultations Table */}
-        <TabsContent value="consultations">
-          <section className="mb-8">
-            <h2 className="text-xl font-semibold mb-4">Consultation Requests</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {consultations?.map((item: Consultation) => (
-                <div key={item.id} className="bg-card rounded-xl shadow p-6 flex flex-col gap-2">
-                  <div className="font-bold text-lg">{item.name}</div>
-                  <div className="text-sm text-muted-foreground">{item.email}</div>
-                  <div><strong>Phone:</strong> {item.phone || 'N/A'}</div>
-                  <div><strong>Message:</strong> <div className="whitespace-pre-line break-words rounded p-2 mt-1">{item.message}</div></div>
-                  {item.voiceUrl && (
-                    <div className="mt-2">
-                      <Link href={item.voiceUrl} target="_blank" rel="noopener noreferrer" className="text-primary underline flex items-center gap-1">
-                        <FaMicrophone /> Listen to Voice Message
-                      </Link>
-                    </div>
-                  )}
-                  <div className="text-xs text-muted-foreground mt-2"><strong>Submitted:</strong> {new Date(item.createdAt).toLocaleString()}</div>
+          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium text-gray-600">Recent Submissions</p>
+                  <p className="text-2xl font-bold text-gray-900">{data?.stats?.recentSubmissions || 0}</p>
                 </div>
-              ))}
-            </div>
-          </section>
-        </TabsContent>
-      </Tabs>
+                <div className="h-8 w-8 bg-orange-500 rounded"></div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Job Applications */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Job Applications</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data?.jobApplications?.map((app: any) => (
+              <Card key={app.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-lg">{app.fullName}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p><strong>Email:</strong> {app.email}</p>
+                  <p><strong>Phone:</strong> {app.phone}</p>
+                  <p><strong>Expertise:</strong> {app.areaOfExpertise}</p>
+                  <p><strong>Experience:</strong> {app.yearsOfExperience} years</p>
+                  <p><strong>Status:</strong> {app.status}</p>
+                  <p><strong>Submitted:</strong> {new Date(app.createdAt).toLocaleDateString()}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Contacts */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Submissions</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data?.contacts?.map((contact: any) => (
+              <Card key={contact.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-lg">{contact.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p><strong>Email:</strong> {contact.email}</p>
+                  <p><strong>Mobile:</strong> {contact.mobile}</p>
+                  <p><strong>Project Type:</strong> {contact.projectType}</p>
+                  <p><strong>Budget:</strong> {contact.budget}</p>
+                  <p><strong>Submitted:</strong> {new Date(contact.createdAt).toLocaleDateString()}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Visitors */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Visitors</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data?.visitors?.map((visitor: any) => (
+              <Card key={visitor.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-lg">{visitor.country || 'Unknown'}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p><strong>IP:</strong> {visitor.ip}</p>
+                  <p><strong>City:</strong> {visitor.city || 'N/A'}</p>
+                  <p><strong>Visit Count:</strong> {visitor.visitCount}</p>
+                  <p><strong>First Visit:</strong> {new Date(visitor.createdAt).toLocaleDateString()}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Consultations */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Consultations</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {data?.consultations?.map((consultation: any) => (
+              <Card key={consultation.id} className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <CardHeader>
+                  <CardTitle className="text-lg">{consultation.name}</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2">
+                  <p><strong>Email:</strong> {consultation.email}</p>
+                  <p><strong>Phone:</strong> {consultation.phone || 'N/A'}</p>
+                  <p><strong>Message:</strong> {consultation.message.substring(0, 100)}...</p>
+                  <p><strong>Submitted:</strong> {new Date(consultation.createdAt).toLocaleDateString()}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Refresh Button */}
+        <div className="text-center">
+          <Button onClick={loadDashboardData} variant="outline" className="px-8 py-4">
+            Refresh Data
+          </Button>
+        </div>
+      </div>
     </div>
   );
 }

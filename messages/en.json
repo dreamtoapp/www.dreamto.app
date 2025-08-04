@@ -143,10 +143,10 @@
     "services": "Our Services",
     "portfolio": "Our Portfolio",
     "contact": "Contact Us",
-    "title": "Dreamto – Shaping Your Digital Future",
+    "title": "DreamToApp – Shaping Your Digital Future",
     "description": "A leading tech agency crafting web, mobile, and cloud solutions for your ambitions. Discover our services and start your journey to digital excellence.",
     "organization": {
-      "name": "Dreamto for Digital Solutions"
+      "name": "DreamToApp for Digital Solutions"
     },
     "breadcrumb": {
       "home": "Home"
@@ -157,7 +157,7 @@
       "homepageBody": "Homepage Body"
     },
     "logo": {
-      "alt": "Dreamto Logo"
+      "alt": "DreamToApp Logo"
     },
     "tagline": "DREAM. DESIGN. DELIVER.",
     "dreamTagline": "DREAM. DESIGN. ACHIEVE.",
