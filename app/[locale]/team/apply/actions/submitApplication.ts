@@ -89,7 +89,7 @@ export async function submitApplication(formData: FormData) {
         // TODO: Add IP address and user agent tracking
         // ipAddress: getClientIP(),
         // userAgent: getUserAgent(),
-        source: "apply-job-form",
+        source: "team-apply-form",
         // Create initial status history entry
         statusHistory: {
           create: {
@@ -135,7 +135,7 @@ export async function submitApplication(formData: FormData) {
     }
 
     // Revalidate the page to show updated state
-    revalidatePath("/apply-job");
+    revalidatePath("/team/apply");
 
     return {
       success: true,
@@ -164,4 +164,4 @@ export async function submitApplication(formData: FormData) {
       error: error instanceof Error ? error.message : "Unknown error",
     };
   }
-} 
+}

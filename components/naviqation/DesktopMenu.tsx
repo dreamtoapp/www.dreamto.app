@@ -88,13 +88,13 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
           <Link
             key={item.href}
             href={item.href}
-            className="relative flex items-center gap-3 group p-2 rounded-lg transition-all duration-300 hover:bg-muted/20"
+            className="relative flex items-center gap-3 group p-2 rounded-lg transition-all duration-300 hover:bg-brand-secondary-subtle light-mode-depth"
             onClick={isMounted ? () => handleItemClick(item.href) : undefined}
           >
             {/* Menu Item Button */}
             <div className="relative flex h-[50px] w-[50px] items-center justify-center">
               <div
-                className={`absolute h-full w-full rounded-full p-4 shadow-sm shadow-[#00000050] duration-300 group-hover:scale-110 group-hover:ring-2 ${isActive ? 'ring-2 scale-110' : ''
+                className={`absolute h-full w-full rounded-full p-4 light-mode-depth duration-300 group-hover:scale-110 group-hover:ring-2 light-mode-depth-hover ${isActive ? 'ring-2 scale-110' : ''
                   }`}
                 style={{
                   backgroundColor: `${item.bgColor}30`,

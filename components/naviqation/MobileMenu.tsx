@@ -129,7 +129,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
             </div>
           </Button>
         </SheetTrigger>
-        <SheetContent side="right" className="w-[320px] sm:w-[400px] bg-background/95 backdrop-blur-xl border-l border-border/50 shadow-2xl flex flex-col">
+        <SheetContent side="right" className="w-[320px] sm:w-[400px] bg-background/95 backdrop-blur-xl border-l border-border/50 light-mode-depth bg-gradient-brand-soft flex flex-col">
           <SheetHeader className="pb-4 border-b border-border/20">
             <SheetTitle className="text-center">
               <MobileBrand locale={locale} />
@@ -145,7 +145,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
                     <button
                       key={item.href}
                       onClick={() => handleItemClick(item.href, item.color)}
-                      className="relative flex items-center w-full px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group hover:bg-muted/20"
+                      className="relative flex items-center w-full px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group hover:bg-brand-secondary-subtle light-mode-depth"
                       style={{
                         animationDelay: `${index * 100}ms`,
                         backgroundColor: 'transparent'
@@ -174,7 +174,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
           </div>
 
           {/* CTA Section - Fixed at bottom */}
-          <div className="mt-auto pt-6 px-4 py-4 bg-gradient-to-r from-[#d7a50d]/15 to-[#f4c430]/15 rounded-xl border border-[#d7a50d]/30 shadow-lg">
+          <div className="mt-auto pt-6 px-4 py-4 bg-brand-accent-subtle rounded-xl border border-border/30 light-mode-depth">
             <div className="text-center mb-3">
               <p className="text-sm font-medium text-foreground mb-1">
                 {navbarT("readyToStart")}
@@ -186,7 +186,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
             <div className="flex justify-center">
               <button
                 onClick={() => handleItemClick('/contactus', '#d7a50d')}
-                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-lg text-sm font-semibold hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-[#d7a50d]/30 transform hover:-translate-y-1"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#d7a50d] to-[#f4c430] text-white rounded-lg text-sm font-semibold hover:from-[#f4c430] hover:to-[#d7a50d] transition-all duration-300 hover:scale-105 light-mode-depth hover:light-mode-depth-hover transform hover:-translate-y-1"
               >
                 <span>{navbarT("startProject")}</span>
                 <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />

@@ -61,7 +61,7 @@ const LangSwitcher = memo(function LangSwitcher({ locale }: { locale: string }) 
       <Link
         href={pathWithoutLocale}
         locale={targetLocale}
-        className="flex items-center justify-center w-6 h-6 rounded-full overflow-hidden border border-transparent hover:border-border hover:shadow-sm transition-all duration-300"
+        className="flex items-center justify-center w-6 h-6 rounded-full overflow-hidden border border-transparent hover:border-border light-mode-depth transition-all duration-300"
         aria-label={t('switchLanguage', { language: languageData[targetLocale as LocaleType].label })}
       >
         <Image

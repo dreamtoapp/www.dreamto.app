@@ -1,4 +1,4 @@
-import { FaJs, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaShopify, FaBuffer, FaWhatsapp, FaTiktok, FaSnapchatGhost, FaYoutube, FaInstagram, FaTwitter, FaLinkedin, FaStackOverflow, FaUserSecret, FaCode } from 'react-icons/fa';
+import { FaJs, FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaShopify, FaBuffer, FaWhatsapp, FaTiktok, FaSnapchatGhost, FaYoutube, FaInstagram, FaTwitter, FaLinkedin, FaStackOverflow, FaUserSecret, FaCode, FaFacebook } from 'react-icons/fa';
 import { SiNextdotjs, SiMongodb, SiFirebase, SiMysql, SiSqlite, SiTypescript, SiAdobe, SiFigma, SiSentry, SiTwilio, SiAdobephotoshop, SiAdobeillustrator, SiPrisma, SiVuedotjs } from 'react-icons/si';
 import { Rocket, Users, Paintbrush, Globe, Smartphone, Award, Shield, Smile, Mail, Phone, FileText, Home as LucideHome, CalendarClock, Youtube as LucideYoutube, Instagram as LucideInstagram, Twitter as LucideTwitter, ShoppingCart, Megaphone, Palette, Briefcase, Tag, Link, Terminal } from 'lucide-react';
 
@@ -35,6 +35,7 @@ export const technology = {
   twitter: { name: "twitter", icon: LucideTwitter },
   vscode: { name: "VSCode", icon: Terminal },
   linkedin: { name: "LinkedIn", icon: FaLinkedin },
+  facebook: { name: "Facebook", icon: FaFacebook },
   workSample: { name: "workSample", icon: Briefcase },
   priceDown: { name: "price Down", icon: Tag },
   linkYouLike: { name: "link You Like", icon: Link },
@@ -45,6 +46,7 @@ export const social = {
   youtube: LucideYoutube,
   instagram: LucideInstagram,
   twitter: LucideTwitter,
+  facebook: FaFacebook,
   tiktok: FaTiktok,
   whatsapp: FaWhatsapp,
 };
@@ -108,6 +110,7 @@ export const contactUs = {
   youtube: { name: "youtube", icon: LucideYoutube },
   instgram: { name: "instgram", icon: LucideInstagram },
   twitter: { name: "twitter", icon: LucideTwitter },
+  facebook: { name: "facebook", icon: FaFacebook },
 };
 
 export const normalIcons = {

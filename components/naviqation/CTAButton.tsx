@@ -108,7 +108,7 @@ const CTAButton: React.FC<{ locale: string }> = ({ locale }) => {
 
         <div className="relative flex items-center justify-center">
           <Button
-            className="ripple-button inline-flex items-center gap-1 md:gap-2 text-white font-bold px-3 py-1.5 md:px-6 md:py-2 rounded-lg md:rounded-xl transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-white/50 text-xs md:text-sm relative overflow-hidden"
+            className="ripple-button inline-flex items-center gap-1 md:gap-2 text-white font-bold px-3 py-1.5 md:px-6 md:py-2 rounded-lg md:rounded-xl transition-all duration-300 hover:scale-110 hover:ring-2 hover:ring-white/50 text-xs md:text-sm relative overflow-hidden light-mode-depth"
             style={{ backgroundColor: '#d7a50d' }}
           >
             {/* Ripple Effect Background */}

@@ -22,9 +22,9 @@ export default function ThemeSwitch() {
         size="icon"
         className={cn(
           "rounded-full w-9 h-9",
-          "bg-background/50 hover:bg-background/80",
+          "bg-brand-secondary-subtle hover:bg-brand-secondary-subtle/80",
           "border border-border/20",
-          "transition-all duration-300"
+          "transition-all duration-300 light-mode-depth"
         )}
       >
         <div>
@@ -47,9 +47,9 @@ export default function ThemeSwitch() {
       onClick={() => setTheme(theme === "light" ? "dark" : "light")}
       className={cn(
         "rounded-full w-9 h-9",
-        "bg-background/50 hover:bg-background/80",
+        "bg-brand-secondary-subtle hover:bg-brand-secondary-subtle/80",
         "border border-border/20",
-        "transition-all duration-300"
+        "transition-all duration-300 light-mode-depth"
       )}
     >
       <div>
