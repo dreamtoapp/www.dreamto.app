@@ -58,17 +58,17 @@ export const metadata = {
   },
 };
 
-import Script from 'next/script';
 import NextTopLoader from 'nextjs-toploader';
 import { Suspense } from 'react';
 import { getLocale } from 'next-intl/server';
 import { Directions } from '@/constant/enums';
+import Script from 'next/script';
 
 import { Toaster } from '@/components/ui/sonner';
 import { tajawal } from './font';
 import { ThemeProvider } from '@/provider/theme-provider';
 import BackToTopWrapper from '@/components/ui/BackToTopWrapper';
-
+import { GTMProvider } from '@/components/GTMProvider';
 
 // Loading component for suspense boundaries
 const LoadingFallback = () => (
@@ -92,19 +92,40 @@ export default async function RootLayout({
     >
       <head suppressHydrationWarning>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <link rel="preconnect" href="https://static.getclicky.com" />
-        <Script
-          strategy="afterInteractive"
-          data-id="101486249"
-          src="//static.getclicky.com/js"
-        />
+        {/* Performance Optimizations */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* GTM Resource Hints */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
       </head>
       <body className={`${tajawal.className} min-h-screen bg-background antialiased`}>
+        {/* GTM Script - Next.js Official Method */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtm.js?id=${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-P43DC5FM'}`}
+        />
+
+        {/* GTM NoScript - For users with JavaScript disabled */}
+        <noscript>
+          <iframe
+            src={`https://www.googletagmanager.com/ns.html?id=${process.env.NEXT_PUBLIC_GTM_ID || 'GTM-P43DC5FM'}`}
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+
         <NextTopLoader />
 
         <main id="main-content" tabIndex={-1} role="main">
           <ThemeProvider>
-            {children}
+            <GTMProvider locale={locale}>
+              {children}
+            </GTMProvider>
           </ThemeProvider>
         </main>
 

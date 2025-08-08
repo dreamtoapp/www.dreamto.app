@@ -3,11 +3,11 @@
 
 export const GTM_CONFIG = {
   // Performance-optimized settings
-  loadStrategy: 'lazyOnload' as const,
+  loadStrategy: 'nextjsScript' as const, // Updated to use Next.js Script component
   interactionDelay: 5000, // 5 seconds
   maxLoadTime: 1000, // 1 second threshold
   enablePerformanceMonitoring: process.env.NODE_ENV === 'development', // Enabled in dev for testing
-  enableCoreWebVitals: false, // Disabled for performance
+  enableCoreWebVitals: true, // Re-enabled for analytics
 
   // Resource optimization
   preconnectDomains: [

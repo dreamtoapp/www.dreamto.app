@@ -30,125 +30,107 @@ interface LayoutShiftEntry extends PerformanceEntry {
   }>
 }
 
-export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX'
+export const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-P43DC5FM'
 
-// Performance-optimized GTM loading
-let gtmLoaded = false
-let gtmLoadPromise: Promise<void> | null = null
-
-const loadGTM = (): Promise<void> => {
-  if (gtmLoaded) {
-    return Promise.resolve()
-  }
-
-  if (gtmLoadPromise) {
-    return gtmLoadPromise
-  }
-
-  gtmLoadPromise = new Promise((resolve) => {
-    if (typeof window === 'undefined') {
-      resolve()
-      return
-    }
-
-    // Check if GTM is already loaded
-    if (window.dataLayer) {
-      gtmLoaded = true
-      resolve()
-      return
-    }
-
-    // Initialize dataLayer if it doesn't exist
-    window.dataLayer = window.dataLayer || []
-
-    // Load GTM script asynchronously
-    const script = document.createElement('script')
-    script.async = true
-    script.defer = true
-    script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`
-
-    script.onload = () => {
-      gtmLoaded = true
-      resolve()
-    }
-
-    script.onerror = () => {
-      console.warn('GTM failed to load, but continuing without it')
-      resolve()
-    }
-
-    document.head.appendChild(script)
-  })
-
-  return gtmLoadPromise
+// Initialize dataLayer if it doesn't exist
+if (typeof window !== 'undefined') {
+  window.dataLayer = window.dataLayer || []
 }
 
-// Performance-optimized pageview tracking
-export const pageview = async (url: string, locale?: string) => {
-  try {
-    await loadGTM()
-
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event: 'page_view',
-        page_location: url,
-        page_title: document.title,
-        page_language: locale || 'en',
-        timestamp: Date.now()
-      })
-    }
-  } catch (error) {
-    console.warn('GTM pageview tracking failed:', error)
+// GTM pageview function - Updated for Next.js Script component
+export const pageview = (url: string, locale?: string) => {
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'page_view',
+      page_location: url,
+      page_title: document.title,
+      page_language: locale || 'en',
+      timestamp: Date.now()
+    })
   }
 }
 
-// Performance-optimized event tracking
-export const event = async (
+// GTM event function - Updated for Next.js Script component
+export const event = (
   action: string,
   category: string,
   label?: string,
   value?: number,
   customParameters?: Record<string, any>
 ) => {
-  try {
-    await loadGTM()
-
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push({
-        event: 'custom_event',
-        event_category: category,
-        event_action: action,
-        event_label: label,
-        event_value: value,
-        ...customParameters,
-        timestamp: Date.now()
-      })
-    }
-  } catch (error) {
-    console.warn('GTM event tracking failed:', error)
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push({
+      event: 'custom_event',
+      event_category: category,
+      event_action: action,
+      event_label: label,
+      event_value: value,
+      ...customParameters,
+      timestamp: Date.now()
+    })
   }
 }
 
 // Enhanced e-commerce tracking - Performance optimized
-export const trackEcommerce = async (data: {
+export const trackEcommerce = (data: {
   event: string
   ecommerce: Record<string, any>
 }) => {
-  try {
-    await loadGTM()
-
-    if (typeof window !== 'undefined' && window.dataLayer) {
-      window.dataLayer.push(data)
-    }
-  } catch (error) {
-    console.warn('GTM ecommerce tracking failed:', error)
+  if (typeof window !== 'undefined' && window.dataLayer) {
+    window.dataLayer.push(data)
   }
 }
 
-// Core Web Vitals tracking - Disabled for performance optimization
+// Core Web Vitals tracking - Re-enabled for analytics
 export const trackCoreWebVitals = () => {
-  // Disabled to improve performance score - will be re-enabled after performance optimization
-  return
+  if (typeof window === 'undefined') return
+
+  // Track LCP
+  new PerformanceObserver((list) => {
+    const entries = list.getEntries()
+    const lastEntry = entries[entries.length - 1] as LargestContentfulPaintEntry
+    if (lastEntry) {
+      window.dataLayer?.push({
+        event: 'core_web_vitals',
+        metric_name: 'LCP',
+        metric_value: Math.round(lastEntry.startTime),
+        metric_id: lastEntry.id || 'unknown'
+      })
+    }
+  }).observe({ entryTypes: ['largest-contentful-paint'] })
+
+  // Track FID
+  new PerformanceObserver((list) => {
+    const entries = list.getEntries()
+    entries.forEach((entry) => {
+      const firstInputEntry = entry as FirstInputEntry
+      if (firstInputEntry.processingStart && firstInputEntry.processingEnd) {
+        const firstInputDelay = firstInputEntry.processingEnd - firstInputEntry.processingStart
+        window.dataLayer?.push({
+          event: 'core_web_vitals',
+          metric_name: 'FID',
+          metric_value: Math.round(firstInputDelay),
+          metric_id: firstInputEntry.name || 'unknown'
+        })
+      }
+    })
+  }).observe({ entryTypes: ['first-input'] })
+
+  // Track CLS
+  new PerformanceObserver((list) => {
+    const entries = list.getEntries()
+    entries.forEach((entry) => {
+      const layoutShiftEntry = entry as LayoutShiftEntry
+      if (!layoutShiftEntry.hadRecentInput) {
+        window.dataLayer?.push({
+          event: 'core_web_vitals',
+          metric_name: 'CLS',
+          metric_value: Math.round(layoutShiftEntry.value * 1000) / 1000,
+          metric_id: layoutShiftEntry.name || 'unknown'
+        })
+      }
+    })
+  }).observe({ entryTypes: ['layout-shift'] })
 }
 
 // Performance monitoring - Lightweight version
@@ -162,27 +144,22 @@ export const monitorGTMPerformance = () => {
   }
 }
 
-// Initialize GTM when user interacts with the page
+// Initialize GTM when user interacts with the page - Updated for Next.js Script
 export const initializeGTMOnInteraction = () => {
   if (typeof window === 'undefined') return
 
-  const initGTM = () => {
-    loadGTM()
-    // Remove event listeners after initialization
-    document.removeEventListener('click', initGTM)
-    document.removeEventListener('scroll', initGTM)
-    document.removeEventListener('keydown', initGTM)
+  // GTM is now loaded via Next.js Script component, so we just need to track pageviews
+  const trackPageview = () => {
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'page_view',
+        page_location: window.location.href,
+        page_title: document.title,
+        timestamp: Date.now()
+      })
+    }
   }
 
-  // Initialize GTM on first user interaction
-  document.addEventListener('click', initGTM, { once: true })
-  document.addEventListener('scroll', initGTM, { once: true })
-  document.addEventListener('keydown', initGTM, { once: true })
-
-  // Fallback: Initialize after 5 seconds if no interaction
-  setTimeout(() => {
-    if (!gtmLoaded) {
-      loadGTM()
-    }
-  }, 5000)
+  // Track initial pageview
+  trackPageview()
 }

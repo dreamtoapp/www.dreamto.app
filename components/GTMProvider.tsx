@@ -2,9 +2,7 @@
 
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { pageview, initializeGTMOnInteraction } from '@/lib/gtm'
-import { initializePerformanceMonitoring, testGTMPerformance } from '@/lib/gtm-config'
-import { initializeDOMOptimization } from '@/lib/dom-optimization'
+import { pageview, trackCoreWebVitals } from '@/lib/gtm'
 
 interface GTMProviderProps {
   children: React.ReactNode
@@ -15,31 +13,10 @@ export function GTMProvider({ children, locale }: GTMProviderProps) {
   const pathname = usePathname()
 
   useEffect(() => {
-    // Initialize GTM on user interaction for better performance
-    initializeGTMOnInteraction()
-
-    // Initialize performance monitoring
-    initializePerformanceMonitoring()
-
-    // Initialize DOM optimization
-    initializeDOMOptimization()
-
-    // Test GTM performance in development mode
-    if (process.env.NODE_ENV === 'development') {
-      // Test after a short delay to allow GTM to initialize
-      const testTimer = setTimeout(() => {
-        testGTMPerformance()
-      }, 2000)
-
-      return () => clearTimeout(testTimer)
-    }
-  }, [])
-
-  useEffect(() => {
     // Track page views with performance optimization
-    const trackPageview = async () => {
+    const trackPageview = () => {
       try {
-        await pageview(pathname, locale)
+        pageview(pathname, locale)
 
         // Log in development mode
         if (process.env.NODE_ENV === 'development') {
@@ -55,6 +32,13 @@ export function GTMProvider({ children, locale }: GTMProviderProps) {
 
     trackPageview()
   }, [pathname, locale])
+
+  useEffect(() => {
+    // Initialize Core Web Vitals tracking
+    if (typeof window !== 'undefined') {
+      trackCoreWebVitals()
+    }
+  }, [])
 
   return <>{children}</>
 }
