@@ -127,7 +127,7 @@ export default async function Page() {
               >
                 <Card className="group relative overflow-hidden rounded-xl border-0 shadow-lg hover:shadow-2xl transition-all duration-500 bg-card/50 backdrop-blur-sm">
                   {/* Image Container */}
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden image-container" style={{ aspectRatio: '4/3' }}>
                     {folder.coverImage ? (
                       <Image
                         src={folder.coverImage.secure_url}
@@ -137,6 +137,7 @@ export default async function Page() {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                         placeholder="blur"
                         blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
+                        style={{ aspectRatio: '4/3' }}
                       />
                     ) : (
                       <div className="flex items-center justify-center w-full h-full bg-muted">

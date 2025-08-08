@@ -24,7 +24,7 @@ const MainTagline: React.FC<{ slogan: string }> = ({ slogan }) => (
 
 // Title Component
 const HeroTitle: React.FC<{ title: string }> = ({ title }) => (
-  <div className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-2 md:mb-3 leading-tight tracking-tight max-w-xs md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto">
+  <div className="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-black mb-2 md:mb-3 leading-tight tracking-tight max-w-xs md:max-w-2xl lg:max-w-4xl xl:max-w-5xl mx-auto layout-stable prevent-layout-shift" style={{ minHeight: '4rem', contain: 'layout' }}>
     {title}
   </div>
 );
@@ -38,12 +38,12 @@ const HeroDescription: React.FC<{ description: string }> = ({ description }) => 
 
 const HeroText: React.FC<HeroTextProps> = ({ tagline, title, description, slogan }) => {
   return (
-    <>
+    <div className="dom-optimized">
       <MainTagline slogan={slogan} />
       <HeroTitle title={title} />
       <HeroTagline tagline={tagline} />
       <HeroDescription description={description} />
-    </>
+    </div>
   );
 };
 

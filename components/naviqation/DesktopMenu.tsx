@@ -78,7 +78,7 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
 
   // Use consistent rendering structure to prevent hydration mismatch
   return (
-    <nav className="hidden md:flex items-center gap-4">
+    <nav className="hidden md:flex items-center gap-4 layout-stable prevent-layout-shift" style={{ minHeight: '3rem', contain: 'layout' }}>
       {menuItems.map((item) => {
         const IconComponent = item.icon;
         const isActive = isMounted ? activeItem === item.href : false;
@@ -88,8 +88,9 @@ const DesktopMenu: React.FC<{ locale: string }> = ({ locale }) => {
           <Link
             key={item.href}
             href={item.href}
-            className="relative flex items-center gap-3 group p-2 rounded-lg transition-all duration-300 hover:bg-muted/20"
+            className="relative flex items-center gap-3 group p-2 rounded-lg transition-all duration-300 hover:bg-muted/20 layout-stable"
             onClick={isMounted ? () => handleItemClick(item.href) : undefined}
+            style={{ minHeight: '3rem', contain: 'layout' }}
           >
             {/* Menu Item Button */}
             <div className="relative flex h-[50px] w-[50px] items-center justify-center">

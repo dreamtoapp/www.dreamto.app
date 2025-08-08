@@ -40,7 +40,7 @@ async function CromboDetail() {
           {/* Main Content Section */}
           <CardContent className="flex flex-col lg:flex-row items-center gap-6 sm:gap-8 lg:gap-12 pb-6 sm:pb-8">
             {/* Product Image */}
-            <div className="relative w-28 h-40 sm:w-32 sm:h-48 lg:w-40 lg:h-56 flex-shrink-0">
+            <div className="relative w-28 h-40 sm:w-32 sm:h-48 lg:w-40 lg:h-56 flex-shrink-0 image-container" style={{ aspectRatio: '7/10' }}>
               <Image
                 src="/assets/homepage/cromboPlugin.avif"
                 fill
@@ -48,6 +48,7 @@ async function CromboDetail() {
                 className="object-contain object-center drop-shadow-2xl"
                 sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 160px"
                 priority
+                style={{ aspectRatio: '7/10' }}
               />
             </div>
 

@@ -26,7 +26,7 @@ const HeroContent: React.FC<HeroContentProps> = ({
   locale
 }) => {
   return (
-    <div className="infotop">
+    <div className="infotop dom-optimized">
       <HeroLogo logoAlt={logoAlt} locale={locale} />
       <HeroText tagline={tagline} title={title} description={description} slogan={slogan} />
       <HeroCTA ctaPrimary={ctaPrimary} ctaSecondary={ctaSecondary} locale={locale} />

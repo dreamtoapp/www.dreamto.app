@@ -15,7 +15,7 @@ const HeroCTA: React.FC<HeroCTAProps> = ({ ctaPrimary, ctaSecondary, locale }) =
   const tertiaryHref = `/${locale}/apply-job`;
 
   return (
-    <div className="flex flex-wrap gap-3 md:gap-4 justify-center">
+    <div className="flex flex-wrap gap-3 md:gap-4 justify-center dom-optimized">
       <Link
         href={primaryHref}
         className="cta-button primary"

@@ -46,10 +46,10 @@ const HeroSection: React.FC<HeroProps> = ({
   ), [t, locale]);
 
   return (
-    <div className={`w-full min-h-screen bg-gradient-to-br from-blue-950 via-amber-900 to-cyan-900 ${className}`}>
+    <div className={`w-full min-h-screen bg-gradient-to-br from-blue-950 via-amber-900 to-cyan-900 dom-optimized ${className}`}>
       <HeroStyles />
 
-      <div className="e-card">
+      <div className="e-card card-optimized">
         <div className="image"></div>
         <WaveBackground />
         <div className="hero-content">

@@ -137,7 +137,7 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
           </SheetHeader>
 
           <div className="flex flex-col flex-1">
-            <nav className="pt-4">
+            <nav className="pt-4 layout-stable prevent-layout-shift" style={{ minHeight: '20rem', contain: 'layout' }}>
               <div className="space-y-2">
                 {menuItems.map((item, index) => {
                   const IconComponent = item.icon;
@@ -145,10 +145,12 @@ const MobileMenu: React.FC<{ locale: string }> = ({ locale }) => {
                     <button
                       key={item.href}
                       onClick={() => handleItemClick(item.href, item.color)}
-                      className="relative flex items-center w-full px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group hover:bg-muted/20"
+                      className="relative flex items-center w-full px-4 py-4 text-lg font-medium rounded-xl transition-all duration-300 group hover:bg-muted/20 layout-stable"
                       style={{
                         animationDelay: `${index * 100}ms`,
-                        backgroundColor: 'transparent'
+                        backgroundColor: 'transparent',
+                        minHeight: '3.5rem',
+                        contain: 'layout'
                       }}
                     >
                       {/* Icon Container */}

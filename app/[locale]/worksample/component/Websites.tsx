@@ -106,16 +106,19 @@ function Websites() {
               <Link href={website.url} target="_blank" rel="noopener noreferrer">
                 <Card className="overflow-hidden relative transition-transform hover:scale-105 duration-300">
                   {/* Use next/image for optimized images */}
-                  <Image
-                    src={website.image}
-                    alt={website.title}
-                    width={website.width}
-                    height={website.height}
-                    className="w-full h-48 object-cover rounded-t-md"
-                    placeholder="blur" // Add a blur placeholder for better UX
-                    blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
-                    priority={false} // Lazy load images
-                  />
+                  <div className="relative w-full h-48 image-container" style={{ aspectRatio: '3/2' }}>
+                    <Image
+                      src={website.image}
+                      alt={website.title}
+                      width={website.width}
+                      height={website.height}
+                      className="w-full h-full object-cover rounded-t-md"
+                      placeholder="blur" // Add a blur placeholder for better UX
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
+                      priority={false} // Lazy load images
+                      style={{ aspectRatio: '3/2' }}
+                    />
+                  </div>
                   <CardContent className="p-4">
                     <h3
                       className={`text-lg font-semibold text-foreground ${website.mode === "development" &&

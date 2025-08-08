@@ -37,7 +37,7 @@ interface CardComponentProps {
 const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
   return (
     <MotionDiv
-      className="h-full flex flex-col min-w-[300px] bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group focus-within:ring-2 focus-within:ring-[#d7a50d]/60 hover:border-[#0d3ad7]/30"
+      className="h-full flex flex-col min-w-[300px] bg-card border border-border rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 group focus-within:ring-2 focus-within:ring-[#d7a50d]/60 hover:border-[#0d3ad7]/30 card-optimized"
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
     >
@@ -73,9 +73,9 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
           <span className="text-center mb-2 text-[#d7a50d] font-semibold tracking-wide text-xs sm:text-sm uppercase">
             {t("tecnoUsed")}
           </span>
-          {/* Tags List */}
+          {/* Tags List - Limited to prevent excessive DOM */}
           <div className="flex flex-wrap gap-2 justify-center" role="list">
-            {card.tags.map((tag, index) => (
+            {card.tags.slice(0, 4).map((tag, index) => (
               <Badge
                 key={index}
                 variant="secondary"
@@ -98,8 +98,6 @@ const CardComponent: React.FC<CardComponentProps> = ({ card, t, locale }) => {
           </div>
         </CardContent>
       </article>
-
-
     </MotionDiv>
   );
 };

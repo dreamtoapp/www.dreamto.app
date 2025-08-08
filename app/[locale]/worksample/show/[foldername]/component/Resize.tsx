@@ -165,7 +165,7 @@ function Resize({ image }: { image: string }) {
           </div>
 
           {/* Enhanced Image Container */}
-          <div className="relative w-full h-[95vh] bg-black/95 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-[95vh] bg-black/95 flex items-center justify-center overflow-hidden image-container" style={{ aspectRatio: '4/3' }}>
             <div
               className="relative transition-all duration-300 ease-out"
               style={{
@@ -182,6 +182,7 @@ function Resize({ image }: { image: string }) {
                 sizes="95vw"
                 priority
                 quality={95}
+                style={{ aspectRatio: '4/3' }}
               />
             </div>
           </div>

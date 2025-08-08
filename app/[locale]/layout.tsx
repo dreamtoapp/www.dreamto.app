@@ -53,20 +53,20 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <div className="flex flex-col min-h-screen" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
-        <Suspense fallback={<div>Loading navbar...</div>}>
+      <div className="flex flex-col min-h-screen layout-stable" dir={isRTL(locale) ? 'rtl' : 'ltr'}>
+        <Suspense fallback={<div className="h-20 bg-muted animate-pulse">Loading navbar...</div>}>
           <Navbar locale={locale} />
         </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="h-4 bg-muted animate-pulse">Loading...</div>}>
           <PWAStatus />
         </Suspense>
-        <main className="flex-1">
-          <Suspense fallback={<div>Loading...</div>}>
+        <main className="flex-1 layout-stable prevent-layout-shift">
+          <Suspense fallback={<div className="min-h-screen bg-muted animate-pulse">Loading...</div>}>
             {children}
           </Suspense>
         </main>
         <Footer />
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="h-16 bg-muted animate-pulse">Loading...</div>}>
           <FloatingConsultationCTA />
         </Suspense>
       </div>

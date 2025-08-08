@@ -49,7 +49,7 @@ const WhyChooseUs: React.FC = async () => {
   return (
     <section
       id="whyChooseUs"
-      className="w-full"
+      className="w-full dom-optimized"
       aria-labelledby="why-choose-us-heading"
       role="region"
     >
@@ -68,14 +68,14 @@ const WhyChooseUs: React.FC = async () => {
         </div>
       </header>
 
-      {/* Features Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
-        {features.map((feature, index) => (
+      {/* Features Grid - Optimized */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 grid-optimized">
+        {features.slice(0, 5).map((feature, index) => (
           <MotionDiv
             whileHoverEffect={{ scale: 1.05 }}
             whileTapEffect={{ scale: 0.98 }}
             key={index}
-            className="group"
+            className="group card-optimized"
           >
             <Card
               className="h-full rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 bg-card/50 backdrop-blur-sm border border-border/50 group-hover:border-[#0d3ad7]/30"
@@ -98,8 +98,8 @@ const WhyChooseUs: React.FC = async () => {
                 </CardTitle>
               </CardHeader>
               {/* Description */}
-              <CardContent className="px-6 sm:px-8 pb-6 sm:pb-8">
-                <p className="text-sm sm:text-base text-muted-foreground text-center leading-relaxed">
+              <CardContent className="text-center p-6 sm:p-8 pt-0">
+                <p className="text-muted-foreground leading-relaxed">
                   {t(feature.description)}
                 </p>
               </CardContent>

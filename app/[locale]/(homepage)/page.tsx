@@ -58,7 +58,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
   const t = await getTranslations('homepage');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-[#99e4ff]/5">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-[#99e4ff]/5 dom-optimized">
       {/* Enhanced Schema Markup */}
       <script
         type="application/ld+json"
@@ -164,7 +164,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
       {/* Content Sections - Two Column Layout */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-background to-[#d7a50d]/5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 grid-optimized">
             {/* From Idea Section */}
             <div className="space-y-6">
               <FromIdea />

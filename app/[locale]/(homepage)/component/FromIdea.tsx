@@ -13,7 +13,7 @@ import {
 // Client Component for Image
 const ImageWithErrorHandling = () => {
   return (
-    <figure className="relative h-40 sm:h-48 lg:h-64 w-full">
+    <figure className="relative h-40 sm:h-48 lg:h-64 w-full image-container" style={{ aspectRatio: '16/9' }}>
       <Image
         src="/assets/homepage/images/website.avif"
         fill
@@ -21,6 +21,7 @@ const ImageWithErrorHandling = () => {
         priority
         className="object-cover rounded-t-xl transition-transform duration-300 hover:scale-105"
         sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        style={{ aspectRatio: '16/9' }}
       />
       <figcaption className="sr-only">Website project showcase image</figcaption>
     </figure>

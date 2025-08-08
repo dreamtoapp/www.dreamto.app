@@ -160,9 +160,101 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box; /* Prevent layout shifts */
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* 🚨 CRITICAL: Layout Shift Prevention */
+  img, video, iframe, canvas, svg {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: attr(width) / attr(height);
+    contain: layout;
+  }
+  
+  /* Font loading optimization to prevent layout shifts */
+  html {
+    font-display: swap;
+  }
+  
+  /* Prevent font loading layout shifts */
+  .font-loading-optimized {
+    font-display: swap;
+    font-family: 'Tajawal', sans-serif;
+  }
+  
+  /* Reserve space for dynamic content */
+  .dynamic-content {
+    min-height: 1px;
+    contain: layout;
+  }
+  
+  /* Optimize for layout stability */
+  .layout-stable {
+    contain: layout;
+    will-change: auto;
+  }
+  
+  /* Prevent cumulative layout shift */
+  .prevent-layout-shift {
+    contain: layout;
+    min-height: 1px;
+  }
+  
+  /* Image optimization for layout stability */
+  .image-container {
+    position: relative;
+    overflow: hidden;
+    contain: layout;
+  }
+  
+  /* Loading placeholder to prevent layout shift */
+  .image-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+  
+  /* 🚨 DOM SIZE OPTIMIZATION */
+  /* Prevent excessive DOM elements */
+  .dom-optimized {
+    contain: layout style;
+  }
+  
+  /* Limit nested elements */
+  .limit-nesting > * > * > * > * > * > * > * > * > * > * {
+    display: none;
+  }
+  
+  /* Optimize grid layouts */
+  .grid-optimized {
+    contain: layout;
+  }
+  
+  /* Reduce unnecessary wrappers */
+  .no-unnecessary-wrappers {
+    contain: layout;
+  }
+  
+  /* Optimize card components */
+  .card-optimized {
+    contain: layout style;
+  }
+  
+  /* Clean up empty elements */
+  .cleanup-empty:empty {
+    display: none;
+  }
+  
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
   }
 }
 /* Add these custom animations to your globals.css */

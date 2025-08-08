@@ -52,7 +52,7 @@ const ImageWithFallback = memo(function ImageWithFallback({ image }: { image: Im
 
   return (
     <Card className="relative overflow-hidden rounded-2xl border-0 shadow-lg bg-card/50 backdrop-blur-sm">
-      <div className="relative w-full overflow-hidden">
+      <div className="relative w-full overflow-hidden image-container" style={{ aspectRatio: '4/3' }}>
         {hasError ? (
           <div className="min-h-[300px] flex items-center justify-center bg-gradient-to-br from-muted/50 to-muted/30 backdrop-blur-sm rounded-2xl">
             <div className="text-center space-y-4 p-6">
@@ -91,12 +91,13 @@ const ImageWithFallback = memo(function ImageWithFallback({ image }: { image: Im
               alt={image.public_id}
               width={400}
               height={300}
-              className="w-full h-auto object-cover"
+              className="w-full h-full object-cover"
               loading="lazy"
               onError={handleError}
               onLoad={handleLoad}
               key={imageKey}
               priority={false}
+              style={{ aspectRatio: '4/3' }}
             />
           </>
         )}
