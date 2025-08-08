@@ -61,22 +61,10 @@ const Footer: React.FC = async () => {
   // Social/contact icons with proper accessibility
   const contact = [
     {
-      title: "WhatsApp",
-      icon: contactUs.whatsapp.icon,
-      link: "https://wa.me/966554113107",
-      ariaLabel: "Contact us on WhatsApp"
-    },
-    {
-      title: "Contact Form",
-      icon: contactUs.form.icon,
-      link: "#contact-form",
-      ariaLabel: "Fill out our contact form"
-    },
-    {
-      title: "Instagram",
-      icon: technology.instgram.icon,
-      link: "https://instagram.com/dreamtoapp",
-      ariaLabel: "Follow us on Instagram"
+      title: "Snapchat",
+      icon: contactUs.snapchat.icon,
+      link: "https://snapchat.com/add/dreamtoapp",
+      ariaLabel: "Follow us on Snapchat"
     },
     {
       title: "TikTok",
@@ -85,31 +73,44 @@ const Footer: React.FC = async () => {
       ariaLabel: "Follow us on TikTok"
     },
     {
-      title: "YouTube",
-      icon: technology.youtube.icon,
-      link: "https://youtube.com/@dreamtoapp",
-      ariaLabel: "Subscribe to our YouTube channel"
+      title: "Instagram",
+      icon: contactUs.instgram.icon,
+      link: "https://instagram.com/dreamtoapp",
+      ariaLabel: "Follow us on Instagram"
     },
     {
-      title: "Snapchat",
-      icon: technology.snapchat.icon,
-      link: "https://snapchat.com/add/dreamtoapp",
-      ariaLabel: "Follow us on Snapchat"
+      title: "Facebook",
+      icon: contactUs.facebook.icon,
+      link: "https://facebook.com/dreamtoapp",
+      ariaLabel: "Follow us on Facebook"
+    },
+    {
+      title: "X (Twitter)",
+      icon: contactUs.twitter.icon,
+      link: "https://twitter.com/dreamtoapp",
+      ariaLabel: "Follow us on X (Twitter)"
+    },
+    {
+      title: "LinkedIn",
+      icon: technology.linkedin.icon,
+      link: "https://linkedin.com/company/dreamtoapp",
+      ariaLabel: "Follow us on LinkedIn"
     },
   ];
 
   const quickLinks = [
     { label: t("home"), href: "/" },
-    { label: t("services"), href: "/services" },
-    { label: t("portfolio"), href: "/worksample" },
-    { label: t("chatWithUs"), href: "/contactus" },
+    { label: t("services"), href: `/${locale}/services` },
+    { label: t("portfolio"), href: `/${locale}/worksample` },
+    { label: t("ourTeam"), href: `/${locale}/team` },
+    { label: t("joinOurTeam"), href: `/${locale}/team/apply` },
   ];
 
   // Structured Data for SEO
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "DreamTo IT Agency",
+    "name": "DreamToApp",
     "url": "https://dreamto.app",
     "logo": "https://dreamto.app/assets/dta.svg",
     "description": footer("agencyDescription"),
@@ -129,7 +130,9 @@ const Footer: React.FC = async () => {
       "https://linkedin.com/company/dreamtoapp",
       "https://twitter.com/dreamtoapp",
       "https://instagram.com/dreamtoapp",
-      "https://youtube.com/@dreamtoapp"
+      "https://facebook.com/dreamtoapp",
+      "https://tiktok.com/@dreamtoapp",
+      "https://snapchat.com/add/dreamtoapp"
     ],
     "foundingDate": "2023",
     "serviceArea": {
@@ -179,14 +182,14 @@ const Footer: React.FC = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <footer className="w-full bg-background text-foreground pt-6 pb-3 px-4 mt-8 border-t border-border shadow-lg" role="contentinfo">
+      <footer className="w-full bg-background text-foreground pt-6 pb-3 px-4 mt-8 border-t border-border/50 light-mode-depth bg-gradient-brand-soft" role="contentinfo">
         <div className="max-w-7xl mx-auto space-y-6 lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-8 lg:items-start">
           {/* About / Logo */}
           <div className="flex flex-col items-center lg:items-start gap-3">
-            <div className="relative bg-primary/20 w-20 h-20 lg:w-24 lg:h-24 rounded-lg shadow-lg overflow-hidden flex items-center justify-center">
+            <div className="relative bg-brand-primary-subtle w-20 h-20 lg:w-24 lg:h-24 rounded-lg light-mode-depth overflow-hidden flex items-center justify-center">
               <Image
                 src="/assets/dreamtoapp/dreamToApp.svg"
-                alt="DreamTo IT Agency Logo"
+                alt="DreamToApp Logo"
                 width={48}
                 height={48}
                 className="w-12 h-12 lg:w-14 lg:h-14 block dark:hidden"
@@ -194,7 +197,7 @@ const Footer: React.FC = async () => {
               />
               <Image
                 src="/assets/dreamtoapp/dreamToApp-dark.svg"
-                alt="DreamTo IT Agency Logo"
+                alt="DreamToApp Logo"
                 width={48}
                 height={48}
                 className="w-12 h-12 lg:w-14 lg:h-14 hidden dark:block"
@@ -202,7 +205,7 @@ const Footer: React.FC = async () => {
               />
             </div>
 
-            <h2 className="font-bold text-lg lg:text-xl tracking-wide text-center lg:text-left">DreamTo IT Agency</h2>
+            <h2 className="font-bold text-lg lg:text-xl tracking-wide text-center lg:text-left">DreamToApp</h2>
             <p className="text-xs lg:text-sm text-muted-foreground leading-relaxed max-w-xs text-center lg:text-left">
               {footer("agencyDescription")}
             </p>
@@ -258,7 +261,7 @@ const Footer: React.FC = async () => {
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <contactUs.form.icon className="w-4 h-4 lg:w-5 lg:h-5 text-primary flex-shrink-0" aria-hidden="true" />
                 <Link
-                  href="#contact-form"
+                  href={`/${locale}/contactus`}
                   className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background rounded px-1 py-0.5 text-sm lg:text-base"
                   aria-label="Fill out our contact form"
                 >
@@ -279,7 +282,7 @@ const Footer: React.FC = async () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={item.ariaLabel}
-                  className="w-10 h-10 lg:w-12 lg:h-12 bg-muted rounded-full flex items-center justify-center text-primary shadow transition-all duration-300 hover:scale-110 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                  className="w-10 h-10 lg:w-12 lg:h-12 bg-brand-secondary-subtle rounded-full flex items-center justify-center text-primary light-mode-depth transition-all duration-300 hover:scale-110 light-mode-depth-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
                 >
                   <item.icon className="w-5 h-5 lg:w-6 lg:h-6" aria-hidden="true" />
                 </Link>
@@ -289,8 +292,8 @@ const Footer: React.FC = async () => {
         </div>
 
         {/* Copyright & Legal */}
-        <div className="mt-6 lg:mt-10 flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-4 border-t border-border/10 pt-3 lg:pt-4 text-xs text-muted-foreground">
-          <span className="text-center">&copy; {year} DreamToApp IT Agency. {footer("copyright")}.</span>
+        <div className="mt-6 lg:mt-10 flex flex-col lg:flex-row justify-center items-center gap-2 lg:gap-4 border-t border-border/20 pt-3 lg:pt-4 text-xs text-muted-foreground bg-brand-secondary-subtle/30 rounded-lg p-3">
+          <span className="text-center">&copy; {year} DreamToApp. {footer("copyright")}.</span>
           <span className="hidden lg:inline">•</span>
           <span className="text-center">v{packageJson.version}</span>
           <span className="hidden lg:inline">•</span>

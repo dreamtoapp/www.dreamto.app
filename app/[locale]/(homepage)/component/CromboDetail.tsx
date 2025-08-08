@@ -44,7 +44,7 @@ async function CromboDetail() {
               <Image
                 src="/assets/homepage/cromboPlugin.avif"
                 fill
-                alt="Crombo Plugin promotional image for DreamTo IT Agency"
+                alt="Crombo Plugin promotional image for DreamToApp"
                 className="object-contain object-center drop-shadow-2xl"
                 sizes="(max-width: 640px) 112px, (max-width: 768px) 128px, 160px"
                 priority

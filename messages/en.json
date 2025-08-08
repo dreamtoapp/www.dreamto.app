@@ -188,6 +188,7 @@
     "ctaButton": "Start Your Success Journey Today",
     "chatWithUs": "Chat with Us Now",
     "whyChooseUs": "Why Choose Us",
+    "ourTeam": "Our Team",
     "joinOurTeam": "Join Our Team"
   },
   "mobileAppPhases": {
@@ -216,7 +217,7 @@
     "lastUpdatedDate": "August 15, 2025",
     "introduction": {
       "title": "Introduction",
-      "paragraph1": "DreamToApp IT Agency ('we', 'our', or 'us') is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us.",
+      "paragraph1": "DreamToApp ('we', 'our', or 'us') is committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, use our services, or interact with us.",
       "paragraph2": "By using our services, you agree to the collection and use of information in accordance with this policy. We are committed to transparency and will always inform you about how we handle your data."
     },
     "informationWeCollect": {
@@ -357,26 +358,26 @@
   "terms": {
     "meta": {
       "title": "Terms of Service | DreamToApp IT Solutions",
-      "description": "Read our comprehensive Terms of Service for DreamToApp IT Agency. Understand your rights, obligations, and our service terms for web development and digital solutions."
+      "description": "Read our comprehensive Terms of Service for DreamToApp. Understand your rights, obligations, and our service terms for web development and digital solutions."
     },
     "title": "Terms of Service",
     "lastUpdated": "Last Updated",
     "lastUpdatedDate": "August 15, 2025",
     "introduction": {
       "title": "Introduction",
-      "paragraph1": "Welcome to DreamToApp IT Agency. These Terms of Service ('Terms') govern your use of our website and services. By accessing or using our services, you agree to be bound by these Terms.",
-      "paragraph2": "DreamToApp IT Agency ('we', 'our', or 'us') provides web development, mobile application development, and digital solutions services. These Terms apply to all users, clients, and visitors of our website and services.",
+      "paragraph1": "Welcome to DreamToApp. These Terms of Service ('Terms') govern your use of our website and services. By accessing or using our services, you agree to be bound by these Terms.",
+      "paragraph2": "DreamToApp ('we', 'our', or 'us') provides web development, mobile application development, and digital solutions services. These Terms apply to all users, clients, and visitors of our website and services.",
       "paragraph3": "Please read these Terms carefully before using our services. If you do not agree with any part of these Terms, you should not use our services."
     },
     "definitions": {
       "title": "Definitions",
       "terms": {
-        "company": "DreamToApp IT Agency",
-        "companyDesc": "Refers to DreamToApp IT Agency, its employees, agents, and representatives.",
+        "company": "DreamToApp",
+        "companyDesc": "Refers to DreamToApp, its employees, agents, and representatives.",
         "client": "Client",
         "clientDesc": "Any individual or entity that uses our services or enters into a service agreement with us.",
         "services": "Services",
-        "servicesDesc": "All services provided by DreamToApp IT Agency, including but not limited to web development, mobile app development, and consulting services.",
+        "servicesDesc": "All services provided by DreamToApp, including but not limited to web development, mobile app development, and consulting services.",
         "website": "Website",
         "websiteDesc": "The DreamToApp website located at dreamto.app and all associated pages and content.",
         "content": "Content",
@@ -385,7 +386,7 @@
     },
     "services": {
       "title": "Services",
-      "description": "DreamToApp IT Agency provides the following services:",
+      "description": "DreamToApp provides the following services:",
       "types": {
         "web": "Web development and website design",
         "mobile": "Mobile application development for iOS and Android",
@@ -421,7 +422,7 @@
       "title": "Intellectual Property Rights",
       "ourRights": {
         "title": "Our Intellectual Property",
-        "description": "All content, trademarks, logos, and intellectual property on our website and in our services are owned by DreamToApp IT Agency or our licensors."
+        "description": "All content, trademarks, logos, and intellectual property on our website and in our services are owned by DreamToApp or our licensors."
       },
       "yourRights": {
         "title": "Your Intellectual Property",
@@ -483,7 +484,7 @@
     },
     "limitationOfLiability": {
       "title": "Limitation of Liability",
-      "description": "To the maximum extent permitted by law, DreamToApp IT Agency shall not be liable for:",
+      "description": "To the maximum extent permitted by law, DreamToApp shall not be liable for:",
       "exclusions": {
         "damages": "Indirect, incidental, special, or consequential damages",
         "thirdParty": "Damages caused by third-party services or products",
@@ -532,7 +533,7 @@
     },
     "entireAgreement": {
       "title": "Entire Agreement",
-      "description": "These Terms constitute the entire agreement between you and DreamToApp IT Agency regarding the use of our services."
+      "description": "These Terms constitute the entire agreement between you and DreamToApp regarding the use of our services."
     },
     "contactInformation": {
       "title": "Contact Information",

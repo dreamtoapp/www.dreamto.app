@@ -91,18 +91,18 @@ export default function FloatingConsultationCTA() {
           }
         }
       `}</style>
-      <div className="fixed z-50 bottom-6 right-6 group rtl:right-auto rtl:left-6">
+      <div className="fixed z-50 bottom-6 left-6 group">
         {/* Tooltip */}
-        <div className="absolute bottom-full right-0 mb-3 px-4 py-2 bg-[#0d3ad7] text-white text-sm font-medium rounded-lg shadow-lg opacity-100 transition-all duration-300 transform translate-y-0 pointer-events-none whitespace-nowrap rtl:right-auto rtl:left-0">
+        <div className="absolute bottom-full left-0 mb-3 px-4 py-2 bg-[#0d3ad7] text-white text-sm font-medium rounded-lg light-mode-depth opacity-100 transition-all duration-300 transform translate-y-0 pointer-events-none whitespace-nowrap">
           {t("cta")}
           {/* Tooltip Arrow */}
-          <div className="absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#0d3ad7] rtl:right-auto rtl:left-4"></div>
+          <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-[#0d3ad7]"></div>
         </div>
 
         {/* Floating Button */}
         <Button
           className={cn(
-            "bg-gradient-to-r from-[#0d3ad7] to-[#1e40af] text-white shadow-2xl rounded-full p-4 hover:scale-110 hover:shadow-3xl transition-all duration-300 border-2 border-white/20 backdrop-blur-sm hover:rotate-12",
+            "bg-gradient-to-r from-[#0d3ad7] to-[#1e40af] text-white shadow-2xl rounded-full p-4 hover:scale-110 hover:shadow-3xl transition-all duration-300 border-2 border-white/20 backdrop-blur-sm hover:rotate-12 light-mode-depth",
             "hover:animate-none"
           )}
           style={{

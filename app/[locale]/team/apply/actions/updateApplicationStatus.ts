@@ -133,4 +133,4 @@ export async function getApplicationWithHistory(applicationId: string) {
       error: error instanceof Error ? error.message : "Unknown error",
     };
   }
-} 
+}

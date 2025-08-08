@@ -17,7 +17,7 @@ const ImageWithErrorHandling = () => {
       <Image
         src="/assets/homepage/images/website.avif"
         fill
-        alt="Website project showcase image for DreamTo IT Agency"
+        alt="Website project showcase image for DreamToApp"
         priority
         className="object-cover rounded-t-xl transition-transform duration-300 hover:scale-105"
         sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

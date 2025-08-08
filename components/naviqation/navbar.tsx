@@ -14,7 +14,7 @@ const Navbar: React.FC<{ locale: string }> = ({ locale }) => {
 
   return (
     <header
-      className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-black/5"
+      className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-xl border-b border-border/50 light-mode-depth bg-gradient-brand-soft"
       role="navigation"
       aria-label={t("mainNavigation")}
     >
